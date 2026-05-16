@@ -1,0 +1,75 @@
+export const practice = {
+  name: "Sunrise Family Dental",
+  tagline: "Healthy smiles for every generation",
+  phone: "(619) 555-0182",
+  email: "hello@sunrisefamilydental.com",
+  address: "4821 Mission Valley Rd, San Diego, CA 92108",
+  founded: "1998",
+  hero: {
+    headline: "Your Family's\nSmile Home",
+    subheadline: "Gentle, comprehensive dental care for patients of all ages — from first teeth to golden years.",
+    ctaText: "Book Your Appointment",
+    image: "https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=1400&q=80",
+  },
+  hours: [
+    { day: "Monday–Thursday", time: "8:00 AM – 5:00 PM" },
+    { day: "Friday", time: "8:00 AM – 3:00 PM" },
+    { day: "Saturday", time: "9:00 AM – 2:00 PM" },
+    { day: "Sunday", time: "Closed" },
+  ],
+  services: [
+    { name: "Family Cleanings", desc: "Thorough cleanings for all ages with gentle, caring hygienists.", icon: "🦷" },
+    { name: "Pediatric Care", desc: "Kid-friendly visits that build positive dental habits early.", icon: "👶" },
+    { name: "Tooth Whitening", desc: "Professional in-office and take-home whitening systems.", icon: "✨" },
+    { name: "Composite Fillings", desc: "Tooth-colored fillings that blend naturally with your smile.", icon: "🔧" },
+    { name: "Dental Crowns", desc: "Durable, natural-looking crowns to restore damaged teeth.", icon: "👑" },
+    { name: "Orthodontics", desc: "Traditional braces and clear aligner options for all ages.", icon: "😁" },
+    { name: "Dental Implants", desc: "Permanent, lifelike replacements for missing teeth.", icon: "⚓" },
+    { name: "Emergency Care", desc: "Same-day appointments for dental emergencies when you need us most.", icon: "🚨" },
+  ],
+  insurance: [
+    "Delta Dental", "Cigna", "Aetna", "MetLife", "Guardian", "United Concordia",
+    "Humana", "BlueCross BlueShield", "Principal", "Sun Life",
+  ],
+  team: [
+    {
+      name: "Dr. Sarah Chen",
+      role: "Lead Dentist & Founder",
+      bio: "25+ years serving San Diego families. UC San Francisco School of Dentistry, with advanced training in pediatric and restorative care.",
+      image: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=400&q=80",
+    },
+    {
+      name: "Dr. Marcus Webb",
+      role: "General Dentist",
+      bio: "Specializes in cosmetic and restorative dentistry. Known for his calming chairside manner and precise attention to detail.",
+      image: "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&w=400&q=80",
+    },
+    {
+      name: "Jessica Park, RDH",
+      role: "Lead Dental Hygienist",
+      bio: "Certified with 12 years of experience. Passionate about patient education and helping families maintain lifelong oral health.",
+      image: "https://images.unsplash.com/photo-1594824476967-48c8b964273f?auto=format&fit=crop&w=400&q=80",
+    },
+    {
+      name: "Tom Rivera",
+      role: "Patient Care Coordinator",
+      bio: "Your first point of contact for scheduling, insurance, and making every visit as smooth as possible.",
+      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80",
+    },
+  ],
+  reviews: [
+    { name: "Linda M.", stars: 5, text: "We've been bringing our three kids here for eight years. Dr. Chen remembers everything about our family and the team is always so warm. Wouldn't go anywhere else!", date: "March 2026" },
+    { name: "James T.", stars: 5, text: "Finally a dentist my kids actually look forward to visiting. The office is bright and friendly and they always explain everything clearly.", date: "February 2026" },
+    { name: "Rosa G.", stars: 5, text: "I've had anxiety about the dentist my whole life. Dr. Webb was incredibly patient with me and I walked out feeling proud of myself. Truly compassionate care.", date: "January 2026" },
+    { name: "Kevin H.", stars: 5, text: "Super efficient, never a long wait, and my teeth feel amazing after every cleaning. The whole staff is genuinely kind.", date: "December 2025" },
+  ],
+  beforeAfter: [
+    { before: "https://images.unsplash.com/photo-1629909615184-74f495363b67?auto=format&fit=crop&w=600&q=80", after: "https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&w=600&q=80", label: "Full Smile Restoration" },
+    { before: "https://images.unsplash.com/photo-1609840114035-3c981b782dfe?auto=format&fit=crop&w=600&q=80", after: "https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=600&q=80", label: "Professional Whitening" },
+  ],
+  officePhotos: [
+    { url: "https://images.unsplash.com/photo-1629909615184-74f495363b67?auto=format&fit=crop&w=800&q=80", caption: "Welcoming reception area" },
+    { url: "https://images.unsplash.com/photo-1609840114035-3c981b782dfe?auto=format&fit=crop&w=800&q=80", caption: "Modern treatment rooms" },
+    { url: "https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&w=800&q=80", caption: "State-of-the-art equipment" },
+  ],
+};

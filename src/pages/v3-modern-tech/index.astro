@@ -1,0 +1,351 @@
+---
+import { practice } from '../../data/v3';
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{practice.name} | Digital Dentistry Seattle</title>
+  <meta name="description" content={practice.tagline} />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    :root {
+      --navy: #050D1A;
+      --navy-2: #0A1628;
+      --navy-3: #0F2040;
+      --teal: #00C4B4;
+      --teal-dim: rgba(0,196,180,0.15);
+      --teal-glow: rgba(0,196,180,0.4);
+      --white: #F0F8FF;
+      --muted: #7A9AB8;
+      --border: rgba(0,196,180,0.2);
+    }
+    body { font-family: 'DM Sans', sans-serif; color: var(--white); background: var(--navy); margin: 0; }
+    code, .mono { font-family: 'DM Mono', monospace; }
+    a { text-decoration: none; }
+    @keyframes pulse-teal {
+      0%, 100% { box-shadow: 0 0 0 0 var(--teal-glow); }
+      50% { box-shadow: 0 0 0 8px transparent; }
+    }
+    @keyframes scanline {
+      0% { transform: translateY(-100%); }
+      100% { transform: translateY(100vh); }
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .fade-1 { animation: fadeUp 0.8s ease both; }
+    .fade-2 { animation: fadeUp 0.8s 0.15s ease both; }
+    .fade-3 { animation: fadeUp 0.8s 0.3s ease both; }
+    .glow-btn { animation: pulse-teal 2.5s ease infinite; }
+    .service-card { transition: all 0.3s ease; border: 1px solid var(--border); }
+    .service-card:hover { border-color: var(--teal); background: var(--teal-dim); transform: translateY(-4px); }
+    .tech-item { transition: all 0.3s ease; }
+    .tech-item:hover { border-left-color: var(--teal); padding-left: 24px; }
+    input:focus, select:focus, textarea:focus { outline: none; border-color: var(--teal) !important; box-shadow: 0 0 0 2px var(--teal-dim); }
+    .grid-bg {
+      background-image: linear-gradient(rgba(0,196,180,0.06) 1px, transparent 1px),
+                        linear-gradient(90deg, rgba(0,196,180,0.06) 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav style="position:fixed; top:0; left:0; right:0; z-index:100; background:rgba(5,13,26,0.92); backdrop-filter:blur(16px); border-bottom:1px solid var(--border);">
+  <div style="max-width:1280px; margin:0 auto; padding:0 40px; height:68px; display:flex; align-items:center; justify-content:space-between;">
+    <div style="display:flex; align-items:center; gap:12px;">
+      <div style="width:8px; height:8px; background:var(--teal); border-radius:50%; animation:pulse-teal 2s ease infinite;"></div>
+      <span class="mono" style="font-size:17px; font-weight:500; color:white; letter-spacing:0.02em;">{practice.name}</span>
+    </div>
+    <div style="display:flex; gap:36px; align-items:center;">
+      {['Services','Tech','Team','Contact'].map(l => (
+        <a href={`#${l.toLowerCase()}`} class="mono" style="font-size:13px; color:var(--muted); font-weight:400; transition:color 0.2s; letter-spacing:0.05em;"
+           onmouseover="this.style.color='var(--teal)'" onmouseout="this.style.color='var(--muted)'">{l}</a>
+      ))}
+      <a href="#appointment" style="background:var(--teal); color:var(--navy); font-size:13px; font-weight:700; padding:10px 24px; border-radius:4px; font-family:'DM Sans',sans-serif; transition:all 0.2s;"
+         onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'">Book a Scan →</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="grid-bg" style="min-height:100vh; display:flex; flex-direction:column; justify-content:center; padding:120px 40px 80px; position:relative; overflow:hidden;">
+  <div style="position:absolute; top:-200px; right:-200px; width:600px; height:600px; background:radial-gradient(circle, rgba(0,196,180,0.12) 0%, transparent 70%); pointer-events:none;"></div>
+  <div style="max-width:1280px; margin:0 auto; width:100%; display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center;">
+    <div>
+      <div class="fade-1 mono" style="font-size:12px; color:var(--teal); letter-spacing:0.15em; margin-bottom:24px;">
+        // seattle · est. {practice.founded} · v3.0.0
+      </div>
+      <h1 class="fade-2" style="font-size:clamp(44px,5vw,76px); line-height:1.05; color:white; margin:0 0 28px; font-weight:700; white-space:pre-line;">{practice.hero.headline}</h1>
+      <p class="fade-3" style="font-size:18px; line-height:1.75; color:var(--muted); margin:0 0 40px; max-width:480px;">{practice.hero.subheadline}</p>
+      <div class="fade-3" style="display:flex; gap:16px; flex-wrap:wrap; align-items:center;">
+        <a href="#appointment" class="glow-btn" style="background:var(--teal); color:var(--navy); font-weight:700; font-size:15px; padding:16px 36px; border-radius:4px; transition:all 0.2s;"
+           onmouseover="this.style.opacity='0.9'" onmouseout="this.style.opacity='1'">{practice.hero.ctaText}</a>
+        <a href="tel:{practice.phone}" class="mono" style="color:var(--teal); font-size:14px; border:1px solid var(--border); padding:16px 24px; border-radius:4px; transition:all 0.2s;"
+           onmouseover="this.style.borderColor='var(--teal)'" onmouseout="this.style.borderColor='var(--border)'">{practice.phone}</a>
+      </div>
+      <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:24px; margin-top:64px;">
+        {[['99.6%','Accuracy rate'],['<2hr','CEREC crowns'],['3D','Guided implants']].map(([n,l]) => (
+          <div style="border-left:2px solid var(--teal); padding-left:16px;">
+            <div class="mono" style="font-size:28px; color:var(--teal); font-weight:400;">{n}</div>
+            <div style="font-size:12px; color:var(--muted); margin-top:4px; letter-spacing:0.05em;">{l}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+    <div style="position:relative;">
+      <div style="position:absolute; inset:-2px; background:linear-gradient(135deg, var(--teal), transparent 60%); border-radius:8px; opacity:0.4;"></div>
+      <img src={practice.hero.image} alt="Digital dental technology" style="width:100%; aspect-ratio:4/3; object-fit:cover; border-radius:6px; position:relative; display:block;" />
+      <div style="position:absolute; bottom:20px; left:20px; background:rgba(5,13,26,0.9); border:1px solid var(--border); padding:16px 20px; border-radius:6px; backdrop-filter:blur(8px);">
+        <div class="mono" style="font-size:11px; color:var(--teal); margin-bottom:4px;">LIVE · SYSTEM STATUS</div>
+        <div style="display:flex; gap:16px;">
+          {['CEREC','AI Scan','3D CT','Laser'].map(t => (
+            <div style="display:flex; align-items:center; gap:6px;">
+              <div style="width:6px; height:6px; background:var(--teal); border-radius:50%;"></div>
+              <span class="mono" style="font-size:11px; color:var(--muted);">{t}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" style="background:var(--navy-2); padding:100px 40px;">
+  <div style="max-width:1280px; margin:0 auto;">
+    <div style="margin-bottom:64px;">
+      <div class="mono" style="font-size:12px; color:var(--teal); letter-spacing:0.15em; margin-bottom:16px;">// services.list()</div>
+      <h2 style="font-size:clamp(36px,4vw,60px); color:white; margin:0; font-weight:700;">What We Offer</h2>
+    </div>
+    <div style="display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:20px;">
+      {practice.services.map(s => (
+        <div class="service-card" style="background:var(--navy-3); border-radius:8px; padding:32px;">
+          <div style="font-size:28px; margin-bottom:16px;">{s.icon}</div>
+          <h3 style="font-size:18px; color:white; margin:0 0 10px; font-weight:600;">{s.name}</h3>
+          <p style="font-size:14px; color:var(--muted); line-height:1.7; margin:0;">{s.desc}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- TECH STACK -->
+<section id="tech" style="background:var(--navy); padding:100px 40px; border-top:1px solid var(--border); border-bottom:1px solid var(--border);">
+  <div style="max-width:1280px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center;">
+    <div>
+      <div class="mono" style="font-size:12px; color:var(--teal); letter-spacing:0.15em; margin-bottom:16px;">// tech.stack</div>
+      <h2 style="font-size:clamp(32px,3.5vw,52px); color:white; margin:0 0 16px; font-weight:700;">Our Technology</h2>
+      <p style="font-size:16px; color:var(--muted); line-height:1.75; margin:0 0 48px;">Industry-leading equipment chosen for precision, safety, and patient comfort — not marketing.</p>
+      <div style="display:flex; flex-direction:column; gap:0;">
+        {practice.techStack.map(t => (
+          <div class="tech-item" style="padding:24px 20px; border-left:2px solid var(--border); margin-bottom:2px; transition:all 0.3s ease; cursor:default;"
+               onmouseover="this.style.borderLeftColor='var(--teal)'; this.style.paddingLeft='28px'; this.style.background='var(--teal-dim)'"
+               onmouseout="this.style.borderLeftColor='var(--border)'; this.style.paddingLeft='20px'; this.style.background='transparent'">
+            <div style="font-size:16px; color:white; font-weight:600; margin-bottom:4px;">{t.name}</div>
+            <div class="mono" style="font-size:12px; color:var(--teal);">{t.desc}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:16px;">
+      <img src={practice.hero.image} alt="Technology" style="width:100%; aspect-ratio:16/9; object-fit:cover; border-radius:8px; border:1px solid var(--border);" />
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
+        {practice.officePhotos.slice(0,2).map(p => (
+          <div>
+            <img src={p.url} alt={p.caption} style="width:100%; aspect-ratio:4/3; object-fit:cover; border-radius:6px; border:1px solid var(--border);" />
+            <div class="mono" style="font-size:11px; color:var(--muted); margin-top:8px;">{p.caption}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INSURANCE -->
+<section style="background:var(--navy-2); padding:72px 40px;">
+  <div style="max-width:1280px; margin:0 auto; text-align:center;">
+    <div class="mono" style="font-size:12px; color:var(--teal); letter-spacing:0.15em; margin-bottom:16px;">// insurance.accepted</div>
+    <h2 style="font-size:clamp(28px,3vw,44px); color:white; margin:0 0 16px; font-weight:700;">Insurance & Coverage</h2>
+    <p style="font-size:16px; color:var(--muted); max-width:480px; margin:0 auto 40px;">We process most major PPO plans. Call us and we'll verify your benefits in minutes.</p>
+    <div style="display:flex; flex-wrap:wrap; gap:12px; justify-content:center;">
+      {practice.insurance.map(ins => (
+        <span style="background:var(--navy-3); border:1px solid var(--border); color:var(--muted); font-size:13px; padding:8px 20px; border-radius:4px; font-family:'DM Mono',monospace;">
+          {ins}
+        </span>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section id="team" style="background:var(--navy); padding:100px 40px;">
+  <div style="max-width:1280px; margin:0 auto;">
+    <div style="margin-bottom:64px;">
+      <div class="mono" style="font-size:12px; color:var(--teal); letter-spacing:0.15em; margin-bottom:16px;">// team.members()</div>
+      <h2 style="font-size:clamp(36px,4vw,60px); color:white; margin:0; font-weight:700;">Our Specialists</h2>
+    </div>
+    <div style="display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:24px;">
+      {practice.team.map(m => (
+        <div style="background:var(--navy-2); border:1px solid var(--border); border-radius:8px; overflow:hidden; transition:border-color 0.3s ease;"
+             onmouseover="this.style.borderColor='var(--teal)'" onmouseout="this.style.borderColor='var(--border)'">
+          <img src={m.image} alt={m.name} style="width:100%; height:240px; object-fit:cover; display:block;" />
+          <div style="padding:24px;">
+            <div class="mono" style="font-size:11px; color:var(--teal); margin-bottom:8px; letter-spacing:0.08em;">{m.role}</div>
+            <h3 style="font-size:18px; color:white; margin:0 0 12px; font-weight:600;">{m.name}</h3>
+            <p style="font-size:13px; color:var(--muted); line-height:1.75; margin:0;">{m.bio}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- BEFORE/AFTER -->
+<section style="background:var(--navy-2); padding:100px 40px;">
+  <div style="max-width:1280px; margin:0 auto;">
+    <div style="margin-bottom:64px;">
+      <div class="mono" style="font-size:12px; color:var(--teal); letter-spacing:0.15em; margin-bottom:16px;">// results.compare()</div>
+      <h2 style="font-size:clamp(36px,4vw,56px); color:white; margin:0; font-weight:700;">Clinical Results</h2>
+    </div>
+    <div style="display:grid; grid-template-columns:repeat(auto-fill,minmax(520px,1fr)); gap:48px;">
+      {practice.beforeAfter.map(ba => (
+        <div>
+          <div class="mono" style="font-size:13px; color:var(--teal); margin-bottom:16px;">{ba.label}</div>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:4px;">
+            <div>
+              <div style="background:var(--navy-3); border:1px solid var(--border); font-family:'DM Mono',monospace; font-size:10px; color:var(--muted); padding:6px 12px; letter-spacing:0.15em;">STATE::BEFORE</div>
+              <img src={ba.before} alt="Before" style="width:100%; height:220px; object-fit:cover; display:block; border:1px solid var(--border); border-top:none;" />
+            </div>
+            <div>
+              <div style="background:var(--teal); font-family:'DM Mono',monospace; font-size:10px; color:var(--navy); padding:6px 12px; letter-spacing:0.15em; font-weight:500;">STATE::AFTER</div>
+              <img src={ba.after} alt="After" style="width:100%; height:220px; object-fit:cover; display:block; border:1px solid var(--teal); border-top:none;" />
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section style="background:var(--navy); padding:100px 40px;">
+  <div style="max-width:1280px; margin:0 auto;">
+    <div style="margin-bottom:64px;">
+      <div class="mono" style="font-size:12px; color:var(--teal); letter-spacing:0.15em; margin-bottom:16px;">// reviews.fetch(limit=4)</div>
+      <h2 style="font-size:clamp(36px,4vw,56px); color:white; margin:0; font-weight:700;">Patient Reviews</h2>
+    </div>
+    <div style="display:grid; grid-template-columns:repeat(2,1fr); gap:24px;">
+      {practice.reviews.map(r => (
+        <div style="background:var(--navy-2); border:1px solid var(--border); border-radius:8px; padding:32px;">
+          <div class="mono" style="font-size:12px; color:var(--teal); margin-bottom:16px;">{"★".repeat(r.stars)} · {r.date}</div>
+          <p style="font-size:16px; color:var(--white); line-height:1.75; margin:0 0 20px;">"{r.text}"</p>
+          <div class="mono" style="font-size:13px; color:var(--muted);">— {r.name}</div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- LOCATION -->
+<section id="contact" style="background:var(--navy-2); padding:100px 40px; border-top:1px solid var(--border);">
+  <div style="max-width:1280px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:80px;">
+    <div>
+      <div class="mono" style="font-size:12px; color:var(--teal); letter-spacing:0.15em; margin-bottom:16px;">// location.get()</div>
+      <h2 style="font-size:clamp(28px,3vw,44px); color:white; margin:0 0 40px; font-weight:700;">Find Us in Seattle</h2>
+      <div style="display:flex; flex-direction:column; gap:24px;">
+        {[['📍 Address',practice.address],['📞 Phone',practice.phone],['✉️ Email',practice.email]].map(([l,v]) => (
+          <div style="border-left:2px solid var(--border); padding-left:20px;">
+            <div class="mono" style="font-size:11px; color:var(--teal); margin-bottom:4px;">{l}</div>
+            <div style="font-size:15px; color:var(--white);">{v}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+    <div>
+      <div class="mono" style="font-size:12px; color:var(--teal); letter-spacing:0.15em; margin-bottom:16px;">// hours.schedule()</div>
+      <h2 style="font-size:clamp(28px,3vw,44px); color:white; margin:0 0 32px; font-weight:700;">Office Hours</h2>
+      <div style="display:flex; flex-direction:column; gap:0;">
+        {practice.hours.map(h => (
+          <div style="display:flex; justify-content:space-between; align-items:center; padding:16px 0; border-bottom:1px solid var(--border);">
+            <span class="mono" style="font-size:13px; color:var(--muted);">{h.day}</span>
+            <span class="mono" style="font-size:13px; color:var(--teal);">{h.time}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- APPOINTMENT -->
+<section id="appointment" style="background:var(--navy); padding:100px 40px;" class="grid-bg">
+  <div style="max-width:720px; margin:0 auto;">
+    <div style="text-align:center; margin-bottom:56px;">
+      <div class="mono" style="font-size:12px; color:var(--teal); letter-spacing:0.15em; margin-bottom:16px;">// appointment.create()</div>
+      <h2 style="font-size:clamp(32px,4vw,56px); color:white; margin:0; font-weight:700;">Schedule a Scan</h2>
+    </div>
+    <form style="background:var(--navy-2); border:1px solid var(--border); border-radius:8px; padding:48px; display:flex; flex-direction:column; gap:24px;">
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:24px;">
+        <div>
+          <label class="mono" style="display:block; font-size:11px; color:var(--teal); margin-bottom:10px; letter-spacing:0.1em;">FIRST_NAME</label>
+          <input type="text" placeholder="Nathan" style="width:100%; padding:12px 16px; background:var(--navy); border:1px solid var(--border); border-radius:4px; color:white; font-size:15px; font-family:'DM Sans',sans-serif;" />
+        </div>
+        <div>
+          <label class="mono" style="display:block; font-size:11px; color:var(--teal); margin-bottom:10px; letter-spacing:0.1em;">LAST_NAME</label>
+          <input type="text" placeholder="Kross" style="width:100%; padding:12px 16px; background:var(--navy); border:1px solid var(--border); border-radius:4px; color:white; font-size:15px; font-family:'DM Sans',sans-serif;" />
+        </div>
+      </div>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:24px;">
+        <div>
+          <label class="mono" style="display:block; font-size:11px; color:var(--teal); margin-bottom:10px; letter-spacing:0.1em;">PHONE</label>
+          <input type="tel" placeholder="(206) 555-0000" style="width:100%; padding:12px 16px; background:var(--navy); border:1px solid var(--border); border-radius:4px; color:white; font-size:15px; font-family:'DM Sans',sans-serif;" />
+        </div>
+        <div>
+          <label class="mono" style="display:block; font-size:11px; color:var(--teal); margin-bottom:10px; letter-spacing:0.1em;">EMAIL</label>
+          <input type="email" placeholder="nathan@email.com" style="width:100%; padding:12px 16px; background:var(--navy); border:1px solid var(--border); border-radius:4px; color:white; font-size:15px; font-family:'DM Sans',sans-serif;" />
+        </div>
+      </div>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:24px;">
+        <div>
+          <label class="mono" style="display:block; font-size:11px; color:var(--teal); margin-bottom:10px; letter-spacing:0.1em;">PREFERRED_DATE</label>
+          <input type="date" style="width:100%; padding:12px 16px; background:var(--navy); border:1px solid var(--border); border-radius:4px; color:white; font-size:15px; font-family:'DM Mono',monospace;" />
+        </div>
+        <div>
+          <label class="mono" style="display:block; font-size:11px; color:var(--teal); margin-bottom:10px; letter-spacing:0.1em;">SERVICE_TYPE</label>
+          <select style="width:100%; padding:12px 16px; background:var(--navy); border:1px solid var(--border); border-radius:4px; color:white; font-size:15px; font-family:'DM Sans',sans-serif; cursor:pointer;">
+            <option value="">Select service</option>
+            {practice.services.map(s => <option value={s.name}>{s.name}</option>)}
+          </select>
+        </div>
+      </div>
+      <div>
+        <label class="mono" style="display:block; font-size:11px; color:var(--teal); margin-bottom:10px; letter-spacing:0.1em;">NOTES (OPTIONAL)</label>
+        <textarea rows={3} placeholder="Any symptoms, questions, or relevant history..." style="width:100%; padding:12px 16px; background:var(--navy); border:1px solid var(--border); border-radius:4px; color:white; font-size:15px; font-family:'DM Sans',sans-serif; resize:vertical;"></textarea>
+      </div>
+      <button type="submit" style="background:var(--teal); color:var(--navy); font-size:14px; font-weight:700; padding:16px 32px; border:none; border-radius:4px; cursor:pointer; font-family:'DM Sans',sans-serif; letter-spacing:0.05em; transition:all 0.2s ease; align-self:flex-start;"
+              onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'">
+        Submit Request →
+      </button>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer style="background:var(--navy-2); border-top:1px solid var(--border); padding:36px 40px; display:flex; justify-content:space-between; align-items:center;">
+  <div style="display:flex; align-items:center; gap:10px;">
+    <div style="width:6px; height:6px; background:var(--teal); border-radius:50%;"></div>
+    <span class="mono" style="font-size:14px; color:var(--muted);">{practice.name}</span>
+  </div>
+  <span class="mono" style="font-size:12px; color:var(--muted);">© {new Date().getFullYear()} · {practice.address}</span>
+</footer>
+
+</body>
+</html>

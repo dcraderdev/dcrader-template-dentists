@@ -1,0 +1,354 @@
+---
+import { practice } from '../../data/v1';
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{practice.name} | Family Dentist in San Diego</title>
+  <meta name="description" content={practice.tagline} />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&family=Nunito:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/src/styles/global.css" />
+  <style>
+    :root {
+      --blue-50: #EFF6FF;
+      --blue-100: #DBEAFE;
+      --blue-500: #3B82F6;
+      --blue-600: #2563EB;
+      --blue-700: #1D4ED8;
+      --blue-800: #1E40AF;
+      --gray-50: #F9FAFB;
+      --gray-100: #F3F4F6;
+      --gray-400: #9CA3AF;
+      --gray-600: #4B5563;
+      --gray-700: #374151;
+      --gray-800: #1F2937;
+    }
+    body { font-family: 'Nunito', sans-serif; color: var(--gray-800); background: #fff; }
+    h1, h2, h3, h4 { font-family: 'Lora', serif; }
+    .hero-img { object-fit: cover; }
+    .star { color: #FBBF24; }
+    .wave-top {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120'%3E%3Cpath d='M0,60 C300,100 900,20 1200,60 L1200,0 L0,0 Z' fill='%23EFF6FF'/%3E%3C/svg%3E");
+      background-size: cover; background-repeat: no-repeat; width: 100%; height: 60px;
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .fade-up { animation: fadeUp 0.7s ease both; }
+    .fade-up-2 { animation: fadeUp 0.7s 0.15s ease both; }
+    .fade-up-3 { animation: fadeUp 0.7s 0.3s ease both; }
+    .service-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(37,99,235,0.12); }
+    .service-card { transition: all 0.25s ease; }
+    .team-card:hover .team-overlay { opacity: 1; }
+    .team-overlay { transition: opacity 0.3s ease; }
+    input:focus, select:focus, textarea:focus { outline: none; border-color: var(--blue-500); box-shadow: 0 0 0 3px rgba(59,130,246,0.15); }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav style="background:white; border-bottom:1px solid #DBEAFE; position:sticky; top:0; z-index:50;">
+  <div style="max-width:1200px; margin:0 auto; padding:0 24px; display:flex; align-items:center; justify-content:space-between; height:72px;">
+    <div style="display:flex; align-items:center; gap:10px;">
+      <div style="width:36px; height:36px; background:var(--blue-600); border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:18px;">🦷</div>
+      <span style="font-family:'Lora',serif; font-size:20px; font-weight:700; color:var(--blue-700);">{practice.name}</span>
+    </div>
+    <div style="display:flex; gap:32px; align-items:center;">
+      <a href="#services" style="color:var(--gray-700); font-weight:600; font-size:15px; text-decoration:none;">Services</a>
+      <a href="#team" style="color:var(--gray-700); font-weight:600; font-size:15px; text-decoration:none;">Our Team</a>
+      <a href="#reviews" style="color:var(--gray-700); font-weight:600; font-size:15px; text-decoration:none;">Reviews</a>
+      <a href="#contact" style="color:var(--gray-700); font-weight:600; font-size:15px; text-decoration:none;">Contact</a>
+      <a href="#appointment" style="background:var(--blue-600); color:white; font-weight:700; font-size:15px; text-decoration:none; padding:10px 22px; border-radius:9999px; transition:background 0.2s ease;"
+         onmouseover="this.style.background='#1D4ED8'" onmouseout="this.style.background='#2563EB'">
+        Book Now
+      </a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section style="position:relative; min-height:92vh; display:flex; align-items:center; overflow:hidden;">
+  <div style="position:absolute; inset:0; background:linear-gradient(105deg, rgba(239,246,255,0.97) 45%, rgba(219,234,254,0.75) 70%, transparent 100%); z-index:1;"></div>
+  <img src={practice.hero.image} alt="Happy family at dentist" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center right;" />
+  <div style="position:relative; z-index:2; max-width:1200px; margin:0 auto; padding:0 24px; width:100%;">
+    <div style="max-width:580px;">
+      <div class="fade-up" style="display:inline-flex; align-items:center; gap:8px; background:var(--blue-100); color:var(--blue-700); font-weight:700; font-size:13px; padding:6px 16px; border-radius:9999px; margin-bottom:24px; letter-spacing:0.05em; text-transform:uppercase;">
+        <span>⭐</span> Trusted by San Diego families since {practice.founded}
+      </div>
+      <h1 class="fade-up-2" style="font-size:clamp(48px,6vw,80px); line-height:1.1; color:var(--blue-800); margin:0 0 24px; white-space:pre-line;">{practice.hero.headline}</h1>
+      <p class="fade-up-3" style="font-size:20px; line-height:1.65; color:var(--gray-700); margin:0 0 40px; max-width:480px;">{practice.hero.subheadline}</p>
+      <div class="fade-up-3" style="display:flex; gap:16px; flex-wrap:wrap;">
+        <a href="#appointment" style="background:var(--blue-600); color:white; font-weight:800; font-size:17px; text-decoration:none; padding:16px 36px; border-radius:9999px; box-shadow:0 8px 24px rgba(37,99,235,0.3); transition:all 0.2s ease;"
+           onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 12px 32px rgba(37,99,235,0.4)'"
+           onmouseout="this.style.transform=''; this.style.boxShadow='0 8px 24px rgba(37,99,235,0.3)'">
+          {practice.hero.ctaText}
+        </a>
+        <a href="tel:{practice.phone}" style="background:white; color:var(--blue-700); font-weight:700; font-size:17px; text-decoration:none; padding:16px 32px; border-radius:9999px; border:2px solid var(--blue-200); transition:all 0.2s ease;"
+           onmouseover="this.style.borderColor='var(--blue-500)'" onmouseout="this.style.borderColor='var(--blue-200)'">
+          📞 {practice.phone}
+        </a>
+      </div>
+      <div style="display:flex; gap:32px; margin-top:48px; flex-wrap:wrap;">
+        <div>
+          <div style="font-family:'Lora',serif; font-size:32px; font-weight:700; color:var(--blue-700);">4,800+</div>
+          <div style="font-size:14px; color:var(--gray-600); font-weight:600;">Happy patients</div>
+        </div>
+        <div>
+          <div style="font-family:'Lora',serif; font-size:32px; font-weight:700; color:var(--blue-700);">25+ yrs</div>
+          <div style="font-size:14px; color:var(--gray-600); font-weight:600;">Family care</div>
+        </div>
+        <div>
+          <div style="font-family:'Lora',serif; font-size:32px; font-weight:700; color:var(--blue-700);">4.9 ★</div>
+          <div style="font-size:14px; color:var(--gray-600); font-weight:600;">Google rating</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" style="background:var(--blue-50); padding:96px 24px;">
+  <div style="max-width:1200px; margin:0 auto;">
+    <div style="text-align:center; margin-bottom:64px;">
+      <span style="color:var(--blue-600); font-weight:800; font-size:13px; letter-spacing:0.1em; text-transform:uppercase;">What We Offer</span>
+      <h2 style="font-size:clamp(32px,4vw,52px); color:var(--gray-800); margin:12px 0; line-height:1.2;">Comprehensive Care<br/>for Every Smile</h2>
+      <p style="font-size:17px; color:var(--gray-600); max-width:520px; margin:0 auto; line-height:1.7;">From your child's first visit to advanced restorative work — we're your complete dental home.</p>
+    </div>
+    <div style="display:grid; grid-template-columns:repeat(auto-fill, minmax(260px,1fr)); gap:24px;">
+      {practice.services.map(s => (
+        <div class="service-card" style="background:white; border-radius:20px; padding:32px; border:1px solid var(--blue-100); box-shadow:0 2px 12px rgba(37,99,235,0.06);">
+          <div style="font-size:36px; margin-bottom:16px;">{s.icon}</div>
+          <h3 style="font-size:19px; font-weight:700; color:var(--gray-800); margin:0 0 10px; font-family:'Nunito',sans-serif;">{s.name}</h3>
+          <p style="font-size:15px; color:var(--gray-600); line-height:1.65; margin:0;">{s.desc}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- INSURANCE -->
+<section style="background:white; padding:72px 24px;">
+  <div style="max-width:1200px; margin:0 auto; text-align:center;">
+    <span style="color:var(--blue-600); font-weight:800; font-size:13px; letter-spacing:0.1em; text-transform:uppercase;">No Surprises</span>
+    <h2 style="font-size:clamp(28px,3.5vw,44px); color:var(--gray-800); margin:12px 0 16px;">We Accept Your Insurance</h2>
+    <p style="font-size:17px; color:var(--gray-600); max-width:480px; margin:0 auto 48px;">We work with all major plans and offer flexible payment options for uninsured patients.</p>
+    <div style="display:flex; flex-wrap:wrap; gap:12px; justify-content:center;">
+      {practice.insurance.map(ins => (
+        <span style="background:var(--blue-50); border:1px solid var(--blue-100); color:var(--blue-700); font-weight:700; font-size:14px; padding:10px 20px; border-radius:9999px;">
+          ✓ {ins}
+        </span>
+      ))}
+    </div>
+    <p style="margin-top:32px; font-size:15px; color:var(--gray-500);">Not sure about your coverage? Call us and we'll verify your benefits for free.</p>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section id="team" style="background:var(--blue-50); padding:96px 24px;">
+  <div style="max-width:1200px; margin:0 auto;">
+    <div style="text-align:center; margin-bottom:64px;">
+      <span style="color:var(--blue-600); font-weight:800; font-size:13px; letter-spacing:0.1em; text-transform:uppercase;">The People Who Care</span>
+      <h2 style="font-size:clamp(32px,4vw,52px); color:var(--gray-800); margin:12px 0;">Meet Our Team</h2>
+      <p style="font-size:17px; color:var(--gray-600); max-width:480px; margin:0 auto; line-height:1.7;">Experienced, compassionate, and genuinely happy to see you.</p>
+    </div>
+    <div style="display:grid; grid-template-columns:repeat(auto-fill, minmax(260px,1fr)); gap:32px;">
+      {practice.team.map(m => (
+        <div style="background:white; border-radius:24px; overflow:hidden; box-shadow:0 4px 20px rgba(37,99,235,0.08);">
+          <div style="position:relative; height:280px; overflow:hidden;">
+            <img src={m.image} alt={m.name} style="width:100%; height:100%; object-fit:cover;" />
+          </div>
+          <div style="padding:28px;">
+            <h3 style="font-size:19px; font-weight:700; color:var(--gray-800); margin:0 0 4px;">{m.name}</h3>
+            <div style="color:var(--blue-600); font-weight:700; font-size:13px; letter-spacing:0.05em; text-transform:uppercase; margin-bottom:12px;">{m.role}</div>
+            <p style="font-size:14px; color:var(--gray-600); line-height:1.7; margin:0;">{m.bio}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- BEFORE / AFTER -->
+<section style="background:white; padding:96px 24px;">
+  <div style="max-width:1200px; margin:0 auto;">
+    <div style="text-align:center; margin-bottom:64px;">
+      <span style="color:var(--blue-600); font-weight:800; font-size:13px; letter-spacing:0.1em; text-transform:uppercase;">Real Results</span>
+      <h2 style="font-size:clamp(32px,4vw,52px); color:var(--gray-800); margin:12px 0;">Smile Transformations</h2>
+      <p style="font-size:17px; color:var(--gray-600); max-width:480px; margin:0 auto;">See the difference comprehensive dental care makes.</p>
+    </div>
+    <div style="display:grid; grid-template-columns:repeat(auto-fill, minmax(500px,1fr)); gap:48px;">
+      {practice.beforeAfter.map(ba => (
+        <div>
+          <h3 style="font-size:18px; font-weight:700; color:var(--gray-800); margin:0 0 16px; text-align:center;">{ba.label}</h3>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
+            <div>
+              <div style="background:var(--gray-700); color:white; font-size:11px; font-weight:800; letter-spacing:0.1em; padding:6px 12px; border-radius:6px 6px 0 0; text-align:center; text-transform:uppercase;">Before</div>
+              <img src={ba.before} alt="Before" style="width:100%; height:220px; object-fit:cover; border-radius:0 0 12px 12px;" />
+            </div>
+            <div>
+              <div style="background:var(--blue-600); color:white; font-size:11px; font-weight:800; letter-spacing:0.1em; padding:6px 12px; border-radius:6px 6px 0 0; text-align:center; text-transform:uppercase;">After</div>
+              <img src={ba.after} alt="After" style="width:100%; height:220px; object-fit:cover; border-radius:0 0 12px 12px;" />
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section id="reviews" style="background:var(--blue-50); padding:96px 24px;">
+  <div style="max-width:1200px; margin:0 auto;">
+    <div style="text-align:center; margin-bottom:64px;">
+      <span style="color:var(--blue-600); font-weight:800; font-size:13px; letter-spacing:0.1em; text-transform:uppercase;">Patient Stories</span>
+      <h2 style="font-size:clamp(32px,4vw,52px); color:var(--gray-800); margin:12px 0;">What Our Families Say</h2>
+    </div>
+    <div style="display:grid; grid-template-columns:repeat(auto-fill, minmax(280px,1fr)); gap:24px;">
+      {practice.reviews.map(r => (
+        <div style="background:white; border-radius:20px; padding:32px; box-shadow:0 4px 20px rgba(37,99,235,0.08);">
+          <div style="font-size:22px; margin-bottom:12px;">{"★".repeat(r.stars)}</div>
+          <p style="font-size:16px; color:var(--gray-700); line-height:1.75; margin:0 0 20px; font-style:italic;">"{r.text}"</p>
+          <div style="display:flex; align-items:center; justify-content:space-between;">
+            <span style="font-weight:800; color:var(--gray-800);">{r.name}</span>
+            <span style="font-size:13px; color:var(--gray-400);">{r.date}</span>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- OFFICE TOUR -->
+<section style="background:white; padding:96px 24px;">
+  <div style="max-width:1200px; margin:0 auto;">
+    <div style="text-align:center; margin-bottom:64px;">
+      <span style="color:var(--blue-600); font-weight:800; font-size:13px; letter-spacing:0.1em; text-transform:uppercase;">Our Home & Yours</span>
+      <h2 style="font-size:clamp(32px,4vw,52px); color:var(--gray-800); margin:12px 0;">Take a Look Around</h2>
+    </div>
+    <div style="display:grid; grid-template-columns:repeat(auto-fill, minmax(340px,1fr)); gap:24px;">
+      {practice.officePhotos.map(p => (
+        <div style="border-radius:20px; overflow:hidden; box-shadow:0 4px 20px rgba(0,0,0,0.08);">
+          <img src={p.url} alt={p.caption} style="width:100%; height:260px; object-fit:cover; display:block;" />
+          <div style="padding:16px 20px; background:white;">
+            <p style="margin:0; font-weight:700; font-size:15px; color:var(--gray-700);">{p.caption}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- LOCATION / HOURS -->
+<section id="contact" style="background:var(--blue-700); padding:96px 24px;">
+  <div style="max-width:1200px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:start;">
+    <div>
+      <h2 style="font-size:clamp(28px,3.5vw,44px); color:white; margin:0 0 32px;">Find Us</h2>
+      <div style="display:flex; flex-direction:column; gap:24px;">
+        <div style="display:flex; gap:16px; align-items:flex-start;">
+          <span style="font-size:24px; flex-shrink:0;">📍</span>
+          <div>
+            <div style="color:var(--blue-100); font-size:13px; font-weight:800; letter-spacing:0.08em; text-transform:uppercase; margin-bottom:4px;">Address</div>
+            <div style="color:white; font-size:17px; line-height:1.5;">{practice.address}</div>
+          </div>
+        </div>
+        <div style="display:flex; gap:16px; align-items:flex-start;">
+          <span style="font-size:24px; flex-shrink:0;">📞</span>
+          <div>
+            <div style="color:var(--blue-100); font-size:13px; font-weight:800; letter-spacing:0.08em; text-transform:uppercase; margin-bottom:4px;">Phone</div>
+            <a href="tel:{practice.phone}" style="color:white; font-size:17px; text-decoration:none; font-weight:700;">{practice.phone}</a>
+          </div>
+        </div>
+        <div style="display:flex; gap:16px; align-items:flex-start;">
+          <span style="font-size:24px; flex-shrink:0;">✉️</span>
+          <div>
+            <div style="color:var(--blue-100); font-size:13px; font-weight:800; letter-spacing:0.08em; text-transform:uppercase; margin-bottom:4px;">Email</div>
+            <a href="mailto:{practice.email}" style="color:white; font-size:17px; text-decoration:none;">{practice.email}</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <h2 style="font-size:clamp(28px,3.5vw,44px); color:white; margin:0 0 32px;">Office Hours</h2>
+      <div style="display:flex; flex-direction:column; gap:16px;">
+        {practice.hours.map(h => (
+          <div style="display:flex; justify-content:space-between; align-items:center; padding-bottom:16px; border-bottom:1px solid rgba(255,255,255,0.15);">
+            <span style="color:var(--blue-100); font-weight:700; font-size:16px;">{h.day}</span>
+            <span style="color:white; font-weight:800; font-size:16px;">{h.time}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- APPOINTMENT FORM -->
+<section id="appointment" style="background:var(--gray-50); padding:96px 24px;">
+  <div style="max-width:700px; margin:0 auto;">
+    <div style="text-align:center; margin-bottom:48px;">
+      <span style="color:var(--blue-600); font-weight:800; font-size:13px; letter-spacing:0.1em; text-transform:uppercase;">Get Started Today</span>
+      <h2 style="font-size:clamp(28px,3.5vw,44px); color:var(--gray-800); margin:12px 0;">Book an Appointment</h2>
+      <p style="font-size:17px; color:var(--gray-600);">We'll confirm your visit within one business day.</p>
+    </div>
+    <form style="background:white; border-radius:24px; padding:48px; box-shadow:0 8px 40px rgba(37,99,235,0.1); display:flex; flex-direction:column; gap:24px;">
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:24px;">
+        <div>
+          <label style="display:block; font-weight:700; font-size:14px; color:var(--gray-700); margin-bottom:8px;">First Name</label>
+          <input type="text" placeholder="Jane" style="width:100%; padding:14px 16px; border:2px solid var(--gray-200); border-radius:12px; font-size:16px; font-family:'Nunito',sans-serif; transition:all 0.2s;" />
+        </div>
+        <div>
+          <label style="display:block; font-weight:700; font-size:14px; color:var(--gray-700); margin-bottom:8px;">Last Name</label>
+          <input type="text" placeholder="Smith" style="width:100%; padding:14px 16px; border:2px solid var(--gray-200); border-radius:12px; font-size:16px; font-family:'Nunito',sans-serif; transition:all 0.2s;" />
+        </div>
+      </div>
+      <div>
+        <label style="display:block; font-weight:700; font-size:14px; color:var(--gray-700); margin-bottom:8px;">Phone Number</label>
+        <input type="tel" placeholder="(619) 555-0000" style="width:100%; padding:14px 16px; border:2px solid var(--gray-200); border-radius:12px; font-size:16px; font-family:'Nunito',sans-serif; transition:all 0.2s;" />
+      </div>
+      <div>
+        <label style="display:block; font-weight:700; font-size:14px; color:var(--gray-700); margin-bottom:8px;">Email</label>
+        <input type="email" placeholder="jane@email.com" style="width:100%; padding:14px 16px; border:2px solid var(--gray-200); border-radius:12px; font-size:16px; font-family:'Nunito',sans-serif; transition:all 0.2s;" />
+      </div>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:24px;">
+        <div>
+          <label style="display:block; font-weight:700; font-size:14px; color:var(--gray-700); margin-bottom:8px;">Preferred Date</label>
+          <input type="date" style="width:100%; padding:14px 16px; border:2px solid var(--gray-200); border-radius:12px; font-size:16px; font-family:'Nunito',sans-serif; transition:all 0.2s;" />
+        </div>
+        <div>
+          <label style="display:block; font-weight:700; font-size:14px; color:var(--gray-700); margin-bottom:8px;">Service Needed</label>
+          <select style="width:100%; padding:14px 16px; border:2px solid var(--gray-200); border-radius:12px; font-size:16px; font-family:'Nunito',sans-serif; transition:all 0.2s; background:white;">
+            <option value="">Select a service</option>
+            {practice.services.map(s => <option value={s.name}>{s.name}</option>)}
+          </select>
+        </div>
+      </div>
+      <div>
+        <label style="display:block; font-weight:700; font-size:14px; color:var(--gray-700); margin-bottom:8px;">Message (optional)</label>
+        <textarea rows={4} placeholder="Any questions, concerns, or details about your visit..." style="width:100%; padding:14px 16px; border:2px solid var(--gray-200); border-radius:12px; font-size:16px; font-family:'Nunito',sans-serif; resize:vertical; transition:all 0.2s;"></textarea>
+      </div>
+      <button type="submit" style="background:var(--blue-600); color:white; font-weight:800; font-size:17px; padding:18px 32px; border:none; border-radius:9999px; cursor:pointer; font-family:'Nunito',sans-serif; box-shadow:0 8px 24px rgba(37,99,235,0.3); transition:all 0.2s ease;"
+              onmouseover="this.style.background='#1D4ED8'; this.style.transform='translateY(-2px)'"
+              onmouseout="this.style.background='#2563EB'; this.style.transform=''">
+        Request My Appointment →
+      </button>
+      <p style="text-align:center; font-size:13px; color:var(--gray-400); margin:0;">We respect your privacy. No spam, ever.</p>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer style="background:var(--gray-800); padding:48px 24px; text-align:center;">
+  <div style="display:flex; align-items:center; justify-content:center; gap:10px; margin-bottom:16px;">
+    <div style="width:32px; height:32px; background:var(--blue-500); border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:16px;">🦷</div>
+    <span style="font-family:'Lora',serif; font-size:18px; font-weight:700; color:white;">{practice.name}</span>
+  </div>
+  <p style="color:#9CA3AF; font-size:14px; margin:0 0 8px;">{practice.address}</p>
+  <p style="color:#9CA3AF; font-size:14px; margin:0;">© {new Date().getFullYear()} {practice.name}. All rights reserved.</p>
+</footer>
+
+</body>
+</html>

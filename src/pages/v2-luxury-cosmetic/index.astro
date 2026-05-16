@@ -1,0 +1,364 @@
+---
+import { practice } from '../../data/v2';
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{practice.name} | Beverly Hills Cosmetic Dentistry</title>
+  <meta name="description" content={practice.tagline} />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    :root {
+      --cream: #FAF7F2;
+      --cream-dark: #F0EBE1;
+      --gold: #C9A96E;
+      --gold-light: #E8D5A3;
+      --gold-dark: #9B7B41;
+      --ink: #1A1208;
+      --ink-light: #3D2F1E;
+      --muted: #8B7355;
+    }
+    body { font-family: 'Jost', sans-serif; color: var(--ink); background: var(--cream); margin: 0; font-weight: 300; }
+    h1, h2, h3, h4 { font-family: 'Cormorant Garamond', serif; font-weight: 400; }
+    a { text-decoration: none; }
+    .gold-line { width: 60px; height: 1px; background: var(--gold); margin: 0 auto; }
+    .gold-line-left { width: 60px; height: 1px; background: var(--gold); }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .fade-1 { animation: fadeIn 1s ease both; }
+    .fade-2 { animation: fadeIn 1s 0.2s ease both; }
+    .fade-3 { animation: fadeIn 1s 0.4s ease both; }
+    .service-tile { transition: all 0.4s ease; border-bottom: 1px solid var(--cream-dark); }
+    .service-tile:hover { background: var(--cream-dark); }
+    .team-img { transition: transform 0.6s ease; }
+    .team-card:hover .team-img { transform: scale(1.04); }
+    input, select, textarea { font-family: 'Jost', sans-serif; }
+    input:focus, select:focus, textarea:focus { outline: none; border-color: var(--gold); }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav style="position:fixed; top:0; left:0; right:0; z-index:100; background:rgba(250,247,242,0.95); backdrop-filter:blur(12px); border-bottom:1px solid var(--cream-dark);">
+  <div style="max-width:1280px; margin:0 auto; padding:0 48px; height:80px; display:flex; align-items:center; justify-content:space-between;">
+    <div>
+      <div style="font-family:'Cormorant Garamond',serif; font-size:22px; letter-spacing:0.12em; text-transform:uppercase; color:var(--ink);">{practice.name}</div>
+      <div style="font-size:10px; letter-spacing:0.25em; text-transform:uppercase; color:var(--gold); margin-top:2px;">Beverly Hills · Est. {practice.founded}</div>
+    </div>
+    <div style="display:flex; gap:40px; align-items:center;">
+      {['Services','Team','Gallery','Contact'].map(l => (
+        <a href={`#${l.toLowerCase()}`} style="font-size:12px; letter-spacing:0.2em; text-transform:uppercase; color:var(--ink-light); font-weight:500; transition:color 0.2s;"
+           onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--ink-light)'">{l}</a>
+      ))}
+      <a href="#appointment" style="border:1px solid var(--gold); color:var(--gold); font-size:11px; letter-spacing:0.2em; text-transform:uppercase; padding:12px 28px; font-weight:500; transition:all 0.3s ease;"
+         onmouseover="this.style.background='var(--gold)'; this.style.color='white'"
+         onmouseout="this.style.background='transparent'; this.style.color='var(--gold)'">
+        Consultation
+      </a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section style="min-height:100vh; display:grid; grid-template-columns:1fr 1fr; padding-top:80px;">
+  <div style="display:flex; flex-direction:column; justify-content:center; padding:80px 64px 80px 80px;">
+    <div class="fade-1" style="font-size:11px; letter-spacing:0.3em; text-transform:uppercase; color:var(--gold); margin-bottom:32px;">Beverly Hills · Cosmetic Dentistry</div>
+    <h1 class="fade-2" style="font-size:clamp(52px,5.5vw,88px); line-height:1.05; color:var(--ink); margin:0 0 32px; white-space:pre-line;">{practice.hero.headline}</h1>
+    <div class="gold-line-left fade-2" style="margin-bottom:32px;"></div>
+    <p class="fade-3" style="font-size:18px; line-height:1.8; color:var(--muted); margin:0 0 48px; max-width:420px; font-weight:300;">{practice.hero.subheadline}</p>
+    <div class="fade-3" style="display:flex; gap:20px; align-items:center; flex-wrap:wrap;">
+      <a href="#appointment" style="background:var(--gold); color:white; font-size:12px; letter-spacing:0.2em; text-transform:uppercase; padding:18px 40px; font-weight:500; transition:all 0.3s ease;"
+         onmouseover="this.style.background='var(--gold-dark)'" onmouseout="this.style.background='var(--gold)'">
+        {practice.hero.ctaText}
+      </a>
+      <a href="tel:{practice.phone}" style="font-size:14px; color:var(--ink-light); font-weight:400; display:flex; align-items:center; gap:8px;">
+        <span style="color:var(--gold);">—</span> {practice.phone}
+      </a>
+    </div>
+    <div style="display:flex; gap:48px; margin-top:64px;">
+      {[['500+','Smile Transformations'],['8×','Top LA Dentist'],['100%','Satisfaction Rate']].map(([n,l]) => (
+        <div>
+          <div style="font-family:'Cormorant Garamond',serif; font-size:36px; color:var(--gold);">{n}</div>
+          <div style="font-size:11px; letter-spacing:0.15em; text-transform:uppercase; color:var(--muted); margin-top:4px;">{l}</div>
+        </div>
+      ))}
+    </div>
+  </div>
+  <div style="position:relative; overflow:hidden;">
+    <img src={practice.hero.image} alt="Elara Smile Studio" style="width:100%; height:100%; object-fit:cover;" />
+    <div style="position:absolute; inset:0; background:linear-gradient(to right, var(--cream) 0%, transparent 20%);"></div>
+    <div style="position:absolute; bottom:48px; right:48px; background:rgba(250,247,242,0.92); backdrop-filter:blur(8px); padding:24px 28px; border-left:2px solid var(--gold);">
+      <div style="font-size:11px; letter-spacing:0.2em; text-transform:uppercase; color:var(--gold); margin-bottom:8px;">As seen in</div>
+      <div style="font-family:'Cormorant Garamond',serif; font-size:16px; color:var(--ink); letter-spacing:0.05em;">Vogue · Harper's Bazaar · New Beauty</div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" style="background:var(--ink); padding:120px 80px;">
+  <div style="max-width:1280px; margin:0 auto;">
+    <div style="margin-bottom:80px;">
+      <div style="font-size:11px; letter-spacing:0.3em; text-transform:uppercase; color:var(--gold); margin-bottom:20px;">Our Expertise</div>
+      <h2 style="font-size:clamp(40px,4.5vw,72px); color:white; margin:0; line-height:1.1;">Bespoke Treatments</h2>
+    </div>
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:0;">
+      {practice.services.map((s, i) => (
+        <div class="service-tile" style={`padding:40px 48px; display:flex; gap:24px; align-items:flex-start; border-right:${i % 2 === 0 ? '1px solid rgba(201,169,110,0.2)' : 'none'};`}>
+          <div style="font-size:28px; color:var(--gold); flex-shrink:0; margin-top:4px;">{s.icon}</div>
+          <div>
+            <h3 style="font-family:'Cormorant Garamond',serif; font-size:24px; color:white; margin:0 0 10px; font-weight:400;">{s.name}</h3>
+            <p style="font-size:14px; color:rgba(255,255,255,0.55); line-height:1.75; margin:0; font-weight:300;">{s.desc}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- PHILOSOPHY INTERLUDE -->
+<section style="background:var(--cream-dark); padding:100px 80px; text-align:center;">
+  <div style="max-width:720px; margin:0 auto;">
+    <div class="gold-line" style="margin-bottom:48px;"></div>
+    <blockquote style="font-family:'Cormorant Garamond',serif; font-size:clamp(28px,3.5vw,48px); line-height:1.4; color:var(--ink); margin:0 0 48px; font-style:italic; font-weight:300;">
+      "Every smile we craft begins not at the chair, but in conversation — understanding who you are and the impression you wish to make on the world."
+    </blockquote>
+    <div style="font-size:12px; letter-spacing:0.2em; text-transform:uppercase; color:var(--gold);">Dr. Isabelle Fontaine · Founder</div>
+    <div class="gold-line" style="margin-top:48px;"></div>
+  </div>
+</section>
+
+<!-- FINANCING / INSURANCE -->
+<section style="background:var(--cream); padding:80px 80px;">
+  <div style="max-width:1280px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center;">
+    <div>
+      <div style="font-size:11px; letter-spacing:0.3em; text-transform:uppercase; color:var(--gold); margin-bottom:20px;">Investment in Yourself</div>
+      <h2 style="font-size:clamp(32px,3.5vw,52px); color:var(--ink); margin:0 0 24px; line-height:1.2;">Flexible Payment Options</h2>
+      <p style="font-size:16px; color:var(--muted); line-height:1.8; margin:0 0 40px;">We believe an extraordinary smile should be within reach. Our concierge financial team will design a payment plan tailored to your goals.</p>
+      <div style="display:flex; flex-direction:column; gap:16px;">
+        {practice.insurance.map(i => (
+          <div style="display:flex; gap:16px; align-items:center; padding:16px 20px; background:var(--cream-dark);">
+            <span style="color:var(--gold); font-size:18px;">✦</span>
+            <span style="font-size:15px; color:var(--ink-light); font-weight:400;">{i}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+    <div style="position:relative;">
+      <img src="https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?auto=format&fit=crop&w=700&q=80" alt="Private consultation suite" style="width:100%; aspect-ratio:3/4; object-fit:cover;" />
+      <div style="position:absolute; -bottom:-24px; -left:-24px; bottom:-24px; left:-24px; background:var(--gold); color:white; padding:28px 32px;">
+        <div style="font-family:'Cormorant Garamond',serif; font-size:36px; line-height:1;">Complimentary</div>
+        <div style="font-size:11px; letter-spacing:0.2em; text-transform:uppercase; margin-top:4px;">Consultation & Benefits Verification</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section id="team" style="background:var(--ink); padding:120px 80px;">
+  <div style="max-width:1280px; margin:0 auto;">
+    <div style="text-align:center; margin-bottom:80px;">
+      <div style="font-size:11px; letter-spacing:0.3em; text-transform:uppercase; color:var(--gold); margin-bottom:20px;">The Artisans</div>
+      <h2 style="font-size:clamp(40px,4.5vw,64px); color:white; margin:0;">Meet the Team</h2>
+    </div>
+    <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:32px;">
+      {practice.team.map(m => (
+        <div class="team-card" style="cursor:default;">
+          <div style="overflow:hidden; margin-bottom:24px;">
+            <img class="team-img" src={m.image} alt={m.name} style="width:100%; aspect-ratio:3/4; object-fit:cover; display:block;" />
+          </div>
+          <div style="padding:0 4px;">
+            <div style="font-size:11px; letter-spacing:0.2em; text-transform:uppercase; color:var(--gold); margin-bottom:8px;">{m.role}</div>
+            <h3 style="font-family:'Cormorant Garamond',serif; font-size:22px; color:white; margin:0 0 12px; font-weight:400;">{m.name}</h3>
+            <p style="font-size:13px; color:rgba(255,255,255,0.5); line-height:1.8; margin:0; font-weight:300;">{m.bio}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- BEFORE/AFTER -->
+<section id="gallery" style="background:var(--cream); padding:120px 80px;">
+  <div style="max-width:1280px; margin:0 auto;">
+    <div style="text-align:center; margin-bottom:80px;">
+      <div style="font-size:11px; letter-spacing:0.3em; text-transform:uppercase; color:var(--gold); margin-bottom:20px;">Our Portfolio</div>
+      <h2 style="font-size:clamp(40px,4.5vw,64px); color:var(--ink); margin:0;">Transformations</h2>
+    </div>
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:64px;">
+      {practice.beforeAfter.map(ba => (
+        <div>
+          <h3 style="font-family:'Cormorant Garamond',serif; font-size:24px; color:var(--ink); margin:0 0 24px; text-align:center; font-weight:400;">{ba.label}</h3>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:4px;">
+            <div>
+              <div style="background:var(--ink); color:var(--gold); font-size:10px; font-weight:500; letter-spacing:0.25em; padding:8px 16px; text-transform:uppercase; text-align:center;">Before</div>
+              <img src={ba.before} alt="Before" style="width:100%; height:280px; object-fit:cover; display:block;" />
+            </div>
+            <div>
+              <div style="background:var(--gold); color:white; font-size:10px; font-weight:500; letter-spacing:0.25em; padding:8px 16px; text-transform:uppercase; text-align:center;">After</div>
+              <img src={ba.after} alt="After" style="width:100%; height:280px; object-fit:cover; display:block;" />
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section style="background:var(--cream-dark); padding:120px 80px;">
+  <div style="max-width:1280px; margin:0 auto;">
+    <div style="text-align:center; margin-bottom:80px;">
+      <div style="font-size:11px; letter-spacing:0.3em; text-transform:uppercase; color:var(--gold); margin-bottom:20px;">Client Testimonials</div>
+      <h2 style="font-size:clamp(40px,4.5vw,64px); color:var(--ink); margin:0;">In Their Words</h2>
+    </div>
+    <div style="display:grid; grid-template-columns:repeat(2,1fr); gap:40px;">
+      {practice.reviews.map(r => (
+        <div style="background:var(--cream); padding:48px; position:relative;">
+          <div style="position:absolute; top:32px; left:48px; font-family:'Cormorant Garamond',serif; font-size:80px; color:var(--gold); line-height:1; opacity:0.3; pointer-events:none;">"</div>
+          <div style="font-size:14px; color:var(--gold); letter-spacing:0.1em; margin-bottom:24px;">{"★".repeat(r.stars)}</div>
+          <p style="font-family:'Cormorant Garamond',serif; font-size:20px; line-height:1.7; color:var(--ink); margin:0 0 28px; font-style:italic;">"{r.text}"</p>
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <span style="font-size:13px; letter-spacing:0.1em; text-transform:uppercase; color:var(--ink-light); font-weight:500;">{r.name}</span>
+            <span style="font-size:12px; color:var(--muted);">{r.date}</span>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- OFFICE TOUR -->
+<section style="background:var(--ink); padding:80px 0;">
+  <div style="max-width:1280px; margin:0 auto; padding:0 80px 0;">
+    <div style="text-align:center; margin-bottom:56px;">
+      <div style="font-size:11px; letter-spacing:0.3em; text-transform:uppercase; color:var(--gold); margin-bottom:20px;">The Studio</div>
+      <h2 style="font-size:clamp(32px,3.5vw,52px); color:white; margin:0;">Our Space</h2>
+    </div>
+  </div>
+  <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:4px;">
+    {practice.officePhotos.map(p => (
+      <div style="position:relative; overflow:hidden;">
+        <img src={p.url} alt={p.caption} style="width:100%; height:320px; object-fit:cover; display:block; transition:transform 0.6s ease;"
+             onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform=''" />
+        <div style="position:absolute; bottom:0; left:0; right:0; background:linear-gradient(to top, rgba(26,18,8,0.85), transparent); padding:24px 20px;">
+          <p style="margin:0; color:white; font-size:13px; letter-spacing:0.1em; text-transform:uppercase;">{p.caption}</p>
+        </div>
+      </div>
+    ))}
+  </div>
+</section>
+
+<!-- LOCATION -->
+<section id="contact" style="background:var(--cream); padding:100px 80px;">
+  <div style="max-width:1280px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:80px;">
+    <div>
+      <div style="font-size:11px; letter-spacing:0.3em; text-transform:uppercase; color:var(--gold); margin-bottom:20px;">Visit the Studio</div>
+      <h2 style="font-size:clamp(32px,3.5vw,52px); color:var(--ink); margin:0 0 40px; line-height:1.2;">Location & Hours</h2>
+      <div style="display:flex; flex-direction:column; gap:28px; margin-bottom:48px;">
+        <div style="display:flex; gap:20px;">
+          <span style="font-size:20px; flex-shrink:0; color:var(--gold);">◈</span>
+          <div>
+            <div style="font-size:11px; letter-spacing:0.2em; text-transform:uppercase; color:var(--muted); margin-bottom:6px;">Address</div>
+            <div style="font-size:16px; color:var(--ink); line-height:1.5;">{practice.address}</div>
+          </div>
+        </div>
+        <div style="display:flex; gap:20px;">
+          <span style="font-size:20px; flex-shrink:0; color:var(--gold);">◈</span>
+          <div>
+            <div style="font-size:11px; letter-spacing:0.2em; text-transform:uppercase; color:var(--muted); margin-bottom:6px;">Telephone</div>
+            <a href="tel:{practice.phone}" style="font-size:16px; color:var(--ink);">{practice.phone}</a>
+          </div>
+        </div>
+        <div style="display:flex; gap:20px;">
+          <span style="font-size:20px; flex-shrink:0; color:var(--gold);">◈</span>
+          <div>
+            <div style="font-size:11px; letter-spacing:0.2em; text-transform:uppercase; color:var(--muted); margin-bottom:6px;">Email</div>
+            <a href="mailto:{practice.email}" style="font-size:16px; color:var(--ink);">{practice.email}</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div style="font-size:11px; letter-spacing:0.3em; text-transform:uppercase; color:var(--gold); margin-bottom:20px;">Studio Hours</div>
+      <div style="display:flex; flex-direction:column; gap:0;">
+        {practice.hours.map(h => (
+          <div style="display:flex; justify-content:space-between; align-items:center; padding:20px 0; border-bottom:1px solid var(--cream-dark);">
+            <span style="font-size:14px; color:var(--muted); letter-spacing:0.05em;">{h.day}</span>
+            <span style="font-size:14px; color:var(--ink); font-weight:500;">{h.time}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- APPOINTMENT FORM -->
+<section id="appointment" style="background:var(--ink); padding:120px 80px;">
+  <div style="max-width:800px; margin:0 auto;">
+    <div style="text-align:center; margin-bottom:64px;">
+      <div style="font-size:11px; letter-spacing:0.3em; text-transform:uppercase; color:var(--gold); margin-bottom:20px;">Begin Your Journey</div>
+      <h2 style="font-size:clamp(40px,4.5vw,64px); color:white; margin:0;">Request a Consultation</h2>
+      <div class="gold-line" style="margin-top:32px;"></div>
+    </div>
+    <form style="display:flex; flex-direction:column; gap:28px;">
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:28px;">
+        <div>
+          <label style="display:block; font-size:10px; letter-spacing:0.25em; text-transform:uppercase; color:var(--gold); margin-bottom:12px;">First Name</label>
+          <input type="text" placeholder="Victoria" style="width:100%; padding:16px 0; background:transparent; border:none; border-bottom:1px solid rgba(201,169,110,0.4); color:white; font-size:16px; font-weight:300;" />
+        </div>
+        <div>
+          <label style="display:block; font-size:10px; letter-spacing:0.25em; text-transform:uppercase; color:var(--gold); margin-bottom:12px;">Last Name</label>
+          <input type="text" placeholder="Sterling" style="width:100%; padding:16px 0; background:transparent; border:none; border-bottom:1px solid rgba(201,169,110,0.4); color:white; font-size:16px; font-weight:300;" />
+        </div>
+      </div>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:28px;">
+        <div>
+          <label style="display:block; font-size:10px; letter-spacing:0.25em; text-transform:uppercase; color:var(--gold); margin-bottom:12px;">Phone</label>
+          <input type="tel" placeholder="(310) 555-0000" style="width:100%; padding:16px 0; background:transparent; border:none; border-bottom:1px solid rgba(201,169,110,0.4); color:white; font-size:16px; font-weight:300;" />
+        </div>
+        <div>
+          <label style="display:block; font-size:10px; letter-spacing:0.25em; text-transform:uppercase; color:var(--gold); margin-bottom:12px;">Email</label>
+          <input type="email" placeholder="victoria@email.com" style="width:100%; padding:16px 0; background:transparent; border:none; border-bottom:1px solid rgba(201,169,110,0.4); color:white; font-size:16px; font-weight:300;" />
+        </div>
+      </div>
+      <div>
+        <label style="display:block; font-size:10px; letter-spacing:0.25em; text-transform:uppercase; color:var(--gold); margin-bottom:12px;">Primary Interest</label>
+        <select style="width:100%; padding:16px 0; background:transparent; border:none; border-bottom:1px solid rgba(201,169,110,0.4); color:white; font-size:16px; font-weight:300; cursor:pointer;">
+          <option value="" style="background:var(--ink);">Select a treatment</option>
+          {practice.services.map(s => <option value={s.name} style="background:var(--ink);">{s.name}</option>)}
+        </select>
+      </div>
+      <div>
+        <label style="display:block; font-size:10px; letter-spacing:0.25em; text-transform:uppercase; color:var(--gold); margin-bottom:12px;">Tell Us About Your Goals</label>
+        <textarea rows={4} placeholder="Describe the smile you envision..." style="width:100%; padding:16px 0; background:transparent; border:none; border-bottom:1px solid rgba(201,169,110,0.4); color:white; font-size:16px; font-weight:300; resize:none;"></textarea>
+      </div>
+      <div style="text-align:center; margin-top:16px;">
+        <button type="submit" style="background:var(--gold); color:white; font-size:11px; letter-spacing:0.25em; text-transform:uppercase; padding:20px 56px; border:none; cursor:pointer; font-family:'Jost',sans-serif; font-weight:500; transition:all 0.3s ease;"
+                onmouseover="this.style.background='var(--gold-dark)'" onmouseout="this.style.background='var(--gold)'">
+          Request Consultation
+        </button>
+        <p style="font-size:12px; color:rgba(255,255,255,0.4); margin-top:20px; letter-spacing:0.05em;">Complimentary consultation · Discreet & confidential</p>
+      </div>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer style="background:var(--ink); border-top:1px solid rgba(201,169,110,0.2); padding:40px 80px; display:flex; justify-content:space-between; align-items:center;">
+  <div>
+    <div style="font-family:'Cormorant Garamond',serif; font-size:18px; letter-spacing:0.12em; text-transform:uppercase; color:white;">{practice.name}</div>
+    <div style="font-size:12px; color:var(--muted); margin-top:4px;">{practice.address}</div>
+  </div>
+  <div style="font-size:12px; color:var(--muted);">© {new Date().getFullYear()} {practice.name}. All rights reserved.</div>
+</footer>
+
+</body>
+</html>

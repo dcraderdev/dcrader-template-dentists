@@ -1,0 +1,80 @@
+export const practice = {
+  name: "Smile Squad Kids Dentistry",
+  tagline: "The dentist kids actually love!",
+  phone: "(512) 555-0463",
+  email: "hi@smilesquadkids.com",
+  address: "2200 Shoal Creek Blvd, Austin, TX 78756",
+  founded: "2015",
+  hero: {
+    headline: "Dentist Visits\nJust Got FUN! 🦷",
+    subheadline: "We're a superhero-themed pediatric dental practice where brave kids earn capes, coins, and the coolest smiles in Austin!",
+    ctaText: "Join the Smile Squad!",
+    image: "https://images.unsplash.com/photo-1597764690523-9bda82e29c0b?auto=format&fit=crop&w=1400&q=80",
+  },
+  ageRange: "Ages 0 – 17",
+  hours: [
+    { day: "Monday–Friday", time: "8:00 AM – 5:00 PM" },
+    { day: "Saturday", time: "9:00 AM – 1:00 PM" },
+    { day: "Sunday", time: "Closed" },
+  ],
+  services: [
+    { name: "Baby First Visits", desc: "We welcome babies as soon as their first tooth appears! Gentle, fun, and stress-free.", icon: "🍼" },
+    { name: "Cavity Fighters", desc: "Painless fillings using kid-friendly numbing gel — no scary needles.", icon: "🦸" },
+    { name: "Sparkle Cleanings", desc: "Mint, bubblegum, or cotton candy flavored cleanings with prizes after!", icon: "⭐" },
+    { name: "Sealants", desc: "Invisible shields for molars that prevent cavities for up to 10 years.", icon: "🛡️" },
+    { name: "Ortho for Kids", desc: "Early orthodontic evaluations and Phase 1 treatment to guide jaw growth.", icon: "😁" },
+    { name: "Fluoride Treatments", desc: "Quick, fun fluoride varnish in awesome flavors.", icon: "🍓" },
+    { name: "Space Maintainers", desc: "When baby teeth fall early, we save space for the adult tooth to grow in right.", icon: "🚀" },
+    { name: "Nitrous Oxide", desc: "Laughing gas for anxious patients — totally safe, totally giggly.", icon: "😂" },
+  ],
+  insurance: [
+    "CHIP / Medicaid", "Delta Dental", "Cigna", "Aetna", "BlueCross BlueShield",
+    "MetLife", "Humana", "Guardian", "United Healthcare", "Most PPO plans",
+  ],
+  team: [
+    {
+      name: "Dr. Maya Johnson",
+      role: "Board-Certified Pediatric Dentist",
+      bio: "Residency-trained pediatric specialist with 12 years making tiny patients feel like superheroes. Host of the \"Brush Buddies\" podcast for kids.",
+      image: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=400&q=80",
+    },
+    {
+      name: "Dr. Carlos Reyes",
+      role: "Pediatric Dentist",
+      bio: "Bilingual (English/Spanish) pediatric dentist specializing in special needs patients and dental anxiety management.",
+      image: "https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&w=400&q=80",
+    },
+    {
+      name: "Sam Torres, RDH",
+      role: "Pediatric Hygienist",
+      bio: "7 years of turning \"I hate the dentist\" kids into loyal Smile Squad members. Master of distraction techniques and silly voices.",
+      image: "https://images.unsplash.com/photo-1594824476967-48c8b964273f?auto=format&fit=crop&w=400&q=80",
+    },
+    {
+      name: "Zoe Kim",
+      role: "Patient Experience Champion",
+      bio: "Former kindergarten teacher who now makes sure every child — and parent — has the best experience from parking lot to prize wall.",
+      image: "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=400&q=80",
+    },
+  ],
+  reviews: [
+    { name: "Amanda L.", stars: 5, text: "My 5-year-old cried when we had to LEAVE. Repeat that — cried when we LEFT the dentist. That says everything. Smile Squad is absolutely magical.", date: "April 2026" },
+    { name: "David S.", stars: 5, text: "Three kids, ages 4 to 11, and they all ask to come back. The video games in the waiting room, the treasure chest prizes, Dr. Maya explaining everything in kid language — it's perfect.", date: "March 2026" },
+    { name: "Priya N.", stars: 5, text: "My son is autistic and has severe dental anxiety. Dr. Carlos was extraordinarily patient and kind. This is the first dental visit that didn't end in tears. We're so grateful.", date: "February 2026" },
+    { name: "Tiffany C.", stars: 5, text: "So glad we found this place. My daughter has been afraid of the dentist for years. One visit here and she's already asking when we can come back. Life changed!", date: "January 2026" },
+  ],
+  beforeAfter: [
+    { before: "https://images.unsplash.com/photo-1629909615184-74f495363b67?auto=format&fit=crop&w=600&q=80", after: "https://images.unsplash.com/photo-1597764690523-9bda82e29c0b?auto=format&fit=crop&w=600&q=80", label: "Cavity-Free Smile Restored" },
+    { before: "https://images.unsplash.com/photo-1609840114035-3c981b782dfe?auto=format&fit=crop&w=600&q=80", after: "https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&w=600&q=80", label: "Phase 1 Ortho Complete" },
+  ],
+  officePhotos: [
+    { url: "https://images.unsplash.com/photo-1597764690523-9bda82e29c0b?auto=format&fit=crop&w=800&q=80", caption: "Superhero-themed waiting room" },
+    { url: "https://images.unsplash.com/photo-1629909615184-74f495363b67?auto=format&fit=crop&w=800&q=80", caption: "Kid-sized treatment chairs" },
+    { url: "https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&w=800&q=80", caption: "The legendary prize wall" },
+  ],
+  rewards: [
+    { tier: "Cavity Fighter", coins: 10, reward: "Temporary tattoo + sticker pack" },
+    { tier: "Smile Hero", coins: 25, reward: "Smile Squad cape + toothbrush set" },
+    { tier: "Legend", coins: 50, reward: "Giant prize box + hall of fame photo" },
+  ],
+};

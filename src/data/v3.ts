@@ -1,0 +1,80 @@
+export const practice = {
+  name: "Apex Digital Dental",
+  tagline: "Precision dentistry powered by technology",
+  phone: "(206) 555-0319",
+  email: "hello@apexdigitaldental.com",
+  address: "1401 2nd Ave, Suite 1200, Seattle, WA 98101",
+  founded: "2017",
+  hero: {
+    headline: "The Future of\nDental Care",
+    subheadline: "AI-assisted diagnostics. Same-day CEREC crowns. Zero-radiation 3D imaging. Welcome to dentistry without compromise.",
+    ctaText: "Schedule a Scan",
+    image: "https://images.unsplash.com/photo-1607990281513-e8a8b78a50c3?auto=format&fit=crop&w=1400&q=80",
+  },
+  hours: [
+    { day: "Monday–Friday", time: "7:00 AM – 7:00 PM" },
+    { day: "Saturday", time: "8:00 AM – 4:00 PM" },
+    { day: "Sunday", time: "Closed" },
+  ],
+  services: [
+    { name: "Same-Day CEREC Crowns", desc: "Digital design and in-office milling delivers a permanent crown in a single 2-hour appointment.", icon: "⚡" },
+    { name: "3D Cone Beam CT", desc: "Ultra-low-dose 3D imaging gives us a complete picture invisible to traditional X-rays.", icon: "🔬" },
+    { name: "AI Cavity Detection", desc: "Deep learning algorithms scan every X-ray to catch lesions 30% earlier than the naked eye.", icon: "🤖" },
+    { name: "Laser Dentistry", desc: "Soft-tissue procedures with zero scalpel, zero sutures, and dramatically faster healing.", icon: "⚡" },
+    { name: "Digital Implants", desc: "Guided implant surgery using precision surgical stents made from your 3D scan.", icon: "📐" },
+    { name: "Invisalign with AI Tracking", desc: "Aligner therapy monitored via phone app — fewer in-person check-ins, faster results.", icon: "📱" },
+    { name: "Sleep Apnea Devices", desc: "Custom oral appliances designed from digital impressions — no gooey trays.", icon: "🌙" },
+    { name: "Teledentistry", desc: "Virtual consultations for evaluation, triage, and follow-up from anywhere.", icon: "💻" },
+  ],
+  insurance: [
+    "Regence BlueCross", "Premera Blue Cross", "Delta Dental Premier",
+    "Cigna", "United Healthcare", "Aetna", "Most PPO plans accepted",
+  ],
+  team: [
+    {
+      name: "Dr. Rohan Patel",
+      role: "Founder & Digital Dentistry Lead",
+      bio: "MIT-trained biomedical engineer turned dentist. Doctoral research in CAD/CAM restorations at the University of Washington. Holds three patents in dental imaging software.",
+      image: "https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&w=400&q=80",
+    },
+    {
+      name: "Dr. Yuki Tanaka",
+      role: "Oral Surgeon & Implant Specialist",
+      bio: "Dual-trained in oral surgery and periodontics. Uses dynamic navigation for flapless implant placement with 0.3mm accuracy.",
+      image: "https://images.unsplash.com/photo-1594824476967-48c8b964273f?auto=format&fit=crop&w=400&q=80",
+    },
+    {
+      name: "Dr. Liam O'Brien",
+      role: "General & Restorative Dentist",
+      bio: "Certified in CEREC, Solea laser, and Fotona systems. Believes every patient deserves next-gen care regardless of their reason for visiting.",
+      image: "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&w=400&q=80",
+    },
+    {
+      name: "Priya Mehta",
+      role: "Digital Treatment Planner",
+      bio: "Coordinates complex cases using Simplant, 3Shape, and DSD software to produce predictable, beautiful outcomes every time.",
+      image: "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=400&q=80",
+    },
+  ],
+  reviews: [
+    { name: "Nathan K.", stars: 5, text: "I came in at 9am with a broken tooth and walked out at noon with a perfect permanent crown. The CEREC machine is mind-blowing. This is what dentistry should be.", date: "April 2026" },
+    { name: "Aisha M.", stars: 5, text: "Their AI flagged a tiny cavity that two previous dentists had missed for years. Caught early, filled in minutes. This technology genuinely matters.", date: "March 2026" },
+    { name: "Derek C.", stars: 5, text: "The guided implant surgery was so precise it was almost unsettling. No cuts, no stitches — I was back at work the same afternoon.", date: "February 2026" },
+    { name: "Tanya B.", stars: 5, text: "Digital impressions are a game changer. No more gagging on putty. They scanned my teeth in 90 seconds and my aligners fit perfectly on the first try.", date: "January 2026" },
+  ],
+  beforeAfter: [
+    { before: "https://images.unsplash.com/photo-1629909615184-74f495363b67?auto=format&fit=crop&w=600&q=80", after: "https://images.unsplash.com/photo-1607990281513-e8a8b78a50c3?auto=format&fit=crop&w=600&q=80", label: "CEREC Same-Day Crown" },
+    { before: "https://images.unsplash.com/photo-1609840114035-3c981b782dfe?auto=format&fit=crop&w=600&q=80", after: "https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&w=600&q=80", label: "Digital Implant + Crown" },
+  ],
+  officePhotos: [
+    { url: "https://images.unsplash.com/photo-1629909615184-74f495363b67?auto=format&fit=crop&w=800&q=80", caption: "CEREC milling station" },
+    { url: "https://images.unsplash.com/photo-1607990281513-e8a8b78a50c3?auto=format&fit=crop&w=800&q=80", caption: "3D cone beam imaging suite" },
+    { url: "https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&w=800&q=80", caption: "Digital treatment planning center" },
+  ],
+  techStack: [
+    { name: "CEREC Primescan AC", desc: "0.9μm accuracy digital impressions" },
+    { name: "Planmeca ProMax 3D", desc: "Ultra-low-dose cone beam CT" },
+    { name: "Solea CO₂ Laser", desc: "Anesthesia-free soft & hard tissue" },
+    { name: "Pearl AI Radiograph Analysis", desc: "FDA-cleared AI detection" },
+  ],
+};

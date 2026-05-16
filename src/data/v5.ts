@@ -1,0 +1,83 @@
+export const practice = {
+  name: "Root & Branch Holistic Dental",
+  tagline: "Dentistry in harmony with your whole body",
+  phone: "(503) 555-0571",
+  email: "hello@rootandbranch.dental",
+  address: "3840 SE Hawthorne Blvd, Portland, OR 97214",
+  founded: "2013",
+  hero: {
+    headline: "Dentistry That\nHonors the Whole You",
+    subheadline: "Mercury-free. BPA-free. Fluoride-optional. Rooted in biological principles, guided by nature, and devoted to your lifelong wellness.",
+    ctaText: "Begin Your Journey",
+    image: "https://images.unsplash.com/photo-1545205597-3d9d02c29597?auto=format&fit=crop&w=1400&q=80",
+  },
+  hours: [
+    { day: "Tuesday–Friday", time: "9:00 AM – 5:00 PM" },
+    { day: "Saturday", time: "9:00 AM – 2:00 PM" },
+    { day: "Sunday–Monday", time: "Closed" },
+  ],
+  services: [
+    { name: "Safe Mercury Removal", desc: "SMART-certified amalgam removal protocol protecting you, our team, and the environment.", icon: "🌿" },
+    { name: "Biocompatible Restorations", desc: "Composite, ceramic, and zirconia materials tested for your individual biocompatibility.", icon: "🍃" },
+    { name: "Ozone Therapy", desc: "Ozone gas and water eliminate bacteria and remineralize early decay — often without drilling.", icon: "💧" },
+    { name: "Fluoride-Free Options", desc: "Hydroxyapatite and xylitol-based alternatives for patients choosing to minimize fluoride.", icon: "✦" },
+    { name: "Airway & Sleep Dentistry", desc: "Oral appliances and myofunctional guidance to support healthy breathing and restful sleep.", icon: "🌙" },
+    { name: "Nutritional Counseling", desc: "Dental diet guidance connecting your oral health to systemic inflammation and gut health.", icon: "🥦" },
+    { name: "Ceramic Implants", desc: "Metal-free zirconia implants for those preferring to avoid titanium.", icon: "🌱" },
+    { name: "Craniosacral Therapy", desc: "Gentle bodywork to release jaw tension and TMJ dysfunction through the nervous system.", icon: "🙏" },
+  ],
+  insurance: [
+    "ODS Health", "Moda Health", "Regence BlueCross", "Delta Dental (OON)",
+    "Out-of-network superbills provided", "HSA/FSA accepted",
+    "Sliding scale available for qualifying patients",
+  ],
+  team: [
+    {
+      name: "Dr. Nadia Reeves",
+      role: "Biological Dentist & Founder",
+      bio: "IAOMT-accredited biological dentist with advanced training in ozone therapy, oral-systemic connections, and SMART amalgam removal. Author of \"The Whole Mouth Manifesto.\"",
+      image: "https://images.unsplash.com/photo-1614608682850-e0d6ed316d47?auto=format&fit=crop&w=400&q=80",
+    },
+    {
+      name: "Dr. Owen Fletcher",
+      role: "Holistic General Dentist",
+      bio: "Masters in naturopathic medicine alongside his DDS. Specializes in the intersection of dental health, inflammation, and systemic disease.",
+      image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=400&q=80",
+    },
+    {
+      name: "Sage Williams, RDH",
+      role: "Biological Hygienist",
+      bio: "Certified in laser therapy and ozone hygiene. Brings a trauma-informed, whole-person approach to every preventive appointment.",
+      image: "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=400&q=80",
+    },
+    {
+      name: "Iris Chen",
+      role: "Wellness Coordinator",
+      bio: "Functional medicine health coach who helps patients connect the dots between their dental findings and their overall health journey.",
+      image: "https://images.unsplash.com/photo-1594824476967-48c8b964273f?auto=format&fit=crop&w=400&q=80",
+    },
+  ],
+  reviews: [
+    { name: "Elaine M.", stars: 5, text: "I've been searching for a biological dentist for years. Dr. Reeves is everything I hoped for — knowledgeable, compassionate, and genuinely interested in my whole health. My SMART amalgam removal was flawless.", date: "April 2026" },
+    { name: "Tom B.", stars: 5, text: "The ozone therapy healed an early cavity my previous dentist wanted to fill. No drilling, no pain, just a mineral paste and ozone gas. I'm a believer.", date: "March 2026" },
+    { name: "Camille F.", stars: 5, text: "Root & Branch feels like a healing sanctuary, not a medical office. I leave feeling informed, cared for, and genuinely better. Every single time.", date: "February 2026" },
+    { name: "Jordan H.", stars: 5, text: "I asked about ceramic implants and Dr. Fletcher spent 30 minutes educating me on my options without ever feeling like a sales pitch. Chose them — absolutely zero regrets.", date: "January 2026" },
+  ],
+  beforeAfter: [
+    { before: "https://images.unsplash.com/photo-1629909615184-74f495363b67?auto=format&fit=crop&w=600&q=80", after: "https://images.unsplash.com/photo-1545205597-3d9d02c29597?auto=format&fit=crop&w=600&q=80", label: "Safe Mercury Amalgam Removal" },
+    { before: "https://images.unsplash.com/photo-1609840114035-3c981b782dfe?auto=format&fit=crop&w=600&q=80", after: "https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&w=600&q=80", label: "Ceramic Implant Restoration" },
+  ],
+  officePhotos: [
+    { url: "https://images.unsplash.com/photo-1545205597-3d9d02c29597?auto=format&fit=crop&w=800&q=80", caption: "Healing-centered reception space" },
+    { url: "https://images.unsplash.com/photo-1629909615184-74f495363b67?auto=format&fit=crop&w=800&q=80", caption: "Natural light treatment rooms" },
+    { url: "https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&w=800&q=80", caption: "Ozone therapy station" },
+  ],
+  principles: [
+    "Mercury-free & mercury-safe (SMART certified)",
+    "All materials biocompatibility tested",
+    "BPA-free composites exclusively",
+    "Non-toxic sterilization protocols",
+    "Air & water purification throughout",
+    "Patient-centered informed consent always",
+  ],
+};

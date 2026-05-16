@@ -1,0 +1,378 @@
+---
+import { practice } from '../../data/v4';
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{practice.name} | Kids Dentist Austin</title>
+  <meta name="description" content={practice.tagline} />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    :root {
+      --coral: #FF5B5B;
+      --yellow: #FFD447;
+      --teal: #4ECDC4;
+      --mint: #A8E6CF;
+      --purple: #C77DFF;
+      --navy: #1A1D35;
+      --bg: #FFFBF4;
+      --dark: #2D2F3E;
+    }
+    body { font-family: 'Nunito', sans-serif; background: var(--bg); color: var(--dark); margin: 0; }
+    .display { font-family: 'Fredoka One', cursive; }
+    a { text-decoration: none; }
+    @keyframes wiggle {
+      0%, 100% { transform: rotate(-2deg); }
+      50% { transform: rotate(2deg); }
+    }
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .wiggle { animation: wiggle 1.5s ease-in-out infinite; }
+    .bounce { animation: bounce 2s ease-in-out infinite; }
+    .fade-1 { animation: fadeUp 0.7s ease both; }
+    .fade-2 { animation: fadeUp 0.7s 0.1s ease both; }
+    .fade-3 { animation: fadeUp 0.7s 0.2s ease both; }
+    .service-card { transition: all 0.25s ease; cursor: default; }
+    .service-card:hover { transform: translateY(-6px) scale(1.02); box-shadow: 0 16px 40px rgba(0,0,0,0.12); }
+    .team-card:hover img { transform: scale(1.06); }
+    .team-card img { transition: transform 0.4s ease; }
+    .star-btn:hover { transform: translateY(-3px) scale(1.05); }
+    .star-btn { transition: all 0.2s ease; }
+    .dots-bg {
+      background-image: radial-gradient(circle, rgba(255,91,91,0.08) 2px, transparent 2px);
+      background-size: 28px 28px;
+    }
+    input:focus, select:focus, textarea:focus { outline: none; border-color: var(--coral) !important; }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav style="background:white; border-bottom:3px solid var(--yellow); position:sticky; top:0; z-index:50; box-shadow:0 2px 16px rgba(0,0,0,0.06);">
+  <div style="max-width:1200px; margin:0 auto; padding:0 24px; height:72px; display:flex; align-items:center; justify-content:space-between;">
+    <div style="display:flex; align-items:center; gap:10px;">
+      <span style="font-size:28px;" class="wiggle">🦷</span>
+      <div>
+        <div class="display" style="font-size:20px; color:var(--coral); line-height:1;">{practice.name}</div>
+        <div style="font-size:10px; font-weight:800; color:var(--teal); letter-spacing:0.08em; text-transform:uppercase;">{practice.ageRange}</div>
+      </div>
+    </div>
+    <div style="display:flex; gap:24px; align-items:center;">
+      {['Services','Team','Reviews','Contact'].map(l => (
+        <a href={`#${l.toLowerCase()}`} style="font-size:14px; font-weight:800; color:var(--dark); transition:color 0.2s;"
+           onmouseover="this.style.color='var(--coral)'" onmouseout="this.style.color='var(--dark)'">{l}</a>
+      ))}
+      <a href="#appointment" class="star-btn" style="background:var(--coral); color:white; font-weight:900; font-size:14px; padding:10px 24px; border-radius:9999px; box-shadow:0 4px 16px rgba(255,91,91,0.35);">
+        Book Now! 🎉
+      </a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section style="background:linear-gradient(135deg, #FFF5F5 0%, #FFFBF4 40%, #F0FFFE 100%); padding:80px 24px 60px; position:relative; overflow:hidden;">
+  <!-- Decorative blobs -->
+  <div style="position:absolute; top:-80px; right:-80px; width:320px; height:320px; background:var(--yellow); border-radius:50%; opacity:0.18; pointer-events:none;"></div>
+  <div style="position:absolute; bottom:-60px; left:-60px; width:260px; height:260px; background:var(--teal); border-radius:50%; opacity:0.14; pointer-events:none;"></div>
+  <div style="max-width:1200px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:center;">
+    <div>
+      <div class="fade-1" style="display:inline-flex; align-items:center; gap:8px; background:var(--yellow); color:var(--dark); font-weight:900; font-size:13px; padding:8px 20px; border-radius:9999px; margin-bottom:24px;">
+        ⭐ Austin's #1 Kids Dentist — 5 Stars on Google!
+      </div>
+      <h1 class="fade-2 display" style="font-size:clamp(44px,6vw,80px); line-height:1.1; color:var(--dark); margin:0 0 24px; white-space:pre-line;">{practice.hero.headline}</h1>
+      <p class="fade-3" style="font-size:19px; line-height:1.7; color:#555; margin:0 0 36px; max-width:460px; font-weight:600;">{practice.hero.subheadline}</p>
+      <div class="fade-3" style="display:flex; gap:16px; flex-wrap:wrap; align-items:center;">
+        <a href="#appointment" class="star-btn" style="background:var(--coral); color:white; font-weight:900; font-size:18px; padding:18px 40px; border-radius:9999px; box-shadow:0 8px 28px rgba(255,91,91,0.35);">
+          {practice.hero.ctaText}
+        </a>
+        <a href="tel:{practice.phone}" style="background:var(--teal); color:white; font-weight:900; font-size:15px; padding:18px 32px; border-radius:9999px; box-shadow:0 6px 20px rgba(78,205,196,0.3);">
+          📞 Call Us!
+        </a>
+      </div>
+      <div style="display:flex; gap:32px; margin-top:48px; flex-wrap:wrap;">
+        {[['5,000+','Happy Kids 😄'],['12 yrs','Spreading Smiles'],['4.9★','Google Rating']].map(([n,l]) => (
+          <div style="text-align:center;">
+            <div class="display" style="font-size:30px; color:var(--coral);">{n}</div>
+            <div style="font-size:12px; font-weight:800; color:#777; text-transform:uppercase; letter-spacing:0.06em;">{l}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+    <div style="position:relative; text-align:center;">
+      <div style="border-radius:32px; overflow:hidden; border:6px solid var(--yellow); box-shadow:12px 12px 0 var(--coral);">
+        <img src={practice.hero.image} alt="Kids at the dentist" style="width:100%; aspect-ratio:4/3; object-fit:cover; display:block;" />
+      </div>
+      <div class="bounce" style="position:absolute; top:-20px; right:20px; background:var(--teal); color:white; font-size:13px; font-weight:900; padding:12px 20px; border-radius:16px; border:3px solid white; box-shadow:4px 4px 0 rgba(0,0,0,0.1);">
+        No Fear Zone! 🦸
+      </div>
+      <div style="position:absolute; bottom:-16px; left:20px; background:var(--purple); color:white; font-size:13px; font-weight:900; padding:12px 20px; border-radius:16px; border:3px solid white; box-shadow:4px 4px 0 rgba(0,0,0,0.1);">
+        Prizes Every Visit! 🎁
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" class="dots-bg" style="padding:80px 24px;">
+  <div style="max-width:1200px; margin:0 auto;">
+    <div style="text-align:center; margin-bottom:56px;">
+      <div style="display:inline-block; background:var(--yellow); color:var(--dark); font-weight:900; font-size:13px; padding:6px 20px; border-radius:9999px; text-transform:uppercase; letter-spacing:0.06em; margin-bottom:16px;">What We Do</div>
+      <h2 class="display" style="font-size:clamp(36px,4.5vw,60px); color:var(--dark); margin:0 0 12px;">Super Services 🦸‍♀️</h2>
+      <p style="font-size:17px; color:#666; max-width:480px; margin:0 auto; font-weight:600;">Everything your little hero needs for a healthy, happy smile.</p>
+    </div>
+    <div style="display:grid; grid-template-columns:repeat(auto-fill,minmax(250px,1fr)); gap:20px;">
+      {practice.services.map((s, i) => {
+        const colors = ['var(--coral)','var(--teal)','var(--yellow)','var(--purple)','var(--mint)','var(--coral)','var(--teal)','var(--yellow)'];
+        const bgs = ['#FFF0F0','#F0FFFE','#FFFBEE','#F8F0FF','#F0FFF8','#FFF0F0','#F0FFFE','#FFFBEE'];
+        return (
+          <div class="service-card" style={`background:${bgs[i]}; border-radius:20px; padding:28px; border:2px solid ${colors[i]}; box-shadow:4px 4px 0 ${colors[i]};`}>
+            <div style="font-size:40px; margin-bottom:12px;">{s.icon}</div>
+            <h3 class="display" style={`font-size:20px; color:${colors[i]}; margin:0 0 8px;`}>{s.name}</h3>
+            <p style="font-size:14px; color:#555; line-height:1.65; margin:0; font-weight:600;">{s.desc}</p>
+          </div>
+        );
+      })}
+    </div>
+  </div>
+</section>
+
+<!-- REWARDS PROGRAM -->
+<section style="background:var(--navy); padding:72px 24px; position:relative; overflow:hidden;">
+  <div style="position:absolute; top:-40px; left:50%; transform:translateX(-50%); font-size:200px; opacity:0.04; pointer-events:none; line-height:1;">⭐</div>
+  <div style="max-width:1000px; margin:0 auto; text-align:center;">
+    <div style="display:inline-block; background:var(--yellow); color:var(--dark); font-weight:900; font-size:13px; padding:6px 20px; border-radius:9999px; text-transform:uppercase; letter-spacing:0.06em; margin-bottom:16px;">Earn Rewards!</div>
+    <h2 class="display" style="font-size:clamp(36px,4.5vw,56px); color:white; margin:0 0 12px;">Smile Squad Rewards 🏆</h2>
+    <p style="font-size:17px; color:rgba(255,255,255,0.7); max-width:480px; margin:0 auto 48px; font-weight:600;">Earn coins for every visit, then redeem them for awesome prizes!</p>
+    <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:24px;">
+      {practice.rewards.map((r, i) => {
+        const colors = ['var(--teal)','var(--coral)','var(--yellow)'];
+        return (
+          <div style={`background:rgba(255,255,255,0.06); border:2px solid ${colors[i]}; border-radius:20px; padding:32px; position:relative;`}>
+            <div class="display" style={`font-size:40px; color:${colors[i]}; margin-bottom:8px;`}>{r.tier}</div>
+            <div style={`font-family:'Fredoka One',cursive; font-size:28px; color:${colors[i]}; margin-bottom:16px;`}>{r.coins} coins</div>
+            <p style="font-size:15px; color:rgba(255,255,255,0.8); margin:0; font-weight:700;">{r.reward}</p>
+          </div>
+        );
+      })}
+    </div>
+  </div>
+</section>
+
+<!-- INSURANCE -->
+<section style="background:white; padding:72px 24px;">
+  <div style="max-width:1000px; margin:0 auto; text-align:center;">
+    <h2 class="display" style="font-size:clamp(28px,3.5vw,48px); color:var(--dark); margin:0 0 12px;">We Take Your Insurance! 💳</h2>
+    <p style="font-size:17px; color:#666; max-width:480px; margin:0 auto 40px; font-weight:600;">Most kids' dental care is 100% covered. We'll help you figure it out!</p>
+    <div style="display:flex; flex-wrap:wrap; gap:12px; justify-content:center;">
+      {practice.insurance.map(ins => (
+        <span style="background:var(--bg); border:2px solid var(--teal); color:var(--dark); font-weight:800; font-size:14px; padding:10px 22px; border-radius:9999px;">
+          ✓ {ins}
+        </span>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section id="team" style="background:#F7FFFE; padding:80px 24px;">
+  <div style="max-width:1200px; margin:0 auto;">
+    <div style="text-align:center; margin-bottom:56px;">
+      <h2 class="display" style="font-size:clamp(36px,4.5vw,60px); color:var(--dark); margin:0 0 12px;">Meet the Squad! 👋</h2>
+      <p style="font-size:17px; color:#666; max-width:480px; margin:0 auto; font-weight:600;">The amazing humans who make your kid's smile shine.</p>
+    </div>
+    <div style="display:grid; grid-template-columns:repeat(auto-fill,minmax(250px,1fr)); gap:28px;">
+      {practice.team.map((m, i) => {
+        const borders = ['var(--coral)','var(--teal)','var(--yellow)','var(--purple)'];
+        return (
+          <div class="team-card" style="background:white; border-radius:24px; overflow:hidden; border:3px solid var(--teal); box-shadow:6px 6px 0 var(--mint);">
+            <div style="overflow:hidden; height:240px;">
+              <img src={m.image} alt={m.name} style="width:100%; height:100%; object-fit:cover; display:block;" />
+            </div>
+            <div style="padding:24px;">
+              <div style={`display:inline-block; background:${borders[i]}; color:${i === 2 ? 'var(--dark)' : 'white'}; font-size:11px; font-weight:900; padding:4px 14px; border-radius:9999px; text-transform:uppercase; letter-spacing:0.06em; margin-bottom:10px;`}>{m.role}</div>
+              <h3 class="display" style="font-size:20px; color:var(--dark); margin:0 0 8px;">{m.name}</h3>
+              <p style="font-size:13px; color:#666; line-height:1.65; margin:0; font-weight:600;">{m.bio}</p>
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  </div>
+</section>
+
+<!-- BEFORE / AFTER -->
+<section style="background:white; padding:80px 24px;">
+  <div style="max-width:1000px; margin:0 auto;">
+    <div style="text-align:center; margin-bottom:56px;">
+      <h2 class="display" style="font-size:clamp(32px,4vw,52px); color:var(--dark); margin:0 0 12px;">Amazing Transformations! ✨</h2>
+    </div>
+    <div style="display:grid; grid-template-columns:repeat(auto-fill,minmax(460px,1fr)); gap:40px;">
+      {practice.beforeAfter.map(ba => (
+        <div>
+          <h3 class="display" style="font-size:22px; color:var(--coral); margin:0 0 16px; text-align:center;">{ba.label}</h3>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px;">
+            <div>
+              <div style="background:var(--dark); color:white; font-size:12px; font-weight:900; padding:8px 12px; border-radius:10px 10px 0 0; text-align:center; text-transform:uppercase;">Before 😬</div>
+              <img src={ba.before} alt="Before" style="width:100%; height:200px; object-fit:cover; border-radius:0 0 10px 10px; display:block;" />
+            </div>
+            <div>
+              <div style="background:var(--coral); color:white; font-size:12px; font-weight:900; padding:8px 12px; border-radius:10px 10px 0 0; text-align:center; text-transform:uppercase;">After 😁</div>
+              <img src={ba.after} alt="After" style="width:100%; height:200px; object-fit:cover; border-radius:0 0 10px 10px; display:block;" />
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section id="reviews" style="background:var(--bg); padding:80px 24px;" class="dots-bg">
+  <div style="max-width:1200px; margin:0 auto;">
+    <div style="text-align:center; margin-bottom:56px;">
+      <h2 class="display" style="font-size:clamp(32px,4.5vw,56px); color:var(--dark); margin:0 0 12px;">Parents Love Us! 💕</h2>
+    </div>
+    <div style="display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:24px;">
+      {practice.reviews.map((r, i) => {
+        const colors = ['var(--coral)','var(--teal)','var(--yellow)','var(--purple)'];
+        return (
+          <div style={`background:white; border-radius:20px; padding:28px; border:3px solid ${colors[i]}; box-shadow:4px 4px 0 ${colors[i]};`}>
+            <div style="font-size:20px; margin-bottom:12px;">{"⭐".repeat(r.stars)}</div>
+            <p style="font-size:15px; color:#444; line-height:1.75; margin:0 0 20px; font-weight:600;">"{r.text}"</p>
+            <div style="display:flex; justify-content:space-between; align-items:center;">
+              <span style="font-weight:900; color:var(--dark); font-size:14px;">{r.name}</span>
+              <span style="font-size:12px; color:#999; font-weight:600;">{r.date}</span>
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  </div>
+</section>
+
+<!-- OFFICE PHOTOS -->
+<section style="background:white; padding:72px 24px;">
+  <div style="max-width:1200px; margin:0 auto;">
+    <div style="text-align:center; margin-bottom:48px;">
+      <h2 class="display" style="font-size:clamp(28px,3.5vw,48px); color:var(--dark); margin:0;">Our Fun Office! 🎨</h2>
+    </div>
+    <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:16px;">
+      {practice.officePhotos.map((p, i) => {
+        const borders = ['var(--coral)','var(--teal)','var(--yellow)'];
+        return (
+          <div style={`border-radius:20px; overflow:hidden; border:4px solid ${borders[i]}; box-shadow:6px 6px 0 ${borders[i]};`}>
+            <img src={p.url} alt={p.caption} style="width:100%; height:220px; object-fit:cover; display:block;" />
+            <div style="padding:14px; background:white;">
+              <p style="margin:0; font-weight:800; font-size:14px; color:var(--dark);">{p.caption}</p>
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  </div>
+</section>
+
+<!-- LOCATION / HOURS -->
+<section id="contact" style="background:var(--teal); padding:80px 24px;">
+  <div style="max-width:1100px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:start;">
+    <div>
+      <h2 class="display" style="font-size:clamp(32px,3.5vw,48px); color:white; margin:0 0 32px;">Come Visit Us! 🗺️</h2>
+      <div style="display:flex; flex-direction:column; gap:20px;">
+        {[['📍',practice.address],['📞',practice.phone],['✉️',practice.email]].map(([icon, val]) => (
+          <div style="background:rgba(255,255,255,0.2); border-radius:14px; padding:16px 20px; display:flex; gap:14px; align-items:center; backdrop-filter:blur(4px);">
+            <span style="font-size:22px;">{icon}</span>
+            <span style="font-size:16px; color:white; font-weight:700;">{val}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+    <div>
+      <h2 class="display" style="font-size:clamp(32px,3.5vw,48px); color:white; margin:0 0 32px;">Office Hours ⏰</h2>
+      <div style="display:flex; flex-direction:column; gap:12px;">
+        {practice.hours.map(h => (
+          <div style="background:rgba(255,255,255,0.18); border-radius:12px; padding:14px 20px; display:flex; justify-content:space-between; backdrop-filter:blur(4px);">
+            <span style="color:rgba(255,255,255,0.9); font-weight:700; font-size:15px;">{h.day}</span>
+            <span style="color:white; font-weight:900; font-size:15px;">{h.time}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- APPOINTMENT FORM -->
+<section id="appointment" style="background:var(--bg); padding:80px 24px;">
+  <div style="max-width:680px; margin:0 auto;">
+    <div style="text-align:center; margin-bottom:48px;">
+      <h2 class="display" style="font-size:clamp(32px,4vw,56px); color:var(--dark); margin:0 0 12px;">Join the Squad! 🦷</h2>
+      <p style="font-size:17px; color:#666; font-weight:600;">We'll call to confirm within one business day — usually sooner!</p>
+    </div>
+    <form style="background:white; border-radius:28px; padding:48px; border:3px solid var(--coral); box-shadow:8px 8px 0 var(--yellow); display:flex; flex-direction:column; gap:20px;">
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:20px;">
+        <div>
+          <label style="display:block; font-weight:900; font-size:13px; color:var(--dark); margin-bottom:8px; text-transform:uppercase; letter-spacing:0.06em;">Kid's First Name</label>
+          <input type="text" placeholder="Emma" style="width:100%; padding:14px 16px; border:2px solid #EEE; border-radius:12px; font-size:16px; font-family:'Nunito',sans-serif; font-weight:600;" />
+        </div>
+        <div>
+          <label style="display:block; font-weight:900; font-size:13px; color:var(--dark); margin-bottom:8px; text-transform:uppercase; letter-spacing:0.06em;">Last Name</label>
+          <input type="text" placeholder="Johnson" style="width:100%; padding:14px 16px; border:2px solid #EEE; border-radius:12px; font-size:16px; font-family:'Nunito',sans-serif; font-weight:600;" />
+        </div>
+      </div>
+      <div>
+        <label style="display:block; font-weight:900; font-size:13px; color:var(--dark); margin-bottom:8px; text-transform:uppercase; letter-spacing:0.06em;">Parent/Guardian Phone</label>
+        <input type="tel" placeholder="(512) 555-0000" style="width:100%; padding:14px 16px; border:2px solid #EEE; border-radius:12px; font-size:16px; font-family:'Nunito',sans-serif; font-weight:600;" />
+      </div>
+      <div>
+        <label style="display:block; font-weight:900; font-size:13px; color:var(--dark); margin-bottom:8px; text-transform:uppercase; letter-spacing:0.06em;">Email</label>
+        <input type="email" placeholder="parent@email.com" style="width:100%; padding:14px 16px; border:2px solid #EEE; border-radius:12px; font-size:16px; font-family:'Nunito',sans-serif; font-weight:600;" />
+      </div>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:20px;">
+        <div>
+          <label style="display:block; font-weight:900; font-size:13px; color:var(--dark); margin-bottom:8px; text-transform:uppercase; letter-spacing:0.06em;">Kid's Age</label>
+          <select style="width:100%; padding:14px 16px; border:2px solid #EEE; border-radius:12px; font-size:16px; font-family:'Nunito',sans-serif; font-weight:600; background:white; cursor:pointer;">
+            <option value="">Select age</option>
+            {[...Array(17)].map((_, i) => <option value={i+1}>{i+1} year{i > 0 ? 's' : ''} old</option>)}
+          </select>
+        </div>
+        <div>
+          <label style="display:block; font-weight:900; font-size:13px; color:var(--dark); margin-bottom:8px; text-transform:uppercase; letter-spacing:0.06em;">Service Needed</label>
+          <select style="width:100%; padding:14px 16px; border:2px solid #EEE; border-radius:12px; font-size:16px; font-family:'Nunito',sans-serif; font-weight:600; background:white; cursor:pointer;">
+            <option value="">Select a service</option>
+            {practice.services.map(s => <option value={s.name}>{s.name}</option>)}
+          </select>
+        </div>
+      </div>
+      <div>
+        <label style="display:block; font-weight:900; font-size:13px; color:var(--dark); margin-bottom:8px; text-transform:uppercase; letter-spacing:0.06em;">Anything Else? (optional)</label>
+        <textarea rows={3} placeholder="Any worries, allergies, or questions — we love to hear from you!" style="width:100%; padding:14px 16px; border:2px solid #EEE; border-radius:12px; font-size:16px; font-family:'Nunito',sans-serif; font-weight:600; resize:vertical;"></textarea>
+      </div>
+      <button type="submit" class="star-btn" style="background:var(--coral); color:white; font-weight:900; font-size:18px; padding:18px 32px; border:none; border-radius:9999px; cursor:pointer; font-family:'Nunito',sans-serif; box-shadow:0 8px 24px rgba(255,91,91,0.35);">
+        Let's Book It! 🎉
+      </button>
+      <p style="text-align:center; font-size:13px; color:#999; margin:0; font-weight:700;">We'll confirm within one business day. Zero spam, ever!</p>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer style="background:var(--navy); padding:40px 24px; text-align:center;">
+  <div style="font-size:32px; margin-bottom:10px;">🦷⭐🦷</div>
+  <div class="display" style="font-size:22px; color:white; margin-bottom:8px;">{practice.name}</div>
+  <p style="color:rgba(255,255,255,0.5); font-size:14px; font-weight:700; margin:0 0 6px;">{practice.address}</p>
+  <p style="color:rgba(255,255,255,0.4); font-size:13px; margin:0;">© {new Date().getFullYear()} {practice.name}. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
