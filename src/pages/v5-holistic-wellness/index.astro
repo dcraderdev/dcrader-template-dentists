@@ -10,122 +10,186 @@ import { practice } from '../../data/v5';
   <meta name="description" content={practice.tagline} />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300;1,8..60,400;1,8..60,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
     :root {
-      --cream: #F5F0E8;
-      --cream-2: #EDE7D9;
-      --cream-3: #E3D9C8;
-      --sage: #7A9E7E;
-      --sage-dark: #4F7C56;
-      --sage-deep: #2D4A2F;
-      --earth: #8B6F4E;
-      --muted: #7A7060;
-      --ink: #2C2C28;
+      --cream: #F7F3EC;
+      --cream-2: #EEE8DC;
+      --cream-3: #E4DDD0;
+      --sage: #6A9470;
+      --sage-2: #4E7653;
+      --sage-3: #2F5234;
+      --earth: #8B6B4A;
+      --earth-2: #6B4F34;
+      --mist: #B8C8B2;
+      --muted: #7A7264;
+      --ink: #2A2820;
+      --ink-2: #1E1C18;
     }
-    body { font-family: 'Source Sans 3', sans-serif; color: var(--ink); background: var(--cream); margin: 0; font-weight: 300; }
-    h1, h2, h3, h4 { font-family: 'EB Garamond', serif; font-weight: 400; }
+    body { font-family: 'Inter', sans-serif; color: var(--ink); background: var(--cream); margin: 0; font-weight: 300; }
+    h1, h2, h3, h4, blockquote { font-family: 'Source Serif 4', Georgia, serif; font-weight: 400; }
     a { text-decoration: none; }
-    .leaf { color: var(--sage); }
-    .divider { width: 48px; height: 2px; background: var(--sage); }
+
     @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(20px); }
+      from { opacity: 0; transform: translateY(24px); }
       to { opacity: 1; transform: translateY(0); }
     }
-    .fade-1 { animation: fadeUp 1s ease both; }
-    .fade-2 { animation: fadeUp 1s 0.2s ease both; }
-    .fade-3 { animation: fadeUp 1s 0.4s ease both; }
-    .service-row { transition: background 0.3s ease; }
-    .service-row:hover { background: rgba(122,158,126,0.08); }
-    .team-card img { transition: transform 0.5s ease; }
-    .team-card:hover img { transform: scale(1.04); }
-    .principle-item { transition: all 0.3s ease; }
-    .principle-item:hover { padding-left: 20px; color: var(--sage-dark); }
-    input:focus, select:focus, textarea:focus { outline: none; border-color: var(--sage) !important; }
-    .texture-bg {
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Ccircle cx='30' cy='30' r='1' fill='%237A9E7E' opacity='0.15'/%3E%3C/svg%3E");
+    @keyframes leafSway {
+      0%, 100% { transform: rotate(-2deg); }
+      50% { transform: rotate(2deg); }
     }
+    .fade-1 { animation: fadeUp 1s ease both; }
+    .fade-2 { animation: fadeUp 1s 0.15s ease both; }
+    .fade-3 { animation: fadeUp 1s 0.3s ease both; }
+    .fade-4 { animation: fadeUp 1s 0.45s ease both; }
+
+    .nav-link { transition: color 0.2s; }
+    .nav-link:hover { color: var(--sage-2) !important; }
+    .cta-btn { transition: all 0.3s ease; }
+    .cta-btn:hover { background: var(--sage-2) !important; }
+    .ghost-btn { transition: all 0.3s ease; }
+    .ghost-btn:hover { background: var(--sage-3) !important; color: white !important; }
+
+    .svc-row { transition: background 0.3s ease; cursor: default; }
+    .svc-row:hover { background: rgba(106,148,112,0.08); }
+
+    .team-card img { transition: transform 0.5s ease; filter: sepia(12%); }
+    .team-card:hover img { transform: scale(1.04); }
+
+    .principle-item { transition: padding-left 0.25s ease, color 0.25s ease; }
+    .principle-item:hover { padding-left: 14px !important; color: var(--sage-2); }
+
+    .office-img { transition: transform 0.6s ease; filter: sepia(12%); }
+    .office-img:hover { transform: scale(1.04); }
+
+    input:focus, select:focus, textarea:focus { outline: none; border-color: var(--sage) !important; box-shadow: 0 0 0 2px rgba(106,148,112,0.15); }
+
+    .leaf-sway { animation: leafSway 5s ease-in-out infinite; transform-origin: bottom center; }
   </style>
 </head>
 <body>
 
 <!-- NAV -->
-<nav style="background:var(--cream); border-bottom:1px solid var(--cream-2); position:sticky; top:0; z-index:50;">
+<header style="background:var(--cream); border-bottom:1px solid var(--cream-2); position:sticky; top:0; z-index:100;">
   <div style="max-width:1280px; margin:0 auto; padding:0 56px; height:76px; display:flex; align-items:center; justify-content:space-between;">
     <div>
-      <div style="font-family:'EB Garamond',serif; font-size:21px; color:var(--ink); letter-spacing:0.04em;">{practice.name}</div>
-      <div style="font-size:10px; letter-spacing:0.25em; text-transform:uppercase; color:var(--sage); margin-top:2px; font-weight:500;">Portland, Oregon</div>
+      <div style="font-family:'Source Serif 4',serif; font-size:20px; color:var(--ink); letter-spacing:0.02em;">{practice.name}</div>
+      <div style="font-size:10px; letter-spacing:0.28em; text-transform:uppercase; color:var(--sage); margin-top:2px; font-weight:500;">Portland, Oregon · Est. {practice.founded}</div>
     </div>
-    <div style="display:flex; gap:36px; align-items:center;">
-      {['Services','Team','Principles','Contact'].map(l => (
-        <a href={`#${l.toLowerCase()}`} style="font-size:13px; letter-spacing:0.08em; color:var(--muted); font-weight:500; transition:color 0.2s;"
-           onmouseover="this.style.color='var(--sage-dark)'" onmouseout="this.style.color='var(--muted)'">{l}</a>
+    <nav style="display:flex; gap:32px; align-items:center;">
+      {[['#services','Services'],['#principles','Our Way'],['#team','Team'],['#contact','Visit']].map(([href,label]) => (
+        <a href={href} class="nav-link" style="font-size:13px; letter-spacing:0.07em; color:var(--muted); font-weight:500;">{label}</a>
       ))}
-      <a href="#appointment" style="border:1px solid var(--sage); color:var(--sage-dark); font-size:12px; letter-spacing:0.15em; text-transform:uppercase; padding:11px 28px; font-weight:500; transition:all 0.3s ease;"
-         onmouseover="this.style.background='var(--sage)'; this.style.color='white'"
-         onmouseout="this.style.background='transparent'; this.style.color='var(--sage-dark)'">
+      <a href="#appointment" class="cta-btn" style="background:var(--sage-3); color:white; font-size:11px; letter-spacing:0.14em; text-transform:uppercase; padding:12px 26px; font-weight:500;">
         Begin Journey
       </a>
-    </div>
+    </nav>
   </div>
-</nav>
+</header>
 
 <!-- HERO -->
 <section style="min-height:96vh; display:grid; grid-template-columns:1fr 1fr; position:relative; overflow:hidden;">
-  <div style="display:flex; flex-direction:column; justify-content:center; padding:80px 56px 80px 80px; background:var(--cream);">
-    <div class="fade-1" style="font-size:10px; letter-spacing:0.35em; text-transform:uppercase; color:var(--sage); margin-bottom:28px; font-weight:500;">
+  <!-- Left: content -->
+  <div style="display:flex; flex-direction:column; justify-content:center; padding:80px 64px 80px 80px; background:var(--cream); position:relative;">
+    <!-- Plant SVG decorative element top-left -->
+    <div style="position:absolute; top:40px; left:40px; opacity:0.5;" class="leaf-sway">
+      <svg width="60" height="90" viewBox="0 0 60 90" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M30,88 Q28,70 24,52 Q18,32 10,18 Q20,28 28,48 Q32,60 30,88Z" fill="var(--sage)" opacity="0.5"/>
+        <path d="M30,88 Q32,68 38,50 Q44,32 54,18 Q44,28 36,50 Q32,62 30,88Z" fill="var(--sage)" opacity="0.35"/>
+        <line x1="30" y1="88" x2="30" y2="10" stroke="var(--sage)" stroke-width="1.5" opacity="0.4"/>
+      </svg>
+    </div>
+
+    <div class="fade-1" style="font-size:10px; letter-spacing:0.32em; text-transform:uppercase; color:var(--sage); margin-bottom:26px; font-weight:500;">
       Biological Dentistry · Mercury-Free · Portland
     </div>
-    <h1 class="fade-2" style="font-size:clamp(44px,5vw,76px); line-height:1.08; color:var(--ink); margin:0 0 28px; white-space:pre-line;">{practice.hero.headline}</h1>
-    <div class="divider fade-2" style="margin-bottom:28px;"></div>
-    <p class="fade-3" style="font-size:19px; line-height:1.85; color:var(--muted); margin:0 0 48px; max-width:440px; font-weight:300;">{practice.hero.subheadline}</p>
-    <div class="fade-3" style="display:flex; gap:20px; flex-wrap:wrap; align-items:center;">
-      <a href="#appointment" style="background:var(--sage-deep); color:white; font-size:13px; letter-spacing:0.15em; text-transform:uppercase; padding:18px 44px; font-weight:500; transition:all 0.3s ease;"
-         onmouseover="this.style.background='var(--sage-dark)'" onmouseout="this.style.background='var(--sage-deep)'">
+    <h1 class="fade-2" style="font-size:clamp(44px,5vw,76px); line-height:1.08; color:var(--ink); margin:0 0 26px; font-style:italic; white-space:pre-line; font-weight:400;">{practice.hero.headline}</h1>
+    <div class="fade-2" style="width:40px; height:2px; background:var(--sage); margin-bottom:26px;"></div>
+    <p class="fade-3" style="font-size:18px; line-height:1.88; color:var(--muted); margin:0 0 44px; max-width:440px; font-weight:300;">{practice.hero.subheadline}</p>
+
+    <div class="fade-4" style="display:flex; gap:18px; flex-wrap:wrap; align-items:center; margin-bottom:56px;">
+      <a href="#appointment" class="cta-btn" style="background:var(--sage-3); color:white; font-size:12px; letter-spacing:0.14em; text-transform:uppercase; padding:18px 42px; font-weight:500;">
         {practice.hero.ctaText}
       </a>
-      <a href="tel:{practice.phone}" style="font-size:15px; color:var(--sage-dark); font-weight:400; display:flex; align-items:center; gap:8px;">
+      <a href="tel:{practice.phone}" style="font-size:15px; color:var(--sage-2); font-weight:400; display:flex; align-items:center; gap:10px; transition:color 0.2s;"
+         onmouseover="this.style.color='var(--sage-3)'" onmouseout="this.style.color='var(--sage-2)'">
         <span style="display:inline-block; width:24px; height:1px; background:var(--sage);"></span>
         {practice.phone}
       </a>
     </div>
-    <div style="display:flex; gap:40px; margin-top:64px; flex-wrap:wrap;">
-      {[['IAOMT','Accredited'],['SMART','Certified Removal'],['12 yrs','Portland Based']].map(([n,l]) => (
+
+    <!-- Credentials strip -->
+    <div class="fade-4" style="display:flex; gap:32px; padding-top:32px; border-top:1px solid var(--cream-3); flex-wrap:wrap;">
+      {[['IAOMT','Accredited'],['SMART','Safe Removal'],['12 yrs','Portland Based']].map(([n,l]) => (
         <div>
-          <div style="font-family:'EB Garamond',serif; font-size:26px; color:var(--sage-dark);">{n}</div>
-          <div style="font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:var(--muted); margin-top:3px; font-weight:500;">{l}</div>
+          <div style="font-family:'Source Serif 4',serif; font-size:22px; color:var(--sage-2); font-weight:400;">{n}</div>
+          <div style="font-size:10px; letter-spacing:0.14em; text-transform:uppercase; color:var(--muted); margin-top:3px; font-weight:500;">{l}</div>
         </div>
       ))}
     </div>
   </div>
+
+  <!-- Right: botanical photo -->
   <div style="position:relative; overflow:hidden;">
-    <img src={practice.hero.image} alt="Root and Branch Holistic Dental" style="width:100%; height:100%; object-fit:cover; object-position:center;" />
-    <div style="position:absolute; inset:0; background:linear-gradient(to right, var(--cream) 0%, transparent 15%);"></div>
-    <div style="position:absolute; bottom:40px; right:40px; background:rgba(245,240,232,0.93); backdrop-filter:blur(6px); padding:24px 28px; border-left:3px solid var(--sage);">
-      <div style="font-size:10px; letter-spacing:0.25em; text-transform:uppercase; color:var(--sage); margin-bottom:8px; font-weight:500;">Our Commitment</div>
-      <div style="font-family:'EB Garamond',serif; font-size:17px; color:var(--ink); line-height:1.5;">Mercury-free since day one.<br/>Zero-compromise materials.</div>
+    <img src={practice.hero.image} alt="Root and Branch Holistic Dental" style="width:100%; height:100%; object-fit:cover; object-position:center; filter:sepia(8%) brightness(0.96);" />
+    <div style="position:absolute; inset:0; background:linear-gradient(to right, var(--cream) 0%, transparent 12%);"></div>
+    <!-- Floating commitment card -->
+    <div style="position:absolute; bottom:48px; right:48px; background:rgba(247,243,236,0.95); backdrop-filter:blur(8px); padding:24px 28px; border-left:3px solid var(--sage);">
+      <div style="font-size:9px; letter-spacing:0.26em; text-transform:uppercase; color:var(--sage); margin-bottom:10px; font-weight:500;">Our Commitment</div>
+      <div style="font-family:'Source Serif 4',serif; font-size:16px; color:var(--ink); line-height:1.55; font-style:italic;">Mercury-free since day one.<br/>Zero-compromise materials.<br/>Body-first always.</div>
+    </div>
+    <!-- Leaf decoration -->
+    <div style="position:absolute; top:40px; right:30px; opacity:0.35;" class="leaf-sway">
+      <svg width="50" height="70" viewBox="0 0 50 70" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M25,68 Q23,50 18,35 Q12,20 4,8 Q16,18 22,36 Q26,48 25,68Z" fill="var(--sage)"/>
+        <path d="M25,68 Q27,48 34,32 Q42,18 48,6 Q38,18 30,36 Q26,50 25,68Z" fill="var(--mist)"/>
+        <line x1="25" y1="68" x2="25" y2="4" stroke="var(--sage-2)" stroke-width="1.2" opacity="0.6"/>
+      </svg>
     </div>
   </div>
 </section>
 
-<!-- SERVICES -->
-<section id="services" style="background:var(--cream-2); padding:112px 56px;">
-  <div style="max-width:1280px; margin:0 auto; display:grid; grid-template-columns:300px 1fr; gap:80px; align-items:start;">
-    <div style="position:sticky; top:100px;">
-      <div style="font-size:10px; letter-spacing:0.3em; text-transform:uppercase; color:var(--sage); margin-bottom:20px; font-weight:500;">How We Heal</div>
-      <h2 style="font-size:clamp(36px,3.5vw,52px); color:var(--ink); margin:0 0 24px; line-height:1.15;">Our Services</h2>
-      <div class="divider" style="margin-bottom:24px;"></div>
-      <p style="font-size:16px; color:var(--muted); line-height:1.85; font-weight:300;">Each service is chosen not for profitability, but for its alignment with biological principles and whole-body wellness.</p>
+<!-- PLANT SVG DIVIDER -->
+<div style="background:var(--cream-2); padding:0; overflow:hidden; line-height:0;">
+  <svg viewBox="0 0 1440 80" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" style="display:block; width:100%; height:60px;">
+    <path d="M0,20 Q120,0 240,20 Q360,40 480,20 Q600,0 720,20 Q840,40 960,20 Q1080,0 1200,20 Q1320,40 1440,20 L1440,80 L0,80 Z" fill="var(--cream)"/>
+  </svg>
+</div>
+
+<!-- SERVICES — sticky sidebar layout -->
+<section id="services" style="background:var(--cream-2); padding:100px 80px;">
+  <div style="max-width:1280px; margin:0 auto; display:grid; grid-template-columns:280px 1fr; gap:80px; align-items:start;">
+    <!-- Sticky sidebar -->
+    <div style="position:sticky; top:96px;">
+      <div style="font-size:9px; letter-spacing:0.3em; text-transform:uppercase; color:var(--sage); margin-bottom:18px; font-weight:500;">How We Heal</div>
+      <h2 style="font-size:clamp(36px,3.5vw,52px); color:var(--ink); margin:0 0 22px; line-height:1.12; font-style:italic;">Our Services</h2>
+      <div style="width:36px; height:2px; background:var(--sage); margin-bottom:22px;"></div>
+      <p style="font-size:15px; color:var(--muted); line-height:1.88; font-weight:300;">Each service is chosen not for profitability, but for its alignment with biological principles and whole-body wellness.</p>
+      <!-- Inline plant SVG -->
+      <div style="margin-top:32px; opacity:0.6;" class="leaf-sway">
+        <svg width="70" height="100" viewBox="0 0 70 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <line x1="35" y1="95" x2="35" y2="5" stroke="var(--sage)" stroke-width="1.5" opacity="0.5"/>
+          <path d="M35,70 Q20,60 12,42 Q22,48 32,66 Q34,69 35,70Z" fill="var(--sage)" opacity="0.55"/>
+          <path d="M35,55 Q50,45 58,27 Q48,33 38,51 Q36,54 35,55Z" fill="var(--sage)" opacity="0.4"/>
+          <path d="M35,38 Q22,30 16,14 Q24,22 32,36 Q34,37 35,38Z" fill="var(--mist)" opacity="0.7"/>
+          <path d="M35,20 Q48,12 54,0 Q46,8 38,20 Q36,21 35,20Z" fill="var(--mist)" opacity="0.5"/>
+          <!-- Berries/buds -->
+          <circle cx="14" cy="40" r="4" fill="var(--earth)" opacity="0.5"/>
+          <circle cx="56" cy="26" r="3" fill="var(--earth)" opacity="0.4"/>
+        </svg>
+      </div>
     </div>
-    <div style="display:flex; flex-direction:column; gap:0;">
+
+    <!-- Service rows -->
+    <div style="display:flex; flex-direction:column;">
       {practice.services.map(s => (
-        <div class="service-row" style="padding:32px 24px; border-bottom:1px solid var(--cream-3); display:grid; grid-template-columns:40px 1fr; gap:20px; align-items:start; cursor:default;">
-          <div style="font-size:26px; color:var(--sage); margin-top:4px;">{s.icon}</div>
+        <div class="svc-row" style="padding:30px 22px; border-bottom:1px solid var(--cream-3); display:grid; grid-template-columns:36px 1fr; gap:18px; align-items:start;">
+          <div style="font-size:24px; color:var(--sage); margin-top:4px; line-height:1;">{s.icon}</div>
           <div>
-            <h3 style="font-family:'EB Garamond',serif; font-size:22px; color:var(--ink); margin:0 0 8px; font-weight:500;">{s.name}</h3>
-            <p style="font-size:15px; color:var(--muted); line-height:1.8; margin:0; font-weight:300;">{s.desc}</p>
+            <h3 style="font-family:'Source Serif 4',serif; font-size:21px; color:var(--ink); margin:0 0 8px; font-weight:400;">{s.name}</h3>
+            <p style="font-size:14px; color:var(--muted); line-height:1.85; margin:0; font-weight:300;">{s.desc}</p>
           </div>
         </div>
       ))}
@@ -133,63 +197,103 @@ import { practice } from '../../data/v5';
   </div>
 </section>
 
-<!-- PRINCIPLES -->
-<section id="principles" style="background:var(--sage-deep); padding:100px 56px;">
+<!-- BOTANICAL DIVIDER -->
+<div style="background:var(--sage-3); overflow:hidden; line-height:0;">
+  <svg viewBox="0 0 1440 80" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" style="display:block; width:100%; height:60px;">
+    <path d="M0,60 Q180,20 360,60 Q540,100 720,60 Q900,20 1080,60 Q1260,100 1440,60 L1440,0 L0,0 Z" fill="var(--cream-2)" opacity="0.8"/>
+  </svg>
+</div>
+
+<!-- PRINCIPLES — dark sage section -->
+<section id="principles" style="background:var(--sage-3); padding:100px 80px;">
   <div style="max-width:1280px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center;">
     <div>
-      <div style="font-size:10px; letter-spacing:0.3em; text-transform:uppercase; color:var(--sage); margin-bottom:20px; font-weight:500;">Our Foundation</div>
-      <h2 style="font-size:clamp(36px,3.5vw,56px); color:white; margin:0 0 32px; line-height:1.15;">Biological Principles</h2>
-      <p style="font-size:17px; color:rgba(255,255,255,0.65); line-height:1.85; margin:0 0 48px; font-weight:300;">We don't just treat teeth. We treat the person behind them — recognizing that every dental decision ripples through your entire body.</p>
-      <div style="display:flex; flex-direction:column; gap:16px;">
+      <div style="font-size:9px; letter-spacing:0.3em; text-transform:uppercase; color:var(--mist); margin-bottom:20px; font-weight:500;">Our Foundation</div>
+      <h2 style="font-size:clamp(36px,3.5vw,56px); color:white; margin:0 0 28px; line-height:1.12; font-style:italic;">Biological Principles</h2>
+      <p style="font-size:17px; color:rgba(255,255,255,0.62); line-height:1.88; margin:0 0 44px; font-weight:300;">We don't just treat teeth. We treat the person behind them — recognizing that every dental decision ripples through your entire body, your nervous system, your immune response.</p>
+      <div style="display:flex; flex-direction:column; gap:14px;">
         {practice.principles.map(p => (
-          <div class="principle-item" style="display:flex; gap:16px; align-items:flex-start; padding-left:0; transition:all 0.3s ease; cursor:default;"
-               onmouseover="this.style.paddingLeft='12px'" onmouseout="this.style.paddingLeft='0'">
-            <span style="color:var(--sage); font-size:20px; flex-shrink:0; margin-top:2px;">✦</span>
-            <span style="font-size:16px; color:rgba(255,255,255,0.8); font-weight:300;">{p}</span>
+          <div class="principle-item" style="display:flex; gap:14px; align-items:flex-start; padding-left:0; cursor:default;">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" style="flex-shrink:0; margin-top:2px;" xmlns="http://www.w3.org/2000/svg">
+              <path d="M9,1 Q7,5 4,7 Q7,8 9,13 Q11,8 14,7 Q11,5 9,1Z" fill="var(--mist)" opacity="0.8"/>
+            </svg>
+            <span style="font-size:15px; color:rgba(255,255,255,0.78); font-weight:300;">{p}</span>
           </div>
         ))}
       </div>
     </div>
-    <div>
-      <img src="https://images.unsplash.com/photo-1545205597-3d9d02c29597?auto=format&fit=crop&w=700&q=80" alt="Natural dental care" style="width:100%; aspect-ratio:4/5; object-fit:cover;" />
+    <div style="position:relative;">
+      <img src="https://images.unsplash.com/photo-1545205597-3d9d02c29597?auto=format&fit=crop&w=700&q=80" alt="Natural dental care" style="width:100%; aspect-ratio:4/5; object-fit:cover; display:block; filter:sepia(15%) brightness(0.88);" />
+      <!-- Botanical corner decoration -->
+      <div style="position:absolute; bottom:-20px; left:-20px; opacity:0.7;">
+        <svg width="90" height="120" viewBox="0 0 90 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <line x1="45" y1="115" x2="45" y2="5" stroke="var(--mist)" stroke-width="1.5" opacity="0.5"/>
+          <path d="M45,90 Q22,75 10,50 Q28,62 42,84 Z" fill="var(--mist)" opacity="0.4"/>
+          <path d="M45,65 Q68,50 80,25 Q62,38 47,62 Z" fill="var(--mist)" opacity="0.3"/>
+          <path d="M45,42 Q28,30 20,10 Q34,22 44,40 Z" fill="var(--cream)" opacity="0.3"/>
+          <circle cx="11" cy="50" r="5" fill="var(--earth)" opacity="0.4"/>
+          <circle cx="79" cy="26" r="4" fill="var(--earth)" opacity="0.3"/>
+        </svg>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- INSURANCE -->
-<section style="background:var(--cream); padding:80px 56px;">
-  <div style="max-width:900px; margin:0 auto;">
-    <div style="text-align:center; margin-bottom:48px;">
-      <div style="font-size:10px; letter-spacing:0.3em; text-transform:uppercase; color:var(--sage); margin-bottom:16px; font-weight:500;">Financial Accessibility</div>
-      <h2 style="font-size:clamp(32px,3.5vw,52px); color:var(--ink); margin:0 0 16px;">Insurance & Payment</h2>
-      <p style="font-size:17px; color:var(--muted); max-width:480px; margin:0 auto; font-weight:300; line-height:1.75;">We believe access to biological dentistry should not depend on your insurance plan.</p>
-    </div>
-    <div style="display:flex; flex-wrap:wrap; gap:12px; justify-content:center;">
-      {practice.insurance.map(ins => (
-        <span style="background:var(--cream-2); border:1px solid var(--cream-3); color:var(--muted); font-size:14px; padding:10px 22px; font-weight:400; letter-spacing:0.04em;">
-          {ins}
-        </span>
-      ))}
+<!-- BOTANICAL DIVIDER 2 -->
+<div style="background:var(--cream); overflow:hidden; line-height:0;">
+  <svg viewBox="0 0 1440 80" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" style="display:block; width:100%; height:60px;">
+    <path d="M0,20 Q180,60 360,20 Q540,-20 720,20 Q900,60 1080,20 Q1260,-20 1440,20 L1440,0 L0,0 Z" fill="var(--sage-3)"/>
+  </svg>
+</div>
+
+<!-- CERTIFICATIONS & INSURANCE -->
+<section style="background:var(--cream); padding:80px 80px;">
+  <div style="max-width:1100px; margin:0 auto;">
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:start;">
+      <div>
+        <div style="font-size:9px; letter-spacing:0.3em; text-transform:uppercase; color:var(--sage); margin-bottom:18px; font-weight:500;">Certifications</div>
+        <h2 style="font-size:clamp(28px,3vw,40px); color:var(--ink); margin:0 0 28px; line-height:1.2; font-style:italic;">Recognized Standards</h2>
+        <div style="display:flex; flex-direction:column; gap:16px;">
+          {[['IAOMT','International Academy of Oral Medicine & Toxicology'],['SMART','Safe Mercury Amalgam Removal Technique'],['DAMS','Dental Amalgam Mercury Solutions partner'],['IABDM','International Academy of Biological Dentistry & Medicine']].map(([code,name]) => (
+            <div style="display:flex; gap:16px; align-items:center; padding:14px 18px; background:var(--cream-2); border-left:3px solid var(--sage);">
+              <div style="font-family:'Source Serif 4',serif; font-size:18px; color:var(--sage-2); font-weight:600; min-width:60px;">{code}</div>
+              <div style="font-size:13px; color:var(--muted); font-weight:300; line-height:1.5;">{name}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+      <div>
+        <div style="font-size:9px; letter-spacing:0.3em; text-transform:uppercase; color:var(--sage); margin-bottom:18px; font-weight:500;">Financial Accessibility</div>
+        <h2 style="font-size:clamp(28px,3vw,40px); color:var(--ink); margin:0 0 22px; line-height:1.2; font-style:italic;">Insurance & Payment</h2>
+        <p style="font-size:15px; color:var(--muted); line-height:1.82; margin:0 0 28px; font-weight:300;">We believe access to biological dentistry should not depend on your insurance plan. We provide detailed superbills for all out-of-network benefits.</p>
+        <div style="display:flex; flex-wrap:wrap; gap:10px;">
+          {practice.insurance.map(ins => (
+            <span style="background:var(--cream-2); border:1px solid var(--cream-3); color:var(--muted); font-size:13px; padding:8px 18px; font-weight:400; letter-spacing:0.03em;">{ins}</span>
+          ))}
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- TEAM -->
-<section id="team" style="background:var(--cream-2); padding:112px 56px;">
+<section id="team" style="background:var(--cream-2); padding:100px 80px;">
   <div style="max-width:1280px; margin:0 auto;">
-    <div style="text-align:center; margin-bottom:80px;">
-      <div style="font-size:10px; letter-spacing:0.3em; text-transform:uppercase; color:var(--sage); margin-bottom:20px; font-weight:500;">The Practitioners</div>
-      <h2 style="font-size:clamp(40px,4vw,64px); color:var(--ink); margin:0;">Our Healers</h2>
+    <div style="text-align:center; margin-bottom:72px;">
+      <div style="font-size:9px; letter-spacing:0.3em; text-transform:uppercase; color:var(--sage); margin-bottom:18px; font-weight:500;">The Practitioners</div>
+      <h2 style="font-size:clamp(40px,4vw,60px); color:var(--ink); margin:0; font-style:italic;">Our Healers</h2>
     </div>
-    <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:36px;">
+    <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:32px;">
       {practice.team.map(m => (
         <div class="team-card" style="cursor:default;">
-          <div style="overflow:hidden; margin-bottom:24px;">
-            <img src={m.image} alt={m.name} style="width:100%; aspect-ratio:3/4; object-fit:cover; display:block; filter:sepia(8%);" />
+          <div style="overflow:hidden; margin-bottom:22px; aspect-ratio:3/4;">
+            <img src={m.image} alt={m.name} style="width:100%; height:100%; object-fit:cover; display:block;" />
           </div>
-          <div style="font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--sage); margin-bottom:8px; font-weight:500;">{m.role}</div>
-          <h3 style="font-family:'EB Garamond',serif; font-size:21px; color:var(--ink); margin:0 0 12px; font-weight:400;">{m.name}</h3>
-          <p style="font-size:14px; color:var(--muted); line-height:1.8; margin:0; font-weight:300;">{m.bio}</p>
+          <div style="padding-left:2px;">
+            <div style="font-size:9px; letter-spacing:0.22em; text-transform:uppercase; color:var(--sage); margin-bottom:8px; font-weight:500;">{m.role}</div>
+            <h3 style="font-size:20px; color:var(--ink); margin:0 0 10px; font-weight:400; font-style:italic;">{m.name}</h3>
+            <p style="font-size:13px; color:var(--muted); line-height:1.82; margin:0; font-weight:300;">{m.bio}</p>
+          </div>
         </div>
       ))}
     </div>
@@ -197,24 +301,24 @@ import { practice } from '../../data/v5';
 </section>
 
 <!-- BEFORE / AFTER -->
-<section style="background:var(--cream); padding:100px 56px;">
+<section style="background:var(--cream); padding:100px 80px;">
   <div style="max-width:1100px; margin:0 auto;">
-    <div style="text-align:center; margin-bottom:72px;">
-      <div style="font-size:10px; letter-spacing:0.3em; text-transform:uppercase; color:var(--sage); margin-bottom:16px; font-weight:500;">Visible Change</div>
-      <h2 style="font-size:clamp(36px,4vw,60px); color:var(--ink); margin:0;">Treatment Results</h2>
+    <div style="text-align:center; margin-bottom:64px;">
+      <div style="font-size:9px; letter-spacing:0.3em; text-transform:uppercase; color:var(--sage); margin-bottom:18px; font-weight:500;">Visible Change</div>
+      <h2 style="font-size:clamp(36px,4vw,56px); color:var(--ink); margin:0; font-style:italic;">Treatment Results</h2>
     </div>
-    <div style="display:grid; grid-template-columns:1fr 1fr; gap:56px;">
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:48px;">
       {practice.beforeAfter.map(ba => (
         <div>
-          <h3 style="font-family:'EB Garamond',serif; font-size:22px; color:var(--ink); margin:0 0 20px; text-align:center; font-style:italic;">{ba.label}</h3>
-          <div style="display:grid; grid-template-columns:1fr 1fr; gap:6px;">
+          <div style="font-family:'Source Serif 4',serif; font-size:20px; color:var(--ink); margin-bottom:18px; text-align:center; font-style:italic;">{ba.label}</div>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:4px;">
             <div>
-              <div style="background:var(--earth); color:white; font-size:10px; font-weight:500; letter-spacing:0.2em; padding:7px 12px; text-align:center; text-transform:uppercase;">Before</div>
-              <img src={ba.before} alt="Before" style="width:100%; height:240px; object-fit:cover; display:block;" />
+              <div style="background:var(--earth); color:white; font-size:9px; font-weight:500; letter-spacing:0.2em; padding:7px 12px; text-align:center; text-transform:uppercase;">Before</div>
+              <img src={ba.before} alt="Before" style="width:100%; height:230px; object-fit:cover; display:block; filter:sepia(10%);" />
             </div>
             <div>
-              <div style="background:var(--sage-dark); color:white; font-size:10px; font-weight:500; letter-spacing:0.2em; padding:7px 12px; text-align:center; text-transform:uppercase;">After</div>
-              <img src={ba.after} alt="After" style="width:100%; height:240px; object-fit:cover; display:block;" />
+              <div style="background:var(--sage-2); color:white; font-size:9px; font-weight:500; letter-spacing:0.2em; padding:7px 12px; text-align:center; text-transform:uppercase;">After</div>
+              <img src={ba.after} alt="After" style="width:100%; height:230px; object-fit:cover; display:block; filter:sepia(6%);" />
             </div>
           </div>
         </div>
@@ -223,21 +327,30 @@ import { practice } from '../../data/v5';
   </div>
 </section>
 
-<!-- REVIEWS -->
-<section style="background:var(--cream-2); padding:100px 56px;">
+<!-- REVIEWS — with botanical leaf quote marks -->
+<section style="background:var(--cream-2); padding:100px 80px;">
   <div style="max-width:1280px; margin:0 auto;">
-    <div style="text-align:center; margin-bottom:72px;">
-      <div style="font-size:10px; letter-spacing:0.3em; text-transform:uppercase; color:var(--sage); margin-bottom:16px; font-weight:500;">Voices</div>
-      <h2 style="font-size:clamp(36px,4vw,60px); color:var(--ink); margin:0;">Patient Reflections</h2>
+    <div style="text-align:center; margin-bottom:64px;">
+      <div style="font-size:9px; letter-spacing:0.3em; text-transform:uppercase; color:var(--sage); margin-bottom:18px; font-weight:500;">Voices</div>
+      <h2 style="font-size:clamp(36px,4vw,56px); color:var(--ink); margin:0; font-style:italic;">Patient Reflections</h2>
     </div>
-    <div style="display:grid; grid-template-columns:repeat(2,1fr); gap:40px;">
+    <div style="display:grid; grid-template-columns:repeat(2,1fr); gap:32px;">
       {practice.reviews.map(r => (
-        <div style="background:var(--cream); padding:48px; border-left:3px solid var(--sage);">
-          <div style="font-size:14px; color:var(--sage); margin-bottom:20px; letter-spacing:0.05em;">{"✦".repeat(r.stars)}</div>
-          <p style="font-family:'EB Garamond',serif; font-size:20px; line-height:1.75; color:var(--ink); margin:0 0 28px; font-style:italic;">"{r.text}"</p>
-          <div style="display:flex; justify-content:space-between; align-items:center;">
-            <span style="font-size:14px; letter-spacing:0.08em; text-transform:uppercase; color:var(--muted); font-weight:500;">{r.name}</span>
-            <span style="font-size:13px; color:var(--muted);">{r.date}</span>
+        <div style="background:var(--cream); padding:44px; border-left:3px solid var(--sage); position:relative; overflow:hidden;">
+          <!-- Large botanical quote mark -->
+          <div style="position:absolute; top:-8px; right:28px; font-family:'Source Serif 4',serif; font-size:140px; color:var(--sage); opacity:0.08; line-height:1; pointer-events:none; user-select:none;">"</div>
+          <!-- Leaf icon for stars -->
+          <div style="display:flex; gap:4px; margin-bottom:20px;">
+            {Array.from({length: r.stars}).map(() => (
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M7,0.5 Q6,4 4,6 Q6,6.5 7,10 Q8,6.5 10,6 Q8,4 7,0.5Z" fill="var(--sage)" opacity="0.8"/>
+              </svg>
+            ))}
+          </div>
+          <p style="font-family:'Source Serif 4',serif; font-size:19px; line-height:1.72; color:var(--ink); margin:0 0 28px; font-style:italic; font-weight:400; position:relative;">"{r.text}"</p>
+          <div style="display:flex; justify-content:space-between; align-items:center; padding-top:22px; border-top:1px solid var(--cream-3);">
+            <span style="font-size:12px; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted); font-weight:500;">{r.name}</span>
+            <span style="font-size:12px; color:var(--muted);">{r.date}</span>
           </div>
         </div>
       ))}
@@ -245,19 +358,20 @@ import { practice } from '../../data/v5';
   </div>
 </section>
 
-<!-- OFFICE PHOTOS -->
-<section style="background:var(--cream); padding:80px 0;">
-  <div style="text-align:center; padding:0 56px 48px;">
-    <div style="font-size:10px; letter-spacing:0.3em; text-transform:uppercase; color:var(--sage); margin-bottom:16px; font-weight:500;">The Space</div>
-    <h2 style="font-size:clamp(32px,3.5vw,52px); color:var(--ink); margin:0;">Our Sanctuary</h2>
+<!-- OFFICE PHOTOS — full edge-to-edge with sepia -->
+<section style="background:var(--cream);">
+  <div style="padding:0 80px 64px;">
+    <div style="text-align:center; padding:80px 0 48px;">
+      <div style="font-size:9px; letter-spacing:0.3em; text-transform:uppercase; color:var(--sage); margin-bottom:18px; font-weight:500;">The Space</div>
+      <h2 style="font-size:clamp(32px,3.5vw,52px); color:var(--ink); margin:0; font-style:italic;">Our Sanctuary</h2>
+    </div>
   </div>
-  <div style="display:grid; grid-template-columns:repeat(3,1fr);">
+  <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:3px;">
     {practice.officePhotos.map(p => (
       <div style="position:relative; overflow:hidden;">
-        <img src={p.url} alt={p.caption} style="width:100%; height:360px; object-fit:cover; display:block; transition:transform 0.6s ease; filter:sepia(8%);"
-             onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform=''" />
-        <div style="position:absolute; bottom:0; left:0; right:0; background:linear-gradient(to top, rgba(45,74,47,0.8), transparent); padding:24px 20px;">
-          <p style="margin:0; color:white; font-family:'EB Garamond',serif; font-size:16px; font-style:italic;">{p.caption}</p>
+        <img class="office-img" src={p.url} alt={p.caption} style="width:100%; height:360px; object-fit:cover; display:block;" />
+        <div style="position:absolute; bottom:0; left:0; right:0; background:linear-gradient(to top, rgba(47,82,52,0.75), transparent); padding:24px 22px;">
+          <p style="margin:0; color:white; font-family:'Source Serif 4',serif; font-size:15px; font-style:italic;">{p.caption}</p>
         </div>
       </div>
     ))}
@@ -265,93 +379,117 @@ import { practice } from '../../data/v5';
 </section>
 
 <!-- LOCATION -->
-<section id="contact" style="background:var(--sage-deep); padding:100px 56px;">
-  <div style="max-width:1280px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:80px;">
+<section id="contact" style="background:var(--sage-3); padding:100px 80px;">
+  <div style="max-width:1280px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:start;">
     <div>
-      <div style="font-size:10px; letter-spacing:0.3em; text-transform:uppercase; color:var(--sage); margin-bottom:20px; font-weight:500;">Find Us</div>
-      <h2 style="font-size:clamp(32px,3.5vw,52px); color:white; margin:0 0 40px; line-height:1.2;">Visit Portland</h2>
+      <div style="font-size:9px; letter-spacing:0.3em; text-transform:uppercase; color:var(--mist); margin-bottom:20px; font-weight:500;">Find Us</div>
+      <h2 style="font-size:clamp(32px,3.5vw,52px); color:white; margin:0 0 44px; line-height:1.15; font-style:italic;">Visit Portland</h2>
       <div style="display:flex; flex-direction:column; gap:28px;">
         {[['Location',practice.address],['Phone',practice.phone],['Email',practice.email]].map(([l,v]) => (
-          <div>
-            <div style="font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--sage); margin-bottom:6px; font-weight:500;">{l}</div>
-            <div style="font-size:16px; color:rgba(255,255,255,0.85); font-weight:300;">{v}</div>
+          <div style="padding-bottom:28px; border-bottom:1px solid rgba(184,200,178,0.25);">
+            <div style="font-size:9px; letter-spacing:0.22em; text-transform:uppercase; color:var(--mist); margin-bottom:8px; font-weight:500;">{l}</div>
+            <div style="font-size:16px; color:rgba(255,255,255,0.85); font-weight:300; line-height:1.5;">{v}</div>
           </div>
         ))}
       </div>
     </div>
     <div>
-      <div style="font-size:10px; letter-spacing:0.3em; text-transform:uppercase; color:var(--sage); margin-bottom:20px; font-weight:500;">Hours</div>
-      <h2 style="font-size:clamp(32px,3.5vw,52px); color:white; margin:0 0 32px;">When We're Here</h2>
-      <div style="display:flex; flex-direction:column; gap:0;">
+      <div style="font-size:9px; letter-spacing:0.3em; text-transform:uppercase; color:var(--mist); margin-bottom:20px; font-weight:500;">Hours</div>
+      <h2 style="font-size:clamp(32px,3.5vw,52px); color:white; margin:0 0 36px; line-height:1.15; font-style:italic;">When We're Here</h2>
+      <div style="display:flex; flex-direction:column;">
         {practice.hours.map(h => (
-          <div style="display:flex; justify-content:space-between; align-items:center; padding:18px 0; border-bottom:1px solid rgba(122,158,126,0.3);">
-            <span style="font-size:15px; color:rgba(255,255,255,0.6); font-weight:300;">{h.day}</span>
+          <div style="display:flex; justify-content:space-between; align-items:center; padding:18px 0; border-bottom:1px solid rgba(184,200,178,0.2);">
+            <span style="font-size:15px; color:rgba(255,255,255,0.58); font-weight:300;">{h.day}</span>
             <span style="font-size:15px; color:white; font-weight:400;">{h.time}</span>
           </div>
         ))}
+      </div>
+      <div style="margin-top:36px; padding:24px; background:rgba(255,255,255,0.07); border-left:2px solid var(--mist);">
+        <div style="font-size:9px; letter-spacing:0.22em; text-transform:uppercase; color:var(--mist); margin-bottom:8px; font-weight:500;">New Patient?</div>
+        <p style="font-size:14px; color:rgba(255,255,255,0.65); margin:0; font-weight:300; line-height:1.7;">Please allow 90 minutes for your first visit. We take time to understand your full health history before any treatment.</p>
       </div>
     </div>
   </div>
 </section>
 
 <!-- APPOINTMENT FORM -->
-<section id="appointment" style="background:var(--cream); padding:112px 56px;" class="texture-bg">
-  <div style="max-width:740px; margin:0 auto;">
-    <div style="text-align:center; margin-bottom:64px;">
-      <div style="font-size:10px; letter-spacing:0.3em; text-transform:uppercase; color:var(--sage); margin-bottom:20px; font-weight:500;">Begin</div>
-      <h2 style="font-size:clamp(36px,4vw,60px); color:var(--ink); margin:0 0 24px;">Begin Your Journey</h2>
-      <div class="divider" style="margin:0 auto;"></div>
+<section id="appointment" style="background:var(--cream); padding:110px 80px; position:relative; overflow:hidden;">
+  <!-- Subtle botanical watercolor blob bg -->
+  <div style="position:absolute; top:0; right:0; width:400px; height:400px; background:radial-gradient(ellipse at top right, rgba(106,148,112,0.08) 0%, transparent 70%); pointer-events:none;"></div>
+  <div style="position:absolute; bottom:0; left:0; width:300px; height:300px; background:radial-gradient(ellipse at bottom left, rgba(139,107,74,0.06) 0%, transparent 70%); pointer-events:none;"></div>
+
+  <div style="max-width:720px; margin:0 auto; position:relative;">
+    <div style="text-align:center; margin-bottom:60px;">
+      <!-- Plant decoration -->
+      <div style="margin-bottom:20px; opacity:0.55;" class="leaf-sway">
+        <svg width="40" height="55" viewBox="0 0 40 55" fill="none" xmlns="http://www.w3.org/2000/svg" style="display:inline-block;">
+          <line x1="20" y1="52" x2="20" y2="2" stroke="var(--sage)" stroke-width="1.5" opacity="0.5"/>
+          <path d="M20,38 Q10,30 6,16 Q14,24 18,36 Z" fill="var(--sage)" opacity="0.55"/>
+          <path d="M20,22 Q30,14 34,2 Q26,10 22,22 Z" fill="var(--mist)" opacity="0.6"/>
+        </svg>
+      </div>
+      <div style="font-size:9px; letter-spacing:0.3em; text-transform:uppercase; color:var(--sage); margin-bottom:18px; font-weight:500;">Begin</div>
+      <h2 style="font-size:clamp(36px,4vw,56px); color:var(--ink); margin:0 0 20px; font-style:italic;">Begin Your Journey</h2>
+      <div style="width:36px; height:2px; background:var(--sage); margin:0 auto;"></div>
     </div>
-    <form style="display:flex; flex-direction:column; gap:32px;">
-      <div style="display:grid; grid-template-columns:1fr 1fr; gap:32px;">
+
+    <form style="display:flex; flex-direction:column; gap:28px;">
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:28px;">
         <div>
-          <label style="display:block; font-size:10px; letter-spacing:0.25em; text-transform:uppercase; color:var(--sage); margin-bottom:12px; font-weight:500;">First Name</label>
-          <input type="text" placeholder="Elaine" style="width:100%; padding:14px 0; background:transparent; border:none; border-bottom:1px solid var(--cream-3); color:var(--ink); font-size:16px; font-family:'Source Sans 3',sans-serif; font-weight:300;" />
+          <label style="display:block; font-size:9px; letter-spacing:0.26em; text-transform:uppercase; color:var(--sage); margin-bottom:12px; font-weight:500;">First Name</label>
+          <input type="text" placeholder="Elaine" style="width:100%; padding:14px 0; background:transparent; border:none; border-bottom:1px solid var(--cream-3); color:var(--ink); font-size:15px; font-family:'Inter',sans-serif; font-weight:300; transition:border-color 0.2s;" />
         </div>
         <div>
-          <label style="display:block; font-size:10px; letter-spacing:0.25em; text-transform:uppercase; color:var(--sage); margin-bottom:12px; font-weight:500;">Last Name</label>
-          <input type="text" placeholder="Morris" style="width:100%; padding:14px 0; background:transparent; border:none; border-bottom:1px solid var(--cream-3); color:var(--ink); font-size:16px; font-family:'Source Sans 3',sans-serif; font-weight:300;" />
+          <label style="display:block; font-size:9px; letter-spacing:0.26em; text-transform:uppercase; color:var(--sage); margin-bottom:12px; font-weight:500;">Last Name</label>
+          <input type="text" placeholder="Morris" style="width:100%; padding:14px 0; background:transparent; border:none; border-bottom:1px solid var(--cream-3); color:var(--ink); font-size:15px; font-family:'Inter',sans-serif; font-weight:300; transition:border-color 0.2s;" />
         </div>
       </div>
-      <div style="display:grid; grid-template-columns:1fr 1fr; gap:32px;">
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:28px;">
         <div>
-          <label style="display:block; font-size:10px; letter-spacing:0.25em; text-transform:uppercase; color:var(--sage); margin-bottom:12px; font-weight:500;">Phone</label>
-          <input type="tel" placeholder="(503) 555-0000" style="width:100%; padding:14px 0; background:transparent; border:none; border-bottom:1px solid var(--cream-3); color:var(--ink); font-size:16px; font-family:'Source Sans 3',sans-serif; font-weight:300;" />
+          <label style="display:block; font-size:9px; letter-spacing:0.26em; text-transform:uppercase; color:var(--sage); margin-bottom:12px; font-weight:500;">Phone</label>
+          <input type="tel" placeholder="(503) 555-0000" style="width:100%; padding:14px 0; background:transparent; border:none; border-bottom:1px solid var(--cream-3); color:var(--ink); font-size:15px; font-family:'Inter',sans-serif; font-weight:300; transition:border-color 0.2s;" />
         </div>
         <div>
-          <label style="display:block; font-size:10px; letter-spacing:0.25em; text-transform:uppercase; color:var(--sage); margin-bottom:12px; font-weight:500;">Email</label>
-          <input type="email" placeholder="elaine@email.com" style="width:100%; padding:14px 0; background:transparent; border:none; border-bottom:1px solid var(--cream-3); color:var(--ink); font-size:16px; font-family:'Source Sans 3',sans-serif; font-weight:300;" />
+          <label style="display:block; font-size:9px; letter-spacing:0.26em; text-transform:uppercase; color:var(--sage); margin-bottom:12px; font-weight:500;">Email</label>
+          <input type="email" placeholder="elaine@email.com" style="width:100%; padding:14px 0; background:transparent; border:none; border-bottom:1px solid var(--cream-3); color:var(--ink); font-size:15px; font-family:'Inter',sans-serif; font-weight:300; transition:border-color 0.2s;" />
         </div>
       </div>
       <div>
-        <label style="display:block; font-size:10px; letter-spacing:0.25em; text-transform:uppercase; color:var(--sage); margin-bottom:12px; font-weight:500;">Primary Interest</label>
-        <select style="width:100%; padding:14px 0; background:transparent; border:none; border-bottom:1px solid var(--cream-3); color:var(--ink); font-size:16px; font-family:'Source Sans 3',sans-serif; font-weight:300; cursor:pointer;">
+        <label style="display:block; font-size:9px; letter-spacing:0.26em; text-transform:uppercase; color:var(--sage); margin-bottom:12px; font-weight:500;">Primary Interest</label>
+        <select style="width:100%; padding:14px 0; background:transparent; border:none; border-bottom:1px solid var(--cream-3); color:var(--ink); font-size:15px; font-family:'Inter',sans-serif; font-weight:300; cursor:pointer; -webkit-appearance:none;">
           <option value="">Select a service</option>
           {practice.services.map(s => <option value={s.name}>{s.name}</option>)}
         </select>
       </div>
       <div>
-        <label style="display:block; font-size:10px; letter-spacing:0.25em; text-transform:uppercase; color:var(--sage); margin-bottom:12px; font-weight:500;">Your Health Story (optional)</label>
-        <textarea rows={4} placeholder="Share any health history, concerns, or what drew you to biological dentistry. We read every word." style="width:100%; padding:14px 0; background:transparent; border:none; border-bottom:1px solid var(--cream-3); color:var(--ink); font-size:16px; font-family:'Source Sans 3',sans-serif; font-weight:300; resize:none;"></textarea>
+        <label style="display:block; font-size:9px; letter-spacing:0.26em; text-transform:uppercase; color:var(--sage); margin-bottom:12px; font-weight:500;">Your Health Story (optional)</label>
+        <textarea rows={4} placeholder="Share any health history, concerns, or what drew you to biological dentistry. We read every word." style="width:100%; padding:14px 0; background:transparent; border:none; border-bottom:1px solid var(--cream-3); color:var(--ink); font-size:15px; font-family:'Inter',sans-serif; font-weight:300; resize:none; transition:border-color 0.2s;"></textarea>
       </div>
       <div style="display:flex; justify-content:center; margin-top:8px;">
-        <button type="submit" style="background:var(--sage-deep); color:white; font-size:12px; letter-spacing:0.2em; text-transform:uppercase; padding:20px 56px; border:none; cursor:pointer; font-family:'Source Sans 3',sans-serif; font-weight:500; transition:all 0.3s ease;"
-                onmouseover="this.style.background='var(--sage-dark)'" onmouseout="this.style.background='var(--sage-deep)'">
+        <button type="submit" class="cta-btn" style="background:var(--sage-3); color:white; font-size:11px; letter-spacing:0.2em; text-transform:uppercase; padding:20px 56px; border:none; cursor:pointer; font-family:'Inter',sans-serif; font-weight:500;">
           Send My Request
         </button>
       </div>
-      <p style="text-align:center; font-size:13px; color:var(--muted); margin:0;">We respond within one business day. Your information is never shared.</p>
+      <p style="text-align:center; font-size:12px; color:var(--muted); margin:0; font-weight:300;">We respond within one business day. Your information is never shared.</p>
     </form>
   </div>
 </section>
 
 <!-- FOOTER -->
-<footer style="background:var(--sage-deep); padding:48px 56px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px;">
+<footer style="background:var(--ink-2); padding:48px 80px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px;">
   <div>
-    <div style="font-family:'EB Garamond',serif; font-size:20px; color:white; letter-spacing:0.04em;">{practice.name}</div>
-    <div style="font-size:12px; color:rgba(255,255,255,0.5); margin-top:4px;">{practice.address}</div>
+    <div style="font-family:'Source Serif 4',serif; font-size:19px; color:white; letter-spacing:0.02em; font-style:italic;">{practice.name}</div>
+    <div style="font-size:12px; color:rgba(255,255,255,0.4); margin-top:5px; font-weight:300;">{practice.address}</div>
   </div>
-  <div style="font-size:12px; color:rgba(255,255,255,0.4);">© {new Date().getFullYear()} {practice.name}. All rights reserved.</div>
+  <!-- Tiny leaf -->
+  <div style="opacity:0.3;">
+    <svg width="24" height="32" viewBox="0 0 24 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <line x1="12" y1="30" x2="12" y2="2" stroke="white" stroke-width="1"/>
+      <path d="M12,22 Q6,16 4,6 Q10,12 11,20 Z" fill="white"/>
+      <path d="M12,14 Q18,8 20,0 Q14,6 13,14 Z" fill="white" opacity="0.6"/>
+    </svg>
+  </div>
+  <div style="font-size:12px; color:rgba(255,255,255,0.35); font-weight:300;">© {new Date().getFullYear()} {practice.name}. All rights reserved.</div>
 </footer>
 
 </body>

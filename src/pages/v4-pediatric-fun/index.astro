@@ -10,137 +10,189 @@ import { practice } from '../../data/v4';
   <meta name="description" content={practice.tagline} />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Lilita+One&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
     :root {
-      --coral: #FF5B5B;
-      --yellow: #FFD447;
-      --teal: #4ECDC4;
-      --mint: #A8E6CF;
-      --purple: #C77DFF;
-      --navy: #1A1D35;
-      --bg: #FFFBF4;
-      --dark: #2D2F3E;
+      --red: #E8281A;
+      --red-light: #FFF0EF;
+      --red-2: #FF4D3D;
+      --yellow: #FFD000;
+      --yellow-light: #FFFADD;
+      --blue: #1565C0;
+      --blue-2: #1E88E5;
+      --blue-light: #E8F0FE;
+      --dark: #1A1D2E;
+      --white: #FFFFFF;
+      --bg: #FFFCF5;
+      --border: #E0E0E0;
     }
     body { font-family: 'Nunito', sans-serif; background: var(--bg); color: var(--dark); margin: 0; }
-    .display { font-family: 'Fredoka One', cursive; }
+    .display { font-family: 'Lilita One', cursive; }
     a { text-decoration: none; }
+
     @keyframes wiggle {
-      0%, 100% { transform: rotate(-2deg); }
-      50% { transform: rotate(2deg); }
+      0%, 100% { transform: rotate(-3deg); }
+      50% { transform: rotate(3deg); }
     }
     @keyframes bounce {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-8px); }
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-12px); }
     }
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(24px); }
-      to { opacity: 1; transform: translateY(0); }
+    @keyframes pop {
+      0% { transform: scale(0.9); opacity: 0; }
+      70% { transform: scale(1.05); }
+      100% { transform: scale(1); opacity: 1; }
     }
-    .wiggle { animation: wiggle 1.5s ease-in-out infinite; }
-    .bounce { animation: bounce 2s ease-in-out infinite; }
-    .fade-1 { animation: fadeUp 0.7s ease both; }
-    .fade-2 { animation: fadeUp 0.7s 0.1s ease both; }
-    .fade-3 { animation: fadeUp 0.7s 0.2s ease both; }
-    .service-card { transition: all 0.25s ease; cursor: default; }
-    .service-card:hover { transform: translateY(-6px) scale(1.02); box-shadow: 0 16px 40px rgba(0,0,0,0.12); }
+    @keyframes fadeSlide {
+      from { opacity: 0; transform: translateX(-20px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+    @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+    .wiggle { animation: wiggle 1.8s ease-in-out infinite; }
+    .bounce { animation: bounce 2.2s ease-in-out infinite; }
+    .pop-1 { animation: pop 0.6s ease both; }
+    .pop-2 { animation: pop 0.6s 0.1s ease both; }
+    .pop-3 { animation: pop 0.6s 0.2s ease both; }
+    .pop-4 { animation: pop 0.6s 0.3s ease both; }
+
+    .svc-card { transition: transform 0.2s ease, box-shadow 0.2s ease; cursor: default; }
+    .svc-card:hover { transform: translateY(-6px) scale(1.02); }
+
+    .star-btn { transition: all 0.18s ease; }
+    .star-btn:hover { transform: translateY(-3px) scale(1.04); }
+
+    .team-card img { transition: transform 0.35s ease; }
     .team-card:hover img { transform: scale(1.06); }
-    .team-card img { transition: transform 0.4s ease; }
-    .star-btn:hover { transform: translateY(-3px) scale(1.05); }
-    .star-btn { transition: all 0.2s ease; }
-    .dots-bg {
-      background-image: radial-gradient(circle, rgba(255,91,91,0.08) 2px, transparent 2px);
-      background-size: 28px 28px;
-    }
-    input:focus, select:focus, textarea:focus { outline: none; border-color: var(--coral) !important; }
+
+    /* Diagonal section clip */
+    .diag-top { clip-path: polygon(0 5%, 100% 0%, 100% 100%, 0% 100%); margin-top: -40px; padding-top: 80px; }
+    .diag-both { clip-path: polygon(0 4%, 100% 0%, 100% 96%, 0% 100%); margin-top: -40px; padding-top: 80px; padding-bottom: 80px; }
+    .diag-bottom { clip-path: polygon(0 0%, 100% 0%, 100% 95%, 0% 100%); padding-bottom: 80px; }
   </style>
 </head>
 <body>
 
 <!-- NAV -->
-<nav style="background:white; border-bottom:3px solid var(--yellow); position:sticky; top:0; z-index:50; box-shadow:0 2px 16px rgba(0,0,0,0.06);">
+<header style="background:white; border-bottom:4px solid var(--yellow); position:sticky; top:0; z-index:100; box-shadow:0 3px 20px rgba(0,0,0,0.07);">
   <div style="max-width:1200px; margin:0 auto; padding:0 24px; height:72px; display:flex; align-items:center; justify-content:space-between;">
-    <div style="display:flex; align-items:center; gap:10px;">
-      <span style="font-size:28px;" class="wiggle">🦷</span>
+    <a href="/" style="display:flex; align-items:center; gap:12px;">
+      <span class="wiggle" style="display:inline-block; font-size:30px;">🦷</span>
       <div>
-        <div class="display" style="font-size:20px; color:var(--coral); line-height:1;">{practice.name}</div>
-        <div style="font-size:10px; font-weight:800; color:var(--teal); letter-spacing:0.08em; text-transform:uppercase;">{practice.ageRange}</div>
+        <div class="display" style="font-size:20px; color:var(--red); line-height:1;">{practice.name}</div>
+        <div style="font-size:10px; font-weight:900; color:var(--blue); letter-spacing:0.08em; text-transform:uppercase;">{practice.ageRange}</div>
       </div>
-    </div>
-    <div style="display:flex; gap:24px; align-items:center;">
-      {['Services','Team','Reviews','Contact'].map(l => (
-        <a href={`#${l.toLowerCase()}`} style="font-size:14px; font-weight:800; color:var(--dark); transition:color 0.2s;"
-           onmouseover="this.style.color='var(--coral)'" onmouseout="this.style.color='var(--dark)'">{l}</a>
+    </a>
+    <nav style="display:flex; gap:22px; align-items:center;">
+      {['#services','#team','#reviews','#contact'].map((href, i) => (
+        <a href={href} style={`font-size:14px; font-weight:900; color:var(--dark); transition:color 0.15s;`}
+           onmouseover="this.style.color='var(--red)'" onmouseout="this.style.color='var(--dark)'">
+          {['Services','Team','Reviews','Contact'][i]}
+        </a>
       ))}
-      <a href="#appointment" class="star-btn" style="background:var(--coral); color:white; font-weight:900; font-size:14px; padding:10px 24px; border-radius:9999px; box-shadow:0 4px 16px rgba(255,91,91,0.35);">
+      <a href="#appointment" class="star-btn" style="background:var(--red); color:white; font-weight:900; font-size:14px; padding:10px 22px; border-radius:9999px; box-shadow:0 4px 16px rgba(232,40,26,0.35);">
         Book Now! 🎉
       </a>
-    </div>
+    </nav>
   </div>
-</nav>
+</header>
 
 <!-- HERO -->
-<section style="background:linear-gradient(135deg, #FFF5F5 0%, #FFFBF4 40%, #F0FFFE 100%); padding:80px 24px 60px; position:relative; overflow:hidden;">
-  <!-- Decorative blobs -->
-  <div style="position:absolute; top:-80px; right:-80px; width:320px; height:320px; background:var(--yellow); border-radius:50%; opacity:0.18; pointer-events:none;"></div>
-  <div style="position:absolute; bottom:-60px; left:-60px; width:260px; height:260px; background:var(--teal); border-radius:50%; opacity:0.14; pointer-events:none;"></div>
-  <div style="max-width:1200px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:center;">
+<section style="background:linear-gradient(145deg, #FFF0EF 0%, #FFFCF5 45%, #E8F0FE 100%); padding:72px 24px 100px; position:relative; overflow:hidden;">
+  <!-- Decorative circles -->
+  <div style="position:absolute; top:-60px; right:-60px; width:280px; height:280px; background:var(--yellow); border-radius:50%; opacity:0.2; pointer-events:none;"></div>
+  <div style="position:absolute; bottom:-80px; left:-40px; width:240px; height:240px; background:var(--blue-2); border-radius:50%; opacity:0.12; pointer-events:none;"></div>
+  <div style="position:absolute; top:30%; left:-30px; width:160px; height:160px; background:var(--red-2); border-radius:50%; opacity:0.08; pointer-events:none;"></div>
+
+  <div style="max-width:1200px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:center; position:relative;">
+    <!-- Left: content -->
     <div>
-      <div class="fade-1" style="display:inline-flex; align-items:center; gap:8px; background:var(--yellow); color:var(--dark); font-weight:900; font-size:13px; padding:8px 20px; border-radius:9999px; margin-bottom:24px;">
-        ⭐ Austin's #1 Kids Dentist — 5 Stars on Google!
+      <div class="pop-1" style="display:inline-flex; align-items:center; gap:8px; background:var(--yellow); color:var(--dark); font-weight:900; font-size:13px; padding:8px 20px; border-radius:9999px; margin-bottom:24px; box-shadow:3px 3px 0 rgba(0,0,0,0.1);">
+        ⭐ Austin's #1 Kids Dentist — 5 Stars!
       </div>
-      <h1 class="fade-2 display" style="font-size:clamp(44px,6vw,80px); line-height:1.1; color:var(--dark); margin:0 0 24px; white-space:pre-line;">{practice.hero.headline}</h1>
-      <p class="fade-3" style="font-size:19px; line-height:1.7; color:#555; margin:0 0 36px; max-width:460px; font-weight:600;">{practice.hero.subheadline}</p>
-      <div class="fade-3" style="display:flex; gap:16px; flex-wrap:wrap; align-items:center;">
-        <a href="#appointment" class="star-btn" style="background:var(--coral); color:white; font-weight:900; font-size:18px; padding:18px 40px; border-radius:9999px; box-shadow:0 8px 28px rgba(255,91,91,0.35);">
+      <h1 class="pop-2 display" style="font-size:clamp(44px,6vw,80px); line-height:1.05; color:var(--dark); margin:0 0 20px; white-space:pre-line;">{practice.hero.headline}</h1>
+      <p class="pop-3" style="font-size:19px; line-height:1.72; color:#555; margin:0 0 32px; max-width:460px; font-weight:700;">{practice.hero.subheadline}</p>
+      <div class="pop-4" style="display:flex; gap:14px; flex-wrap:wrap; align-items:center; margin-bottom:44px;">
+        <a href="#appointment" class="star-btn" style="background:var(--red); color:white; font-weight:900; font-size:18px; padding:18px 38px; border-radius:9999px; box-shadow:0 6px 24px rgba(232,40,26,0.35), 0 3px 0 #A81D11;">
           {practice.hero.ctaText}
         </a>
-        <a href="tel:{practice.phone}" style="background:var(--teal); color:white; font-weight:900; font-size:15px; padding:18px 32px; border-radius:9999px; box-shadow:0 6px 20px rgba(78,205,196,0.3);">
+        <a href="tel:{practice.phone}" class="star-btn" style="background:var(--blue); color:white; font-weight:900; font-size:15px; padding:16px 28px; border-radius:9999px; box-shadow:0 5px 18px rgba(21,101,192,0.3), 0 3px 0 #0D47A1;">
           📞 Call Us!
         </a>
       </div>
-      <div style="display:flex; gap:32px; margin-top:48px; flex-wrap:wrap;">
+      <div style="display:flex; gap:28px; flex-wrap:wrap;">
         {[['5,000+','Happy Kids 😄'],['12 yrs','Spreading Smiles'],['4.9★','Google Rating']].map(([n,l]) => (
-          <div style="text-align:center;">
-            <div class="display" style="font-size:30px; color:var(--coral);">{n}</div>
-            <div style="font-size:12px; font-weight:800; color:#777; text-transform:uppercase; letter-spacing:0.06em;">{l}</div>
+          <div style="text-align:center; background:white; border-radius:16px; padding:14px 20px; box-shadow:4px 4px 0 var(--border);">
+            <div class="display" style="font-size:26px; color:var(--red);">{n}</div>
+            <div style="font-size:11px; font-weight:900; color:#888; text-transform:uppercase; letter-spacing:0.06em; margin-top:2px;">{l}</div>
           </div>
         ))}
       </div>
     </div>
+
+    <!-- Right: Cartoon tooth + photo -->
     <div style="position:relative; text-align:center;">
-      <div style="border-radius:32px; overflow:hidden; border:6px solid var(--yellow); box-shadow:12px 12px 0 var(--coral);">
-        <img src={practice.hero.image} alt="Kids at the dentist" style="width:100%; aspect-ratio:4/3; object-fit:cover; display:block;" />
+      <!-- Photo with funky border -->
+      <div style="border-radius:28px; overflow:hidden; border:5px solid var(--yellow); box-shadow:10px 10px 0 var(--red); position:relative;">
+        <img src={practice.hero.image} alt="Kids at Smile Squad" style="width:100%; aspect-ratio:4/3; object-fit:cover; display:block;" />
       </div>
-      <div class="bounce" style="position:absolute; top:-20px; right:20px; background:var(--teal); color:white; font-size:13px; font-weight:900; padding:12px 20px; border-radius:16px; border:3px solid white; box-shadow:4px 4px 0 rgba(0,0,0,0.1);">
+      <!-- Floating badge: No Fear -->
+      <div class="bounce" style="position:absolute; top:-18px; right:16px; background:var(--blue); color:white; font-size:13px; font-weight:900; padding:12px 18px; border-radius:18px; border:3px solid white; box-shadow:4px 4px 0 rgba(0,0,0,0.15);">
         No Fear Zone! 🦸
       </div>
-      <div style="position:absolute; bottom:-16px; left:20px; background:var(--purple); color:white; font-size:13px; font-weight:900; padding:12px 20px; border-radius:16px; border:3px solid white; box-shadow:4px 4px 0 rgba(0,0,0,0.1);">
+      <!-- Floating badge: Prizes -->
+      <div style="position:absolute; bottom:-18px; left:16px; background:var(--red); color:white; font-size:13px; font-weight:900; padding:12px 18px; border-radius:18px; border:3px solid white; box-shadow:4px 4px 0 rgba(0,0,0,0.15);">
         Prizes Every Visit! 🎁
+      </div>
+      <!-- SVG Cartoon tooth mascot -->
+      <div style="position:absolute; top:-32px; left:-32px; width:80px; height:80px;">
+        <svg viewBox="0 0 100 120" xmlns="http://www.w3.org/2000/svg">
+          <!-- Tooth body -->
+          <path d="M18,50 Q12,24 30,10 Q42,2 50,8 Q58,2 70,10 Q88,24 82,50 L78,98 Q76,112 66,112 Q58,112 50,100 Q42,112 34,112 Q24,112 22,98 Z"
+                fill="white" stroke="#1A1D2E" stroke-width="4"/>
+          <!-- Cape band -->
+          <rect x="24" y="40" width="52" height="18" rx="5" fill="#E8281A"/>
+          <text x="50" y="53" text-anchor="middle" font-size="11" fill="white" font-weight="900" font-family="Nunito, sans-serif">HERO</text>
+          <!-- Eyes -->
+          <circle cx="38" cy="28" r="7" fill="#1A1D2E"/>
+          <circle cx="62" cy="28" r="7" fill="#1A1D2E"/>
+          <circle cx="40" cy="25" r="3" fill="white"/>
+          <circle cx="64" cy="25" r="3" fill="white"/>
+          <!-- Smile -->
+          <path d="M34,68 Q50,82 66,68" fill="none" stroke="#1A1D2E" stroke-width="3" stroke-linecap="round"/>
+        </svg>
       </div>
     </div>
   </div>
 </section>
 
-<!-- SERVICES -->
-<section id="services" class="dots-bg" style="padding:80px 24px;">
+<!-- SERVICES — with diagonal top -->
+<section id="services" class="diag-top" style="background:white; padding-bottom:80px; padding-left:24px; padding-right:24px;">
   <div style="max-width:1200px; margin:0 auto;">
-    <div style="text-align:center; margin-bottom:56px;">
-      <div style="display:inline-block; background:var(--yellow); color:var(--dark); font-weight:900; font-size:13px; padding:6px 20px; border-radius:9999px; text-transform:uppercase; letter-spacing:0.06em; margin-bottom:16px;">What We Do</div>
-      <h2 class="display" style="font-size:clamp(36px,4.5vw,60px); color:var(--dark); margin:0 0 12px;">Super Services 🦸‍♀️</h2>
-      <p style="font-size:17px; color:#666; max-width:480px; margin:0 auto; font-weight:600;">Everything your little hero needs for a healthy, happy smile.</p>
+    <div style="text-align:center; margin-bottom:48px;">
+      <div class="display" style="font-size:clamp(36px,5vw,60px); color:var(--dark); margin:0 0 12px;">Super Services 🦸‍♀️</div>
+      <p style="font-size:17px; color:#666; max-width:480px; margin:0 auto; font-weight:700;">Everything your little hero needs for a healthy, happy smile!</p>
     </div>
-    <div style="display:grid; grid-template-columns:repeat(auto-fill,minmax(250px,1fr)); gap:20px;">
+    <div style="display:grid; grid-template-columns:repeat(4, 1fr); gap:16px;">
       {practice.services.map((s, i) => {
-        const colors = ['var(--coral)','var(--teal)','var(--yellow)','var(--purple)','var(--mint)','var(--coral)','var(--teal)','var(--yellow)'];
-        const bgs = ['#FFF0F0','#F0FFFE','#FFFBEE','#F8F0FF','#F0FFF8','#FFF0F0','#F0FFFE','#FFFBEE'];
+        const palettes = [
+          { bg:'#FFF0EF', border:'var(--red)', shadow:'#F0C0BC' },
+          { bg:'#FFFADD', border:'var(--yellow)', shadow:'#F0E080' },
+          { bg:'var(--blue-light)', border:'var(--blue)', shadow:'#90CAF9' },
+          { bg:'#F3E5F5', border:'#9C27B0', shadow:'#CE93D8' },
+          { bg:'#E8F5E9', border:'#2E7D32', shadow:'#A5D6A7' },
+          { bg:'#FFF0EF', border:'var(--red)', shadow:'#F0C0BC' },
+          { bg:'#E8F0FE', border:'var(--blue)', shadow:'#90CAF9' },
+          { bg:'#FFFADD', border:'var(--yellow)', shadow:'#F0E080' },
+        ];
+        const p = palettes[i % palettes.length];
         return (
-          <div class="service-card" style={`background:${bgs[i]}; border-radius:20px; padding:28px; border:2px solid ${colors[i]}; box-shadow:4px 4px 0 ${colors[i]};`}>
-            <div style="font-size:40px; margin-bottom:12px;">{s.icon}</div>
-            <h3 class="display" style={`font-size:20px; color:${colors[i]}; margin:0 0 8px;`}>{s.name}</h3>
-            <p style="font-size:14px; color:#555; line-height:1.65; margin:0; font-weight:600;">{s.desc}</p>
+          <div class="svc-card" style={`background:${p.bg}; border-radius:18px; padding:24px 20px; border:2px solid ${p.border}; box-shadow:4px 4px 0 ${p.shadow};`}>
+            <div style="font-size:36px; margin-bottom:10px;">{s.icon}</div>
+            <h3 class="display" style={`font-size:17px; color:${p.border}; margin:0 0 7px;`}>{s.name}</h3>
+            <p style="font-size:13px; color:#555; line-height:1.65; margin:0; font-weight:600;">{s.desc}</p>
           </div>
         );
       })}
@@ -149,20 +201,21 @@ import { practice } from '../../data/v4';
 </section>
 
 <!-- REWARDS PROGRAM -->
-<section style="background:var(--navy); padding:72px 24px; position:relative; overflow:hidden;">
-  <div style="position:absolute; top:-40px; left:50%; transform:translateX(-50%); font-size:200px; opacity:0.04; pointer-events:none; line-height:1;">⭐</div>
-  <div style="max-width:1000px; margin:0 auto; text-align:center;">
-    <div style="display:inline-block; background:var(--yellow); color:var(--dark); font-weight:900; font-size:13px; padding:6px 20px; border-radius:9999px; text-transform:uppercase; letter-spacing:0.06em; margin-bottom:16px;">Earn Rewards!</div>
-    <h2 class="display" style="font-size:clamp(36px,4.5vw,56px); color:white; margin:0 0 12px;">Smile Squad Rewards 🏆</h2>
-    <p style="font-size:17px; color:rgba(255,255,255,0.7); max-width:480px; margin:0 auto 48px; font-weight:600;">Earn coins for every visit, then redeem them for awesome prizes!</p>
-    <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:24px;">
+<section class="diag-both" style="background:var(--dark); padding-left:24px; padding-right:24px; position:relative; overflow:hidden;">
+  <div style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-size:360px; opacity:0.03; pointer-events:none; user-select:none; line-height:1;">🏆</div>
+  <div style="max-width:1000px; margin:0 auto; text-align:center; position:relative;">
+    <div class="display" style="font-size:clamp(36px,4.5vw,56px); color:white; margin:0 0 10px;">Smile Squad Rewards 🏆</div>
+    <p style="font-size:17px; color:rgba(255,255,255,0.65); max-width:480px; margin:0 auto 48px; font-weight:700;">Earn coins for every visit — then cash in for EPIC prizes!</p>
+    <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:20px;">
       {practice.rewards.map((r, i) => {
-        const colors = ['var(--teal)','var(--coral)','var(--yellow)'];
+        const colors = ['var(--blue-2)','var(--red-2)','var(--yellow)'];
+        const textCol = i === 2 ? 'var(--dark)' : 'white';
         return (
-          <div style={`background:rgba(255,255,255,0.06); border:2px solid ${colors[i]}; border-radius:20px; padding:32px; position:relative;`}>
-            <div class="display" style={`font-size:40px; color:${colors[i]}; margin-bottom:8px;`}>{r.tier}</div>
-            <div style={`font-family:'Fredoka One',cursive; font-size:28px; color:${colors[i]}; margin-bottom:16px;`}>{r.coins} coins</div>
-            <p style="font-size:15px; color:rgba(255,255,255,0.8); margin:0; font-weight:700;">{r.reward}</p>
+          <div style={`background:${colors[i]}; border-radius:20px; padding:32px 24px; border:3px solid rgba(255,255,255,0.2); position:relative; overflow:hidden;`}>
+            <div style="position:absolute; top:-20px; right:-20px; font-size:80px; opacity:0.1;">{['🦸','🛡️','👑'][i]}</div>
+            <div class="display" style={`font-size:36px; color:${textCol}; margin-bottom:6px;`}>{r.tier}</div>
+            <div class="display" style={`font-size:28px; color:${textCol}; margin-bottom:16px; opacity:0.85;`}>{r.coins} coins</div>
+            <p style={`font-size:15px; color:${textCol}; margin:0; font-weight:900; opacity:0.9;`}>{r.reward}</p>
           </div>
         );
       })}
@@ -171,13 +224,13 @@ import { practice } from '../../data/v4';
 </section>
 
 <!-- INSURANCE -->
-<section style="background:white; padding:72px 24px;">
+<section style="background:white; padding:80px 24px;">
   <div style="max-width:1000px; margin:0 auto; text-align:center;">
-    <h2 class="display" style="font-size:clamp(28px,3.5vw,48px); color:var(--dark); margin:0 0 12px;">We Take Your Insurance! 💳</h2>
-    <p style="font-size:17px; color:#666; max-width:480px; margin:0 auto 40px; font-weight:600;">Most kids' dental care is 100% covered. We'll help you figure it out!</p>
+    <div class="display" style="font-size:clamp(28px,4vw,48px); color:var(--dark); margin:0 0 12px;">We Take Your Insurance! 💳</div>
+    <p style="font-size:17px; color:#666; max-width:480px; margin:0 auto 36px; font-weight:700;">Most kids' dental care is 100% covered. We'll help you figure it all out!</p>
     <div style="display:flex; flex-wrap:wrap; gap:12px; justify-content:center;">
       {practice.insurance.map(ins => (
-        <span style="background:var(--bg); border:2px solid var(--teal); color:var(--dark); font-weight:800; font-size:14px; padding:10px 22px; border-radius:9999px;">
+        <span style="background:var(--blue-light); border:2px solid var(--blue); color:var(--blue); font-weight:900; font-size:13px; padding:9px 20px; border-radius:9999px;">
           ✓ {ins}
         </span>
       ))}
@@ -186,24 +239,27 @@ import { practice } from '../../data/v4';
 </section>
 
 <!-- TEAM -->
-<section id="team" style="background:#F7FFFE; padding:80px 24px;">
+<section id="team" class="diag-top" style="background:var(--yellow-light); padding-bottom:80px; padding-left:24px; padding-right:24px;">
   <div style="max-width:1200px; margin:0 auto;">
-    <div style="text-align:center; margin-bottom:56px;">
-      <h2 class="display" style="font-size:clamp(36px,4.5vw,60px); color:var(--dark); margin:0 0 12px;">Meet the Squad! 👋</h2>
-      <p style="font-size:17px; color:#666; max-width:480px; margin:0 auto; font-weight:600;">The amazing humans who make your kid's smile shine.</p>
+    <div style="text-align:center; margin-bottom:48px;">
+      <div class="display" style="font-size:clamp(36px,4.5vw,56px); color:var(--dark); margin:0 0 12px;">Meet the Squad! 👋</div>
+      <p style="font-size:17px; color:#666; max-width:480px; margin:0 auto; font-weight:700;">The amazing humans who make your kid's smile shine.</p>
     </div>
-    <div style="display:grid; grid-template-columns:repeat(auto-fill,minmax(250px,1fr)); gap:28px;">
+    <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:20px;">
       {practice.team.map((m, i) => {
-        const borders = ['var(--coral)','var(--teal)','var(--yellow)','var(--purple)'];
+        const borders = ['var(--red)','var(--blue)','var(--yellow)','#9C27B0'];
+        const shadows = ['#F0C0BC','#90CAF9','#F0E080','#CE93D8'];
+        const tagBg = borders[i];
+        const tagText = i === 2 ? 'var(--dark)' : 'white';
         return (
-          <div class="team-card" style="background:white; border-radius:24px; overflow:hidden; border:3px solid var(--teal); box-shadow:6px 6px 0 var(--mint);">
-            <div style="overflow:hidden; height:240px;">
+          <div class="team-card" style={`background:white; border-radius:22px; overflow:hidden; border:3px solid ${borders[i]}; box-shadow:6px 6px 0 ${shadows[i]};`}>
+            <div style="overflow:hidden; height:220px;">
               <img src={m.image} alt={m.name} style="width:100%; height:100%; object-fit:cover; display:block;" />
             </div>
-            <div style="padding:24px;">
-              <div style={`display:inline-block; background:${borders[i]}; color:${i === 2 ? 'var(--dark)' : 'white'}; font-size:11px; font-weight:900; padding:4px 14px; border-radius:9999px; text-transform:uppercase; letter-spacing:0.06em; margin-bottom:10px;`}>{m.role}</div>
-              <h3 class="display" style="font-size:20px; color:var(--dark); margin:0 0 8px;">{m.name}</h3>
-              <p style="font-size:13px; color:#666; line-height:1.65; margin:0; font-weight:600;">{m.bio}</p>
+            <div style="padding:20px;">
+              <div style={`display:inline-block; background:${tagBg}; color:${tagText}; font-size:10px; font-weight:900; padding:4px 12px; border-radius:9999px; text-transform:uppercase; letter-spacing:0.06em; margin-bottom:8px;`}>{m.role}</div>
+              <h3 class="display" style="font-size:18px; color:var(--dark); margin:0 0 7px;">{m.name}</h3>
+              <p style="font-size:12px; color:#666; line-height:1.65; margin:0; font-weight:600;">{m.bio}</p>
             </div>
           </div>
         );
@@ -214,22 +270,22 @@ import { practice } from '../../data/v4';
 
 <!-- BEFORE / AFTER -->
 <section style="background:white; padding:80px 24px;">
-  <div style="max-width:1000px; margin:0 auto;">
-    <div style="text-align:center; margin-bottom:56px;">
-      <h2 class="display" style="font-size:clamp(32px,4vw,52px); color:var(--dark); margin:0 0 12px;">Amazing Transformations! ✨</h2>
+  <div style="max-width:960px; margin:0 auto;">
+    <div style="text-align:center; margin-bottom:48px;">
+      <div class="display" style="font-size:clamp(30px,4vw,48px); color:var(--dark); margin:0 0 12px;">Amazing Transformations! ✨</div>
     </div>
-    <div style="display:grid; grid-template-columns:repeat(auto-fill,minmax(460px,1fr)); gap:40px;">
+    <div style="display:grid; grid-template-columns:repeat(2,1fr); gap:36px;">
       {practice.beforeAfter.map(ba => (
         <div>
-          <h3 class="display" style="font-size:22px; color:var(--coral); margin:0 0 16px; text-align:center;">{ba.label}</h3>
-          <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px;">
+          <div class="display" style="font-size:20px; color:var(--red); margin:0 0 14px; text-align:center;">{ba.label}</div>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:6px;">
             <div>
-              <div style="background:var(--dark); color:white; font-size:12px; font-weight:900; padding:8px 12px; border-radius:10px 10px 0 0; text-align:center; text-transform:uppercase;">Before 😬</div>
-              <img src={ba.before} alt="Before" style="width:100%; height:200px; object-fit:cover; border-radius:0 0 10px 10px; display:block;" />
+              <div style="background:var(--dark); color:white; font-size:11px; font-weight:900; padding:8px 12px; border-radius:10px 10px 0 0; text-align:center; text-transform:uppercase; letter-spacing:0.06em;">Before 😬</div>
+              <img src={ba.before} alt="Before" style="width:100%; height:190px; object-fit:cover; border-radius:0 0 10px 10px; display:block;" />
             </div>
             <div>
-              <div style="background:var(--coral); color:white; font-size:12px; font-weight:900; padding:8px 12px; border-radius:10px 10px 0 0; text-align:center; text-transform:uppercase;">After 😁</div>
-              <img src={ba.after} alt="After" style="width:100%; height:200px; object-fit:cover; border-radius:0 0 10px 10px; display:block;" />
+              <div style="background:var(--red); color:white; font-size:11px; font-weight:900; padding:8px 12px; border-radius:10px 10px 0 0; text-align:center; text-transform:uppercase; letter-spacing:0.06em;">After 😁</div>
+              <img src={ba.after} alt="After" style="width:100%; height:190px; object-fit:cover; border-radius:0 0 10px 10px; display:block;" />
             </div>
           </div>
         </div>
@@ -238,22 +294,41 @@ import { practice } from '../../data/v4';
   </div>
 </section>
 
-<!-- REVIEWS -->
-<section id="reviews" style="background:var(--bg); padding:80px 24px;" class="dots-bg">
-  <div style="max-width:1200px; margin:0 auto;">
+<!-- REVIEWS — COMIC BOOK SPEECH BUBBLES -->
+<section id="reviews" class="diag-top" style="background:var(--red-light); padding-bottom:80px; padding-left:24px; padding-right:24px; position:relative; overflow:hidden;">
+  <!-- Comic halftone dots bg -->
+  <div style="position:absolute; inset:0; background-image:radial-gradient(circle, rgba(232,40,26,0.08) 2px, transparent 2px); background-size:24px 24px; pointer-events:none;"></div>
+
+  <div style="max-width:1200px; margin:0 auto; position:relative;">
     <div style="text-align:center; margin-bottom:56px;">
-      <h2 class="display" style="font-size:clamp(32px,4.5vw,56px); color:var(--dark); margin:0 0 12px;">Parents Love Us! 💕</h2>
+      <div class="display" style="font-size:clamp(32px,4.5vw,52px); color:var(--dark); margin:0 0 8px;">Parents Love Us! 💕</div>
+      <p style="font-size:16px; color:#666; font-weight:700;">Real stories from real families</p>
     </div>
-    <div style="display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:24px;">
+    <div style="display:grid; grid-template-columns:repeat(2,1fr); gap:48px;">
       {practice.reviews.map((r, i) => {
-        const colors = ['var(--coral)','var(--teal)','var(--yellow)','var(--purple)'];
+        const tailSide = i % 2 === 0 ? 'left' : 'right';
+        const colors = ['var(--white)','var(--yellow-light)','var(--blue-light)','#F3E5F5'];
+        const borders = ['var(--dark)','var(--dark)','var(--dark)','var(--dark)'];
         return (
-          <div style={`background:white; border-radius:20px; padding:28px; border:3px solid ${colors[i]}; box-shadow:4px 4px 0 ${colors[i]};`}>
-            <div style="font-size:20px; margin-bottom:12px;">{"⭐".repeat(r.stars)}</div>
-            <p style="font-size:15px; color:#444; line-height:1.75; margin:0 0 20px; font-weight:600;">"{r.text}"</p>
-            <div style="display:flex; justify-content:space-between; align-items:center;">
-              <span style="font-weight:900; color:var(--dark); font-size:14px;">{r.name}</span>
-              <span style="font-size:12px; color:#999; font-weight:600;">{r.date}</span>
+          <div>
+            <!-- Speech bubble -->
+            <div style={`background:${colors[i]}; border:3px solid ${borders[i]}; border-radius:18px; padding:28px; box-shadow:4px 4px 0 var(--dark); position:relative;`}>
+              <div style="font-size:18px; margin-bottom:12px;">{'⭐'.repeat(r.stars)}</div>
+              <p style="font-size:15px; color:var(--dark); line-height:1.75; margin:0; font-weight:700;">"{r.text}"</p>
+              <!-- Bubble tail pointing down-left -->
+              <div style={`position:absolute; bottom:-20px; ${tailSide}:28px; width:0; height:0; border-left:18px solid transparent; border-right:0px solid transparent; border-top:20px solid ${colors[i]};`}></div>
+              <!-- Tail border -->
+              <div style={`position:absolute; bottom:-26px; ${tailSide}:25px; width:0; height:0; border-left:21px solid transparent; border-right:0px solid transparent; border-top:24px solid ${borders[i]}; z-index:-1;`}></div>
+            </div>
+            <!-- Attribution below bubble -->
+            <div style={`display:flex; align-items:center; gap:10px; margin-top:30px; ${tailSide === 'right' ? 'justify-content:flex-end; flex-direction:row-reverse;' : ''}`}>
+              <div style={`width:44px; height:44px; border-radius:9999px; background:${['var(--red)','var(--yellow)','var(--blue)','#9C27B0'][i]}; display:flex; align-items:center; justify-content:center; color:${i === 1 ? 'var(--dark)' : 'white'}; font-size:18px; font-weight:900; border:3px solid var(--dark); box-shadow:2px 2px 0 var(--dark); flex-shrink:0;`}>
+                {r.name[0]}
+              </div>
+              <div>
+                <div style="font-size:14px; font-weight:900; color:var(--dark);">{r.name}</div>
+                <div style="font-size:11px; color:#888; font-weight:700;">{r.date}</div>
+              </div>
             </div>
           </div>
         );
@@ -263,19 +338,20 @@ import { practice } from '../../data/v4';
 </section>
 
 <!-- OFFICE PHOTOS -->
-<section style="background:white; padding:72px 24px;">
+<section style="background:white; padding:80px 24px;">
   <div style="max-width:1200px; margin:0 auto;">
-    <div style="text-align:center; margin-bottom:48px;">
-      <h2 class="display" style="font-size:clamp(28px,3.5vw,48px); color:var(--dark); margin:0;">Our Fun Office! 🎨</h2>
+    <div style="text-align:center; margin-bottom:40px;">
+      <div class="display" style="font-size:clamp(28px,3.5vw,44px); color:var(--dark); margin:0;">Our Fun Office! 🎨</div>
     </div>
     <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:16px;">
       {practice.officePhotos.map((p, i) => {
-        const borders = ['var(--coral)','var(--teal)','var(--yellow)'];
+        const borders = ['var(--red)','var(--blue)','var(--yellow)'];
+        const shadows = ['#F0C0BC','#90CAF9','#F0E080'];
         return (
-          <div style={`border-radius:20px; overflow:hidden; border:4px solid ${borders[i]}; box-shadow:6px 6px 0 ${borders[i]};`}>
-            <img src={p.url} alt={p.caption} style="width:100%; height:220px; object-fit:cover; display:block;" />
-            <div style="padding:14px; background:white;">
-              <p style="margin:0; font-weight:800; font-size:14px; color:var(--dark);">{p.caption}</p>
+          <div style={`border-radius:20px; overflow:hidden; border:4px solid ${borders[i]}; box-shadow:6px 6px 0 ${shadows[i]};`}>
+            <img src={p.url} alt={p.caption} style="width:100%; height:210px; object-fit:cover; display:block;" />
+            <div style="padding:12px 16px; background:white;">
+              <p style="margin:0; font-weight:900; font-size:13px; color:var(--dark);">{p.caption}</p>
             </div>
           </div>
         );
@@ -285,26 +361,26 @@ import { practice } from '../../data/v4';
 </section>
 
 <!-- LOCATION / HOURS -->
-<section id="contact" style="background:var(--teal); padding:80px 24px;">
-  <div style="max-width:1100px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:start;">
+<section id="contact" class="diag-top" style="background:var(--blue); padding-bottom:80px; padding-left:24px; padding-right:24px;">
+  <div style="max-width:1100px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:56px; align-items:start;">
     <div>
-      <h2 class="display" style="font-size:clamp(32px,3.5vw,48px); color:white; margin:0 0 32px;">Come Visit Us! 🗺️</h2>
-      <div style="display:flex; flex-direction:column; gap:20px;">
+      <div class="display" style="font-size:clamp(30px,3.5vw,44px); color:white; margin:0 0 28px;">Come Visit Us! 🗺️</div>
+      <div style="display:flex; flex-direction:column; gap:14px;">
         {[['📍',practice.address],['📞',practice.phone],['✉️',practice.email]].map(([icon, val]) => (
-          <div style="background:rgba(255,255,255,0.2); border-radius:14px; padding:16px 20px; display:flex; gap:14px; align-items:center; backdrop-filter:blur(4px);">
-            <span style="font-size:22px;">{icon}</span>
-            <span style="font-size:16px; color:white; font-weight:700;">{val}</span>
+          <div style="background:rgba(255,255,255,0.18); border-radius:14px; padding:14px 18px; display:flex; gap:12px; align-items:center; backdrop-filter:blur(4px); border:1px solid rgba(255,255,255,0.25);">
+            <span style="font-size:20px; flex-shrink:0;">{icon}</span>
+            <span style="font-size:15px; color:white; font-weight:800;">{val}</span>
           </div>
         ))}
       </div>
     </div>
     <div>
-      <h2 class="display" style="font-size:clamp(32px,3.5vw,48px); color:white; margin:0 0 32px;">Office Hours ⏰</h2>
-      <div style="display:flex; flex-direction:column; gap:12px;">
+      <div class="display" style="font-size:clamp(30px,3.5vw,44px); color:white; margin:0 0 28px;">Office Hours ⏰</div>
+      <div style="display:flex; flex-direction:column; gap:10px;">
         {practice.hours.map(h => (
-          <div style="background:rgba(255,255,255,0.18); border-radius:12px; padding:14px 20px; display:flex; justify-content:space-between; backdrop-filter:blur(4px);">
-            <span style="color:rgba(255,255,255,0.9); font-weight:700; font-size:15px;">{h.day}</span>
-            <span style="color:white; font-weight:900; font-size:15px;">{h.time}</span>
+          <div style="background:rgba(255,255,255,0.15); border-radius:12px; padding:13px 18px; display:flex; justify-content:space-between; border:1px solid rgba(255,255,255,0.2);">
+            <span style="color:rgba(255,255,255,0.85); font-weight:800; font-size:14px;">{h.day}</span>
+            <span style="color:var(--yellow); font-weight:900; font-size:14px;">{h.time}</span>
           </div>
         ))}
       </div>
@@ -315,63 +391,63 @@ import { practice } from '../../data/v4';
 <!-- APPOINTMENT FORM -->
 <section id="appointment" style="background:var(--bg); padding:80px 24px;">
   <div style="max-width:680px; margin:0 auto;">
-    <div style="text-align:center; margin-bottom:48px;">
-      <h2 class="display" style="font-size:clamp(32px,4vw,56px); color:var(--dark); margin:0 0 12px;">Join the Squad! 🦷</h2>
-      <p style="font-size:17px; color:#666; font-weight:600;">We'll call to confirm within one business day — usually sooner!</p>
+    <div style="text-align:center; margin-bottom:44px;">
+      <div class="display" style="font-size:clamp(32px,4vw,52px); color:var(--dark); margin:0 0 10px;">Join the Squad! 🦷</div>
+      <p style="font-size:17px; color:#666; font-weight:700;">We'll call to confirm within one business day — usually sooner!</p>
     </div>
-    <form style="background:white; border-radius:28px; padding:48px; border:3px solid var(--coral); box-shadow:8px 8px 0 var(--yellow); display:flex; flex-direction:column; gap:20px;">
-      <div style="display:grid; grid-template-columns:1fr 1fr; gap:20px;">
+    <form style="background:white; border-radius:28px; padding:44px; border:3px solid var(--red); box-shadow:8px 8px 0 var(--yellow); display:flex; flex-direction:column; gap:18px;">
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:18px;">
         <div>
-          <label style="display:block; font-weight:900; font-size:13px; color:var(--dark); margin-bottom:8px; text-transform:uppercase; letter-spacing:0.06em;">Kid's First Name</label>
-          <input type="text" placeholder="Emma" style="width:100%; padding:14px 16px; border:2px solid #EEE; border-radius:12px; font-size:16px; font-family:'Nunito',sans-serif; font-weight:600;" />
+          <label style="display:block; font-weight:900; font-size:12px; color:var(--dark); margin-bottom:7px; text-transform:uppercase; letter-spacing:0.06em;">Kid's First Name</label>
+          <input type="text" placeholder="Emma" style="width:100%; padding:13px 15px; border:2px solid var(--border); border-radius:12px; font-size:15px; font-family:'Nunito',sans-serif; font-weight:700;" />
         </div>
         <div>
-          <label style="display:block; font-weight:900; font-size:13px; color:var(--dark); margin-bottom:8px; text-transform:uppercase; letter-spacing:0.06em;">Last Name</label>
-          <input type="text" placeholder="Johnson" style="width:100%; padding:14px 16px; border:2px solid #EEE; border-radius:12px; font-size:16px; font-family:'Nunito',sans-serif; font-weight:600;" />
+          <label style="display:block; font-weight:900; font-size:12px; color:var(--dark); margin-bottom:7px; text-transform:uppercase; letter-spacing:0.06em;">Last Name</label>
+          <input type="text" placeholder="Johnson" style="width:100%; padding:13px 15px; border:2px solid var(--border); border-radius:12px; font-size:15px; font-family:'Nunito',sans-serif; font-weight:700;" />
         </div>
       </div>
       <div>
-        <label style="display:block; font-weight:900; font-size:13px; color:var(--dark); margin-bottom:8px; text-transform:uppercase; letter-spacing:0.06em;">Parent/Guardian Phone</label>
-        <input type="tel" placeholder="(512) 555-0000" style="width:100%; padding:14px 16px; border:2px solid #EEE; border-radius:12px; font-size:16px; font-family:'Nunito',sans-serif; font-weight:600;" />
+        <label style="display:block; font-weight:900; font-size:12px; color:var(--dark); margin-bottom:7px; text-transform:uppercase; letter-spacing:0.06em;">Parent/Guardian Phone</label>
+        <input type="tel" placeholder="(512) 555-0000" style="width:100%; padding:13px 15px; border:2px solid var(--border); border-radius:12px; font-size:15px; font-family:'Nunito',sans-serif; font-weight:700;" />
       </div>
       <div>
-        <label style="display:block; font-weight:900; font-size:13px; color:var(--dark); margin-bottom:8px; text-transform:uppercase; letter-spacing:0.06em;">Email</label>
-        <input type="email" placeholder="parent@email.com" style="width:100%; padding:14px 16px; border:2px solid #EEE; border-radius:12px; font-size:16px; font-family:'Nunito',sans-serif; font-weight:600;" />
+        <label style="display:block; font-weight:900; font-size:12px; color:var(--dark); margin-bottom:7px; text-transform:uppercase; letter-spacing:0.06em;">Email</label>
+        <input type="email" placeholder="parent@email.com" style="width:100%; padding:13px 15px; border:2px solid var(--border); border-radius:12px; font-size:15px; font-family:'Nunito',sans-serif; font-weight:700;" />
       </div>
-      <div style="display:grid; grid-template-columns:1fr 1fr; gap:20px;">
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:18px;">
         <div>
-          <label style="display:block; font-weight:900; font-size:13px; color:var(--dark); margin-bottom:8px; text-transform:uppercase; letter-spacing:0.06em;">Kid's Age</label>
-          <select style="width:100%; padding:14px 16px; border:2px solid #EEE; border-radius:12px; font-size:16px; font-family:'Nunito',sans-serif; font-weight:600; background:white; cursor:pointer;">
+          <label style="display:block; font-weight:900; font-size:12px; color:var(--dark); margin-bottom:7px; text-transform:uppercase; letter-spacing:0.06em;">Kid's Age</label>
+          <select style="width:100%; padding:13px 15px; border:2px solid var(--border); border-radius:12px; font-size:15px; font-family:'Nunito',sans-serif; font-weight:700; background:white; cursor:pointer;">
             <option value="">Select age</option>
             {[...Array(17)].map((_, i) => <option value={i+1}>{i+1} year{i > 0 ? 's' : ''} old</option>)}
           </select>
         </div>
         <div>
-          <label style="display:block; font-weight:900; font-size:13px; color:var(--dark); margin-bottom:8px; text-transform:uppercase; letter-spacing:0.06em;">Service Needed</label>
-          <select style="width:100%; padding:14px 16px; border:2px solid #EEE; border-radius:12px; font-size:16px; font-family:'Nunito',sans-serif; font-weight:600; background:white; cursor:pointer;">
-            <option value="">Select a service</option>
+          <label style="display:block; font-weight:900; font-size:12px; color:var(--dark); margin-bottom:7px; text-transform:uppercase; letter-spacing:0.06em;">Service Needed</label>
+          <select style="width:100%; padding:13px 15px; border:2px solid var(--border); border-radius:12px; font-size:15px; font-family:'Nunito',sans-serif; font-weight:700; background:white; cursor:pointer;">
+            <option value="">Select service</option>
             {practice.services.map(s => <option value={s.name}>{s.name}</option>)}
           </select>
         </div>
       </div>
       <div>
-        <label style="display:block; font-weight:900; font-size:13px; color:var(--dark); margin-bottom:8px; text-transform:uppercase; letter-spacing:0.06em;">Anything Else? (optional)</label>
-        <textarea rows={3} placeholder="Any worries, allergies, or questions — we love to hear from you!" style="width:100%; padding:14px 16px; border:2px solid #EEE; border-radius:12px; font-size:16px; font-family:'Nunito',sans-serif; font-weight:600; resize:vertical;"></textarea>
+        <label style="display:block; font-weight:900; font-size:12px; color:var(--dark); margin-bottom:7px; text-transform:uppercase; letter-spacing:0.06em;">Anything Else? (optional)</label>
+        <textarea rows={3} placeholder="Any worries, allergies, or questions — we love to hear from you!" style="width:100%; padding:13px 15px; border:2px solid var(--border); border-radius:12px; font-size:15px; font-family:'Nunito',sans-serif; font-weight:700; resize:vertical;"></textarea>
       </div>
-      <button type="submit" class="star-btn" style="background:var(--coral); color:white; font-weight:900; font-size:18px; padding:18px 32px; border:none; border-radius:9999px; cursor:pointer; font-family:'Nunito',sans-serif; box-shadow:0 8px 24px rgba(255,91,91,0.35);">
+      <button type="submit" class="star-btn" style="background:var(--red); color:white; font-weight:900; font-size:18px; padding:18px 28px; border:none; border-radius:9999px; cursor:pointer; font-family:'Nunito',sans-serif; box-shadow:0 6px 20px rgba(232,40,26,0.35), 0 3px 0 #A81D11;">
         Let's Book It! 🎉
       </button>
-      <p style="text-align:center; font-size:13px; color:#999; margin:0; font-weight:700;">We'll confirm within one business day. Zero spam, ever!</p>
+      <p style="text-align:center; font-size:12px; color:#999; margin:0; font-weight:800;">We'll confirm within one business day. Zero spam, ever!</p>
     </form>
   </div>
 </section>
 
 <!-- FOOTER -->
-<footer style="background:var(--navy); padding:40px 24px; text-align:center;">
-  <div style="font-size:32px; margin-bottom:10px;">🦷⭐🦷</div>
-  <div class="display" style="font-size:22px; color:white; margin-bottom:8px;">{practice.name}</div>
-  <p style="color:rgba(255,255,255,0.5); font-size:14px; font-weight:700; margin:0 0 6px;">{practice.address}</p>
-  <p style="color:rgba(255,255,255,0.4); font-size:13px; margin:0;">© {new Date().getFullYear()} {practice.name}. All rights reserved.</p>
+<footer style="background:var(--dark); padding:40px 24px; text-align:center;">
+  <div class="wiggle" style="display:inline-block; font-size:32px; margin-bottom:10px;">🦷⭐🦷</div>
+  <div class="display" style="font-size:24px; color:white; margin-bottom:8px;">{practice.name}</div>
+  <p style="color:rgba(255,255,255,0.5); font-size:14px; font-weight:800; margin:0 0 5px;">{practice.address}</p>
+  <p style="color:rgba(255,255,255,0.35); font-size:13px; margin:0;">© {new Date().getFullYear()} {practice.name}. All rights reserved.</p>
 </footer>
 
 </body>
