@@ -67,6 +67,19 @@ import { practice } from '../../data/v5';
     input:focus, select:focus, textarea:focus { outline: none; border-color: var(--sage) !important; box-shadow: 0 0 0 2px rgba(106,148,112,0.15); }
 
     .leaf-sway { animation: leafSway 5s ease-in-out infinite; transform-origin: bottom center; }
+
+    @media (max-width: 768px) {
+      .hero-grid { grid-template-columns: 1fr !important; min-height: auto !important; }
+      .hero-photo { display: none !important; }
+      .hero-left { padding: 64px 28px 56px !important; }
+      .nav-links { display: none; }
+      .services-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
+      .services-sticky { position: static !important; }
+      .principles-grid { grid-template-columns: 1fr !important; }
+      .team-grid { grid-template-columns: 1fr 1fr !important; }
+      .office-grid { grid-template-columns: 1fr 1fr !important; }
+      .form-row { grid-template-columns: 1fr !important; }
+    }
   </style>
 </head>
 <body>
@@ -90,9 +103,9 @@ import { practice } from '../../data/v5';
 </header>
 
 <!-- HERO -->
-<section style="min-height:96vh; display:grid; grid-template-columns:1fr 1fr; position:relative; overflow:hidden;">
+<section class="hero-grid" style="min-height:96vh; display:grid; grid-template-columns:1fr 1fr; position:relative; overflow:hidden;">
   <!-- Left: content -->
-  <div style="display:flex; flex-direction:column; justify-content:center; padding:80px 64px 80px 80px; background:var(--cream); position:relative;">
+  <div class="hero-left" style="display:flex; flex-direction:column; justify-content:center; padding:80px 64px 80px 80px; background:var(--cream); position:relative;">
     <!-- Plant SVG decorative element top-left -->
     <div style="position:absolute; top:40px; left:40px; opacity:0.5;" class="leaf-sway">
       <svg width="60" height="90" viewBox="0 0 60 90" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -132,7 +145,7 @@ import { practice } from '../../data/v5';
   </div>
 
   <!-- Right: botanical photo -->
-  <div style="position:relative; overflow:hidden;">
+  <div class="hero-photo" style="position:relative; overflow:hidden;">
     <img src={practice.hero.image} alt="Root and Branch Holistic Dental" style="width:100%; height:100%; object-fit:cover; object-position:center; filter:sepia(8%) brightness(0.96);" />
     <div style="position:absolute; inset:0; background:linear-gradient(to right, var(--cream) 0%, transparent 12%);"></div>
     <!-- Floating commitment card -->

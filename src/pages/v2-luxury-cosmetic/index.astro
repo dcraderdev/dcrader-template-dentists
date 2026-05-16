@@ -69,6 +69,18 @@ import { practice } from '../../data/v2';
     /* Service rows */
     .svc-row { transition: background 0.3s ease; }
     .svc-row:hover { background: var(--cream-2); }
+
+    @media (max-width: 768px) {
+      .hero-stats { display: none !important; }
+      .hero-content { padding: 0 28px 56px !important; }
+      .press-bar { padding: 16px 24px !important; gap: 16px !important; }
+      .services-grid { grid-template-columns: 1fr !important; gap: 48px !important; }
+      .services-sidebar { position: static !important; }
+      .ba-section { grid-template-columns: 1fr !important; }
+      .team-grid { grid-template-columns: 1fr 1fr !important; }
+      .office-grid { grid-template-columns: 1fr 1fr !important; }
+      .testimonials-grid { grid-template-columns: 1fr !important; }
+    }
   </style>
 </head>
 <body>
@@ -95,7 +107,7 @@ import { practice } from '../../data/v2';
   <!-- Dark vignette gradient -->
   <div style="position:absolute; inset:0; background:linear-gradient(to top, rgba(26,18,8,0.92) 0%, rgba(26,18,8,0.55) 40%, rgba(26,18,8,0.1) 70%, transparent 100%);"></div>
   <!-- Editorial content pinned to bottom left -->
-  <div style="position:relative; z-index:10; padding:0 80px 80px; max-width:880px;">
+  <div class="hero-content" style="position:relative; z-index:10; padding:0 80px 80px; max-width:880px;">
     <div class="hero-text-1" style="font-size:10px; letter-spacing:0.35em; text-transform:uppercase; color:var(--gold-2); margin-bottom:24px; font-weight:500;">Beverly Hills · Cosmetic Dentistry</div>
     <h1 class="hero-text-2" style="font-size:clamp(60px,7.5vw,108px); line-height:0.97; color:white; margin:0 0 36px; font-style:italic; font-weight:300; white-space:pre-line;">{practice.hero.headline}</h1>
     <p class="hero-text-3" style="font-size:20px; line-height:1.7; color:rgba(255,255,255,0.75); margin:0 0 44px; max-width:500px; font-weight:300;">{practice.hero.subheadline}</p>
@@ -111,7 +123,7 @@ import { practice } from '../../data/v2';
     </div>
   </div>
   <!-- Floating stats cards top-right -->
-  <div style="position:absolute; top:96px; right:56px; z-index:10; display:flex; flex-direction:column; gap:12px;">
+  <div class="hero-stats" style="position:absolute; top:96px; right:56px; z-index:10; display:flex; flex-direction:column; gap:12px;">
     {[['500+','Smile Transformations'],['8×','Top LA Dentist'],['100%','Satisfaction']].map(([n,l]) => (
       <div style="background:rgba(250,247,242,0.1); backdrop-filter:blur(12px); border:1px solid rgba(212,175,120,0.3); padding:16px 24px; text-align:right;">
         <div style="font-family:'Cormorant Garamond',serif; font-size:30px; color:var(--gold-2); line-height:1;">{n}</div>

@@ -9,7 +9,7 @@ export const practice = {
     headline: "Dentist Visits\nJust Got FUN! 🦷",
     subheadline: "We're a superhero-themed pediatric dental practice where brave kids earn capes, coins, and the coolest smiles in Austin!",
     ctaText: "Join the Smile Squad!",
-    image: "https://images.unsplash.com/photo-1597764690523-9bda82e29c0b?auto=format&fit=crop&w=1400&q=80",
+    image: "https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&w=1400&q=80",
   },
   ageRange: "Ages 0 – 17",
   hours: [
@@ -64,11 +64,11 @@ export const practice = {
     { name: "Tiffany C.", stars: 5, text: "So glad we found this place. My daughter has been afraid of the dentist for years. One visit here and she's already asking when we can come back. Life changed!", date: "January 2026" },
   ],
   beforeAfter: [
-    { before: "https://images.unsplash.com/photo-1629909615184-74f495363b67?auto=format&fit=crop&w=600&q=80", after: "https://images.unsplash.com/photo-1597764690523-9bda82e29c0b?auto=format&fit=crop&w=600&q=80", label: "Cavity-Free Smile Restored" },
+    { before: "https://images.unsplash.com/photo-1629909615184-74f495363b67?auto=format&fit=crop&w=600&q=80", after: "https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&w=600&q=80", label: "Cavity-Free Smile Restored" },
     { before: "https://images.unsplash.com/photo-1609840114035-3c981b782dfe?auto=format&fit=crop&w=600&q=80", after: "https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&w=600&q=80", label: "Phase 1 Ortho Complete" },
   ],
   officePhotos: [
-    { url: "https://images.unsplash.com/photo-1597764690523-9bda82e29c0b?auto=format&fit=crop&w=800&q=80", caption: "Superhero-themed waiting room" },
+    { url: "https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&w=800&q=80", caption: "Superhero-themed waiting room" },
     { url: "https://images.unsplash.com/photo-1629909615184-74f495363b67?auto=format&fit=crop&w=800&q=80", caption: "Kid-sized treatment chairs" },
     { url: "https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&w=800&q=80", caption: "The legendary prize wall" },
   ],
