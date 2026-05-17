@@ -71,7 +71,6 @@ import { practice } from '../../data/v2';
     .svc-row:hover { background: var(--cream-2); }
 
     @media (max-width: 768px) {
-      .hero-stats { display: none !important; }
       .hero-content { padding: 0 28px 56px !important; }
       .press-bar { padding: 16px 24px !important; gap: 16px !important; }
       .services-grid { grid-template-columns: 1fr !important; gap: 48px !important; }
@@ -121,15 +120,6 @@ import { practice } from '../../data/v2';
         {practice.phone}
       </a>
     </div>
-  </div>
-  <!-- Floating stats cards top-right -->
-  <div class="hero-stats" style="position:absolute; top:96px; right:56px; z-index:10; display:flex; flex-direction:column; gap:12px;">
-    {[['500+','Smile Transformations'],['8×','Top LA Dentist'],['100%','Satisfaction']].map(([n,l]) => (
-      <div style="background:rgba(250,247,242,0.1); backdrop-filter:blur(12px); border:1px solid rgba(212,175,120,0.3); padding:16px 24px; text-align:right;">
-        <div style="font-family:'Cormorant Garamond',serif; font-size:30px; color:var(--gold-2); line-height:1;">{n}</div>
-        <div style="font-size:9px; letter-spacing:0.2em; text-transform:uppercase; color:rgba(255,255,255,0.5); margin-top:4px;">{l}</div>
-      </div>
-    ))}
   </div>
 </section>
 
