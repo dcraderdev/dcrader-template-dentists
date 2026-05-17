@@ -9,7 +9,7 @@ export const practice = {
     headline: "Your Signature\nSmile Awaits",
     subheadline: "Bespoke cosmetic dentistry crafted for those who refuse to compromise on perfection.",
     ctaText: "Request a Consultation",
-    image: "https://images.unsplash.com/photo-1606727651765-1b8be8fc38a5?auto=format&fit=crop&w=1400&q=80",
+    image: "/images/photo-1620916566398-39f1143ab7be-hero.webp",
   },
   hours: [
     { day: "Monday–Friday", time: "9:00 AM – 6:00 PM" },
@@ -35,25 +35,25 @@ export const practice = {
       name: "Dr. Isabelle Fontaine",
       role: "Cosmetic & Aesthetic Dentist",
       bio: "Trained at NYU College of Dentistry and the Kois Center. Featured in Vogue, Harper's Bazaar, and New Beauty. Recognized as one of LA's top cosmetic dentists for 8 consecutive years.",
-      image: "https://images.unsplash.com/photo-1614608682850-e0d6ed316d47?auto=format&fit=crop&w=400&q=80",
+      image: "/images/photo-1614608682850-e0d6ed316d47-thumb.webp",
     },
     {
       name: "Dr. Ethan Ashby",
       role: "Prosthodontist",
       bio: "Fellowship-trained specialist in complex full-mouth restorations and implant-supported prosthetics. Brings surgical precision to every case.",
-      image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=400&q=80",
+      image: "/images/photo-1560250097-0b93528c311a-thumb.webp",
     },
     {
       name: "Camille Laurent",
       role: "Smile Design Consultant",
       bio: "Digital smile design specialist using DSD Pro software to co-create your ideal smile before a single tooth is prepared.",
-      image: "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=400&q=80",
+      image: "/images/photo-1487412720507-e7ab37603c6f-thumb.webp",
     },
     {
       name: "André Voss",
       role: "Lead Ceramist (In-House Lab)",
       bio: "Master ceramist with 20+ years crafting bespoke restorations. Each porcelain veneer is a hand-layered work of art.",
-      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=400&q=80",
+      image: "/images/photo-1472099645785-5658abf4ff4e-thumb.webp",
     },
   ],
   reviews: [
@@ -63,12 +63,12 @@ export const practice = {
     { name: "James A.", stars: 5, text: "I had severe dental anxiety and they made every step feel safe and luxurious. Dr. Ashby rebuilt my entire smile and I couldn't be happier.", date: "January 2026" },
   ],
   beforeAfter: [
-    { before: "https://images.unsplash.com/photo-1629909615184-74f495363b67?auto=format&fit=crop&w=600&q=80", after: "https://images.unsplash.com/photo-1606727651765-1b8be8fc38a5?auto=format&fit=crop&w=600&q=80", label: "Full Porcelain Veneer Set" },
-    { before: "https://images.unsplash.com/photo-1609840114035-3c981b782dfe?auto=format&fit=crop&w=600&q=80", after: "https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&w=600&q=80", label: "Smile Makeover — 18 Teeth" },
+    { before: "/images/photo-1629909615184-74f495363b67-card.webp", after: "/images/photo-1620916566398-39f1143ab7be-card.webp", label: "Full Porcelain Veneer Set" },
+    { before: "/images/photo-1609840114035-3c981b782dfe-card.webp", after: "/images/photo-1606811841689-23dfddce3e95-card.webp", label: "Smile Makeover — 18 Teeth" },
   ],
   officePhotos: [
-    { url: "https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?auto=format&fit=crop&w=800&q=80", caption: "Private consultation lounge" },
-    { url: "https://images.unsplash.com/photo-1629909615184-74f495363b67?auto=format&fit=crop&w=800&q=80", caption: "Bespoke treatment suite" },
-    { url: "https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&w=800&q=80", caption: "In-house ceramics studio" },
+    { url: "/images/photo-1631217868264-e5b90bb7e133-card.webp", caption: "Private consultation lounge" },
+    { url: "/images/photo-1629909615184-74f495363b67-card.webp", caption: "Bespoke treatment suite" },
+    { url: "/images/photo-1606811841689-23dfddce3e95-card.webp", caption: "In-house ceramics studio" },
   ],
 };

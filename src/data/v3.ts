@@ -9,7 +9,7 @@ export const practice = {
     headline: "The Future of\nDental Care",
     subheadline: "AI-assisted diagnostics. Same-day CEREC crowns. Zero-radiation 3D imaging. Welcome to dentistry without compromise.",
     ctaText: "Schedule a Scan",
-    image: "https://images.unsplash.com/photo-1607990281513-e8a8b78a50c3?auto=format&fit=crop&w=1400&q=80",
+    image: "/images/photo-1598256989800-fe5f95da9787-hero.webp",
   },
   hours: [
     { day: "Monday–Friday", time: "7:00 AM – 7:00 PM" },
@@ -35,25 +35,25 @@ export const practice = {
       name: "Dr. Rohan Patel",
       role: "Founder & Digital Dentistry Lead",
       bio: "MIT-trained biomedical engineer turned dentist. Doctoral research in CAD/CAM restorations at the University of Washington. Holds three patents in dental imaging software.",
-      image: "https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&w=400&q=80",
+      image: "/images/photo-1622253692010-333f2da6031d-thumb.webp",
     },
     {
       name: "Dr. Yuki Tanaka",
       role: "Oral Surgeon & Implant Specialist",
       bio: "Dual-trained in oral surgery and periodontics. Uses dynamic navigation for flapless implant placement with 0.3mm accuracy.",
-      image: "https://images.unsplash.com/photo-1594824476967-48c8b964273f?auto=format&fit=crop&w=400&q=80",
+      image: "/images/photo-1594824476967-48c8b964273f-thumb.webp",
     },
     {
       name: "Dr. Liam O'Brien",
       role: "General & Restorative Dentist",
       bio: "Certified in CEREC, Solea laser, and Fotona systems. Believes every patient deserves next-gen care regardless of their reason for visiting.",
-      image: "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&w=400&q=80",
+      image: "/images/photo-1612349317150-e413f6a5b16d-thumb.webp",
     },
     {
       name: "Priya Mehta",
       role: "Digital Treatment Planner",
       bio: "Coordinates complex cases using Simplant, 3Shape, and DSD software to produce predictable, beautiful outcomes every time.",
-      image: "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=400&q=80",
+      image: "/images/photo-1487412720507-e7ab37603c6f-thumb.webp",
     },
   ],
   reviews: [
@@ -63,13 +63,13 @@ export const practice = {
     { name: "Tanya B.", stars: 5, text: "Digital impressions are a game changer. No more gagging on putty. They scanned my teeth in 90 seconds and my aligners fit perfectly on the first try.", date: "January 2026" },
   ],
   beforeAfter: [
-    { before: "https://images.unsplash.com/photo-1629909615184-74f495363b67?auto=format&fit=crop&w=600&q=80", after: "https://images.unsplash.com/photo-1607990281513-e8a8b78a50c3?auto=format&fit=crop&w=600&q=80", label: "CEREC Same-Day Crown" },
-    { before: "https://images.unsplash.com/photo-1609840114035-3c981b782dfe?auto=format&fit=crop&w=600&q=80", after: "https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&w=600&q=80", label: "Digital Implant + Crown" },
+    { before: "/images/photo-1629909615184-74f495363b67-card.webp", after: "/images/photo-1598256989800-fe5f95da9787-card.webp", label: "CEREC Same-Day Crown" },
+    { before: "/images/photo-1609840114035-3c981b782dfe-card.webp", after: "/images/photo-1606811841689-23dfddce3e95-card.webp", label: "Digital Implant + Crown" },
   ],
   officePhotos: [
-    { url: "https://images.unsplash.com/photo-1629909615184-74f495363b67?auto=format&fit=crop&w=800&q=80", caption: "CEREC milling station" },
-    { url: "https://images.unsplash.com/photo-1607990281513-e8a8b78a50c3?auto=format&fit=crop&w=800&q=80", caption: "3D cone beam imaging suite" },
-    { url: "https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&w=800&q=80", caption: "Digital treatment planning center" },
+    { url: "/images/photo-1629909615184-74f495363b67-card.webp", caption: "CEREC milling station" },
+    { url: "/images/photo-1598256989800-fe5f95da9787-card.webp", caption: "3D cone beam imaging suite" },
+    { url: "/images/photo-1606811841689-23dfddce3e95-card.webp", caption: "Digital treatment planning center" },
   ],
   techStack: [
     { name: "CEREC Primescan AC", desc: "0.9μm accuracy digital impressions" },

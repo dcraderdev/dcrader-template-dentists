@@ -10,7 +10,7 @@ const variants = [
     bg: '#EFF6FF',
     accent: '#1D4ED8',
     emoji: '👨‍👩‍👧‍👦',
-    preview: 'https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=800&q=80',
+    preview: '/images/photo-1588776814546-1ffcf47267a5-card.webp',
   },
   {
     slug: 'v2-luxury-cosmetic',
@@ -22,7 +22,7 @@ const variants = [
     bg: '#FAF7F2',
     accent: '#9B7B41',
     emoji: '✨',
-    preview: 'https://images.unsplash.com/photo-1606727651765-1b8be8fc38a5?auto=format&fit=crop&w=800&q=80',
+    preview: '/images/photo-1620916566398-39f1143ab7be-card.webp',
   },
   {
     slug: 'v3-modern-tech',
@@ -34,7 +34,7 @@ const variants = [
     bg: '#050D1A',
     accent: '#0F2040',
     emoji: '🤖',
-    preview: 'https://images.unsplash.com/photo-1607990281513-e8a8b78a50c3?auto=format&fit=crop&w=800&q=80',
+    preview: '/images/photo-1598256989800-fe5f95da9787-card.webp',
   },
   {
     slug: 'v4-pediatric-fun',
@@ -46,7 +46,7 @@ const variants = [
     bg: '#FFFBF4',
     accent: '#4ECDC4',
     emoji: '🦸',
-    preview: 'https://images.unsplash.com/photo-1597764690523-9bda82e29c0b?auto=format&fit=crop&w=800&q=80',
+    preview: '/images/photo-1606811841689-23dfddce3e95-card.webp',
   },
   {
     slug: 'v5-holistic-wellness',
@@ -58,7 +58,7 @@ const variants = [
     bg: '#F5F0E8',
     accent: '#2D4A2F',
     emoji: '🌿',
-    preview: 'https://images.unsplash.com/photo-1545205597-3d9d02c29597?auto=format&fit=crop&w=800&q=80',
+    preview: '/images/photo-1545205597-3d9d02c29597-card.webp',
   },
 ];
 ---
@@ -123,7 +123,7 @@ const variants = [
     {variants.map((v, i) => (
       <a href={`/${v.slug}`} class="card" style="display:block; border-radius:16px; overflow:hidden; border:1px solid rgba(255,255,255,0.08); background:#12141C; text-decoration:none; animation: fadeUp 0.6s {i * 0.08}s ease both;">
         <div style="position:relative; overflow:hidden; height:220px;">
-          <img class="card-img" src={v.preview} alt={v.name} style="width:100%; height:100%; object-fit:cover; display:block;" />
+          <img class="card-img" src={v.preview} alt={v.name} width="800" height="600" loading={i < 2 ? 'eager' : 'lazy'} fetchpriority={i === 0 ? 'high' : 'auto'} decoding="async" style="width:100%; height:100%; object-fit:cover; display:block;" />
           <div style={`position:absolute; inset:0; background:linear-gradient(to bottom, transparent 40%, rgba(18,20,28,0.85) 100%);`}></div>
           <div style={`position:absolute; top:16px; left:16px; background:${v.color}; color:white; font-size:11px; font-weight:700; padding:5px 14px; border-radius:9999px; letter-spacing:0.08em;`}>{v.label}</div>
           <div style="position:absolute; bottom:16px; left:16px; font-size:28px;">{v.emoji}</div>
