@@ -15,10 +15,12 @@ import { practice } from '../../data/v4';
     *, *::before, *::after { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
     :root {
-      --red: #E8281A;
+      --red: #B8201A;          /* darkened from #E8281A for 4.5:1 vs white + on cream */
+      --red-dark: #8A170F;     /* darker tone for emphasis */
       --red-light: #FFF0EF;
-      --red-2: #FF4D3D;
-      --yellow: #FFD000;
+      --red-2: #E8281A;        /* decorative only — not used for body text */
+      --yellow: #FFD000;       /* decorative — never used as text color */
+      --yellow-text: #6B5300;  /* AA-safe text token for yellow accents on light bg */
       --yellow-light: #FFFADD;
       --blue: #1565C0;
       --blue-2: #1E88E5;
@@ -26,11 +28,22 @@ import { practice } from '../../data/v4';
       --dark: #1A1D2E;
       --white: #FFFFFF;
       --bg: #FFFCF5;
-      --border: #E0E0E0;
+      --border: #C7C7C7;
+      --muted: #555555;
     }
     body { font-family: 'Nunito', sans-serif; background: var(--bg); color: var(--dark); margin: 0; }
     .display { font-family: 'Lilita One', cursive; }
     a { text-decoration: none; }
+    /* A11y */
+    .skip-link { position: absolute; left: -9999px; top: 0; background: var(--dark); color: white; padding: 12px 18px; z-index: 9999; font-weight: 800; }
+    .skip-link:focus { left: 0; }
+    a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
+      outline: 3px solid var(--red);
+      outline-offset: 2px;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .wiggle, .bounce { animation: none !important; }
+    }
 
     @keyframes wiggle {
       0%, 100% { transform: rotate(-3deg); }
@@ -75,11 +88,13 @@ import { practice } from '../../data/v4';
 </head>
 <body>
 
+<a href="#main" class="skip-link">Skip to main content</a>
+
 <!-- NAV -->
 <header style="background:white; border-bottom:4px solid var(--yellow); position:sticky; top:0; z-index:100; box-shadow:0 3px 20px rgba(0,0,0,0.07);">
   <div style="max-width:1200px; margin:0 auto; padding:0 24px; height:72px; display:flex; align-items:center; justify-content:space-between;">
-    <a href="/" style="display:flex; align-items:center; gap:12px;">
-      <span class="wiggle" style="display:inline-block; font-size:30px;">🦷</span>
+    <a href="/" aria-label={`${practice.name} home`} style="display:flex; align-items:center; gap:12px;">
+      <span aria-hidden="true" class="wiggle" style="display:inline-block; font-size:30px;">🦷</span>
       <div>
         <div class="display" style="font-size:20px; color:var(--red); line-height:1;">{practice.name}</div>
         <div style="font-size:10px; font-weight:900; color:var(--blue); letter-spacing:0.08em; text-transform:uppercase;">{practice.ageRange}</div>
@@ -99,6 +114,7 @@ import { practice } from '../../data/v4';
   </div>
 </header>
 
+<main id="main">
 <!-- HERO -->
 <section style="background:linear-gradient(145deg, #FFF0EF 0%, #FFFCF5 45%, #E8F0FE 100%); padding:72px 24px 100px; position:relative; overflow:hidden;">
   <!-- Decorative circles -->
@@ -118,15 +134,15 @@ import { practice } from '../../data/v4';
         <a href="#appointment" class="star-btn" style="background:var(--red); color:white; font-weight:900; font-size:18px; padding:18px 38px; border-radius:9999px; box-shadow:0 6px 24px rgba(232,40,26,0.35), 0 3px 0 #A81D11;">
           {practice.hero.ctaText}
         </a>
-        <a href="tel:{practice.phone}" class="star-btn" style="background:var(--blue); color:white; font-weight:900; font-size:15px; padding:16px 28px; border-radius:9999px; box-shadow:0 5px 18px rgba(21,101,192,0.3), 0 3px 0 #0D47A1;">
-          📞 Call Us!
+        <a href={`tel:${practice.phone.replace(/[^0-9+]/g,'')}`} class="star-btn" aria-label={`Call us at ${practice.phone}`} style="background:var(--blue); color:white; font-weight:900; font-size:15px; padding:16px 28px; border-radius:9999px; min-height:44px; display:inline-flex; align-items:center; box-shadow:0 5px 18px rgba(21,101,192,0.3), 0 3px 0 #0D47A1;">
+          <span aria-hidden="true">&#128222;</span>&nbsp;Call Us!
         </a>
       </div>
       <div style="display:flex; gap:28px; flex-wrap:wrap;">
         {[['5,000+','Happy Kids 😄'],['12 yrs','Spreading Smiles'],['4.9★','Google Rating']].map(([n,l]) => (
           <div style="text-align:center; background:white; border-radius:16px; padding:14px 20px; box-shadow:4px 4px 0 var(--border);">
             <div class="display" style="font-size:26px; color:var(--red);">{n}</div>
-            <div style="font-size:11px; font-weight:900; color:#888; text-transform:uppercase; letter-spacing:0.06em; margin-top:2px;">{l}</div>
+            <div style="font-size:11px; font-weight:900; color:#555; text-transform:uppercase; letter-spacing:0.06em; margin-top:2px;">{l}</div>
           </div>
         ))}
       </div>
@@ -173,25 +189,25 @@ import { practice } from '../../data/v4';
   <div style="max-width:1200px; margin:0 auto;">
     <div style="text-align:center; margin-bottom:48px;">
       <div class="display" style="font-size:clamp(36px,5vw,60px); color:var(--dark); margin:0 0 12px;">Super Services 🦸‍♀️</div>
-      <p style="font-size:17px; color:#666; max-width:480px; margin:0 auto; font-weight:700;">Everything your little hero needs for a healthy, happy smile!</p>
+      <p style="font-size:17px; color:#555; max-width:480px; margin:0 auto; font-weight:700;">Everything your little hero needs for a healthy, happy smile!</p>
     </div>
     <div style="display:grid; grid-template-columns:repeat(4, 1fr); gap:16px;">
       {practice.services.map((s, i) => {
         const palettes = [
-          { bg:'#FFF0EF', border:'var(--red)', shadow:'#F0C0BC' },
-          { bg:'#FFFADD', border:'var(--yellow)', shadow:'#F0E080' },
-          { bg:'var(--blue-light)', border:'var(--blue)', shadow:'#90CAF9' },
-          { bg:'#F3E5F5', border:'#9C27B0', shadow:'#CE93D8' },
-          { bg:'#E8F5E9', border:'#2E7D32', shadow:'#A5D6A7' },
-          { bg:'#FFF0EF', border:'var(--red)', shadow:'#F0C0BC' },
-          { bg:'#E8F0FE', border:'var(--blue)', shadow:'#90CAF9' },
-          { bg:'#FFFADD', border:'var(--yellow)', shadow:'#F0E080' },
+          { bg:'#FFF0EF', border:'var(--red)', text:'var(--red)', shadow:'#F0C0BC' },
+          { bg:'#FFFADD', border:'var(--yellow)', text:'var(--yellow-text)', shadow:'#F0E080' },
+          { bg:'var(--blue-light)', border:'var(--blue)', text:'var(--blue)', shadow:'#90CAF9' },
+          { bg:'#F3E5F5', border:'#9C27B0', text:'#7B1FA2', shadow:'#CE93D8' },
+          { bg:'#E8F5E9', border:'#2E7D32', text:'#2E7D32', shadow:'#A5D6A7' },
+          { bg:'#FFF0EF', border:'var(--red)', text:'var(--red)', shadow:'#F0C0BC' },
+          { bg:'#E8F0FE', border:'var(--blue)', text:'var(--blue)', shadow:'#90CAF9' },
+          { bg:'#FFFADD', border:'var(--yellow)', text:'var(--yellow-text)', shadow:'#F0E080' },
         ];
         const p = palettes[i % palettes.length];
         return (
           <div class="svc-card" style={`background:${p.bg}; border-radius:18px; padding:24px 20px; border:2px solid ${p.border}; box-shadow:4px 4px 0 ${p.shadow};`}>
-            <div style="font-size:36px; margin-bottom:10px;">{s.icon}</div>
-            <h3 class="display" style={`font-size:17px; color:${p.border}; margin:0 0 7px;`}>{s.name}</h3>
+            <div aria-hidden="true" style="font-size:36px; margin-bottom:10px;">{s.icon}</div>
+            <h3 class="display" style={`font-size:17px; color:${p.text}; margin:0 0 7px;`}>{s.name}</h3>
             <p style="font-size:13px; color:#555; line-height:1.65; margin:0; font-weight:600;">{s.desc}</p>
           </div>
         );
@@ -208,14 +224,14 @@ import { practice } from '../../data/v4';
     <p style="font-size:17px; color:rgba(255,255,255,0.65); max-width:480px; margin:0 auto 48px; font-weight:700;">Earn coins for every visit — then cash in for EPIC prizes!</p>
     <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:20px;">
       {practice.rewards.map((r, i) => {
-        const colors = ['var(--blue-2)','var(--red-2)','var(--yellow)'];
+        const colors = ['var(--blue)','var(--red)','var(--yellow)'];
         const textCol = i === 2 ? 'var(--dark)' : 'white';
         return (
           <div style={`background:${colors[i]}; border-radius:20px; padding:32px 24px; border:3px solid rgba(255,255,255,0.2); position:relative; overflow:hidden;`}>
-            <div style="position:absolute; top:-20px; right:-20px; font-size:80px; opacity:0.1;">{['🦸','🛡️','👑'][i]}</div>
+            <div aria-hidden="true" style="position:absolute; top:-20px; right:-20px; font-size:80px; opacity:0.1;">{['🦸','🛡️','👑'][i]}</div>
             <div class="display" style={`font-size:36px; color:${textCol}; margin-bottom:6px;`}>{r.tier}</div>
-            <div class="display" style={`font-size:28px; color:${textCol}; margin-bottom:16px; opacity:0.85;`}>{r.coins} coins</div>
-            <p style={`font-size:15px; color:${textCol}; margin:0; font-weight:900; opacity:0.9;`}>{r.reward}</p>
+            <div class="display" style={`font-size:28px; color:${textCol}; margin-bottom:16px;`}>{r.coins} coins</div>
+            <p style={`font-size:15px; color:${textCol}; margin:0; font-weight:900;`}>{r.reward}</p>
           </div>
         );
       })}
@@ -227,7 +243,7 @@ import { practice } from '../../data/v4';
 <section style="background:white; padding:80px 24px;">
   <div style="max-width:1000px; margin:0 auto; text-align:center;">
     <div class="display" style="font-size:clamp(28px,4vw,48px); color:var(--dark); margin:0 0 12px;">We Take Your Insurance! 💳</div>
-    <p style="font-size:17px; color:#666; max-width:480px; margin:0 auto 36px; font-weight:700;">Most kids' dental care is 100% covered. We'll help you figure it all out!</p>
+    <p style="font-size:17px; color:#555; max-width:480px; margin:0 auto 36px; font-weight:700;">Most kids' dental care is 100% covered. We'll help you figure it all out!</p>
     <div style="display:flex; flex-wrap:wrap; gap:12px; justify-content:center;">
       {practice.insurance.map(ins => (
         <span style="background:var(--blue-light); border:2px solid var(--blue); color:var(--blue); font-weight:900; font-size:13px; padding:9px 20px; border-radius:9999px;">
@@ -243,7 +259,7 @@ import { practice } from '../../data/v4';
   <div style="max-width:1200px; margin:0 auto;">
     <div style="text-align:center; margin-bottom:48px;">
       <div class="display" style="font-size:clamp(36px,4.5vw,56px); color:var(--dark); margin:0 0 12px;">Meet the Squad! 👋</div>
-      <p style="font-size:17px; color:#666; max-width:480px; margin:0 auto; font-weight:700;">The amazing humans who make your kid's smile shine.</p>
+      <p style="font-size:17px; color:#555; max-width:480px; margin:0 auto; font-weight:700;">The amazing humans who make your kid's smile shine.</p>
     </div>
     <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:20px;">
       {practice.team.map((m, i) => {
@@ -259,7 +275,7 @@ import { practice } from '../../data/v4';
             <div style="padding:20px;">
               <div style={`display:inline-block; background:${tagBg}; color:${tagText}; font-size:10px; font-weight:900; padding:4px 12px; border-radius:9999px; text-transform:uppercase; letter-spacing:0.06em; margin-bottom:8px;`}>{m.role}</div>
               <h3 class="display" style="font-size:18px; color:var(--dark); margin:0 0 7px;">{m.name}</h3>
-              <p style="font-size:12px; color:#666; line-height:1.65; margin:0; font-weight:600;">{m.bio}</p>
+              <p style="font-size:12px; color:#555; line-height:1.65; margin:0; font-weight:600;">{m.bio}</p>
             </div>
           </div>
         );
@@ -302,7 +318,7 @@ import { practice } from '../../data/v4';
   <div style="max-width:1200px; margin:0 auto; position:relative;">
     <div style="text-align:center; margin-bottom:56px;">
       <div class="display" style="font-size:clamp(32px,4.5vw,52px); color:var(--dark); margin:0 0 8px;">Parents Love Us! 💕</div>
-      <p style="font-size:16px; color:#666; font-weight:700;">Real stories from real families</p>
+      <p style="font-size:16px; color:#555; font-weight:700;">Real stories from real families</p>
     </div>
     <div style="display:grid; grid-template-columns:repeat(2,1fr); gap:48px;">
       {practice.reviews.map((r, i) => {
@@ -327,7 +343,7 @@ import { practice } from '../../data/v4';
               </div>
               <div>
                 <div style="font-size:14px; font-weight:900; color:var(--dark);">{r.name}</div>
-                <div style="font-size:11px; color:#888; font-weight:700;">{r.date}</div>
+                <div style="font-size:11px; color:#555; font-weight:700;">{r.date}</div>
               </div>
             </div>
           </div>
@@ -367,8 +383,8 @@ import { practice } from '../../data/v4';
       <div class="display" style="font-size:clamp(30px,3.5vw,44px); color:white; margin:0 0 28px;">Come Visit Us! 🗺️</div>
       <div style="display:flex; flex-direction:column; gap:14px;">
         {[['📍',practice.address],['📞',practice.phone],['✉️',practice.email]].map(([icon, val]) => (
-          <div style="background:rgba(255,255,255,0.18); border-radius:14px; padding:14px 18px; display:flex; gap:12px; align-items:center; backdrop-filter:blur(4px); border:1px solid rgba(255,255,255,0.25);">
-            <span style="font-size:20px; flex-shrink:0;">{icon}</span>
+          <div style="background:rgba(0,0,0,0.18); border-radius:14px; padding:14px 18px; display:flex; gap:12px; align-items:center; backdrop-filter:blur(4px); border:1px solid rgba(255,255,255,0.35);">
+            <span style="font-size:20px; flex-shrink:0;" aria-hidden="true">{icon}</span>
             <span style="font-size:15px; color:white; font-weight:800;">{val}</span>
           </div>
         ))}
@@ -378,7 +394,7 @@ import { practice } from '../../data/v4';
       <div class="display" style="font-size:clamp(30px,3.5vw,44px); color:white; margin:0 0 28px;">Office Hours ⏰</div>
       <div style="display:flex; flex-direction:column; gap:10px;">
         {practice.hours.map(h => (
-          <div style="background:rgba(255,255,255,0.15); border-radius:12px; padding:13px 18px; display:flex; justify-content:space-between; border:1px solid rgba(255,255,255,0.2);">
+          <div style="background:rgba(0,0,0,0.15); border-radius:12px; padding:13px 18px; display:flex; justify-content:space-between; border:1px solid rgba(255,255,255,0.3);">
             <span style="color:rgba(255,255,255,0.85); font-weight:800; font-size:14px;">{h.day}</span>
             <span style="color:var(--yellow); font-weight:900; font-size:14px;">{h.time}</span>
           </div>
@@ -393,51 +409,51 @@ import { practice } from '../../data/v4';
   <div style="max-width:680px; margin:0 auto;">
     <div style="text-align:center; margin-bottom:44px;">
       <div class="display" style="font-size:clamp(32px,4vw,52px); color:var(--dark); margin:0 0 10px;">Join the Squad! 🦷</div>
-      <p style="font-size:17px; color:#666; font-weight:700;">We'll call to confirm within one business day — usually sooner!</p>
+      <p style="font-size:17px; color:#555; font-weight:700;">We'll call to confirm within one business day — usually sooner!</p>
     </div>
-    <form style="background:white; border-radius:28px; padding:44px; border:3px solid var(--red); box-shadow:8px 8px 0 var(--yellow); display:flex; flex-direction:column; gap:18px;">
+    <form aria-labelledby="v4-appt-heading" style="background:white; border-radius:28px; padding:44px; border:3px solid var(--red); box-shadow:8px 8px 0 var(--yellow); display:flex; flex-direction:column; gap:18px;">
       <div style="display:grid; grid-template-columns:1fr 1fr; gap:18px;">
         <div>
-          <label style="display:block; font-weight:900; font-size:12px; color:var(--dark); margin-bottom:7px; text-transform:uppercase; letter-spacing:0.06em;">Kid's First Name</label>
-          <input type="text" placeholder="Emma" style="width:100%; padding:13px 15px; border:2px solid var(--border); border-radius:12px; font-size:15px; font-family:'Nunito',sans-serif; font-weight:700;" />
+          <label for="v4-fname" style="display:block; font-weight:900; font-size:13px; color:var(--dark); margin-bottom:7px; text-transform:uppercase; letter-spacing:0.06em;">Kid's First Name <span aria-hidden="true" style="color:var(--red);">*</span></label>
+          <input id="v4-fname" name="firstName" type="text" autocomplete="given-name" required aria-required="true" placeholder="Emma" style="width:100%; padding:13px 15px; border:2px solid var(--border); border-radius:12px; font-size:16px; font-family:'Nunito',sans-serif; font-weight:700;" />
         </div>
         <div>
-          <label style="display:block; font-weight:900; font-size:12px; color:var(--dark); margin-bottom:7px; text-transform:uppercase; letter-spacing:0.06em;">Last Name</label>
-          <input type="text" placeholder="Johnson" style="width:100%; padding:13px 15px; border:2px solid var(--border); border-radius:12px; font-size:15px; font-family:'Nunito',sans-serif; font-weight:700;" />
+          <label for="v4-lname" style="display:block; font-weight:900; font-size:13px; color:var(--dark); margin-bottom:7px; text-transform:uppercase; letter-spacing:0.06em;">Last Name <span aria-hidden="true" style="color:var(--red);">*</span></label>
+          <input id="v4-lname" name="lastName" type="text" autocomplete="family-name" required aria-required="true" placeholder="Johnson" style="width:100%; padding:13px 15px; border:2px solid var(--border); border-radius:12px; font-size:16px; font-family:'Nunito',sans-serif; font-weight:700;" />
         </div>
       </div>
       <div>
-        <label style="display:block; font-weight:900; font-size:12px; color:var(--dark); margin-bottom:7px; text-transform:uppercase; letter-spacing:0.06em;">Parent/Guardian Phone</label>
-        <input type="tel" placeholder="(512) 555-0000" style="width:100%; padding:13px 15px; border:2px solid var(--border); border-radius:12px; font-size:15px; font-family:'Nunito',sans-serif; font-weight:700;" />
+        <label for="v4-phone" style="display:block; font-weight:900; font-size:13px; color:var(--dark); margin-bottom:7px; text-transform:uppercase; letter-spacing:0.06em;">Parent/Guardian Phone <span aria-hidden="true" style="color:var(--red);">*</span></label>
+        <input id="v4-phone" name="phone" type="tel" autocomplete="tel" required aria-required="true" placeholder="(512) 555-0000" style="width:100%; padding:13px 15px; border:2px solid var(--border); border-radius:12px; font-size:16px; font-family:'Nunito',sans-serif; font-weight:700;" />
       </div>
       <div>
-        <label style="display:block; font-weight:900; font-size:12px; color:var(--dark); margin-bottom:7px; text-transform:uppercase; letter-spacing:0.06em;">Email</label>
-        <input type="email" placeholder="parent@email.com" style="width:100%; padding:13px 15px; border:2px solid var(--border); border-radius:12px; font-size:15px; font-family:'Nunito',sans-serif; font-weight:700;" />
+        <label for="v4-email" style="display:block; font-weight:900; font-size:13px; color:var(--dark); margin-bottom:7px; text-transform:uppercase; letter-spacing:0.06em;">Email <span aria-hidden="true" style="color:var(--red);">*</span></label>
+        <input id="v4-email" name="email" type="email" autocomplete="email" required aria-required="true" placeholder="parent@email.com" style="width:100%; padding:13px 15px; border:2px solid var(--border); border-radius:12px; font-size:16px; font-family:'Nunito',sans-serif; font-weight:700;" />
       </div>
       <div style="display:grid; grid-template-columns:1fr 1fr; gap:18px;">
         <div>
-          <label style="display:block; font-weight:900; font-size:12px; color:var(--dark); margin-bottom:7px; text-transform:uppercase; letter-spacing:0.06em;">Kid's Age</label>
-          <select style="width:100%; padding:13px 15px; border:2px solid var(--border); border-radius:12px; font-size:15px; font-family:'Nunito',sans-serif; font-weight:700; background:white; cursor:pointer;">
+          <label for="v4-age" style="display:block; font-weight:900; font-size:13px; color:var(--dark); margin-bottom:7px; text-transform:uppercase; letter-spacing:0.06em;">Kid's Age</label>
+          <select id="v4-age" name="age" style="width:100%; padding:13px 15px; border:2px solid var(--border); border-radius:12px; font-size:16px; font-family:'Nunito',sans-serif; font-weight:700; background:white; cursor:pointer;">
             <option value="">Select age</option>
             {[...Array(17)].map((_, i) => <option value={i+1}>{i+1} year{i > 0 ? 's' : ''} old</option>)}
           </select>
         </div>
         <div>
-          <label style="display:block; font-weight:900; font-size:12px; color:var(--dark); margin-bottom:7px; text-transform:uppercase; letter-spacing:0.06em;">Service Needed</label>
-          <select style="width:100%; padding:13px 15px; border:2px solid var(--border); border-radius:12px; font-size:15px; font-family:'Nunito',sans-serif; font-weight:700; background:white; cursor:pointer;">
+          <label for="v4-service" style="display:block; font-weight:900; font-size:13px; color:var(--dark); margin-bottom:7px; text-transform:uppercase; letter-spacing:0.06em;">Service Needed</label>
+          <select id="v4-service" name="service" style="width:100%; padding:13px 15px; border:2px solid var(--border); border-radius:12px; font-size:16px; font-family:'Nunito',sans-serif; font-weight:700; background:white; cursor:pointer;">
             <option value="">Select service</option>
             {practice.services.map(s => <option value={s.name}>{s.name}</option>)}
           </select>
         </div>
       </div>
       <div>
-        <label style="display:block; font-weight:900; font-size:12px; color:var(--dark); margin-bottom:7px; text-transform:uppercase; letter-spacing:0.06em;">Anything Else? (optional)</label>
-        <textarea rows={3} placeholder="Any worries, allergies, or questions — we love to hear from you!" style="width:100%; padding:13px 15px; border:2px solid var(--border); border-radius:12px; font-size:15px; font-family:'Nunito',sans-serif; font-weight:700; resize:vertical;"></textarea>
+        <label for="v4-notes" style="display:block; font-weight:900; font-size:13px; color:var(--dark); margin-bottom:7px; text-transform:uppercase; letter-spacing:0.06em;">Anything Else? (optional)</label>
+        <textarea id="v4-notes" name="notes" rows={3} placeholder="Any worries, allergies, or questions — we love to hear from you!" style="width:100%; padding:13px 15px; border:2px solid var(--border); border-radius:12px; font-size:16px; font-family:'Nunito',sans-serif; font-weight:700; resize:vertical;"></textarea>
       </div>
-      <button type="submit" class="star-btn" style="background:var(--red); color:white; font-weight:900; font-size:18px; padding:18px 28px; border:none; border-radius:9999px; cursor:pointer; font-family:'Nunito',sans-serif; box-shadow:0 6px 20px rgba(232,40,26,0.35), 0 3px 0 #A81D11;">
-        Let's Book It! 🎉
+      <button type="submit" class="star-btn" style="background:var(--red-dark); color:white; font-weight:900; font-size:18px; padding:18px 28px; border:none; border-radius:9999px; cursor:pointer; font-family:'Nunito',sans-serif; min-height:44px; box-shadow:0 6px 20px rgba(200,35,26,0.35), 0 3px 0 #8E1A11;">
+        Let's Book It! <span aria-hidden="true">&#127881;</span>
       </button>
-      <p style="text-align:center; font-size:12px; color:#999; margin:0; font-weight:800;">We'll confirm within one business day. Zero spam, ever!</p>
+      <p style="text-align:center; font-size:13px; color:#555; margin:0; font-weight:800;">We'll confirm within one business day. Zero spam, ever!</p>
     </form>
   </div>
 </section>
@@ -446,8 +462,9 @@ import { practice } from '../../data/v4';
 <footer style="background:var(--dark); padding:40px 24px; text-align:center;">
   <div class="wiggle" style="display:inline-block; font-size:32px; margin-bottom:10px;">🦷⭐🦷</div>
   <div class="display" style="font-size:24px; color:white; margin-bottom:8px;">{practice.name}</div>
-  <p style="color:rgba(255,255,255,0.5); font-size:14px; font-weight:800; margin:0 0 5px;">{practice.address}</p>
-  <p style="color:rgba(255,255,255,0.35); font-size:13px; margin:0;">© {new Date().getFullYear()} {practice.name}. All rights reserved.</p>
+  <p style="color:rgba(255,255,255,0.78); font-size:14px; font-weight:800; margin:0 0 5px;">{practice.address}</p>
+  <p style="color:rgba(255,255,255,0.78); font-size:13px; margin:0 0 10px;">© {new Date().getFullYear()} {practice.name}. All rights reserved.</p>
+  <a href="/v4-pediatric-fun/accessibility/" style="font-size:13px; color:white; text-decoration:underline; font-weight:800;">Accessibility Statement</a>
 </footer>
 
 </body>

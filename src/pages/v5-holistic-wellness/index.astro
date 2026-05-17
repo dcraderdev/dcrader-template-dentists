@@ -18,19 +18,28 @@ import { practice } from '../../data/v5';
       --cream: #F7F3EC;
       --cream-2: #EEE8DC;
       --cream-3: #E4DDD0;
-      --sage: #6A9470;
-      --sage-2: #4E7653;
+      --sage: #3F6244;           /* darkened to 5.4:1 on cream and 4.5:1 on cream-2 */
+      --sage-decor: #6A9470;     /* decorative only — strokes, fills, icons */
+      --sage-2: #3F6244;         /* darkened secondary */
       --sage-3: #2F5234;
       --earth: #8B6B4A;
       --earth-2: #6B4F34;
       --mist: #B8C8B2;
-      --muted: #7A7264;
+      --muted: #5C5546;          /* darkened from #7A7264 for 4.5:1 on cream */
+      --muted-on-dark: #C8C2B5;  /* lightened for use on sage-3/ink backgrounds */
       --ink: #2A2820;
       --ink-2: #1E1C18;
     }
     body { font-family: 'Inter', sans-serif; color: var(--ink); background: var(--cream); margin: 0; font-weight: 300; }
     h1, h2, h3, h4, blockquote { font-family: 'Source Serif 4', Georgia, serif; font-weight: 400; }
     a { text-decoration: none; }
+    /* A11y */
+    .skip-link { position: absolute; left: -9999px; top: 0; background: var(--sage-3); color: white; padding: 12px 18px; z-index: 9999; font-weight: 500; }
+    .skip-link:focus { left: 0; }
+    a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
+      outline: 3px solid var(--sage);
+      outline-offset: 3px;
+    }
 
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(24px); }
@@ -40,10 +49,7 @@ import { practice } from '../../data/v5';
       0%, 100% { transform: rotate(-2deg); }
       50% { transform: rotate(2deg); }
     }
-    .fade-1 { animation: fadeUp 1s ease both; }
-    .fade-2 { animation: fadeUp 1s 0.15s ease both; }
-    .fade-3 { animation: fadeUp 1s 0.3s ease both; }
-    .fade-4 { animation: fadeUp 1s 0.45s ease both; }
+    .fade-1, .fade-2, .fade-3, .fade-4 { opacity: 1 !important; }
 
     .nav-link { transition: color 0.2s; }
     .nav-link:hover { color: var(--sage-2) !important; }
@@ -83,24 +89,29 @@ import { practice } from '../../data/v5';
   </style>
 </head>
 <body>
+<a href="#main" class="skip-link">Skip to main content</a>
 
 <!-- NAV -->
 <header style="background:var(--cream); border-bottom:1px solid var(--cream-2); position:sticky; top:0; z-index:100;">
   <div style="max-width:1280px; margin:0 auto; padding:0 56px; height:76px; display:flex; align-items:center; justify-content:space-between;">
     <div>
-      <div style="font-family:'Source Serif 4',serif; font-size:20px; color:var(--ink); letter-spacing:0.02em;">{practice.name}</div>
-      <div style="font-size:10px; letter-spacing:0.28em; text-transform:uppercase; color:var(--sage); margin-top:2px; font-weight:500;">Portland, Oregon · Est. {practice.founded}</div>
+      <a href="/" style="display:block; color:inherit;" aria-label={`${practice.name} home`}>
+        <div style="font-family:'Source Serif 4',serif; font-size:20px; color:var(--ink); letter-spacing:0.02em;">{practice.name}</div>
+        <div style="font-size:10px; letter-spacing:0.28em; text-transform:uppercase; color:var(--sage); margin-top:2px; font-weight:500;">Portland, Oregon · Est. {practice.founded}</div>
+      </a>
     </div>
-    <nav style="display:flex; gap:32px; align-items:center;">
+    <nav style="display:flex; gap:32px; align-items:center;" aria-label="Primary">
       {[['#services','Services'],['#principles','Our Way'],['#team','Team'],['#contact','Visit']].map(([href,label]) => (
         <a href={href} class="nav-link" style="font-size:13px; letter-spacing:0.07em; color:var(--muted); font-weight:500;">{label}</a>
       ))}
-      <a href="#appointment" class="cta-btn" style="background:var(--sage-3); color:white; font-size:11px; letter-spacing:0.14em; text-transform:uppercase; padding:12px 26px; font-weight:500;">
+      <a href="#appointment" class="cta-btn" style="background:var(--sage-3); color:white; font-size:11px; letter-spacing:0.14em; text-transform:uppercase; padding:12px 26px; font-weight:500; min-height:44px; display:inline-flex; align-items:center;">
         Begin Journey
       </a>
     </nav>
   </div>
 </header>
+
+<main id="main" tabindex="-1">
 
 <!-- HERO -->
 <section class="hero-grid" style="min-height:96vh; display:grid; grid-template-columns:1fr 1fr; position:relative; overflow:hidden;">
@@ -123,12 +134,12 @@ import { practice } from '../../data/v5';
     <p class="fade-3" style="font-size:18px; line-height:1.88; color:var(--muted); margin:0 0 44px; max-width:440px; font-weight:300;">{practice.hero.subheadline}</p>
 
     <div class="fade-4" style="display:flex; gap:18px; flex-wrap:wrap; align-items:center; margin-bottom:56px;">
-      <a href="#appointment" class="cta-btn" style="background:var(--sage-3); color:white; font-size:12px; letter-spacing:0.14em; text-transform:uppercase; padding:18px 42px; font-weight:500;">
+      <a href="#appointment" class="cta-btn" style="background:var(--sage-3); color:white; font-size:12px; letter-spacing:0.14em; text-transform:uppercase; padding:18px 42px; font-weight:500; min-height:44px; display:inline-flex; align-items:center;">
         {practice.hero.ctaText}
       </a>
-      <a href="tel:{practice.phone}" style="font-size:15px; color:var(--sage-2); font-weight:400; display:flex; align-items:center; gap:10px; transition:color 0.2s;"
+      <a href={`tel:${practice.phone.replace(/[^0-9+]/g,'')}`} aria-label={`Call us at ${practice.phone}`} style="font-size:15px; color:var(--sage-2); font-weight:500; display:flex; align-items:center; gap:10px; transition:color 0.2s; min-height:44px; text-decoration:underline;"
          onmouseover="this.style.color='var(--sage-3)'" onmouseout="this.style.color='var(--sage-2)'">
-        <span style="display:inline-block; width:24px; height:1px; background:var(--sage);"></span>
+        <span aria-hidden="true" style="display:inline-block; width:24px; height:1px; background:var(--sage);"></span>
         {practice.phone}
       </a>
     </div>
@@ -398,10 +409,14 @@ import { practice } from '../../data/v5';
       <div style="font-size:9px; letter-spacing:0.3em; text-transform:uppercase; color:var(--mist); margin-bottom:20px; font-weight:500;">Find Us</div>
       <h2 style="font-size:clamp(32px,3.5vw,52px); color:white; margin:0 0 44px; line-height:1.15; font-style:italic;">Visit Portland</h2>
       <div style="display:flex; flex-direction:column; gap:28px;">
-        {[['Location',practice.address],['Phone',practice.phone],['Email',practice.email]].map(([l,v]) => (
+        {([['Location',practice.address,null],['Phone',practice.phone,`tel:${practice.phone.replace(/[^0-9+]/g,'')}`],['Email',practice.email,`mailto:${practice.email}`]] as const).map(([l,v,href]) => (
           <div style="padding-bottom:28px; border-bottom:1px solid rgba(184,200,178,0.25);">
             <div style="font-size:9px; letter-spacing:0.22em; text-transform:uppercase; color:var(--mist); margin-bottom:8px; font-weight:500;">{l}</div>
-            <div style="font-size:16px; color:rgba(255,255,255,0.85); font-weight:300; line-height:1.5;">{v}</div>
+            {href ? (
+              <a href={href} style="font-size:16px; color:white; font-weight:400; line-height:1.5; text-decoration:underline;">{v}</a>
+            ) : (
+              <div style="font-size:16px; color:white; font-weight:300; line-height:1.5;">{v}</div>
+            )}
           </div>
         ))}
       </div>
@@ -412,14 +427,14 @@ import { practice } from '../../data/v5';
       <div style="display:flex; flex-direction:column;">
         {practice.hours.map(h => (
           <div style="display:flex; justify-content:space-between; align-items:center; padding:18px 0; border-bottom:1px solid rgba(184,200,178,0.2);">
-            <span style="font-size:15px; color:rgba(255,255,255,0.58); font-weight:300;">{h.day}</span>
+            <span style="font-size:15px; color:rgba(255,255,255,0.82); font-weight:300;">{h.day}</span>
             <span style="font-size:15px; color:white; font-weight:400;">{h.time}</span>
           </div>
         ))}
       </div>
-      <div style="margin-top:36px; padding:24px; background:rgba(255,255,255,0.07); border-left:2px solid var(--mist);">
-        <div style="font-size:9px; letter-spacing:0.22em; text-transform:uppercase; color:var(--mist); margin-bottom:8px; font-weight:500;">New Patient?</div>
-        <p style="font-size:14px; color:rgba(255,255,255,0.65); margin:0; font-weight:300; line-height:1.7;">Please allow 90 minutes for your first visit. We take time to understand your full health history before any treatment.</p>
+      <div style="margin-top:36px; padding:24px; background:rgba(255,255,255,0.07); border-left:2px solid #DDE5DC;">
+        <div style="font-size:9px; letter-spacing:0.22em; text-transform:uppercase; color:#DDE5DC; margin-bottom:8px; font-weight:500;">New Patient?</div>
+        <p style="font-size:14px; color:rgba(255,255,255,0.92); margin:0; font-weight:300; line-height:1.7;">Please allow 90 minutes for your first visit. We take time to understand your full health history before any treatment.</p>
       </div>
     </div>
   </div>
@@ -446,40 +461,41 @@ import { practice } from '../../data/v5';
       <div style="width:36px; height:2px; background:var(--sage); margin:0 auto;"></div>
     </div>
 
-    <form style="display:flex; flex-direction:column; gap:28px;">
+    <form aria-labelledby="v5-form-heading" style="display:flex; flex-direction:column; gap:28px;">
+      <h3 id="v5-form-heading" class="a11y-sr-only">Begin Your Journey appointment form</h3>
       <div style="display:grid; grid-template-columns:1fr 1fr; gap:28px;">
         <div>
-          <label style="display:block; font-size:9px; letter-spacing:0.26em; text-transform:uppercase; color:var(--sage); margin-bottom:12px; font-weight:500;">First Name</label>
-          <input type="text" placeholder="Elaine" style="width:100%; padding:14px 0; background:transparent; border:none; border-bottom:1px solid var(--cream-3); color:var(--ink); font-size:15px; font-family:'Inter',sans-serif; font-weight:300; transition:border-color 0.2s;" />
+          <label for="v5-fname" style="display:block; font-size:9px; letter-spacing:0.26em; text-transform:uppercase; color:var(--sage); margin-bottom:12px; font-weight:500;">First Name</label>
+          <input id="v5-fname" name="firstName" type="text" autocomplete="given-name" required aria-required="true" placeholder="Elaine" style="width:100%; padding:14px 0; background:transparent; border:none; border-bottom:1px solid var(--cream-3); color:var(--ink); font-size:15px; font-family:'Inter',sans-serif; font-weight:300; transition:border-color 0.2s;" />
         </div>
         <div>
-          <label style="display:block; font-size:9px; letter-spacing:0.26em; text-transform:uppercase; color:var(--sage); margin-bottom:12px; font-weight:500;">Last Name</label>
-          <input type="text" placeholder="Morris" style="width:100%; padding:14px 0; background:transparent; border:none; border-bottom:1px solid var(--cream-3); color:var(--ink); font-size:15px; font-family:'Inter',sans-serif; font-weight:300; transition:border-color 0.2s;" />
+          <label for="v5-lname" style="display:block; font-size:9px; letter-spacing:0.26em; text-transform:uppercase; color:var(--sage); margin-bottom:12px; font-weight:500;">Last Name</label>
+          <input id="v5-lname" name="lastName" type="text" autocomplete="family-name" required aria-required="true" placeholder="Morris" style="width:100%; padding:14px 0; background:transparent; border:none; border-bottom:1px solid var(--cream-3); color:var(--ink); font-size:15px; font-family:'Inter',sans-serif; font-weight:300; transition:border-color 0.2s;" />
         </div>
       </div>
       <div style="display:grid; grid-template-columns:1fr 1fr; gap:28px;">
         <div>
-          <label style="display:block; font-size:9px; letter-spacing:0.26em; text-transform:uppercase; color:var(--sage); margin-bottom:12px; font-weight:500;">Phone</label>
-          <input type="tel" placeholder="(503) 555-0000" style="width:100%; padding:14px 0; background:transparent; border:none; border-bottom:1px solid var(--cream-3); color:var(--ink); font-size:15px; font-family:'Inter',sans-serif; font-weight:300; transition:border-color 0.2s;" />
+          <label for="v5-phone" style="display:block; font-size:9px; letter-spacing:0.26em; text-transform:uppercase; color:var(--sage); margin-bottom:12px; font-weight:500;">Phone</label>
+          <input id="v5-phone" name="phone" type="tel" autocomplete="tel" required aria-required="true" placeholder="(503) 555-0000" style="width:100%; padding:14px 0; background:transparent; border:none; border-bottom:1px solid var(--cream-3); color:var(--ink); font-size:15px; font-family:'Inter',sans-serif; font-weight:300; transition:border-color 0.2s;" />
         </div>
         <div>
-          <label style="display:block; font-size:9px; letter-spacing:0.26em; text-transform:uppercase; color:var(--sage); margin-bottom:12px; font-weight:500;">Email</label>
-          <input type="email" placeholder="elaine@email.com" style="width:100%; padding:14px 0; background:transparent; border:none; border-bottom:1px solid var(--cream-3); color:var(--ink); font-size:15px; font-family:'Inter',sans-serif; font-weight:300; transition:border-color 0.2s;" />
+          <label for="v5-email" style="display:block; font-size:9px; letter-spacing:0.26em; text-transform:uppercase; color:var(--sage); margin-bottom:12px; font-weight:500;">Email</label>
+          <input id="v5-email" name="email" type="email" autocomplete="email" required aria-required="true" placeholder="elaine@email.com" style="width:100%; padding:14px 0; background:transparent; border:none; border-bottom:1px solid var(--cream-3); color:var(--ink); font-size:15px; font-family:'Inter',sans-serif; font-weight:300; transition:border-color 0.2s;" />
         </div>
       </div>
       <div>
-        <label style="display:block; font-size:9px; letter-spacing:0.26em; text-transform:uppercase; color:var(--sage); margin-bottom:12px; font-weight:500;">Primary Interest</label>
-        <select style="width:100%; padding:14px 0; background:transparent; border:none; border-bottom:1px solid var(--cream-3); color:var(--ink); font-size:15px; font-family:'Inter',sans-serif; font-weight:300; cursor:pointer; -webkit-appearance:none;">
+        <label for="v5-interest" style="display:block; font-size:9px; letter-spacing:0.26em; text-transform:uppercase; color:var(--sage); margin-bottom:12px; font-weight:500;">Primary Interest</label>
+        <select id="v5-interest" name="interest" style="width:100%; padding:14px 0; background:transparent; border:none; border-bottom:1px solid var(--cream-3); color:var(--ink); font-size:15px; font-family:'Inter',sans-serif; font-weight:300; cursor:pointer; -webkit-appearance:none;">
           <option value="">Select a service</option>
           {practice.services.map(s => <option value={s.name}>{s.name}</option>)}
         </select>
       </div>
       <div>
-        <label style="display:block; font-size:9px; letter-spacing:0.26em; text-transform:uppercase; color:var(--sage); margin-bottom:12px; font-weight:500;">Your Health Story (optional)</label>
-        <textarea rows={4} placeholder="Share any health history, concerns, or what drew you to biological dentistry. We read every word." style="width:100%; padding:14px 0; background:transparent; border:none; border-bottom:1px solid var(--cream-3); color:var(--ink); font-size:15px; font-family:'Inter',sans-serif; font-weight:300; resize:none; transition:border-color 0.2s;"></textarea>
+        <label for="v5-story" style="display:block; font-size:9px; letter-spacing:0.26em; text-transform:uppercase; color:var(--sage); margin-bottom:12px; font-weight:500;">Your Health Story (optional)</label>
+        <textarea id="v5-story" name="story" rows={4} placeholder="Share any health history, concerns, or what drew you to biological dentistry. We read every word." style="width:100%; padding:14px 0; background:transparent; border:none; border-bottom:1px solid var(--cream-3); color:var(--ink); font-size:15px; font-family:'Inter',sans-serif; font-weight:300; resize:none; transition:border-color 0.2s;"></textarea>
       </div>
       <div style="display:flex; justify-content:center; margin-top:8px;">
-        <button type="submit" class="cta-btn" style="background:var(--sage-3); color:white; font-size:11px; letter-spacing:0.2em; text-transform:uppercase; padding:20px 56px; border:none; cursor:pointer; font-family:'Inter',sans-serif; font-weight:500;">
+        <button type="submit" class="cta-btn" style="background:var(--sage-3); color:white; font-size:11px; letter-spacing:0.2em; text-transform:uppercase; padding:20px 56px; border:none; cursor:pointer; font-family:'Inter',sans-serif; font-weight:500; min-height:44px;">
           Send My Request
         </button>
       </div>
@@ -488,11 +504,14 @@ import { practice } from '../../data/v5';
   </div>
 </section>
 
+</main>
+
 <!-- FOOTER -->
 <footer style="background:var(--ink-2); padding:48px 80px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px;">
   <div>
     <div style="font-family:'Source Serif 4',serif; font-size:19px; color:white; letter-spacing:0.02em; font-style:italic;">{practice.name}</div>
-    <div style="font-size:12px; color:rgba(255,255,255,0.4); margin-top:5px; font-weight:300;">{practice.address}</div>
+    <div style="font-size:12px; color:rgba(255,255,255,0.78); margin-top:5px; font-weight:300;">{practice.address}</div>
+    <a href="/v5-holistic-wellness/accessibility/" style="font-size:12px; color:white; margin-top:8px; display:inline-block; text-decoration:underline; font-weight:400;">Accessibility Statement</a>
   </div>
   <!-- Tiny leaf -->
   <div style="opacity:0.3;">
@@ -502,7 +521,7 @@ import { practice } from '../../data/v5';
       <path d="M12,14 Q18,8 20,0 Q14,6 13,14 Z" fill="white" opacity="0.6"/>
     </svg>
   </div>
-  <div style="font-size:12px; color:rgba(255,255,255,0.35); font-weight:300;">© {new Date().getFullYear()} {practice.name}. All rights reserved.</div>
+  <div style="font-size:12px; color:rgba(255,255,255,0.78); font-weight:300;">© {new Date().getFullYear()} {practice.name}. All rights reserved.</div>
 </footer>
 
 </body>

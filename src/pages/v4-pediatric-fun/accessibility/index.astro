@@ -1,0 +1,74 @@
+---
+import { practice } from '../../../data/v4';
+const accessibilityEmail = `accessibility@${practice.email.split('@')[1]}`;
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Accessibility Statement | {practice.name}</title>
+  <meta name="description" content={`Accessibility statement for ${practice.name}. We are committed to WCAG 2.1 Level AA compliance.`} />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Lilita+One&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    :root { --red: #C8231A; --blue: #1565C0; --blue-dark: #0D47A1; --dark: #1A1D2E; --bg: #FFFCF5; --muted: #555; }
+    body { font-family: 'Nunito', sans-serif; background: var(--bg); color: var(--dark); margin: 0; line-height: 1.7; font-weight: 600; }
+    .display { font-family: 'Lilita One', cursive; font-weight: 400; }
+    h1, h2 { color: var(--dark); }
+    a { color: var(--blue-dark); font-weight: 800; }
+    a:focus-visible, button:focus-visible { outline: 3px solid var(--red); outline-offset: 3px; }
+    .skip-link { position: absolute; left: -9999px; top: 0; background: var(--dark); color: white; padding: 12px 18px; z-index: 9999; font-weight: 800; }
+    .skip-link:focus { left: 0; }
+  </style>
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to main content</a>
+  <header style="background:white; border-bottom:4px solid #FFD000; padding:16px 24px;">
+    <div style="max-width:960px; margin:0 auto; display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap;">
+      <a href="/v4-pediatric-fun/" class="display" style="font-size:22px; color:var(--red);">{practice.name}</a>
+      <a href="/v4-pediatric-fun/" style="font-size:14px; color:var(--blue-dark);">&larr; Back home</a>
+    </div>
+  </header>
+  <main id="main" style="max-width:760px; margin:0 auto; padding:56px 24px 96px;">
+    <h1 class="display" style="font-size:clamp(36px,5vw,56px); margin:0 0 24px; color:var(--dark);">Accessibility Statement</h1>
+    <p style="font-size:17px; margin:0 0 20px;">
+      {practice.name} is committed to ensuring digital accessibility for people of all abilities. We strive to conform to <abbr title="Web Content Accessibility Guidelines">WCAG</abbr> 2.1 Level AA standards and continuously improve the user experience for everyone.
+    </p>
+    <p style="font-size:17px; margin:0 0 32px;">
+      If you experience any difficulty accessing this website, or need accommodations, please contact us at <a href={`mailto:${accessibilityEmail}`}>{accessibilityEmail}</a> or <a href={`tel:${practice.phone.replace(/[^0-9+]/g,'')}`}>{practice.phone}</a> and we will work to provide the information or service through alternative communication.
+    </p>
+
+    <h2 class="display" style="font-size:26px; margin:40px 0 14px;">Measures We Take</h2>
+    <ul style="font-size:16px; color:var(--muted); padding-left:22px; margin:0 0 24px;">
+      <li>Semantic HTML and clear heading hierarchy</li>
+      <li>Descriptive alternative text for all meaningful images</li>
+      <li>Keyboard navigation with visible focus indicators</li>
+      <li>Color contrast meeting WCAG 2.1 AA ratios</li>
+      <li>Form fields with associated labels for screen readers</li>
+      <li>Skip-to-content links and clear page landmarks</li>
+      <li>Large, kid-friendly touch targets (at least 44&times;44 pixels)</li>
+    </ul>
+
+    <h2 class="display" style="font-size:26px; margin:40px 0 14px;">Ongoing Review</h2>
+    <p style="font-size:16px; color:var(--muted); margin:0 0 16px;">
+      This site is reviewed regularly. Last updated: <time datetime="2026-05-17">May 17, 2026</time>.
+    </p>
+
+    <h2 class="display" style="font-size:26px; margin:40px 0 14px;">Third-Party Content</h2>
+    <p style="font-size:16px; color:var(--muted); margin:0 0 16px;">
+      While we strive for full accessibility, some embedded third-party content may not be fully accessible. We will provide an accessible alternative on request.
+    </p>
+
+    <div style="margin-top:48px; padding:24px; background:#E8F0FE; border:3px solid var(--blue); border-radius:18px;">
+      <strong style="display:block; color:var(--dark); margin-bottom:6px; font-size:17px;">Need accommodations?</strong>
+      <a href={`mailto:${accessibilityEmail}`}>{accessibilityEmail}</a> &middot; <a href={`tel:${practice.phone.replace(/[^0-9+]/g,'')}`}>{practice.phone}</a>
+    </div>
+  </main>
+  <footer style="background:var(--dark); color:rgba(255,255,255,0.85); padding:24px 24px; text-align:center; font-size:14px; font-weight:700;">
+    &copy; {new Date().getFullYear()} {practice.name}. <a href="/v4-pediatric-fun/" style="color:white;">Home</a>
+  </footer>
+</body>
+</html>

@@ -24,12 +24,19 @@ import { practice } from '../../data/v3';
       --teal-glow: rgba(0,223,208,0.35);
       --teal-border: rgba(0,223,208,0.22);
       --white: #E8F4FF;
-      --muted: #6B92B8;
-      --muted-2: #4A6A88;
+      --muted: #B8D0E5;
+      --muted-2: #A0B8CC;
     }
     body { font-family: 'Sora', sans-serif; color: var(--white); background: var(--navy); margin: 0; }
     .mono { font-family: 'JetBrains Mono', monospace; }
     a { text-decoration: none; }
+    /* A11y */
+    .skip-link { position: absolute; left: -9999px; top: 0; background: var(--teal); color: var(--navy); padding: 12px 18px; z-index: 9999; font-weight: 700; }
+    .skip-link:focus { left: 0; }
+    a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
+      outline: 2px solid var(--teal);
+      outline-offset: 2px;
+    }
 
     @keyframes glow-pulse {
       0%, 100% { box-shadow: 0 0 0 0 var(--teal-glow); }
@@ -48,10 +55,7 @@ import { practice } from '../../data/v3';
     @keyframes rotateSlow { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
     @keyframes float { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-12px); } }
 
-    .fade-1 { animation: fadeUp 0.8s ease both; }
-    .fade-2 { animation: fadeUp 0.8s 0.1s ease both; }
-    .fade-3 { animation: fadeUp 0.8s 0.2s ease both; }
-    .fade-4 { animation: fadeUp 0.8s 0.3s ease both; }
+    .fade-1, .fade-2, .fade-3, .fade-4 { opacity: 1 !important; }
 
     .grid-bg {
       background-image:
@@ -80,6 +84,8 @@ import { practice } from '../../data/v3';
 </head>
 <body>
 
+<a href="#main" class="skip-link">Skip to main content</a>
+
 <!-- NAV -->
 <nav style="position:fixed; top:0; left:0; right:0; z-index:200; background:rgba(4,13,24,0.94); backdrop-filter:blur(20px); border-bottom:1px solid var(--teal-border); height:66px; display:flex; align-items:center; justify-content:space-between; padding:0 44px;">
   <div style="display:flex; align-items:center; gap:14px;">
@@ -92,12 +98,13 @@ import { practice } from '../../data/v3';
       <a href={href} class="mono" style="font-size:12px; color:var(--muted); font-weight:400; transition:color 0.15s; letter-spacing:0.04em;"
          onmouseover="this.style.color='var(--teal)'" onmouseout="this.style.color='var(--muted)'">{label}</a>
     ))}
-    <a href="#appointment" class="book-cta" style="background:var(--teal); color:var(--navy); font-size:13px; font-weight:700; padding:10px 22px; border-radius:4px; font-family:'Sora',sans-serif; letter-spacing:0.03em;">
+    <a href="#appointment" class="book-cta" style="background:#00DFD0; color:#000000; font-size:13px; font-weight:700; padding:10px 22px; border-radius:4px; font-family:'Sora',sans-serif; letter-spacing:0.03em;">
       Book a Scan →
     </a>
   </div>
 </nav>
 
+<main id="main">
 <!-- HERO -->
 <section class="grid-bg" style="min-height:100vh; display:flex; flex-direction:column; justify-content:center; padding:100px 44px 80px; position:relative; overflow:hidden;">
   <!-- Teal radial glow -->
@@ -116,11 +123,11 @@ import { practice } from '../../data/v3';
 
       <!-- CTA Buttons -->
       <div class="fade-4" style="display:flex; gap:14px; flex-wrap:wrap; align-items:center; margin-bottom:60px;">
-        <a href="#appointment" class="book-cta" style="background:var(--teal); color:var(--navy); font-weight:700; font-size:15px; padding:16px 36px; border-radius:4px; display:flex; align-items:center; gap:8px;">
+        <a href="#appointment" class="book-cta" style="background:#00DFD0; color:#000000; font-weight:700; font-size:15px; padding:16px 36px; border-radius:4px; display:flex; align-items:center; gap:8px;">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-2 .89-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.11-.89-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/></svg>
           {practice.hero.ctaText}
         </a>
-        <a href="tel:{practice.phone}" class="mono" style="color:var(--teal); font-size:14px; border:1px solid var(--teal-border); padding:15px 22px; border-radius:4px; transition:border-color 0.2s;"
+        <a href={`tel:${practice.phone.replace(/[^0-9+]/g,'')}`} class="mono" aria-label={`Call us at ${practice.phone}`} style="color:var(--teal); font-size:14px; border:1px solid var(--teal-border); padding:15px 22px; border-radius:4px; min-height:44px; display:inline-flex; align-items:center; transition:border-color 0.2s;"
            onmouseover="this.style.borderColor='var(--teal)'" onmouseout="this.style.borderColor='var(--teal-border)'">{practice.phone}</a>
       </div>
 
@@ -130,7 +137,7 @@ import { practice } from '../../data/v3';
           <div style={`padding:20px 22px; ${i < 2 ? 'border-right:1px solid var(--teal-border);' : ''} background:var(--navy-2);`}>
             <div class="mono" style="font-size:24px; color:var(--teal); font-weight:400; line-height:1;">{n}</div>
             <div style="font-size:12px; color:var(--white); font-weight:500; margin-top:6px;">{l}</div>
-            <div class="mono" style="font-size:10px; color:var(--muted); margin-top:2px;">{sub}</div>
+            <div class="mono" style="font-size:10px; color:#D8E5F0; margin-top:2px; opacity:1;">{sub}</div>
           </div>
         ))}
       </div>
@@ -259,7 +266,7 @@ import { practice } from '../../data/v3';
       ))}
     </div>
     <div style="margin-top:40px; text-align:center;">
-      <a href="#appointment" class="book-cta" style="display:inline-flex; align-items:center; gap:8px; background:var(--teal); color:var(--navy); font-size:15px; font-weight:700; padding:16px 36px; border-radius:4px;">
+      <a href="#appointment" class="book-cta" style="display:inline-flex; align-items:center; gap:8px; background:#00DFD0; color:#000000; font-size:15px; font-weight:700; padding:16px 36px; border-radius:4px;">
         Schedule Online Now →
       </a>
     </div>
@@ -309,7 +316,7 @@ import { practice } from '../../data/v3';
         <span class="mono" style="background:var(--navy-3); border:1px solid var(--teal-border); color:var(--muted); font-size:12px; padding:7px 18px; border-radius:4px;">{ins}</span>
       ))}
     </div>
-    <a href="#appointment" class="book-cta" style="display:inline-flex; align-items:center; gap:8px; background:var(--teal); color:var(--navy); font-size:14px; font-weight:700; padding:14px 32px; border-radius:4px;">
+    <a href="#appointment" class="book-cta" style="display:inline-flex; align-items:center; gap:8px; background:#00DFD0; color:#000000; font-size:14px; font-weight:700; padding:14px 32px; border-radius:4px;">
       Verify My Coverage →
     </a>
   </div>
@@ -391,10 +398,14 @@ import { practice } from '../../data/v3';
       <div class="mono" style="font-size:11px; color:var(--teal); letter-spacing:0.14em; margin-bottom:14px;">// location.get()</div>
       <h2 style="font-size:clamp(28px,3vw,44px); color:white; margin:0 0 40px; font-weight:700;">Find Us in Seattle</h2>
       <div style="display:flex; flex-direction:column; gap:22px;">
-        {([['// address',practice.address],['// phone',practice.phone],['// email',practice.email]] as const).map(([l,v]) => (
+        {([['// address',practice.address,null],['// phone',practice.phone,`tel:${practice.phone.replace(/[^0-9+]/g,'')}`],['// email',practice.email,`mailto:${practice.email}`]] as const).map(([l,v,href]) => (
           <div style="border-left:2px solid var(--teal-border); padding-left:18px;">
-            <div class="mono" style="font-size:10px; color:var(--teal); margin-bottom:4px; letter-spacing:0.08em;">{l}</div>
-            <div style="font-size:15px; color:var(--white); font-weight:400;">{v}</div>
+            <div class="mono" style="font-size:11px; color:var(--teal); margin-bottom:4px; letter-spacing:0.08em;">{l}</div>
+            {href ? (
+              <a href={href} style="font-size:15px; color:var(--white); font-weight:400; text-decoration:underline;">{v}</a>
+            ) : (
+              <div style="font-size:15px; color:var(--white); font-weight:400;">{v}</div>
+            )}
           </div>
         ))}
       </div>
@@ -419,61 +430,66 @@ import { practice } from '../../data/v3';
   <div style="max-width:720px; margin:0 auto;">
     <div style="text-align:center; margin-bottom:52px;">
       <div class="mono" style="font-size:11px; color:var(--teal); letter-spacing:0.14em; margin-bottom:14px;">// appointment.create()</div>
-      <h2 style="font-size:clamp(32px,4vw,56px); color:white; margin:0 0 12px; font-weight:700;">Schedule a Scan</h2>
+      <h2 id="v3-appt-heading" style="font-size:clamp(32px,4vw,56px); color:white; margin:0 0 12px; font-weight:700;">Schedule a Scan</h2>
       <p style="font-size:16px; color:var(--muted); font-weight:300;">Online booking · Instant confirmation · No phone tag</p>
     </div>
-    <form style="background:var(--navy-3); border:1px solid var(--teal-border); border-radius:8px; padding:44px; display:flex; flex-direction:column; gap:22px;">
+    <form aria-labelledby="v3-appt-heading" style="background:var(--navy-3); border:1px solid var(--teal-border); border-radius:8px; padding:44px; display:flex; flex-direction:column; gap:22px;">
       <div style="display:grid; grid-template-columns:1fr 1fr; gap:20px;">
         <div>
-          <label class="mono" style="display:block; font-size:10px; color:var(--teal); margin-bottom:9px; letter-spacing:0.1em; text-transform:uppercase;">FIRST_NAME</label>
-          <input type="text" placeholder="Nathan" style="width:100%; padding:11px 14px; background:var(--navy); border:1px solid var(--teal-border); border-radius:4px; color:white; font-size:14px; font-family:'Sora',sans-serif; transition:all 0.2s;" />
+          <label for="v3-fname" class="mono" style="display:block; font-size:11px; color:var(--teal); margin-bottom:9px; letter-spacing:0.1em; text-transform:uppercase;">First Name <span aria-hidden="true">*</span></label>
+          <input id="v3-fname" name="firstName" type="text" autocomplete="given-name" required aria-required="true" placeholder="Nathan" style="width:100%; padding:11px 14px; background:var(--navy); border:1px solid var(--teal-border); border-radius:4px; color:white; font-size:14px; font-family:'Sora',sans-serif; transition:all 0.2s;" />
         </div>
         <div>
-          <label class="mono" style="display:block; font-size:10px; color:var(--teal); margin-bottom:9px; letter-spacing:0.1em; text-transform:uppercase;">LAST_NAME</label>
-          <input type="text" placeholder="Kross" style="width:100%; padding:11px 14px; background:var(--navy); border:1px solid var(--teal-border); border-radius:4px; color:white; font-size:14px; font-family:'Sora',sans-serif; transition:all 0.2s;" />
+          <label for="v3-lname" class="mono" style="display:block; font-size:11px; color:var(--teal); margin-bottom:9px; letter-spacing:0.1em; text-transform:uppercase;">Last Name <span aria-hidden="true">*</span></label>
+          <input id="v3-lname" name="lastName" type="text" autocomplete="family-name" required aria-required="true" placeholder="Kross" style="width:100%; padding:11px 14px; background:var(--navy); border:1px solid var(--teal-border); border-radius:4px; color:white; font-size:14px; font-family:'Sora',sans-serif; transition:all 0.2s;" />
         </div>
       </div>
       <div style="display:grid; grid-template-columns:1fr 1fr; gap:20px;">
         <div>
-          <label class="mono" style="display:block; font-size:10px; color:var(--teal); margin-bottom:9px; letter-spacing:0.1em; text-transform:uppercase;">PHONE</label>
-          <input type="tel" placeholder="(206) 555-0000" style="width:100%; padding:11px 14px; background:var(--navy); border:1px solid var(--teal-border); border-radius:4px; color:white; font-size:14px; font-family:'Sora',sans-serif; transition:all 0.2s;" />
+          <label for="v3-phone" class="mono" style="display:block; font-size:11px; color:var(--teal); margin-bottom:9px; letter-spacing:0.1em; text-transform:uppercase;">Phone <span aria-hidden="true">*</span></label>
+          <input id="v3-phone" name="phone" type="tel" autocomplete="tel" required aria-required="true" placeholder="(206) 555-0000" style="width:100%; padding:11px 14px; background:var(--navy); border:1px solid var(--teal-border); border-radius:4px; color:white; font-size:14px; font-family:'Sora',sans-serif; transition:all 0.2s;" />
         </div>
         <div>
-          <label class="mono" style="display:block; font-size:10px; color:var(--teal); margin-bottom:9px; letter-spacing:0.1em; text-transform:uppercase;">EMAIL</label>
-          <input type="email" placeholder="nathan@email.com" style="width:100%; padding:11px 14px; background:var(--navy); border:1px solid var(--teal-border); border-radius:4px; color:white; font-size:14px; font-family:'Sora',sans-serif; transition:all 0.2s;" />
+          <label for="v3-email" class="mono" style="display:block; font-size:11px; color:var(--teal); margin-bottom:9px; letter-spacing:0.1em; text-transform:uppercase;">Email <span aria-hidden="true">*</span></label>
+          <input id="v3-email" name="email" type="email" autocomplete="email" required aria-required="true" placeholder="nathan@email.com" style="width:100%; padding:11px 14px; background:var(--navy); border:1px solid var(--teal-border); border-radius:4px; color:white; font-size:14px; font-family:'Sora',sans-serif; transition:all 0.2s;" />
         </div>
       </div>
       <div style="display:grid; grid-template-columns:1fr 1fr; gap:20px;">
         <div>
-          <label class="mono" style="display:block; font-size:10px; color:var(--teal); margin-bottom:9px; letter-spacing:0.1em; text-transform:uppercase;">PREFERRED_DATE</label>
-          <input type="date" style="width:100%; padding:11px 14px; background:var(--navy); border:1px solid var(--teal-border); border-radius:4px; color:white; font-size:14px; font-family:'JetBrains Mono',monospace; transition:all 0.2s;" />
+          <label for="v3-date" class="mono" style="display:block; font-size:11px; color:var(--teal); margin-bottom:9px; letter-spacing:0.1em; text-transform:uppercase;">Preferred Date</label>
+          <input id="v3-date" name="preferredDate" type="date" style="width:100%; padding:11px 14px; background:var(--navy); border:1px solid var(--teal-border); border-radius:4px; color:white; font-size:14px; font-family:'JetBrains Mono',monospace; transition:all 0.2s;" />
         </div>
         <div>
-          <label class="mono" style="display:block; font-size:10px; color:var(--teal); margin-bottom:9px; letter-spacing:0.1em; text-transform:uppercase;">SERVICE_TYPE</label>
-          <select style="width:100%; padding:11px 14px; background:var(--navy); border:1px solid var(--teal-border); border-radius:4px; color:white; font-size:14px; font-family:'Sora',sans-serif; cursor:pointer; transition:all 0.2s;">
+          <label for="v3-service" class="mono" style="display:block; font-size:11px; color:var(--teal); margin-bottom:9px; letter-spacing:0.1em; text-transform:uppercase;">Service Type</label>
+          <select id="v3-service" name="service" style="width:100%; padding:11px 14px; background:var(--navy); border:1px solid var(--teal-border); border-radius:4px; color:white; font-size:14px; font-family:'Sora',sans-serif; cursor:pointer; transition:all 0.2s;">
             <option value="">Select service</option>
             {practice.services.map(s => <option value={s.name}>{s.name}</option>)}
           </select>
         </div>
       </div>
       <div>
-        <label class="mono" style="display:block; font-size:10px; color:var(--teal); margin-bottom:9px; letter-spacing:0.1em; text-transform:uppercase;">NOTES (OPTIONAL)</label>
-        <textarea rows={3} placeholder="Any symptoms, questions, or relevant medical history..." style="width:100%; padding:11px 14px; background:var(--navy); border:1px solid var(--teal-border); border-radius:4px; color:white; font-size:14px; font-family:'Sora',sans-serif; resize:vertical; transition:all 0.2s;"></textarea>
+        <label for="v3-notes" class="mono" style="display:block; font-size:11px; color:var(--teal); margin-bottom:9px; letter-spacing:0.1em; text-transform:uppercase;">Notes (Optional)</label>
+        <textarea id="v3-notes" name="notes" rows={3} placeholder="Any symptoms, questions, or relevant medical history..." style="width:100%; padding:11px 14px; background:var(--navy); border:1px solid var(--teal-border); border-radius:4px; color:white; font-size:14px; font-family:'Sora',sans-serif; resize:vertical; transition:all 0.2s;"></textarea>
       </div>
-      <button type="submit" class="book-cta" style="background:var(--teal); color:var(--navy); font-size:14px; font-weight:700; padding:16px 28px; border:none; border-radius:4px; cursor:pointer; font-family:'Sora',sans-serif; display:flex; align-items:center; gap:8px; justify-content:center;">
-        Submit Request →
+      <button type="submit" class="book-cta" style="background:#00DFD0; color:#000000; font-size:14px; font-weight:700; padding:16px 28px; border:none; border-radius:4px; cursor:pointer; font-family:'Sora',sans-serif; display:flex; align-items:center; gap:8px; justify-content:center; min-height:44px;">
+        Submit Request <span aria-hidden="true">&rarr;</span>
       </button>
     </form>
   </div>
 </section>
 
+</main>
+
 <!-- FOOTER + STATUS BAR -->
-<footer style="background:var(--navy-2); border-top:1px solid var(--teal-border); padding:32px 44px; display:flex; justify-content:space-between; align-items:center;">
+<footer style="background:var(--navy-2); border-top:1px solid var(--teal-border); padding:32px 44px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px;">
   <div style="display:flex; align-items:center; gap:10px;">
-    <div style="width:7px; height:7px; background:var(--teal); border-radius:50%;"></div>
+    <div aria-hidden="true" style="width:7px; height:7px; background:var(--teal); border-radius:50%;"></div>
     <span class="mono" style="font-size:13px; color:var(--muted);">{practice.name}</span>
   </div>
-  <span class="mono" style="font-size:11px; color:var(--muted-2);">© {new Date().getFullYear()} · All systems operational</span>
+  <nav aria-label="Footer" style="display:flex; gap:20px; align-items:center; flex-wrap:wrap;">
+    <a href="/v3-modern-tech/accessibility/" class="mono" style="font-size:12px; color:var(--teal); text-decoration:underline;">// accessibility</a>
+    <span class="mono" style="font-size:12px; color:var(--muted);">&copy; {new Date().getFullYear()} &middot; All systems operational</span>
+  </nav>
 </footer>
 <!-- VS Code status bar -->
 <div style="background:#00DFD0; padding:4px 44px; display:flex; justify-content:space-between; align-items:center;">
