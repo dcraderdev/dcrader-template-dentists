@@ -1,5 +1,16 @@
 @import "tailwindcss";
 
+*, *::before, *::after {
+  animation: none !important;
+  transition: none !important;
+}
+@media (prefers-reduced-motion: no-preference) {
+  *, *::before, *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
 @layer base {
   *, *::before, *::after { box-sizing: border-box; }
   html { scroll-behavior: smooth; overflow-x: hidden; }
