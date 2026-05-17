@@ -107,13 +107,18 @@ const heroBase = practice.hero.image.replace(/\.webp$/i, '');
           {practice.phone}
         </a>
       </div>
-      <div class="fade-4" style="display:flex; gap:36px; padding-top:28px; border-top:1px solid var(--border);">
-        {[['4,800+','Happy patients'],['25+ yrs','Serving families'],['Most','Insurance accepted']].map(([n,l]) => (
-          <div>
-            <div style="font-family:'Source Serif 4',serif; font-size:26px; font-weight:700; color:var(--navy); line-height:1;">{n}</div>
-            <div style="font-size:12px; color:var(--muted); font-weight:500; margin-top:4px;">{l}</div>
+      <!-- Patient pull-quote with photo (warm, family-feel) -->
+      <div class="fade-4" style="padding-top:28px; border-top:1px solid var(--border); display:flex; gap:18px; align-items:center;">
+        <div style="position:relative; flex-shrink:0;">
+          <ResponsiveImage src={practice.team[2].image} alt="Linda, longtime patient" widths={[160,320]} sizes="64px" width={160} height={160} imgStyle="width:64px; height:64px; border-radius:9999px; object-fit:cover; display:block; border:3px solid white; box-shadow:0 4px 14px rgba(15,45,82,0.18);" />
+          <div style="position:absolute; bottom:-4px; right:-4px; background:var(--blue); color:white; width:22px; height:22px; border-radius:9999px; display:flex; align-items:center; justify-content:center; border:2px solid white;">
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><path d="M7.17 14.83 4.34 12l-1.42 1.41L7.17 17.66l9-9-1.42-1.41z"/></svg>
           </div>
-        ))}
+        </div>
+        <div>
+          <div style="font-family:'Source Serif 4',serif; font-size:15px; line-height:1.55; color:var(--navy); font-style:italic; font-weight:500; margin-bottom:6px;">"Eight years, three kids, zero tears. Sunrise feels like family."</div>
+          <div style="font-size:11px; color:var(--muted); font-weight:600; letter-spacing:0.04em;">— Linda M. · patient since 2018</div>
+        </div>
       </div>
     </div>
     <!-- Right: Photo -->

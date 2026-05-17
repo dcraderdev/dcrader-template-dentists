@@ -137,14 +137,25 @@ const heroBase = practice.hero.image.replace(/\.webp$/i, '');
       </a>
     </div>
 
-    <!-- Credentials strip -->
-    <div class="fade-4" style="display:flex; gap:32px; padding-top:32px; border-top:1px solid var(--cream-3); flex-wrap:wrap;">
-      {[['IAOMT','Accredited'],['SMART','Safe Removal'],['12 yrs','Portland Based']].map(([n,l]) => (
-        <div>
-          <div style="font-family:'Source Serif 4',serif; font-size:22px; color:var(--sage-2); font-weight:400;">{n}</div>
-          <div style="font-size:10px; letter-spacing:0.14em; text-transform:uppercase; color:var(--muted); margin-top:3px; font-weight:500;">{l}</div>
-        </div>
-      ))}
+    <!-- Care philosophy manifesto (earthy, botanical, no numbers) -->
+    <div class="fade-4" style="padding-top:32px; border-top:1px solid var(--cream-3);">
+      <div style="font-size:9px; letter-spacing:0.32em; text-transform:uppercase; color:var(--sage); margin-bottom:18px; font-weight:500;">Our Quiet Promises</div>
+      <div style="display:grid; gap:14px;">
+        {[
+          'We will not place mercury, BPA, or fluoride silicates in your mouth.',
+          'We will test materials for biocompatibility before they touch your body.',
+          'We will use ozone, ceramic, and rubber-dam SMART protocols — every removal, every patient.',
+          'We will treat your tooth as part of you, not a problem detached from the whole.',
+        ].map(line => (
+          <div style="display:flex; gap:14px; align-items:flex-start;">
+            <svg width="14" height="20" viewBox="0 0 14 20" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0; margin-top:3px;">
+              <path d="M7,18 Q5,12 2,7 Q4,9 7,14 Q10,9 12,7 Q9,12 7,18Z" fill="var(--sage)" opacity="0.85"/>
+              <line x1="7" y1="18" x2="7" y2="2" stroke="var(--sage-2)" stroke-width="1" opacity="0.5"/>
+            </svg>
+            <div style="font-family:'Source Serif 4',serif; font-size:15px; color:var(--ink); line-height:1.65; font-style:italic; font-weight:400;">{line}</div>
+          </div>
+        ))}
+      </div>
     </div>
   </div>
 
