@@ -9,7 +9,7 @@ export const practice = {
     headline: "Your Family's\nSmile Home",
     subheadline: "Gentle, comprehensive dental care for patients of all ages — from first teeth to golden years.",
     ctaText: "Book Your Appointment",
-    image: "https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=1400&q=80",
+    image: "/images/photo-1588776814546-1ffcf47267a5-hero.webp",
   },
   hours: [
     { day: "Monday–Thursday", time: "8:00 AM – 5:00 PM" },
@@ -36,25 +36,25 @@ export const practice = {
       name: "Dr. Sarah Chen",
       role: "Lead Dentist & Founder",
       bio: "25+ years serving San Diego families. UC San Francisco School of Dentistry, with advanced training in pediatric and restorative care.",
-      image: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=400&q=80",
+      image: "/images/photo-1559839734-2b71ea197ec2-thumb.webp",
     },
     {
       name: "Dr. Marcus Webb",
       role: "General Dentist",
       bio: "Specializes in cosmetic and restorative dentistry. Known for his calming chairside manner and precise attention to detail.",
-      image: "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&w=400&q=80",
+      image: "/images/photo-1612349317150-e413f6a5b16d-thumb.webp",
     },
     {
       name: "Jessica Park, RDH",
       role: "Lead Dental Hygienist",
       bio: "Certified with 12 years of experience. Passionate about patient education and helping families maintain lifelong oral health.",
-      image: "https://images.unsplash.com/photo-1594824476967-48c8b964273f?auto=format&fit=crop&w=400&q=80",
+      image: "/images/photo-1594824476967-48c8b964273f-thumb.webp",
     },
     {
       name: "Tom Rivera",
       role: "Patient Care Coordinator",
       bio: "Your first point of contact for scheduling, insurance, and making every visit as smooth as possible.",
-      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80",
+      image: "/images/photo-1507003211169-0a1dd7228f2d-thumb.webp",
     },
   ],
   reviews: [
@@ -64,12 +64,12 @@ export const practice = {
     { name: "Kevin H.", stars: 5, text: "Super efficient, never a long wait, and my teeth feel amazing after every cleaning. The whole staff is genuinely kind.", date: "December 2025" },
   ],
   beforeAfter: [
-    { before: "https://images.unsplash.com/photo-1629909615184-74f495363b67?auto=format&fit=crop&w=600&q=80", after: "https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&w=600&q=80", label: "Full Smile Restoration" },
-    { before: "https://images.unsplash.com/photo-1609840114035-3c981b782dfe?auto=format&fit=crop&w=600&q=80", after: "https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=600&q=80", label: "Professional Whitening" },
+    { before: "/images/photo-1629909615184-74f495363b67-card.webp", after: "/images/photo-1606811841689-23dfddce3e95-card.webp", label: "Full Smile Restoration" },
+    { before: "/images/photo-1609840114035-3c981b782dfe-card.webp", after: "/images/photo-1588776814546-1ffcf47267a5-card.webp", label: "Professional Whitening" },
   ],
   officePhotos: [
-    { url: "https://images.unsplash.com/photo-1629909615184-74f495363b67?auto=format&fit=crop&w=800&q=80", caption: "Welcoming reception area" },
-    { url: "https://images.unsplash.com/photo-1609840114035-3c981b782dfe?auto=format&fit=crop&w=800&q=80", caption: "Modern treatment rooms" },
-    { url: "https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&w=800&q=80", caption: "State-of-the-art equipment" },
+    { url: "/images/photo-1629909615184-74f495363b67-card.webp", caption: "Welcoming reception area" },
+    { url: "/images/photo-1609840114035-3c981b782dfe-card.webp", caption: "Modern treatment rooms" },
+    { url: "/images/photo-1606811841689-23dfddce3e95-card.webp", caption: "State-of-the-art equipment" },
   ],
 };

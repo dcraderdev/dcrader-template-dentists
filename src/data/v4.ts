@@ -9,7 +9,7 @@ export const practice = {
     headline: "Dentist Visits\nJust Got FUN! 🦷",
     subheadline: "We're a superhero-themed pediatric dental practice where brave kids earn capes, coins, and the coolest smiles in Austin!",
     ctaText: "Join the Smile Squad!",
-    image: "https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&w=1400&q=80",
+    image: "/images/photo-1606811841689-23dfddce3e95-hero.webp",
   },
   ageRange: "Ages 0 – 17",
   hours: [
@@ -36,25 +36,25 @@ export const practice = {
       name: "Dr. Maya Johnson",
       role: "Board-Certified Pediatric Dentist",
       bio: "Residency-trained pediatric specialist with 12 years making tiny patients feel like superheroes. Host of the \"Brush Buddies\" podcast for kids.",
-      image: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=400&q=80",
+      image: "/images/photo-1559839734-2b71ea197ec2-thumb.webp",
     },
     {
       name: "Dr. Carlos Reyes",
       role: "Pediatric Dentist",
       bio: "Bilingual (English/Spanish) pediatric dentist specializing in special needs patients and dental anxiety management.",
-      image: "https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&w=400&q=80",
+      image: "/images/photo-1622253692010-333f2da6031d-thumb.webp",
     },
     {
       name: "Sam Torres, RDH",
       role: "Pediatric Hygienist",
       bio: "7 years of turning \"I hate the dentist\" kids into loyal Smile Squad members. Master of distraction techniques and silly voices.",
-      image: "https://images.unsplash.com/photo-1594824476967-48c8b964273f?auto=format&fit=crop&w=400&q=80",
+      image: "/images/photo-1594824476967-48c8b964273f-thumb.webp",
     },
     {
       name: "Zoe Kim",
       role: "Patient Experience Champion",
       bio: "Former kindergarten teacher who now makes sure every child — and parent — has the best experience from parking lot to prize wall.",
-      image: "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=400&q=80",
+      image: "/images/photo-1487412720507-e7ab37603c6f-thumb.webp",
     },
   ],
   reviews: [
@@ -64,13 +64,13 @@ export const practice = {
     { name: "Tiffany C.", stars: 5, text: "So glad we found this place. My daughter has been afraid of the dentist for years. One visit here and she's already asking when we can come back. Life changed!", date: "January 2026" },
   ],
   beforeAfter: [
-    { before: "https://images.unsplash.com/photo-1629909615184-74f495363b67?auto=format&fit=crop&w=600&q=80", after: "https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&w=600&q=80", label: "Cavity-Free Smile Restored" },
-    { before: "https://images.unsplash.com/photo-1609840114035-3c981b782dfe?auto=format&fit=crop&w=600&q=80", after: "https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&w=600&q=80", label: "Phase 1 Ortho Complete" },
+    { before: "/images/photo-1629909615184-74f495363b67-card.webp", after: "/images/photo-1606811841689-23dfddce3e95-card.webp", label: "Cavity-Free Smile Restored" },
+    { before: "/images/photo-1609840114035-3c981b782dfe-card.webp", after: "/images/photo-1606811841689-23dfddce3e95-card.webp", label: "Phase 1 Ortho Complete" },
   ],
   officePhotos: [
-    { url: "https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&w=800&q=80", caption: "Superhero-themed waiting room" },
-    { url: "https://images.unsplash.com/photo-1629909615184-74f495363b67?auto=format&fit=crop&w=800&q=80", caption: "Kid-sized treatment chairs" },
-    { url: "https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&w=800&q=80", caption: "The legendary prize wall" },
+    { url: "/images/photo-1606811841689-23dfddce3e95-card.webp", caption: "Superhero-themed waiting room" },
+    { url: "/images/photo-1629909615184-74f495363b67-card.webp", caption: "Kid-sized treatment chairs" },
+    { url: "/images/photo-1606811841689-23dfddce3e95-card.webp", caption: "The legendary prize wall" },
   ],
   rewards: [
     { tier: "Cavity Fighter", coins: 10, reward: "Temporary tattoo + sticker pack" },

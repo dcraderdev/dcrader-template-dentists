@@ -102,7 +102,7 @@ import { practice } from '../../data/v2';
 
 <!-- HERO — full-bleed photo, editorial text overlay -->
 <section style="position:relative; min-height:100vh; display:flex; align-items:flex-end; overflow:hidden;">
-  <img src={practice.hero.image} alt="Elara Smile Studio" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center;" />
+  <img src={practice.hero.image} alt="Elara Smile Studio" width="1600" height="1067" loading="eager" fetchpriority="high" decoding="async" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center;" />
   <!-- Dark vignette gradient -->
   <div style="position:absolute; inset:0; background:linear-gradient(to top, rgba(26,18,8,0.92) 0%, rgba(26,18,8,0.55) 40%, rgba(26,18,8,0.1) 70%, transparent 100%);"></div>
   <!-- Editorial content pinned to bottom left -->
@@ -186,7 +186,7 @@ import { practice } from '../../data/v2';
       {practice.team.map(m => (
         <div class="team-card" style="cursor:default;">
           <div style="overflow:hidden; margin-bottom:24px; aspect-ratio:3/4;">
-            <img class="team-img" src={m.image} alt={m.name} style="width:100%; height:100%; object-fit:cover; display:block; filter:grayscale(20%);" />
+            <img class="team-img" src={m.image} alt={m.name} width="480" height="480" loading="lazy" decoding="async" style="width:100%; height:100%; object-fit:cover; display:block; filter:grayscale(20%);" />
           </div>
           <div style="border-left:1px solid var(--gold); padding-left:16px;">
             <div style="font-size:9px; letter-spacing:0.2em; text-transform:uppercase; color:var(--gold); margin-bottom:8px; font-weight:500;">{m.role}</div>
@@ -212,9 +212,9 @@ import { practice } from '../../data/v2';
         <div>
           <div style="font-family:'Cormorant Garamond',serif; font-size:22px; color:var(--ink); margin-bottom:20px; text-align:center; font-style:italic; font-weight:400;">{ba.label}</div>
           <div class="ba-wrap" id={`ba-wrap-${i}`}>
-            <img src={ba.after} alt="After" class="ba-after" style="width:100%; aspect-ratio:4/3; object-fit:cover; display:block;" />
+            <img src={ba.after} alt="After" class="ba-after" width="800" height="600" loading="lazy" decoding="async" style="width:100%; aspect-ratio:4/3; object-fit:cover; display:block;" />
             <div class="ba-before-clip" id={`ba-clip-${i}`}>
-              <img src={ba.before} alt="Before" style="width:100%; aspect-ratio:4/3; object-fit:cover;" />
+              <img src={ba.before} alt="Before" width="800" height="600" loading="lazy" decoding="async" style="width:100%; aspect-ratio:4/3; object-fit:cover;" />
             </div>
             <div class="ba-divider" id={`ba-div-${i}`}></div>
             <div class="ba-handle" id={`ba-handle-${i}`}>⟺</div>
@@ -260,7 +260,7 @@ import { practice } from '../../data/v2';
   <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:2px;">
     {practice.officePhotos.map(p => (
       <div style="position:relative; overflow:hidden;">
-        <img class="office-img" src={p.url} alt={p.caption} style="width:100%; height:380px; object-fit:cover; display:block;" />
+        <img class="office-img" src={p.url} alt={p.caption} width="960" height="720" loading="lazy" decoding="async" style="width:100%; aspect-ratio:4/3; object-fit:cover; display:block;" />
         <div style="position:absolute; bottom:0; left:0; right:0; background:linear-gradient(to top, rgba(26,18,8,0.82), transparent); padding:28px 24px;">
           <p style="margin:0; color:rgba(255,255,255,0.8); font-size:11px; letter-spacing:0.15em; text-transform:uppercase;">{p.caption}</p>
         </div>
