@@ -39,16 +39,19 @@ for (const f of files) {
 
   if (!kind) continue;
 
-  const widths = targetWidthsByKind[kind].filter((w) => w < origW);
+  // For hero, allow upscaling up to the largest target (1920) so preload assets exist.
+  const widths = targetWidthsByKind[kind];
   for (const w of widths) {
+    if (w >= origW && kind !== 'hero') continue;
     const webpOut = path.join(dir, `${base}-${w}.webp`);
     const avifOut = path.join(dir, `${base}-${w}.avif`);
+    const resizeOpts = w > origW ? { width: w, withoutEnlargement: false } : { width: w };
     try { await fs.access(webpOut); } catch {
-      await sharp(src).resize({ width: w }).webp(webpOpts).toFile(webpOut);
+      await sharp(src).resize(resizeOpts).webp(webpOpts).toFile(webpOut);
       made++;
     }
     try { await fs.access(avifOut); } catch {
-      await sharp(src).resize({ width: w }).avif(avifOpts).toFile(avifOut);
+      await sharp(src).resize(resizeOpts).avif(avifOpts).toFile(avifOut);
       made++;
     }
   }
