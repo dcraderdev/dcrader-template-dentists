@@ -134,12 +134,26 @@ const heroBase = practice.hero.image.replace(/\.webp$/i, '');
           📞 Call Us!
         </a>
       </div>
-      <div style="display:flex; gap:28px; flex-wrap:wrap;">
-        {[['5,000+','Happy Kids 😄'],['12 yrs','Spreading Smiles'],['4.9★','Google Rating']].map(([n,l]) => (
-          <div style="text-align:center; background:white; border-radius:16px; padding:14px 20px; box-shadow:4px 4px 0 var(--border);">
-            <div class="display" style="font-size:26px; color:var(--red);">{n}</div>
-            <div style="font-size:11px; font-weight:900; color:#888; text-transform:uppercase; letter-spacing:0.06em; margin-top:2px;">{l}</div>
-          </div>
+      <!-- Parent FAQ — candy-pop accordion (no numbers grid) -->
+      <div style="background:white; border-radius:20px; padding:8px 6px; border:3px solid var(--dark); box-shadow:6px 6px 0 var(--yellow); max-width:520px;">
+        <div style="display:flex; align-items:center; gap:8px; padding:10px 16px 4px;">
+          <span style="font-size:18px;">💭</span>
+          <span class="display" style="font-size:14px; color:var(--dark); letter-spacing:0.04em;">Parent Questions</span>
+        </div>
+        {[
+          ['What age should kids start?','As soon as the first tooth pops! We make first visits a high-five party — quick, gentle, and FUN.','🦷'],
+          ["What if my kid is scared?",'No-Fear Zone is real. We narrate, we show, we let them pick the toothpaste flavor. Tears in = giggles out.','🦸'],
+          ['Do you take my insurance?','Most likely yes — and we file everything for you. Cleanings are usually 100% covered.','💳'],
+          ['Are sealants worth it?','Tiny shield, huge protection. Sealants block ~80% of cavities in the molars where kids get them most.','🛡️'],
+        ].map(([q, a, emoji], i) => (
+          <details style={`border-top:2px dashed var(--border); padding:0; margin:6px 0 0;`}>
+            <summary style="list-style:none; cursor:pointer; padding:14px 16px; display:flex; align-items:center; gap:12px;">
+              <span style="font-size:22px;">{emoji}</span>
+              <span style="font-weight:900; color:var(--dark); font-size:14px; flex:1;">{q}</span>
+              <span style="font-size:18px; color:var(--red); font-weight:900;">+</span>
+            </summary>
+            <div style="padding:0 16px 14px 50px; font-size:13px; color:#555; font-weight:700; line-height:1.6;">{a}</div>
+          </details>
         ))}
       </div>
     </div>
