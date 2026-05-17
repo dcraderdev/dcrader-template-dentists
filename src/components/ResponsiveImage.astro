@@ -1,0 +1,63 @@
+---
+// ResponsiveImage.astro
+// Renders a <picture> with AVIF + WebP sources at responsive widths.
+// `src` is expected to be a /images/<base>.webp path. Derivatives produced by
+// scripts/gen-responsive.mjs are <base>-<width>.<webp|avif> and <base>.avif.
+//
+// Usage:
+//   <ResponsiveImage src={practice.hero.image} alt="..." widths={[320,640,1024,1920]}
+//                    sizes="(min-width: 1024px) 50vw, 100vw"
+//                    width={1600} height={1067} eager imgStyle="..." />
+
+interface Props {
+  src: string;
+  alt: string;
+  widths?: number[];
+  sizes?: string;
+  width?: number;
+  height?: number;
+  eager?: boolean;
+  imgStyle?: string;
+  imgClass?: string;
+  pictureStyle?: string;
+}
+
+const {
+  src,
+  alt,
+  widths = [320, 640, 1024, 1920],
+  sizes = '100vw',
+  width,
+  height,
+  eager = false,
+  imgStyle,
+  imgClass,
+  pictureStyle,
+} = Astro.props;
+
+// Strip extension to derive base
+const m = src.match(/^(.*)\.(webp|jpg|jpeg|png)$/i);
+const base = m ? m[1] : src;
+
+const buildSrcset = (ext: 'webp' | 'avif') =>
+  widths.map((w) => `${base}-${w}.${ext} ${w}w`).join(', ');
+
+const loading = eager ? 'eager' : 'lazy';
+const fetchpriority = eager ? 'high' : 'auto';
+const decoding = 'async';
+---
+<picture style={pictureStyle}>
+  <source type="image/avif" srcset={buildSrcset('avif')} sizes={sizes} />
+  <source type="image/webp" srcset={buildSrcset('webp')} sizes={sizes} />
+  <img
+    src={src}
+    alt={alt}
+    width={width}
+    height={height}
+    loading={loading}
+    fetchpriority={fetchpriority}
+    decoding={decoding}
+    style={imgStyle}
+    class={imgClass}
+  />
+</picture>

@@ -1,5 +1,8 @@
 ---
 import { practice } from '../../data/v1';
+import ResponsiveImage from '../../components/ResponsiveImage.astro';
+
+const heroBase = practice.hero.image.replace(/\.webp$/i, '');
 ---
 <!DOCTYPE html>
 <html lang="en">
@@ -11,6 +14,7 @@ import { practice } from '../../data/v1';
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,600&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="preload" as="image" fetchpriority="high" href={`${heroBase}-1024.avif`} type="image/avif" imagesrcset={`${heroBase}-640.avif 640w, ${heroBase}-1024.avif 1024w, ${heroBase}-1920.avif 1920w`} imagesizes="(min-width: 1024px) 50vw, 100vw" />
   <style>
     *, *::before, *::after { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
@@ -115,7 +119,7 @@ import { practice } from '../../data/v1';
     <!-- Right: Photo -->
     <div class="fade-2" style="position:relative;">
       <div style="border-radius:28px; overflow:hidden; box-shadow:0 24px 64px rgba(15,45,82,0.18); position:relative;">
-        <img src={practice.hero.image} alt="Happy family at Sunrise Family Dental" width="1600" height="1200" loading="eager" fetchpriority="high" decoding="async" style="width:100%; aspect-ratio:4/3; object-fit:cover; display:block;" />
+        <ResponsiveImage src={practice.hero.image} alt="Happy family at Sunrise Family Dental" widths={[320,640,1024,1920]} sizes="(min-width: 1024px) 50vw, 100vw" width={1600} height={1200} eager imgStyle="width:100%; aspect-ratio:4/3; object-fit:cover; display:block;" />
         <div style="position:absolute; inset:0; background:linear-gradient(to top, rgba(15,45,82,0.12), transparent 50%);"></div>
       </div>
       <!-- Floating trust badge -->
@@ -217,7 +221,7 @@ import { practice } from '../../data/v1';
       </div>
     </div>
     <div>
-      <img src="/images/photo-1606811841689-23dfddce3e95-card.webp" alt="Our modern office" width="960" height="720" loading="lazy" decoding="async" style="width:100%; border-radius:20px; aspect-ratio:4/3; object-fit:cover; display:block;" />
+      <ResponsiveImage src="/images/photo-1606811841689-23dfddce3e95-card.webp" alt="Our modern office" widths={[320,640,1024]} sizes="(min-width: 1024px) 50vw, 100vw" width={960} height={720} imgStyle="width:100%; border-radius:20px; aspect-ratio:4/3; object-fit:cover; display:block;" />
     </div>
   </div>
 </section>
@@ -234,7 +238,7 @@ import { practice } from '../../data/v1';
       {practice.team.map(m => (
         <div style="text-align:center;">
           <div style="position:relative; display:inline-block; margin-bottom:20px;">
-            <img src={m.image} alt={m.name} width="320" height="320" loading="lazy" decoding="async" style="width:160px; height:160px; border-radius:9999px; object-fit:cover; display:block; border:4px solid var(--border);" />
+            <ResponsiveImage src={m.image} alt={m.name} widths={[320,640]} sizes="160px" width={320} height={320} imgStyle="width:160px; height:160px; border-radius:9999px; object-fit:cover; display:block; border:4px solid var(--border);" />
             <div style="position:absolute; bottom:4px; right:4px; width:24px; height:24px; background:#22C55E; border-radius:9999px; border:3px solid white;"></div>
           </div>
           <h3 style="font-family:'Source Serif 4',serif; font-size:18px; font-weight:600; color:var(--navy); margin:0 0 4px;">{m.name}</h3>
@@ -259,11 +263,11 @@ import { practice } from '../../data/v1';
           <div style="display:grid; grid-template-columns:1fr 1fr;">
             <div>
               <div style="background:var(--text); color:white; font-size:11px; font-weight:700; padding:8px 14px; letter-spacing:0.08em; text-align:center; text-transform:uppercase;">Before</div>
-              <img src={ba.before} alt="Before" width="800" height="600" loading="lazy" decoding="async" style="width:100%; aspect-ratio:4/3; object-fit:cover; display:block;" />
+              <ResponsiveImage src={ba.before} alt="Before" widths={[320,640,1024]} sizes="(min-width: 1024px) 33vw, 50vw" width={800} height={600} imgStyle="width:100%; aspect-ratio:4/3; object-fit:cover; display:block;" />
             </div>
             <div>
               <div style="background:var(--blue); color:white; font-size:11px; font-weight:700; padding:8px 14px; letter-spacing:0.08em; text-align:center; text-transform:uppercase;">After</div>
-              <img src={ba.after} alt="After" width="800" height="600" loading="lazy" decoding="async" style="width:100%; aspect-ratio:4/3; object-fit:cover; display:block;" />
+              <ResponsiveImage src={ba.after} alt="After" widths={[320,640,1024]} sizes="(min-width: 1024px) 33vw, 50vw" width={800} height={600} imgStyle="width:100%; aspect-ratio:4/3; object-fit:cover; display:block;" />
             </div>
           </div>
           <div style="padding:18px 22px; border-top:1px solid var(--border);">
@@ -319,7 +323,7 @@ import { practice } from '../../data/v1';
     <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:16px;">
       {practice.officePhotos.map(p => (
         <div style="border-radius:16px; overflow:hidden; box-shadow:0 4px 16px rgba(15,45,82,0.08);">
-          <img src={p.url} alt={p.caption} width="800" height="600" loading="lazy" decoding="async" style="width:100%; aspect-ratio:4/3; object-fit:cover; display:block;" />
+          <ResponsiveImage src={p.url} alt={p.caption} widths={[320,640,1024]} sizes="(min-width: 1024px) 33vw, 100vw" width={800} height={600} imgStyle="width:100%; aspect-ratio:4/3; object-fit:cover; display:block;" />
           <div style="background:white; padding:14px 18px; border-top:1px solid var(--border);">
             <p style="margin:0; font-size:13px; font-weight:600; color:var(--muted);">{p.caption}</p>
           </div>
