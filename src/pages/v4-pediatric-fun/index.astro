@@ -1,5 +1,8 @@
 ---
 import { practice } from '../../data/v4';
+import ResponsiveImage from '../../components/ResponsiveImage.astro';
+
+const heroBase = practice.hero.image.replace(/\.webp$/i, '');
 ---
 <!DOCTYPE html>
 <html lang="en">
@@ -11,6 +14,7 @@ import { practice } from '../../data/v4';
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Lilita+One&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="preload" as="image" fetchpriority="high" href={`${heroBase}-1024.avif`} type="image/avif" imagesrcset={`${heroBase}-640.avif 640w, ${heroBase}-1024.avif 1024w, ${heroBase}-1920.avif 1920w`} imagesizes="(min-width: 1024px) 50vw, 100vw" />
   <style>
     *, *::before, *::after { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
@@ -136,7 +140,7 @@ import { practice } from '../../data/v4';
     <div style="position:relative; text-align:center;">
       <!-- Photo with funky border -->
       <div style="border-radius:28px; overflow:hidden; border:5px solid var(--yellow); box-shadow:10px 10px 0 var(--red); position:relative;">
-        <img src={practice.hero.image} alt="Kids at Smile Squad" width="1600" height="1200" loading="eager" fetchpriority="high" decoding="async" style="width:100%; aspect-ratio:4/3; object-fit:cover; display:block;" />
+        <ResponsiveImage src={practice.hero.image} alt="Kids at Smile Squad" widths={[320,640,1024,1920]} sizes="(min-width: 1024px) 50vw, 100vw" width={1600} height={1200} eager imgStyle="width:100%; aspect-ratio:4/3; object-fit:cover; display:block;" />
       </div>
       <!-- Floating badge: No Fear -->
       <div class="bounce" style="position:absolute; top:-18px; right:16px; background:var(--blue); color:white; font-size:13px; font-weight:900; padding:12px 18px; border-radius:18px; border:3px solid white; box-shadow:4px 4px 0 rgba(0,0,0,0.15);">
@@ -254,7 +258,7 @@ import { practice } from '../../data/v4';
         return (
           <div class="team-card" style={`background:white; border-radius:22px; overflow:hidden; border:3px solid ${borders[i]}; box-shadow:6px 6px 0 ${shadows[i]};`}>
             <div style="overflow:hidden; height:220px;">
-              <img src={m.image} alt={m.name} width="480" height="480" loading="lazy" decoding="async" style="width:100%; height:100%; object-fit:cover; display:block;" />
+              <ResponsiveImage src={m.image} alt={m.name} widths={[320,640]} sizes="(min-width:1024px) 25vw, 50vw" width={480} height={480} imgStyle="width:100%; height:100%; object-fit:cover; display:block;" />
             </div>
             <div style="padding:20px;">
               <div style={`display:inline-block; background:${tagBg}; color:${tagText}; font-size:10px; font-weight:900; padding:4px 12px; border-radius:9999px; text-transform:uppercase; letter-spacing:0.06em; margin-bottom:8px;`}>{m.role}</div>
@@ -281,11 +285,11 @@ import { practice } from '../../data/v4';
           <div style="display:grid; grid-template-columns:1fr 1fr; gap:6px;">
             <div>
               <div style="background:var(--dark); color:white; font-size:11px; font-weight:900; padding:8px 12px; border-radius:10px 10px 0 0; text-align:center; text-transform:uppercase; letter-spacing:0.06em;">Before 😬</div>
-              <img src={ba.before} alt="Before" width="800" height="600" loading="lazy" decoding="async" style="width:100%; aspect-ratio:4/3; object-fit:cover; border-radius:0 0 10px 10px; display:block;" />
+              <ResponsiveImage src={ba.before} alt="Before" widths={[320,640,1024]} sizes="(min-width:1024px) 50vw, 100vw" width={800} height={600} imgStyle="width:100%; aspect-ratio:4/3; object-fit:cover; border-radius:0 0 10px 10px; display:block;" />
             </div>
             <div>
               <div style="background:var(--red); color:white; font-size:11px; font-weight:900; padding:8px 12px; border-radius:10px 10px 0 0; text-align:center; text-transform:uppercase; letter-spacing:0.06em;">After 😁</div>
-              <img src={ba.after} alt="After" width="800" height="600" loading="lazy" decoding="async" style="width:100%; aspect-ratio:4/3; object-fit:cover; border-radius:0 0 10px 10px; display:block;" />
+              <ResponsiveImage src={ba.after} alt="After" widths={[320,640,1024]} sizes="(min-width:1024px) 50vw, 100vw" width={800} height={600} imgStyle="width:100%; aspect-ratio:4/3; object-fit:cover; border-radius:0 0 10px 10px; display:block;" />
             </div>
           </div>
         </div>
@@ -349,7 +353,7 @@ import { practice } from '../../data/v4';
         const shadows = ['#F0C0BC','#90CAF9','#F0E080'];
         return (
           <div style={`border-radius:20px; overflow:hidden; border:4px solid ${borders[i]}; box-shadow:6px 6px 0 ${shadows[i]};`}>
-            <img src={p.url} alt={p.caption} width="960" height="720" loading="lazy" decoding="async" style="width:100%; aspect-ratio:4/3; object-fit:cover; display:block;" />
+            <ResponsiveImage src={p.url} alt={p.caption} widths={[320,640,1024]} sizes="(min-width:1024px) 33vw, 100vw" width={960} height={720} imgStyle="width:100%; aspect-ratio:4/3; object-fit:cover; display:block;" />
             <div style="padding:12px 16px; background:white;">
               <p style="margin:0; font-weight:900; font-size:13px; color:var(--dark);">{p.caption}</p>
             </div>

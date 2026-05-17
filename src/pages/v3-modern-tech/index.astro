@@ -1,5 +1,8 @@
 ---
 import { practice } from '../../data/v3';
+import ResponsiveImage from '../../components/ResponsiveImage.astro';
+
+const heroBase = practice.hero.image.replace(/\.webp$/i, '');
 ---
 <!DOCTYPE html>
 <html lang="en">
@@ -11,6 +14,7 @@ import { practice } from '../../data/v3';
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="preload" as="image" fetchpriority="high" href={`${heroBase}-1920.avif`} type="image/avif" imagesrcset={`${heroBase}-640.avif 640w, ${heroBase}-1024.avif 1024w, ${heroBase}-1920.avif 1920w`} imagesizes="100vw" />
   <style>
     *, *::before, *::after { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
@@ -222,7 +226,7 @@ import { practice } from '../../data/v3';
     <div style="position:relative; background:var(--navy-3); border:1px solid var(--teal-border); border-radius:8px; overflow:hidden; aspect-ratio:4/3;">
       <!-- Scanline animation -->
       <div style="position:absolute; left:0; right:0; height:2px; background:linear-gradient(to right, transparent, var(--teal), transparent); animation:scanDown 2.8s ease-in-out infinite; top:0;"></div>
-      <img src={practice.hero.image} alt="AI Scan" width="1600" height="1067" loading="eager" fetchpriority="high" decoding="async" style="width:100%; height:100%; object-fit:cover; opacity:0.45; display:block;" />
+      <ResponsiveImage src={practice.hero.image} alt="AI Scan" widths={[640,1024,1920]} sizes="100vw" width={1600} height={1067} eager imgStyle="width:100%; height:100%; object-fit:cover; opacity:0.45; display:block;" />
       <!-- Overlay grid -->
       <div style="position:absolute; inset:0; background-image:linear-gradient(rgba(0,223,208,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(0,223,208,0.06) 1px, transparent 1px); background-size:24px 24px;"></div>
       <!-- Detection boxes (fake) -->
@@ -285,11 +289,11 @@ import { practice } from '../../data/v3';
       </div>
     </div>
     <div style="display:flex; flex-direction:column; gap:14px;">
-      <img src={practice.hero.image} alt="Technology" width="1600" height="900" loading="lazy" decoding="async" style="width:100%; aspect-ratio:16/9; object-fit:cover; border-radius:6px; border:1px solid var(--teal-border); display:block;" />
+      <ResponsiveImage src={practice.hero.image} alt="Technology" widths={[320,640,1024,1920]} sizes="(min-width:1024px) 50vw, 100vw" width={1600} height={900} imgStyle="width:100%; aspect-ratio:16/9; object-fit:cover; border-radius:6px; border:1px solid var(--teal-border); display:block;" />
       <div style="display:grid; grid-template-columns:1fr 1fr; gap:14px;">
         {practice.officePhotos.slice(0,2).map(p => (
           <div>
-            <img src={p.url} alt={p.caption} width="800" height="600" loading="lazy" decoding="async" style="width:100%; aspect-ratio:4/3; object-fit:cover; border-radius:6px; border:1px solid var(--teal-border); display:block;" />
+            <ResponsiveImage src={p.url} alt={p.caption} widths={[320,640,1024]} sizes="(min-width:1024px) 33vw, 100vw" width={800} height={600} imgStyle="width:100%; aspect-ratio:4/3; object-fit:cover; border-radius:6px; border:1px solid var(--teal-border); display:block;" />
             <div class="mono" style="font-size:10px; color:var(--muted); margin-top:7px; letter-spacing:0.04em;">{p.caption}</div>
           </div>
         ))}
@@ -325,7 +329,7 @@ import { practice } from '../../data/v3';
     <div style="display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:20px;">
       {practice.team.map(m => (
         <div class="team-card" style="background:var(--navy-3); border-radius:8px; overflow:hidden; cursor:default;">
-          <img src={m.image} alt={m.name} width="480" height="480" loading="lazy" decoding="async" style="width:100%; aspect-ratio:1/1; object-fit:cover; display:block; filter:grayscale(30%) brightness(0.9);" />
+          <ResponsiveImage src={m.image} alt={m.name} widths={[320,640]} sizes="(min-width:1024px) 25vw, 50vw" width={480} height={480} imgStyle="width:100%; aspect-ratio:1/1; object-fit:cover; display:block; filter:grayscale(30%) brightness(0.9);" />
           <div style="padding:22px;">
             <div class="mono" style="font-size:10px; color:var(--teal); margin-bottom:7px; letter-spacing:0.08em;">{m.role}</div>
             <h3 style="font-size:17px; color:white; margin:0 0 10px; font-weight:600;">{m.name}</h3>
@@ -351,11 +355,11 @@ import { practice } from '../../data/v3';
           <div style="display:grid; grid-template-columns:1fr 1fr; gap:3px;">
             <div>
               <div style="background:var(--navy-3); border:1px solid var(--teal-border); font-family:'JetBrains Mono',monospace; font-size:9px; color:var(--muted); padding:5px 12px; letter-spacing:0.15em; text-transform:uppercase;">STATE::BEFORE</div>
-              <img src={ba.before} alt="Before" width="800" height="600" loading="lazy" decoding="async" style="width:100%; aspect-ratio:4/3; object-fit:cover; display:block; border:1px solid var(--teal-border); border-top:none;" />
+              <ResponsiveImage src={ba.before} alt="Before" widths={[320,640,1024]} sizes="(min-width:1024px) 50vw, 100vw" width={800} height={600} imgStyle="width:100%; aspect-ratio:4/3; object-fit:cover; display:block; border:1px solid var(--teal-border); border-top:none;" />
             </div>
             <div>
               <div style="background:var(--teal); font-family:'JetBrains Mono',monospace; font-size:9px; color:var(--navy); padding:5px 12px; letter-spacing:0.15em; text-transform:uppercase; font-weight:600;">STATE::AFTER</div>
-              <img src={ba.after} alt="After" width="800" height="600" loading="lazy" decoding="async" style="width:100%; aspect-ratio:4/3; object-fit:cover; display:block; border:1px solid var(--teal); border-top:none;" />
+              <ResponsiveImage src={ba.after} alt="After" widths={[320,640,1024]} sizes="(min-width:1024px) 50vw, 100vw" width={800} height={600} imgStyle="width:100%; aspect-ratio:4/3; object-fit:cover; display:block; border:1px solid var(--teal); border-top:none;" />
             </div>
           </div>
         </div>

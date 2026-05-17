@@ -1,5 +1,8 @@
 ---
 import { practice } from '../../data/v5';
+import ResponsiveImage from '../../components/ResponsiveImage.astro';
+
+const heroBase = practice.hero.image.replace(/\.webp$/i, '');
 ---
 <!DOCTYPE html>
 <html lang="en">
@@ -11,6 +14,7 @@ import { practice } from '../../data/v5';
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300;1,8..60,400;1,8..60,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="preload" as="image" fetchpriority="high" href={`${heroBase}-1920.avif`} type="image/avif" imagesrcset={`${heroBase}-640.avif 640w, ${heroBase}-1024.avif 1024w, ${heroBase}-1920.avif 1920w`} imagesizes="100vw" />
   <style>
     *, *::before, *::after { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
@@ -146,7 +150,7 @@ import { practice } from '../../data/v5';
 
   <!-- Right: botanical photo -->
   <div class="hero-photo" style="position:relative; overflow:hidden;">
-    <img src={practice.hero.image} alt="Root and Branch Holistic Dental" width="1600" height="1067" loading="eager" fetchpriority="high" decoding="async" style="width:100%; height:100%; object-fit:cover; object-position:center; filter:sepia(8%) brightness(0.96);" />
+    <ResponsiveImage src={practice.hero.image} alt="Root and Branch Holistic Dental" widths={[640,1024,1920]} sizes="100vw" width={1600} height={1067} eager imgStyle="width:100%; height:100%; object-fit:cover; object-position:center; filter:sepia(8%) brightness(0.96);" />
     <div style="position:absolute; inset:0; background:linear-gradient(to right, var(--cream) 0%, transparent 12%);"></div>
     <!-- Floating commitment card -->
     <div style="position:absolute; bottom:48px; right:48px; background:rgba(247,243,236,0.95); backdrop-filter:blur(8px); padding:24px 28px; border-left:3px solid var(--sage);">
@@ -236,7 +240,7 @@ import { practice } from '../../data/v5';
       </div>
     </div>
     <div style="position:relative;">
-      <img src="/images/photo-1545205597-3d9d02c29597-card.webp" alt="Natural dental care" width="960" height="1200" loading="lazy" decoding="async" style="width:100%; aspect-ratio:4/5; object-fit:cover; display:block; filter:sepia(15%) brightness(0.88);" />
+      <ResponsiveImage src="/images/photo-1545205597-3d9d02c29597-card.webp" alt="Natural dental care" widths={[320,640,1024]} sizes="(min-width:1024px) 50vw, 100vw" width={960} height={1200} imgStyle="width:100%; aspect-ratio:4/5; object-fit:cover; display:block; filter:sepia(15%) brightness(0.88);" />
       <!-- Botanical corner decoration -->
       <div style="position:absolute; bottom:-20px; left:-20px; opacity:0.7;">
         <svg width="90" height="120" viewBox="0 0 90 120" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -300,7 +304,7 @@ import { practice } from '../../data/v5';
       {practice.team.map(m => (
         <div class="team-card" style="cursor:default;">
           <div style="overflow:hidden; margin-bottom:22px; aspect-ratio:3/4;">
-            <img src={m.image} alt={m.name} width="480" height="480" loading="lazy" decoding="async" style="width:100%; height:100%; object-fit:cover; display:block;" />
+            <ResponsiveImage src={m.image} alt={m.name} widths={[320,640]} sizes="(min-width:1024px) 25vw, 50vw" width={480} height={480} imgStyle="width:100%; height:100%; object-fit:cover; display:block;" />
           </div>
           <div style="padding-left:2px;">
             <div style="font-size:9px; letter-spacing:0.22em; text-transform:uppercase; color:var(--sage); margin-bottom:8px; font-weight:500;">{m.role}</div>
@@ -327,11 +331,11 @@ import { practice } from '../../data/v5';
           <div style="display:grid; grid-template-columns:1fr 1fr; gap:4px;">
             <div>
               <div style="background:var(--earth); color:white; font-size:9px; font-weight:500; letter-spacing:0.2em; padding:7px 12px; text-align:center; text-transform:uppercase;">Before</div>
-              <img src={ba.before} alt="Before" width="800" height="600" loading="lazy" decoding="async" style="width:100%; aspect-ratio:4/3; object-fit:cover; display:block; filter:sepia(10%);" />
+              <ResponsiveImage src={ba.before} alt="Before" widths={[320,640,1024]} sizes="(min-width:1024px) 50vw, 100vw" width={800} height={600} imgStyle="width:100%; aspect-ratio:4/3; object-fit:cover; display:block; filter:sepia(10%);" />
             </div>
             <div>
               <div style="background:var(--sage-2); color:white; font-size:9px; font-weight:500; letter-spacing:0.2em; padding:7px 12px; text-align:center; text-transform:uppercase;">After</div>
-              <img src={ba.after} alt="After" width="800" height="600" loading="lazy" decoding="async" style="width:100%; aspect-ratio:4/3; object-fit:cover; display:block; filter:sepia(6%);" />
+              <ResponsiveImage src={ba.after} alt="After" widths={[320,640,1024]} sizes="(min-width:1024px) 50vw, 100vw" width={800} height={600} imgStyle="width:100%; aspect-ratio:4/3; object-fit:cover; display:block; filter:sepia(6%);" />
             </div>
           </div>
         </div>
@@ -382,7 +386,7 @@ import { practice } from '../../data/v5';
   <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:3px;">
     {practice.officePhotos.map(p => (
       <div style="position:relative; overflow:hidden;">
-        <img class="office-img" src={p.url} alt={p.caption} width="960" height="720" loading="lazy" decoding="async" style="width:100%; aspect-ratio:4/3; object-fit:cover; display:block;" />
+        <ResponsiveImage imgClass="office-img" src={p.url} alt={p.caption} widths={[320,640,1024]} sizes="(min-width:1024px) 33vw, 100vw" width={960} height={720} imgStyle="width:100%; aspect-ratio:4/3; object-fit:cover; display:block;" />
         <div style="position:absolute; bottom:0; left:0; right:0; background:linear-gradient(to top, rgba(47,82,52,0.75), transparent); padding:24px 22px;">
           <p style="margin:0; color:white; font-family:'Source Serif 4',serif; font-size:15px; font-style:italic;">{p.caption}</p>
         </div>
