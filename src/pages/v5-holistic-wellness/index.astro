@@ -68,7 +68,10 @@ const heroBase = practice.hero.image.replace(/\.webp$/i, '');
     .office-img { transition: transform 0.6s ease; filter: sepia(12%); }
     .office-img:hover { transform: scale(1.04); }
 
-    input:focus, select:focus, textarea:focus { outline: none; border-color: var(--sage) !important; box-shadow: 0 0 0 2px rgba(106,148,112,0.15); }
+    input:focus, select:focus, textarea:focus { border-color: var(--sage) !important; box-shadow: 0 0 0 2px rgba(106,148,112,0.15); }
+    *:focus-visible { outline: 2px solid currentColor; outline-offset: 2px; }
+    .sr-only { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; border:0; }
+    .sr-only:focus, .sr-only:focus-visible { position:absolute; top:8px; left:8px; width:auto; height:auto; padding:10px 16px; margin:0; overflow:visible; clip:auto; white-space:normal; z-index:9999; background:#ffffff; color:#000000; border-radius:6px; box-shadow:0 4px 12px rgba(0,0,0,0.2); text-decoration:none; font-weight:700; }
 
     .leaf-sway { animation: leafSway 5s ease-in-out infinite; transform-origin: bottom center; }
 
@@ -88,6 +91,8 @@ const heroBase = practice.hero.image.replace(/\.webp$/i, '');
 </head>
 <body>
 
+<a href="#main" class="sr-only">Skip to content</a>
+
 <!-- NAV -->
 <header style="background:var(--cream); border-bottom:1px solid var(--cream-2); position:sticky; top:0; z-index:100;">
   <div style="max-width:1280px; margin:0 auto; padding:0 56px; height:76px; display:flex; align-items:center; justify-content:space-between;">
@@ -105,6 +110,8 @@ const heroBase = practice.hero.image.replace(/\.webp$/i, '');
     </nav>
   </div>
 </header>
+
+<main id="main">
 
 <!-- HERO -->
 <section class="hero-grid" style="min-height:96vh; display:grid; grid-template-columns:1fr 1fr; position:relative; overflow:hidden;">
@@ -492,21 +499,26 @@ const heroBase = practice.hero.image.replace(/\.webp$/i, '');
   </div>
 </section>
 
+</main>
+
 <!-- FOOTER -->
 <footer style="background:var(--ink-2); padding:48px 80px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px;">
   <div>
     <div style="font-family:'Source Serif 4',serif; font-size:19px; color:white; letter-spacing:0.02em; font-style:italic;">{practice.name}</div>
-    <div style="font-size:12px; color:rgba(255,255,255,0.4); margin-top:5px; font-weight:300;">{practice.address}</div>
+    <div style="font-size:12px; color:rgba(255,255,255,0.75); margin-top:5px; font-weight:300;">{practice.address}</div>
   </div>
   <!-- Tiny leaf -->
-  <div style="opacity:0.3;">
+  <div style="opacity:0.3;" aria-hidden="true">
     <svg width="24" height="32" viewBox="0 0 24 32" fill="none" xmlns="http://www.w3.org/2000/svg">
       <line x1="12" y1="30" x2="12" y2="2" stroke="white" stroke-width="1"/>
       <path d="M12,22 Q6,16 4,6 Q10,12 11,20 Z" fill="white"/>
       <path d="M12,14 Q18,8 20,0 Q14,6 13,14 Z" fill="white" opacity="0.6"/>
     </svg>
   </div>
-  <div style="font-size:12px; color:rgba(255,255,255,0.35); font-weight:300;">© {new Date().getFullYear()} {practice.name}. All rights reserved.</div>
+  <div style="font-size:12px; color:rgba(255,255,255,0.75); font-weight:300; display:flex; align-items:center; gap:18px;">
+    <a href="/accessibility" style="color:rgba(255,255,255,0.9); text-decoration:underline;">Accessibility</a>
+    <span>© {new Date().getFullYear()} {practice.name}. All rights reserved.</span>
+  </div>
 </footer>
 
 </body>
