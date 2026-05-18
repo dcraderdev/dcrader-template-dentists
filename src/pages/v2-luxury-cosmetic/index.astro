@@ -210,6 +210,32 @@ const heroBase = practice.hero.image.replace(/\.webp$/i, '');
   </div>
 </section>
 
+<!-- THE STUDIO, QUIETLY — editorial ledger, no "stats vibe" -->
+<section style="background:var(--ink); padding:96px 80px;">
+  <div style="max-width:1180px; margin:0 auto;">
+    <div style="display:grid; grid-template-columns:280px 1fr; gap:80px; align-items:start;">
+      <div>
+        <div style="font-size:10px; letter-spacing:0.32em; text-transform:uppercase; color:var(--gold); margin-bottom:18px; font-weight:500;">The Studio, Quietly</div>
+        <div style="font-family:'Cormorant Garamond',serif; font-size:32px; line-height:1.15; color:white; font-style:italic; font-weight:300;">A practice kept intentionally small.</div>
+      </div>
+      <div style="display:grid; grid-template-columns:repeat(2,1fr); gap:1px; background:rgba(184,148,90,0.15);">
+        {[
+          ['Bespoke cases / year', 'No more than 84', 'One Dr. Fontaine. One chair. Calendar opened by application.'],
+          ['In-house ceramics', 'Lab on premises', 'Veneers are hand-layered down the hall, not shipped overseas.'],
+          ['Invisalign tier', 'Diamond+ Provider', 'Top 1% of providers nationally. Complex cases welcomed.'],
+          ['Press credits', 'Vogue · Tatler · W', 'Featured eleven times since 2019. Discretion is the house style.'],
+        ].map(([label, value, note]) => (
+          <div style="background:var(--ink); padding:36px 32px;">
+            <div style="font-family:'Cormorant Garamond',serif; font-size:11px; letter-spacing:0.22em; text-transform:uppercase; color:var(--gold); margin-bottom:14px; font-weight:500;">{label}</div>
+            <div style="font-family:'Cormorant Garamond',serif; font-size:30px; color:white; font-style:italic; font-weight:300; margin-bottom:12px; line-height:1.1;">{value}</div>
+            <div style="font-size:13px; color:var(--muted-2); font-weight:300; line-height:1.7;">{note}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- TEAM -->
 <section id="team" style="background:var(--ink); padding:120px 80px;">
   <div style="max-width:1280px; margin:0 auto;">
