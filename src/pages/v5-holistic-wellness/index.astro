@@ -514,22 +514,27 @@ const heroBase = practice.hero.image.replace(/\.webp$/i, '');
 </main>
 
 <!-- FOOTER -->
-<footer style="background:var(--ink-2); padding:48px 80px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px;">
-  <div>
-    <div style="font-family:'Source Serif 4',serif; font-size:19px; color:white; letter-spacing:0.02em; font-style:italic;">{practice.name}</div>
-    <div style="font-size:12px; color:rgba(255,255,255,0.75); margin-top:5px; font-weight:300;">{practice.address}</div>
+<footer style="background:var(--ink-2); padding:48px 80px;">
+  <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px;">
+    <div>
+      <div style="font-family:'Source Serif 4',serif; font-size:19px; color:white; letter-spacing:0.02em; font-style:italic;">{practice.name}</div>
+      <div style="font-size:12px; color:rgba(255,255,255,0.75); margin-top:5px; font-weight:300;">{practice.address}</div>
+    </div>
+    <!-- Tiny leaf -->
+    <div style="opacity:0.3;" aria-hidden="true">
+      <svg width="24" height="32" viewBox="0 0 24 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <line x1="12" y1="30" x2="12" y2="2" stroke="white" stroke-width="1"/>
+        <path d="M12,22 Q6,16 4,6 Q10,12 11,20 Z" fill="white"/>
+        <path d="M12,14 Q18,8 20,0 Q14,6 13,14 Z" fill="white" opacity="0.6"/>
+      </svg>
+    </div>
+    <div style="font-size:12px; color:rgba(255,255,255,0.75); font-weight:300; display:flex; align-items:center; gap:18px;">
+      <a href="/accessibility" style="color:rgba(255,255,255,0.9); text-decoration:underline;">Accessibility</a>
+      <span>© {new Date().getFullYear()} {practice.name}. All rights reserved.</span>
+    </div>
   </div>
-  <!-- Tiny leaf -->
-  <div style="opacity:0.3;" aria-hidden="true">
-    <svg width="24" height="32" viewBox="0 0 24 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <line x1="12" y1="30" x2="12" y2="2" stroke="white" stroke-width="1"/>
-      <path d="M12,22 Q6,16 4,6 Q10,12 11,20 Z" fill="white"/>
-      <path d="M12,14 Q18,8 20,0 Q14,6 13,14 Z" fill="white" opacity="0.6"/>
-    </svg>
-  </div>
-  <div style="font-size:12px; color:rgba(255,255,255,0.75); font-weight:300; display:flex; align-items:center; gap:18px;">
-    <a href="/accessibility" style="color:rgba(255,255,255,0.9); text-decoration:underline;">Accessibility</a>
-    <span>© {new Date().getFullYear()} {practice.name}. All rights reserved.</span>
+  <div style="margin-top:22px; font-size:12px; color:rgba(255,255,255,0.6); font-weight:300; text-align:center; font-style:italic;">
+    Built by <a href="https://dcrader.dev" style="color:rgba(255,255,255,0.9); text-decoration:underline;">Donovan Crader · dcrader.dev</a>
   </div>
 </footer>
 

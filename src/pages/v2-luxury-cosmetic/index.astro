@@ -393,14 +393,19 @@ const heroBase = practice.hero.image.replace(/\.webp$/i, '');
 </main>
 
 <!-- FOOTER -->
-<footer style="background:var(--ink-2); border-top:1px solid rgba(184,148,90,0.15); padding:44px 80px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px;">
-  <div>
-    <div style="font-family:'Cormorant Garamond',serif; font-size:19px; letter-spacing:0.1em; text-transform:uppercase; color:white;">{practice.name}</div>
-    <div style="font-size:12px; color:var(--muted-2); margin-top:4px; font-weight:300;">{practice.address}</div>
+<footer style="background:var(--ink-2); border-top:1px solid rgba(184,148,90,0.15); padding:44px 80px;">
+  <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px;">
+    <div>
+      <div style="font-family:'Cormorant Garamond',serif; font-size:19px; letter-spacing:0.1em; text-transform:uppercase; color:white;">{practice.name}</div>
+      <div style="font-size:12px; color:var(--muted-2); margin-top:4px; font-weight:300;">{practice.address}</div>
+    </div>
+    <div style="font-size:12px; color:var(--muted); font-weight:300; display:flex; align-items:center; gap:18px;">
+      <a href="/accessibility" style="color:var(--gold-2); text-decoration:underline;">Accessibility</a>
+      <span>© {new Date().getFullYear()} {practice.name}. All rights reserved.</span>
+    </div>
   </div>
-  <div style="font-size:12px; color:var(--muted); font-weight:300; display:flex; align-items:center; gap:18px;">
-    <a href="/accessibility" style="color:var(--gold-2); text-decoration:underline;">Accessibility</a>
-    <span>© {new Date().getFullYear()} {practice.name}. All rights reserved.</span>
+  <div style="margin-top:20px; font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:var(--muted-2); text-align:center; font-weight:300;">
+    Built by <a href="https://dcrader.dev" style="color:var(--gold-2); text-decoration:underline;">Donovan Crader · dcrader.dev</a>
   </div>
 </footer>
 
