@@ -1,6 +1,7 @@
 ---
 import { practice } from '../../data/v3';
 import ResponsiveImage from '../../components/ResponsiveImage.astro';
+import DoctorProfileHero from '../../components/dentists/DoctorProfileHero.astro';
 
 const heroBase = practice.hero.image.replace(/\.webp$/i, '');
 ---
@@ -110,120 +111,8 @@ const heroBase = practice.hero.image.replace(/\.webp$/i, '');
 
 <main id="main">
 
-<!-- HERO -->
-<section class="grid-bg" style="min-height:100vh; display:flex; flex-direction:column; justify-content:center; padding:100px 44px 80px; position:relative; overflow:hidden;">
-  <!-- Teal radial glow -->
-  <div style="position:absolute; top:-150px; right:-100px; width:700px; height:700px; background:radial-gradient(circle, rgba(0,223,208,0.1) 0%, transparent 65%); pointer-events:none;"></div>
-  <div style="position:absolute; bottom:-100px; left:-50px; width:400px; height:400px; background:radial-gradient(circle, rgba(0,223,208,0.05) 0%, transparent 70%); pointer-events:none;"></div>
-
-  <div style="max-width:1280px; margin:0 auto; width:100%; display:grid; grid-template-columns:1fr 420px; gap:80px; align-items:center;">
-    <!-- Left: Text -->
-    <div>
-      <div class="fade-1 mono" style="font-size:12px; color:var(--teal); letter-spacing:0.14em; margin-bottom:20px; display:flex; align-items:center; gap:10px;">
-        <span style="display:inline-block; width:20px; height:1px; background:var(--teal);"></span>
-        // seattle · est. {practice.founded} · ai-assisted dentistry
-      </div>
-      <h1 class="fade-2" style="font-size:clamp(44px,5.5vw,80px); line-height:1.04; color:white; margin:0 0 24px; font-weight:800; white-space:pre-line;">{practice.hero.headline}</h1>
-      <p class="fade-3" style="font-size:18px; line-height:1.78; color:var(--muted); margin:0 0 36px; max-width:500px; font-weight:300;">{practice.hero.subheadline}</p>
-
-      <!-- CTA Buttons -->
-      <div class="fade-4" style="display:flex; gap:14px; flex-wrap:wrap; align-items:center; margin-bottom:60px;">
-        <a href="#appointment" class="book-cta" style="background:var(--teal); color:var(--navy); font-weight:700; font-size:15px; padding:16px 36px; border-radius:4px; display:flex; align-items:center; gap:8px;">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-2 .89-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.11-.89-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/></svg>
-          {practice.hero.ctaText}
-        </a>
-        <a href="tel:{practice.phone}" class="mono" style="color:var(--teal); font-size:14px; border:1px solid var(--teal-border); padding:15px 22px; border-radius:4px; transition:border-color 0.2s;"
-           onmouseover="this.style.borderColor='var(--teal)'" onmouseout="this.style.borderColor='var(--teal-border)'">{practice.phone}</a>
-      </div>
-
-      <!-- Equipment manifest (clinical / mono, no numbers) -->
-      <div class="fade-4" style="border:1px solid var(--teal-border); border-radius:6px; background:var(--navy-2); padding:18px 20px;">
-        <div class="mono" style="font-size:10px; color:var(--teal); letter-spacing:0.16em; margin-bottom:14px;">// equipment.manifest</div>
-        <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px 22px;">
-          {[
-            ['CEREC Primemill','same-day ceramic crowns'],
-            ['iTero Element 5D','intraoral 3D scanner'],
-            ['Planmeca Viso CBCT','low-dose 3D imaging'],
-            ['Solea Laser','no-needle, no-drill cavities'],
-            ['DEXIS IXS','high-res sensor radiography'],
-            ['Pearl AI Second Opinion','radiograph assist'],
-          ].map(([device, role]) => (
-            <div style="display:flex; align-items:flex-start; gap:10px;">
-              <div style="width:6px; height:6px; background:var(--teal); border-radius:50%; margin-top:7px; flex-shrink:0; box-shadow:0 0 8px var(--teal);"></div>
-              <div>
-                <div class="mono" style="font-size:12px; color:var(--white); font-weight:500; line-height:1.3;">{device}</div>
-                <div class="mono" style="font-size:10px; color:var(--muted); margin-top:2px; letter-spacing:0.04em;">{role}</div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </div>
-
-    <!-- Right: Wireframe tooth SVG -->
-    <div class="tooth-float" style="position:relative; display:flex; align-items:center; justify-content:center;">
-      <svg viewBox="0 0 300 380" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%; max-width:380px; filter:drop-shadow(0 0 40px rgba(0,223,208,0.2));">
-        <!-- Outer tooth shape -->
-        <path d="M65,115 Q35,60 80,28 Q100,12 150,18 Q200,12 220,28 Q265,60 235,115 L224,280 Q218,328 192,328 Q174,328 150,298 Q126,328 108,328 Q82,328 76,280 Z"
-              stroke="#00DFD0" stroke-width="1.5" opacity="0.75"/>
-        <!-- Grid lines horizontal -->
-        <line x1="68" y1="80" x2="232" y2="80" stroke="#00DFD0" stroke-width="0.5" opacity="0.25"/>
-        <line x1="63" y1="135" x2="237" y2="135" stroke="#00DFD0" stroke-width="0.5" opacity="0.25"/>
-        <line x1="65" y1="190" x2="235" y2="190" stroke="#00DFD0" stroke-width="0.5" opacity="0.25"/>
-        <line x1="67" y1="245" x2="233" y2="245" stroke="#00DFD0" stroke-width="0.5" opacity="0.25"/>
-        <line x1="72" y1="300" x2="228" y2="300" stroke="#00DFD0" stroke-width="0.5" opacity="0.2"/>
-        <!-- Grid lines vertical -->
-        <line x1="100" y1="20" x2="82" y2="325" stroke="#00DFD0" stroke-width="0.5" opacity="0.25"/>
-        <line x1="150" y1="16" x2="150" y2="332" stroke="#00DFD0" stroke-width="0.5" opacity="0.25"/>
-        <line x1="200" y1="20" x2="218" y2="325" stroke="#00DFD0" stroke-width="0.5" opacity="0.25"/>
-        <!-- Cusp highlight points -->
-        <circle cx="80" cy="56" r="4" fill="#00DFD0"/>
-        <circle cx="115" cy="28" r="4" fill="#00DFD0"/>
-        <circle cx="150" cy="20" r="5" fill="#00DFD0" opacity="0.9"/>
-        <circle cx="185" cy="28" r="4" fill="#00DFD0"/>
-        <circle cx="220" cy="56" r="4" fill="#00DFD0"/>
-        <!-- Crown edge line -->
-        <path d="M80,56 L115,28 L150,20 L185,28 L220,56" stroke="#00DFD0" stroke-width="1.5" opacity="0.9"/>
-        <!-- Root tips -->
-        <circle cx="110" cy="320" r="5" fill="#00DFD0" opacity="0.5"/>
-        <circle cx="150" cy="328" r="5" fill="#00DFD0" opacity="0.7"/>
-        <circle cx="190" cy="320" r="5" fill="#00DFD0" opacity="0.5"/>
-        <!-- Root connector lines -->
-        <path d="M108,290 Q110,310 110,320" stroke="#00DFD0" stroke-width="0.8" opacity="0.4"/>
-        <path d="M150,290 Q150,312 150,328" stroke="#00DFD0" stroke-width="0.8" opacity="0.4"/>
-        <path d="M192,290 Q190,310 190,320" stroke="#00DFD0" stroke-width="0.8" opacity="0.4"/>
-        <!-- Inner detail arc (pulp chamber) -->
-        <path d="M115,130 Q150,115 185,130 L185,200 Q150,220 115,200 Z" stroke="#00DFD0" stroke-width="0.8" fill="none" opacity="0.35"/>
-        <!-- Measurement annotation lines -->
-        <line x1="36" y1="28" x2="36" y2="328" stroke="#00DFD0" stroke-width="0.5" opacity="0.4" stroke-dasharray="3 4"/>
-        <line x1="30" y1="28" x2="42" y2="28" stroke="#00DFD0" stroke-width="0.8" opacity="0.5"/>
-        <line x1="30" y1="328" x2="42" y2="328" stroke="#00DFD0" stroke-width="0.8" opacity="0.5"/>
-        <text x="10" y="182" font-family="JetBrains Mono, monospace" font-size="10" fill="#00DFD0" opacity="0.6">32mm</text>
-        <!-- Apex indicator label -->
-        <line x1="150" y1="340" x2="220" y2="358" stroke="#00DFD0" stroke-width="0.8" opacity="0.5"/>
-        <text x="222" y="362" font-family="JetBrains Mono, monospace" font-size="10" fill="#00DFD0" opacity="0.7">apex.root</text>
-        <!-- Crown label -->
-        <line x1="150" y1="12" x2="222" y2="0" stroke="#00DFD0" stroke-width="0.8" opacity="0.5"/>
-        <text x="225" y="4" font-family="JetBrains Mono, monospace" font-size="10" fill="#00DFD0" opacity="0.7">crown.ref</text>
-      </svg>
-      <!-- System status overlay -->
-      <div style="position:absolute; bottom:20px; left:0; right:0; display:flex; justify-content:center;">
-        <div style="background:rgba(4,13,24,0.88); border:1px solid var(--teal-border); padding:12px 18px; border-radius:6px; backdrop-filter:blur(8px);">
-          <div class="mono" style="font-size:10px; color:var(--teal); margin-bottom:6px; letter-spacing:0.1em;">LIVE · SYSTEM STATUS</div>
-          <div style="display:flex; gap:14px;">
-            {['CEREC','AI Scan','3D CT','Laser'].map(t => (
-              <div style="display:flex; align-items:center; gap:5px;">
-                <div style="width:5px; height:5px; background:var(--teal); border-radius:50%;"></div>
-                <span class="mono" style="font-size:10px; color:var(--muted);">{t}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
+<!-- HERO: doctor profile (lead clinician portrait + bio + credentials) -->
+<DoctorProfileHero practice={practice} />
 <!-- AI SCAN WIDGET -->
 <section style="background:var(--navy-2); padding:80px 44px; border-top:1px solid var(--teal-border); border-bottom:1px solid var(--teal-border);">
   <div style="max-width:1280px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center;">

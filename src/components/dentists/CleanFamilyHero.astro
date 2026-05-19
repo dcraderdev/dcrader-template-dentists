@@ -1,0 +1,62 @@
+---
+import ResponsiveImage from '../ResponsiveImage.astro';
+const { practice } = Astro.props;
+---
+<!-- HERO: clean family — warm, approachable, family imagery, soft blue palette -->
+<section class="cf-hero" style="background:linear-gradient(135deg, #EEF7FF 0%, #F7FAFF 55%, white 100%); min-height:91vh; display:flex; align-items:center; overflow:hidden; position:relative; padding:40px 0;">
+  <div style="position:absolute; top:-120px; right:-80px; width:480px; height:480px; background:radial-gradient(circle, rgba(26,115,232,0.07) 0%, transparent 70%); pointer-events:none;"></div>
+  <div style="max-width:1240px; margin:0 auto; padding:0 28px; display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center; width:100%;">
+    <div>
+      <div class="fade-1" style="display:flex; gap:10px; flex-wrap:wrap; margin-bottom:28px;">
+        <span style="background:var(--sky); color:var(--navy); font-size:12px; font-weight:700; padding:5px 14px; border-radius:9999px;">✓ Three generations of patients</span>
+        <span style="background:#F0FFF4; color:#166534; font-size:12px; font-weight:700; padding:5px 14px; border-radius:9999px;">🚨 Same-day emergencies</span>
+        <span style="background:var(--amber-light); color:#92400E; font-size:12px; font-weight:700; padding:5px 14px; border-radius:9999px;">Hablamos español</span>
+      </div>
+      <h1 class="fade-2" style="font-size:clamp(44px,5.5vw,76px); line-height:1.08; color:var(--navy); margin:0 0 22px; white-space:pre-line;">{practice.hero.headline}</h1>
+      <p class="fade-3" style="font-size:19px; line-height:1.75; color:var(--muted); margin:0 0 36px; max-width:460px; font-weight:400;">{practice.hero.subheadline} We see families like yours every day — and we'd love to see yours.</p>
+      <div class="fade-4" style="display:flex; gap:14px; flex-wrap:wrap; align-items:center; margin-bottom:48px;">
+        <a href="#appointment" class="pill-btn" style="background:var(--blue); color:white; font-weight:700; font-size:16px; padding:16px 34px; border-radius:9999px; box-shadow:0 6px 20px rgba(26,115,232,0.3);">
+          {practice.hero.ctaText}
+        </a>
+        <a href={`tel:${practice.phone}`} class="ghost-btn" style="border:2px solid var(--border); color:var(--muted); font-weight:600; font-size:15px; padding:14px 26px; border-radius:9999px; display:flex; align-items:center; gap:8px;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg>
+          {practice.phone}
+        </a>
+      </div>
+      <div class="fade-4" style="padding-top:28px; border-top:1px solid var(--border); display:flex; gap:18px; align-items:center;">
+        <div style="position:relative; flex-shrink:0;">
+          <ResponsiveImage src={practice.team[2].image} alt={`${practice.team[2].name}, longtime patient`} widths={[160,320]} sizes="64px" width={160} height={160} imgStyle="width:64px; height:64px; border-radius:9999px; object-fit:cover; display:block; border:3px solid white; box-shadow:0 4px 14px rgba(15,45,82,0.18);" />
+          <div style="position:absolute; bottom:-4px; right:-4px; background:var(--blue); color:white; width:22px; height:22px; border-radius:9999px; display:flex; align-items:center; justify-content:center; border:2px solid white;">
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><path d="M7.17 14.83 4.34 12l-1.42 1.41L7.17 17.66l9-9-1.42-1.41z"/></svg>
+          </div>
+        </div>
+        <div>
+          <div style="font-family:'Source Serif 4',serif; font-size:15px; line-height:1.55; color:var(--navy); font-style:italic; font-weight:500; margin-bottom:6px;">"Eight years, three kids, zero tears. {practice.name.split(' ')[0]} feels like family."</div>
+          <div style="font-size:11px; color:var(--muted); font-weight:600; letter-spacing:0.04em;">— Linda M. · patient since 2018</div>
+        </div>
+      </div>
+    </div>
+    <div class="fade-2" style="position:relative;">
+      <div style="border-radius:28px; overflow:hidden; box-shadow:0 24px 64px rgba(15,45,82,0.18); position:relative;">
+        <ResponsiveImage src={practice.hero.image} alt={`Happy family at ${practice.name}`} widths={[320,640,1024,1920]} sizes="(min-width: 1024px) 50vw, 100vw" width={1600} height={1200} eager imgStyle="width:100%; aspect-ratio:4/3; object-fit:cover; display:block;" />
+        <div style="position:absolute; inset:0; background:linear-gradient(to top, rgba(15,45,82,0.12), transparent 50%);"></div>
+      </div>
+      <div style="position:absolute; bottom:-20px; left:-20px; background:white; border-radius:16px; padding:16px 20px; box-shadow:0 8px 32px rgba(15,45,82,0.12); border:1px solid var(--border); display:flex; align-items:center; gap:12px;">
+        <div style="width:42px; height:42px; background:var(--amber-light); border-radius:12px; display:flex; align-items:center; justify-content:center; font-size:20px;">🏆</div>
+        <div>
+          <div style="font-size:13px; font-weight:700; color:var(--navy);">Top Rated Locally</div>
+          <div style="font-size:11px; color:var(--muted);">Google · Yelp · Healthgrades</div>
+        </div>
+      </div>
+      <div style="position:absolute; top:-16px; right:-16px; background:var(--blue); color:white; border-radius:16px; padding:14px 18px; box-shadow:0 6px 20px rgba(26,115,232,0.35); text-align:center;">
+        <div style="font-family:'Source Serif 4',serif; font-size:28px; font-weight:700; line-height:1;">Est.</div>
+        <div style="font-family:'Source Serif 4',serif; font-size:22px; font-weight:700;">{practice.founded}</div>
+      </div>
+    </div>
+  </div>
+</section>
+<style>
+  @media (max-width: 900px) {
+    .cf-hero > div { grid-template-columns: 1fr !important; gap: 40px !important; }
+  }
+</style>

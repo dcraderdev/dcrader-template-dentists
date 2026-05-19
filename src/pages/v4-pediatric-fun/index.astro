@@ -1,6 +1,7 @@
 ---
 import { practice } from '../../data/v4';
 import ResponsiveImage from '../../components/ResponsiveImage.astro';
+import InsuranceHero from '../../components/dentists/InsuranceHero.astro';
 
 const heroBase = practice.hero.image.replace(/\.webp$/i, '');
 ---
@@ -111,88 +112,8 @@ const heroBase = practice.hero.image.replace(/\.webp$/i, '');
 
 <main id="main">
 
-<!-- HERO -->
-<section style="background:linear-gradient(145deg, #FFF0EF 0%, #FFFCF5 45%, #E8F0FE 100%); padding:72px 24px 100px; position:relative; overflow:hidden;">
-  <!-- Decorative circles -->
-  <div style="position:absolute; top:-60px; right:-60px; width:280px; height:280px; background:var(--yellow); border-radius:50%; opacity:0.2; pointer-events:none;"></div>
-  <div style="position:absolute; bottom:-80px; left:-40px; width:240px; height:240px; background:var(--blue-2); border-radius:50%; opacity:0.12; pointer-events:none;"></div>
-  <div style="position:absolute; top:30%; left:-30px; width:160px; height:160px; background:var(--red-2); border-radius:50%; opacity:0.08; pointer-events:none;"></div>
-
-  <div style="max-width:1200px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:center; position:relative;">
-    <!-- Left: content -->
-    <div>
-      <div class="pop-1" style="display:inline-flex; align-items:center; gap:8px; background:var(--yellow); color:var(--dark); font-weight:900; font-size:13px; padding:8px 20px; border-radius:9999px; margin-bottom:24px; box-shadow:3px 3px 0 rgba(0,0,0,0.1);">
-        ⭐ Austin's #1 Kids Dentist — 5 Stars!
-      </div>
-      <h1 class="pop-2 display" style="font-size:clamp(44px,6vw,80px); line-height:1.05; color:var(--dark); margin:0 0 20px; white-space:pre-line;">{practice.hero.headline}</h1>
-      <p class="pop-3" style="font-size:19px; line-height:1.72; color:#555; margin:0 0 32px; max-width:460px; font-weight:700;">{practice.hero.subheadline}</p>
-      <div class="pop-4" style="display:flex; gap:14px; flex-wrap:wrap; align-items:center; margin-bottom:44px;">
-        <a href="#appointment" class="star-btn" style="background:var(--red); color:white; font-weight:900; font-size:18px; padding:18px 38px; border-radius:9999px; box-shadow:0 6px 24px rgba(232,40,26,0.35), 0 3px 0 #A81D11;">
-          {practice.hero.ctaText}
-        </a>
-        <a href="tel:{practice.phone}" class="star-btn" style="background:var(--blue); color:white; font-weight:900; font-size:15px; padding:16px 28px; border-radius:9999px; box-shadow:0 5px 18px rgba(21,101,192,0.3), 0 3px 0 #0D47A1;">
-          📞 Call Us!
-        </a>
-      </div>
-      <!-- Parent FAQ — candy-pop accordion (no numbers grid) -->
-      <div style="background:white; border-radius:20px; padding:8px 6px; border:3px solid var(--dark); box-shadow:6px 6px 0 var(--yellow); max-width:520px;">
-        <div style="display:flex; align-items:center; gap:8px; padding:10px 16px 4px;">
-          <span style="font-size:18px;">💭</span>
-          <span class="display" style="font-size:14px; color:var(--dark); letter-spacing:0.04em;">Parent Questions</span>
-        </div>
-        {[
-          ['What age should kids start?','As soon as the first tooth pops! We make first visits a high-five party — quick, gentle, and FUN.','🦷'],
-          ["What if my kid is scared?",'No-Fear Zone is real. We narrate, we show, we let them pick the toothpaste flavor. Tears in = giggles out.','🦸'],
-          ['Do you take my insurance?','Most likely yes — and we file everything for you. Cleanings are usually 100% covered.','💳'],
-          ['Are sealants worth it?','Tiny shield, huge protection. Sealants block ~80% of cavities in the molars where kids get them most.','🛡️'],
-        ].map(([q, a, emoji], i) => (
-          <details style={`border-top:2px dashed var(--border); padding:0; margin:6px 0 0;`}>
-            <summary style="list-style:none; cursor:pointer; padding:14px 16px; display:flex; align-items:center; gap:12px;">
-              <span style="font-size:22px;">{emoji}</span>
-              <span style="font-weight:900; color:var(--dark); font-size:14px; flex:1;">{q}</span>
-              <span style="font-size:18px; color:var(--red); font-weight:900;">+</span>
-            </summary>
-            <div style="padding:0 16px 14px 50px; font-size:13px; color:#555; font-weight:700; line-height:1.6;">{a}</div>
-          </details>
-        ))}
-      </div>
-    </div>
-
-    <!-- Right: Cartoon tooth + photo -->
-    <div style="position:relative; text-align:center;">
-      <!-- Photo with funky border -->
-      <div style="border-radius:28px; overflow:hidden; border:5px solid var(--yellow); box-shadow:10px 10px 0 var(--red); position:relative;">
-        <ResponsiveImage src={practice.hero.image} alt="Kids at Smile Squad" widths={[320,640,1024,1920]} sizes="(min-width: 1024px) 50vw, 100vw" width={1600} height={1200} eager imgStyle="width:100%; aspect-ratio:4/3; object-fit:cover; display:block;" />
-      </div>
-      <!-- Floating badge: No Fear -->
-      <div class="bounce" style="position:absolute; top:-18px; right:16px; background:var(--blue); color:white; font-size:13px; font-weight:900; padding:12px 18px; border-radius:18px; border:3px solid white; box-shadow:4px 4px 0 rgba(0,0,0,0.15);">
-        No Fear Zone! 🦸
-      </div>
-      <!-- Floating badge: Prizes -->
-      <div style="position:absolute; bottom:-18px; left:16px; background:var(--red); color:white; font-size:13px; font-weight:900; padding:12px 18px; border-radius:18px; border:3px solid white; box-shadow:4px 4px 0 rgba(0,0,0,0.15);">
-        Prizes Every Visit! 🎁
-      </div>
-      <!-- SVG Cartoon tooth mascot -->
-      <div style="position:absolute; top:-32px; left:-32px; width:80px; height:80px;">
-        <svg viewBox="0 0 100 120" xmlns="http://www.w3.org/2000/svg">
-          <!-- Tooth body -->
-          <path d="M18,50 Q12,24 30,10 Q42,2 50,8 Q58,2 70,10 Q88,24 82,50 L78,98 Q76,112 66,112 Q58,112 50,100 Q42,112 34,112 Q24,112 22,98 Z"
-                fill="white" stroke="#1A1D2E" stroke-width="4"/>
-          <!-- Cape band -->
-          <rect x="24" y="40" width="52" height="18" rx="5" fill="#E8281A"/>
-          <text x="50" y="53" text-anchor="middle" font-size="11" fill="white" font-weight="900" font-family="Nunito, sans-serif">HERO</text>
-          <!-- Eyes -->
-          <circle cx="38" cy="28" r="7" fill="#1A1D2E"/>
-          <circle cx="62" cy="28" r="7" fill="#1A1D2E"/>
-          <circle cx="40" cy="25" r="3" fill="white"/>
-          <circle cx="64" cy="25" r="3" fill="white"/>
-          <!-- Smile -->
-          <path d="M34,68 Q50,82 66,68" fill="none" stroke="#1A1D2E" stroke-width="3" stroke-linecap="round"/>
-        </svg>
-      </div>
-    </div>
-  </div>
-</section>
+<!-- HERO: insurance-led (logos accepted + financing + transparent pricing) -->
+<InsuranceHero practice={practice} />
 
 <!-- SERVICES — with diagonal top -->
 <section id="services" class="diag-top" style="background:white; padding-bottom:80px; padding-left:24px; padding-right:24px;">

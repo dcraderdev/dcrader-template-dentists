@@ -1,6 +1,7 @@
 ---
 import { practice } from '../../data/v5';
 import ResponsiveImage from '../../components/ResponsiveImage.astro';
+import BookingWidgetHero from '../../components/dentists/BookingWidgetHero.astro';
 
 const heroBase = practice.hero.image.replace(/\.webp$/i, '');
 ---
@@ -114,78 +115,8 @@ const heroBase = practice.hero.image.replace(/\.webp$/i, '');
 
 <main id="main">
 
-<!-- HERO -->
-<section class="hero-grid" style="min-height:96vh; display:grid; grid-template-columns:1fr 1fr; position:relative; overflow:hidden;">
-  <!-- Left: content -->
-  <div class="hero-left" style="display:flex; flex-direction:column; justify-content:center; padding:80px 64px 80px 80px; background:var(--cream); position:relative;">
-    <!-- Plant SVG decorative element top-left -->
-    <div style="position:absolute; top:40px; left:40px; opacity:0.5;" class="leaf-sway">
-      <svg width="60" height="90" viewBox="0 0 60 90" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M30,88 Q28,70 24,52 Q18,32 10,18 Q20,28 28,48 Q32,60 30,88Z" fill="var(--sage)" opacity="0.5"/>
-        <path d="M30,88 Q32,68 38,50 Q44,32 54,18 Q44,28 36,50 Q32,62 30,88Z" fill="var(--sage)" opacity="0.35"/>
-        <line x1="30" y1="88" x2="30" y2="10" stroke="var(--sage)" stroke-width="1.5" opacity="0.4"/>
-      </svg>
-    </div>
-
-    <div class="fade-1" style="font-size:10px; letter-spacing:0.32em; text-transform:uppercase; color:var(--sage); margin-bottom:26px; font-weight:500;">
-      Biological Dentistry · Mercury-Free · Portland
-    </div>
-    <h1 class="fade-2" style="font-size:clamp(44px,5vw,76px); line-height:1.08; color:var(--ink); margin:0 0 26px; font-style:italic; white-space:pre-line; font-weight:400;">{practice.hero.headline}</h1>
-    <div class="fade-2" style="width:40px; height:2px; background:var(--sage); margin-bottom:26px;"></div>
-    <p class="fade-3" style="font-size:18px; line-height:1.88; color:var(--muted); margin:0 0 44px; max-width:440px; font-weight:300;">{practice.hero.subheadline}</p>
-
-    <div class="fade-4" style="display:flex; gap:18px; flex-wrap:wrap; align-items:center; margin-bottom:56px;">
-      <a href="#appointment" class="cta-btn" style="background:var(--sage-3); color:white; font-size:12px; letter-spacing:0.14em; text-transform:uppercase; padding:18px 42px; font-weight:500;">
-        {practice.hero.ctaText}
-      </a>
-      <a href="tel:{practice.phone}" style="font-size:15px; color:var(--sage-2); font-weight:400; display:flex; align-items:center; gap:10px; transition:color 0.2s;"
-         onmouseover="this.style.color='var(--sage-3)'" onmouseout="this.style.color='var(--sage-2)'">
-        <span style="display:inline-block; width:24px; height:1px; background:var(--sage);"></span>
-        {practice.phone}
-      </a>
-    </div>
-
-    <!-- Care philosophy manifesto (earthy, botanical, no numbers) -->
-    <div class="fade-4" style="padding-top:32px; border-top:1px solid var(--cream-3);">
-      <div style="font-size:9px; letter-spacing:0.32em; text-transform:uppercase; color:var(--sage); margin-bottom:18px; font-weight:500;">Our Quiet Promises</div>
-      <div style="display:grid; gap:14px;">
-        {[
-          'We will not place mercury, BPA, or fluoride silicates in your mouth.',
-          'We will test materials for biocompatibility before they touch your body.',
-          'We will use ozone, ceramic, and rubber-dam SMART protocols — every removal, every patient.',
-          'We will treat your tooth as part of you, not a problem detached from the whole.',
-        ].map(line => (
-          <div style="display:flex; gap:14px; align-items:flex-start;">
-            <svg width="14" height="20" viewBox="0 0 14 20" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0; margin-top:3px;">
-              <path d="M7,18 Q5,12 2,7 Q4,9 7,14 Q10,9 12,7 Q9,12 7,18Z" fill="var(--sage)" opacity="0.85"/>
-              <line x1="7" y1="18" x2="7" y2="2" stroke="var(--sage-2)" stroke-width="1" opacity="0.5"/>
-            </svg>
-            <div style="font-family:'Source Serif 4',serif; font-size:15px; color:var(--ink); line-height:1.65; font-style:italic; font-weight:400;">{line}</div>
-          </div>
-        ))}
-      </div>
-    </div>
-  </div>
-
-  <!-- Right: botanical photo -->
-  <div class="hero-photo" style="position:relative; overflow:hidden;">
-    <ResponsiveImage src={practice.hero.image} alt="Root and Branch Holistic Dental" widths={[640,1024,1920]} sizes="100vw" width={1600} height={1067} eager imgStyle="width:100%; height:100%; object-fit:cover; object-position:center; filter:sepia(8%) brightness(0.96);" />
-    <div style="position:absolute; inset:0; background:linear-gradient(to right, var(--cream) 0%, transparent 12%);"></div>
-    <!-- Floating commitment card -->
-    <div style="position:absolute; bottom:48px; right:48px; background:rgba(247,243,236,0.95); backdrop-filter:blur(8px); padding:24px 28px; border-left:3px solid var(--sage);">
-      <div style="font-size:9px; letter-spacing:0.26em; text-transform:uppercase; color:var(--sage); margin-bottom:10px; font-weight:500;">Our Commitment</div>
-      <div style="font-family:'Source Serif 4',serif; font-size:16px; color:var(--ink); line-height:1.55; font-style:italic;">Mercury-free since day one.<br/>Zero-compromise materials.<br/>Body-first always.</div>
-    </div>
-    <!-- Leaf decoration -->
-    <div style="position:absolute; top:40px; right:30px; opacity:0.35;" class="leaf-sway">
-      <svg width="50" height="70" viewBox="0 0 50 70" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M25,68 Q23,50 18,35 Q12,20 4,8 Q16,18 22,36 Q26,48 25,68Z" fill="var(--sage)"/>
-        <path d="M25,68 Q27,48 34,32 Q42,18 48,6 Q38,18 30,36 Q26,50 25,68Z" fill="var(--mist)"/>
-        <line x1="25" y1="68" x2="25" y2="4" stroke="var(--sage-2)" stroke-width="1.2" opacity="0.6"/>
-      </svg>
-    </div>
-  </div>
-</section>
+<!-- HERO: booking widget (online appointment picker) -->
+<BookingWidgetHero practice={practice} />
 
 <!-- PLANT SVG DIVIDER -->
 <div style="background:var(--cream-2); padding:0; overflow:hidden; line-height:0;">

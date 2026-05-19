@@ -1,0 +1,109 @@
+---
+const { practice } = Astro.props;
+const insurance = practice.insurance.slice(0, 10);
+---
+<!-- HERO: insurance-led — logos accepted, financing options, transparent pricing -->
+<section class="ins-hero" style="background:linear-gradient(145deg, #FFF0EF 0%, #FFFCF5 45%, #E8F0FE 100%); padding:96px 24px 100px; position:relative; overflow:hidden;">
+  <div style="position:absolute; top:-60px; right:-60px; width:280px; height:280px; background:var(--yellow); border-radius:50%; opacity:0.2; pointer-events:none;"></div>
+  <div style="position:absolute; bottom:-80px; left:-40px; width:240px; height:240px; background:var(--blue-2); border-radius:50%; opacity:0.12; pointer-events:none;"></div>
+
+  <div style="max-width:1200px; margin:0 auto; position:relative;">
+    <!-- Title row -->
+    <div style="text-align:center; max-width:780px; margin:0 auto 56px;">
+      <div class="pop-1" style="display:inline-flex; align-items:center; gap:8px; background:var(--yellow); color:var(--dark); font-weight:900; font-size:13px; padding:8px 20px; border-radius:9999px; margin-bottom:24px; box-shadow:3px 3px 0 rgba(0,0,0,0.1);">
+        💳 In-network with most major plans
+      </div>
+      <h1 class="pop-2 display" style="font-size:clamp(40px,5.5vw,72px); line-height:1.05; color:var(--dark); margin:0 0 18px;">
+        Your insurance is welcome.<br/>Your wallet is, too.
+      </h1>
+      <p class="pop-3" style="font-size:18px; line-height:1.7; color:#555; margin:0 auto; max-width:560px; font-weight:700;">
+        Transparent pricing. Honest financing. No surprise bills — ever. Get a free benefits check in under 5 minutes.
+      </p>
+    </div>
+
+    <!-- Three-column main: insurance grid · financing · pricing -->
+    <div class="ins-grid" style="display:grid; grid-template-columns:1.4fr 1fr 1fr; gap:20px; align-items:stretch;">
+      <!-- Insurance logos grid -->
+      <div class="pop-3" style="background:white; border:3px solid var(--dark); border-radius:20px; padding:28px 28px 24px; box-shadow:8px 8px 0 var(--yellow);">
+        <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:18px;">
+          <span class="display" style="font-size:14px; letter-spacing:0.06em; color:var(--dark);">We Accept</span>
+          <span style="font-size:11px; font-weight:900; color:var(--red); text-transform:uppercase; letter-spacing:0.06em;">In-Network</span>
+        </div>
+        <div style="display:grid; grid-template-columns:repeat(2, 1fr); gap:10px;">
+          {insurance.map(name => (
+            <div style="display:flex; align-items:center; gap:10px; padding:10px 12px; background:#FFFCF5; border:2px solid var(--border); border-radius:12px;">
+              <div style="width:30px; height:30px; border-radius:6px; background:linear-gradient(135deg, var(--blue) 0%, var(--blue-2) 100%); display:flex; align-items:center; justify-content:center; color:white; font-weight:900; font-size:13px; flex-shrink:0;">
+                {name.split(' ').map((w: string) => w[0]).slice(0,2).join('')}
+              </div>
+              <span style="font-size:12.5px; font-weight:700; color:var(--dark); line-height:1.2;">{name}</span>
+            </div>
+          ))}
+        </div>
+        <div style="margin-top:16px; padding-top:14px; border-top:2px dashed var(--border); display:flex; align-items:center; justify-content:space-between; gap:12px;">
+          <span style="font-size:12px; color:#555; font-weight:700;">Don't see yours? We'll verify any plan.</span>
+          <a href="#appointment" style="font-size:12px; color:var(--red); font-weight:900; white-space:nowrap;">Check coverage →</a>
+        </div>
+      </div>
+
+      <!-- Financing card -->
+      <div class="pop-3" style="background:var(--blue); color:white; border:3px solid var(--dark); border-radius:20px; padding:28px; box-shadow:8px 8px 0 var(--red); display:flex; flex-direction:column;">
+        <span class="display" style="font-size:14px; letter-spacing:0.06em; opacity:0.85; margin-bottom:14px;">Financing</span>
+        <div style="font-size:56px; line-height:1; font-weight:900; margin-bottom:4px;">$0</div>
+        <div style="font-size:14px; opacity:0.9; font-weight:700; margin-bottom:18px;">down, 0% APR available</div>
+        <ul style="list-style:none; padding:0; margin:0 0 20px; display:grid; gap:10px; font-size:13px; font-weight:700;">
+          {[
+            ['CareCredit', '6–24 month plans'],
+            ['LendingClub', 'soft-pull pre-qual'],
+            ['In-house', 'split into 4 payments'],
+            ['HSA / FSA', 'accepted on every visit'],
+          ].map(([k, v]) => (
+            <li style="display:flex; align-items:flex-start; gap:10px;">
+              <span style="width:18px; height:18px; border-radius:50%; background:var(--yellow); color:var(--dark); display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:900; flex-shrink:0; margin-top:1px;">✓</span>
+              <span><strong>{k}</strong> — <span style="opacity:0.85; font-weight:600;">{v}</span></span>
+            </li>
+          ))}
+        </ul>
+        <a href="#appointment" class="star-btn" style="background:var(--yellow); color:var(--dark); font-weight:900; font-size:14px; padding:14px 22px; border-radius:9999px; text-align:center; box-shadow:0 4px 0 #B08600; margin-top:auto;">
+          Pre-qualify in 60s →
+        </a>
+      </div>
+
+      <!-- Transparent pricing card -->
+      <div class="pop-3" style="background:white; border:3px solid var(--dark); border-radius:20px; padding:28px; box-shadow:8px 8px 0 var(--blue-2);">
+        <span class="display" style="font-size:14px; letter-spacing:0.06em; color:var(--dark); margin-bottom:14px; display:block;">Transparent Pricing</span>
+        <ul style="list-style:none; padding:0; margin:0; display:grid; gap:14px;">
+          {[
+            ['New patient exam + X-rays', '$129', 'often $0 with insurance'],
+            ['Cleaning', '$99', 'preventive 100% covered'],
+            ['Composite filling', 'from $189', '1-surface'],
+            ['Crown', 'from $1,099', 'final price after benefits'],
+            ['Whitening', 'from $349', 'take-home trays'],
+          ].map(([item, price, note]) => (
+            <li style="display:grid; grid-template-columns:1fr auto; gap:6px 12px; padding-bottom:12px; border-bottom:2px dashed var(--border);">
+              <div style="font-size:13px; font-weight:900; color:var(--dark);">{item}</div>
+              <div style="font-size:14px; font-weight:900; color:var(--red);">{price}</div>
+              <div style="grid-column:1/-1; font-size:11px; color:#666; font-weight:700;">{note}</div>
+            </li>
+          ))}
+        </ul>
+        <div style="margin-top:14px; font-size:11px; color:#666; font-weight:700; text-align:center;">All fees published. No surprises.</div>
+      </div>
+    </div>
+
+    <!-- CTA strip -->
+    <div class="pop-4" style="margin-top:36px; display:flex; gap:14px; flex-wrap:wrap; align-items:center; justify-content:center;">
+      <a href="#appointment" class="star-btn" style="background:var(--red); color:white; font-weight:900; font-size:17px; padding:18px 38px; border-radius:9999px; box-shadow:0 6px 24px rgba(232,40,26,0.35), 0 3px 0 #A81D11;">
+        {practice.hero.ctaText} →
+      </a>
+      <a href={`tel:${practice.phone}`} class="star-btn" style="background:var(--dark); color:white; font-weight:900; font-size:15px; padding:16px 28px; border-radius:9999px; box-shadow:0 5px 18px rgba(0,0,0,0.2), 0 3px 0 #000;">
+        📞 {practice.phone}
+      </a>
+      <span style="font-size:13px; font-weight:700; color:#555;">Free benefits check · No card required</span>
+    </div>
+  </div>
+  <style>
+    @media (max-width: 1024px) {
+      .ins-grid { grid-template-columns: 1fr !important; }
+    }
+  </style>
+</section>

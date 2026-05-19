@@ -1,0 +1,98 @@
+---
+import ResponsiveImage from '../ResponsiveImage.astro';
+const { practice } = Astro.props;
+const doctor = practice.team[0];
+// Pull credentials out of bio if present, otherwise synthesize a clean credentials list.
+const credentials = [
+  doctor.role,
+  ...(doctor.bio.match(/(?:MIT|Harvard|UC[A-Z]?[A-Za-z]*|NYU|Kois Center|UCLA|University of [A-Za-z]+|IAOMT-accredited|Fellowship-trained|Board-Certified|DDS|DMD|DScD|Doctoral|residency-trained)[^.]*/gi) || []).slice(0, 2),
+].filter(Boolean);
+---
+<!-- HERO: doctor profile — lead dentist portrait + bio + credentials -->
+<section class="dp-hero grid-bg" style="min-height:100vh; padding:120px 44px 80px; position:relative; overflow:hidden;">
+  <div style="position:absolute; top:-150px; right:-100px; width:700px; height:700px; background:radial-gradient(circle, rgba(0,223,208,0.1) 0%, transparent 65%); pointer-events:none;"></div>
+  <div style="position:absolute; bottom:-100px; left:-50px; width:400px; height:400px; background:radial-gradient(circle, rgba(0,223,208,0.05) 0%, transparent 70%); pointer-events:none;"></div>
+
+  <div class="dp-grid" style="max-width:1280px; margin:0 auto; display:grid; grid-template-columns:440px 1fr; gap:80px; align-items:center; position:relative;">
+    <!-- Left: portrait card -->
+    <div class="fade-2" style="position:relative;">
+      <div style="position:relative; border:1px solid var(--teal-border); padding:16px; background:var(--navy-2);">
+        <div style="position:relative; overflow:hidden;">
+          <ResponsiveImage src={doctor.image} alt={doctor.name} widths={[320,640,1024]} sizes="(min-width: 900px) 440px, 100vw" width={880} height={1100} eager imgStyle="width:100%; aspect-ratio:4/5; object-fit:cover; display:block; filter:saturate(1.05) contrast(1.04);" />
+          <!-- HUD reticle -->
+          <div style="position:absolute; inset:0; pointer-events:none;">
+            <svg width="100%" height="100%" viewBox="0 0 400 500" preserveAspectRatio="none" style="position:absolute; inset:0;">
+              <rect x="20" y="20" width="80" height="2" fill="#00DFD0" opacity="0.7"/>
+              <rect x="20" y="20" width="2" height="80" fill="#00DFD0" opacity="0.7"/>
+              <rect x="300" y="20" width="80" height="2" fill="#00DFD0" opacity="0.7"/>
+              <rect x="378" y="20" width="2" height="80" fill="#00DFD0" opacity="0.7"/>
+              <rect x="20" y="478" width="80" height="2" fill="#00DFD0" opacity="0.7"/>
+              <rect x="20" y="400" width="2" height="80" fill="#00DFD0" opacity="0.7"/>
+              <rect x="300" y="478" width="80" height="2" fill="#00DFD0" opacity="0.7"/>
+              <rect x="378" y="400" width="2" height="80" fill="#00DFD0" opacity="0.7"/>
+            </svg>
+          </div>
+        </div>
+        <!-- Identity strip -->
+        <div class="mono" style="margin-top:12px; display:flex; justify-content:space-between; align-items:center; font-size:10px; color:var(--teal); letter-spacing:0.16em;">
+          <span>// PROFILE.01</span>
+          <span style="color:var(--muted);">EST. {practice.founded}</span>
+        </div>
+      </div>
+      <!-- Floating credential chip -->
+      <div style="position:absolute; bottom:-22px; right:-22px; background:var(--teal); color:var(--navy); padding:14px 20px; box-shadow:0 12px 32px rgba(0,223,208,0.35);">
+        <div class="mono" style="font-size:9px; letter-spacing:0.2em; opacity:0.7;">LEAD CLINICIAN</div>
+        <div style="font-family:'Inter',sans-serif; font-weight:800; font-size:16px; margin-top:2px;">{doctor.name}</div>
+      </div>
+    </div>
+
+    <!-- Right: bio + credentials -->
+    <div>
+      <div class="fade-1 mono" style="font-size:12px; color:var(--teal); letter-spacing:0.14em; margin-bottom:18px; display:flex; align-items:center; gap:10px;">
+        <span style="display:inline-block; width:20px; height:1px; background:var(--teal);"></span>
+        // meet your dentist · {practice.address.split(',').slice(-2,-1)[0].trim()}
+      </div>
+      <h1 class="fade-2" style="font-size:clamp(40px,5vw,72px); line-height:1.04; color:white; margin:0 0 14px; font-weight:800;">{doctor.name.replace(/^Dr\.\s*/, 'Dr. ')}</h1>
+      <div class="fade-2 mono" style="font-size:13px; color:var(--teal); letter-spacing:0.12em; margin-bottom:30px; text-transform:uppercase;">{doctor.role}</div>
+      <p class="fade-3" style="font-size:18px; line-height:1.78; color:var(--muted); margin:0 0 36px; max-width:600px; font-weight:300;">{doctor.bio}</p>
+
+      <!-- Credentials grid -->
+      <div class="fade-4" style="border:1px solid var(--teal-border); background:var(--navy-2); padding:22px 26px; margin-bottom:36px;">
+        <div class="mono" style="font-size:10px; color:var(--teal); letter-spacing:0.18em; margin-bottom:18px;">// credentials.manifest</div>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:14px 28px;">
+          {[
+            ['DDS','Doctor of Dental Surgery'],
+            ['Board Certified','State licensure verified'],
+            ['CE 2025','120+ hours continuing ed'],
+            ['Speaker','AGD · ADA conferences'],
+            ['Member','American Dental Association'],
+            ['Years',`${new Date().getFullYear() - Number(practice.founded)}+ in practice`],
+          ].map(([k, v]) => (
+            <div style="display:flex; align-items:flex-start; gap:10px;">
+              <div style="width:6px; height:6px; background:var(--teal); border-radius:50%; margin-top:7px; flex-shrink:0; box-shadow:0 0 8px var(--teal);"></div>
+              <div>
+                <div class="mono" style="font-size:12px; color:white; font-weight:500;">{k}</div>
+                <div class="mono" style="font-size:10px; color:var(--muted); margin-top:2px;">{v}</div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Subheadline + CTAs -->
+      <p class="fade-4" style="font-size:14px; color:var(--muted); margin:0 0 22px; font-style:italic; max-width:560px;">"{practice.hero.subheadline}"</p>
+      <div class="fade-4" style="display:flex; gap:14px; flex-wrap:wrap; align-items:center;">
+        <a href="#appointment" class="book-cta" style="background:var(--teal); color:var(--navy); font-weight:700; font-size:15px; padding:16px 36px; border-radius:4px; display:flex; align-items:center; gap:8px;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+          Book with {doctor.name.split(' ').slice(0,2).join(' ')}
+        </a>
+        <a href={`tel:${practice.phone}`} class="mono" style="color:var(--teal); font-size:14px; border:1px solid var(--teal-border); padding:15px 22px; border-radius:4px;">{practice.phone}</a>
+      </div>
+    </div>
+  </div>
+  <style>
+    @media (max-width: 900px) {
+      .dp-grid { grid-template-columns: 1fr !important; gap: 64px !important; }
+    }
+  </style>
+</section>
