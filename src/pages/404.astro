@@ -1,0 +1,48 @@
+---
+const brand = '#2563EB';
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>404 — Page not found · dcrader templates</title>
+  <meta name="description" content="That page wandered off. Head back to the dental template library." />
+  <meta name="robots" content="noindex" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    body { font-family: 'Inter', sans-serif; background: #0B0C10; color: #E8EAF0; margin: 0; min-height: 100vh; display: flex; flex-direction: column; }
+    main { flex: 1; display: flex; align-items: center; justify-content: center; padding: 64px 24px; }
+    .wrap { max-width: 640px; text-align: center; }
+    .eyebrow { display: inline-block; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: 9999px; padding: 6px 20px; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: #9CA3AF; margin-bottom: 28px; }
+    .code { font-family: 'Playfair Display', serif; font-size: clamp(120px, 22vw, 220px); line-height: 1; margin: 0 0 8px; color: #2563EB; letter-spacing: -0.02em; }
+    h1 { font-family: 'Playfair Display', serif; font-size: clamp(28px, 4vw, 42px); line-height: 1.15; color: white; margin: 0 0 18px; }
+    p { font-size: 17px; color: #9CA3AF; line-height: 1.7; margin: 0 auto 36px; max-width: 460px; }
+    .btn { display: inline-flex; align-items: center; gap: 10px; background: #2563EB; color: white; font-size: 14px; font-weight: 700; padding: 14px 28px; border-radius: 9999px; text-decoration: none; letter-spacing: 0.04em; transition: all 0.2s ease; border: 1px solid #2563EB; }
+    .btn:hover { opacity: 0.9; transform: translateY(-1px); }
+    *:focus-visible { outline: 2px solid #2563EB; outline-offset: 3px; border-radius: 4px; }
+    footer { border-top: 1px solid rgba(255,255,255,0.06); padding: 24px 48px; font-size: 13px; color: #9CA3AF; text-align: center; }
+    footer a { color: #D1D5DB; text-decoration: underline; }
+  </style>
+</head>
+<body>
+
+<main>
+  <div class="wrap">
+    <div class="eyebrow">Error 404</div>
+    <div class="code" aria-hidden="true">404</div>
+    <h1>Page not found</h1>
+    <p>This page slipped out of the chair before we could check it. The dental template library is just one click away.</p>
+    <a href="/" class="btn">← Back to the template library</a>
+  </div>
+</main>
+
+<footer>
+  Built by <a href="https://dcrader.dev">Donovan Crader · dcrader.dev</a>
+</footer>
+
+</body>
+</html>
