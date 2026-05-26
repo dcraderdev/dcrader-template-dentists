@@ -39,10 +39,10 @@ for (const f of files) {
 
   if (!kind) continue;
 
-  // For hero, allow upscaling up to the largest target (1920) so preload assets exist.
+  // Generate every declared target width so srcset references never 404,
+  // even when source is smaller than target (upscale rather than skip).
   const widths = targetWidthsByKind[kind];
   for (const w of widths) {
-    if (w >= origW && kind !== 'hero') continue;
     const webpOut = path.join(dir, `${base}-${w}.webp`);
     const avifOut = path.join(dir, `${base}-${w}.avif`);
     const resizeOpts = w > origW ? { width: w, withoutEnlargement: false } : { width: w };

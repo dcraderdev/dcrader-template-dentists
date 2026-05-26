@@ -89,8 +89,16 @@ const heroBase = practice.hero.image.replace(/\.webp$/i, '');
       .team-grid { grid-template-columns: 1fr 1fr !important; }
       .office-grid { grid-template-columns: 1fr 1fr !important; }
       .testimonials-grid { grid-template-columns: 1fr !important; }
+      /* Force the fixed nav and brand to fit tiny viewports without pushing CTA offscreen */
+      nav[style*="position:fixed"] { padding-left: 14px !important; padding-right: 14px !important; height: 60px !important; gap: 10px !important; }
+      nav[style*="position:fixed"] > div:first-child { min-width: 0 !important; flex: 1 1 0 !important; overflow: hidden !important; }
+      nav[style*="position:fixed"] > div:first-child > div:first-child { font-size: 14px !important; letter-spacing: 0.06em !important; }
+      nav[style*="position:fixed"] > div:last-child { flex: 0 0 auto !important; }
+      nav[style*="position:fixed"] .cta-btn { padding: 9px 16px !important; font-size: 10px !important; letter-spacing: 0.12em !important; white-space: nowrap; }
+      .sa-hero { padding-top: 100px !important; }
     }
   </style>
+  <link rel="stylesheet" href="/template-responsive.css" />
   <script src="/template-topheader.js" defer></script>
 </head>
 <body>
@@ -99,15 +107,15 @@ const heroBase = practice.hero.image.replace(/\.webp$/i, '');
 
 <!-- FLOATING NAV -->
 <nav style="position:fixed; top:0; left:0; right:0; z-index:200; padding:0 56px; height:76px; display:flex; align-items:center; justify-content:space-between; background:rgba(250,247,242,0.94); backdrop-filter:blur(16px); border-bottom:1px solid rgba(184,148,90,0.15);">
-  <div>
-    <div style="font-family:'Cormorant Garamond',serif; font-size:21px; letter-spacing:0.1em; text-transform:uppercase; color:var(--ink); line-height:1.1;">{practice.name}</div>
-    <div style="font-size:9px; letter-spacing:0.3em; text-transform:uppercase; color:var(--gold-text); margin-top:2px; font-weight:500;">Beverly Hills · Est. {practice.founded}</div>
+  <div style="min-width:0; flex:0 1 auto;">
+    <div style="font-family:'Cormorant Garamond',serif; font-size:clamp(15px,3.6vw,21px); letter-spacing:0.1em; text-transform:uppercase; color:var(--ink); line-height:1.1; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">{practice.name}</div>
+    <div class="dt-link" style="font-size:9px; letter-spacing:0.3em; text-transform:uppercase; color:var(--gold-text); margin-top:2px; font-weight:500;">Beverly Hills · Est. {practice.founded}</div>
   </div>
   <div style="display:flex; gap:36px; align-items:center;">
     {['Services','Team','Gallery','Contact'].map(l => (
-      <a href={`#${l.toLowerCase()}`} class="nav-link" style="font-size:11px; letter-spacing:0.18em; text-transform:uppercase; color:var(--muted-text); font-weight:500;">{l}</a>
+      <a href={`#${l.toLowerCase()}`} class="nav-link dt-link" style="font-size:11px; letter-spacing:0.18em; text-transform:uppercase; color:var(--muted-text); font-weight:500;">{l}</a>
     ))}
-    <a href="/v2-luxury-cosmetic/smile-makeover-journey" class="nav-link" style="font-size:11px; letter-spacing:0.18em; text-transform:uppercase; color:var(--muted-text); font-weight:500;">The Journey</a>
+    <a href="/v2-luxury-cosmetic/smile-makeover-journey" class="nav-link dt-link" style="font-size:11px; letter-spacing:0.18em; text-transform:uppercase; color:var(--muted-text); font-weight:500;">The Journey</a>
     <a href="#appointment" class="cta-btn" style="background:var(--gold-text); color:white; font-size:10px; letter-spacing:0.18em; text-transform:uppercase; padding:13px 28px; font-weight:500;">
       Consultation
     </a>
