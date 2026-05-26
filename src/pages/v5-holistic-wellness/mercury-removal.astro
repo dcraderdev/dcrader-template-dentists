@@ -1,0 +1,214 @@
+---
+import { practice } from '../../data/v5';
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Safe Mercury Amalgam Removal | {practice.name} — Biological Dentist Portland</title>
+  <meta name="description" content={`The SMART protocol at ${practice.name} — IAOMT-accredited safe mercury amalgam removal in Portland, OR. Stage-by-stage explanation of how we protect you, our team, and the environment.`} />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300;1,8..60,400;1,8..60,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    :root {
+      --cream: #F7F3EC; --cream-2: #EEE8DC; --cream-3: #E4DDD0;
+      --sage: #6A9470; --sage-text: #3F6444; --sage-2: #4E7653; --sage-3: #2F5234;
+      --earth: #8B6B4A; --earth-text: #6A4F30; --earth-2: #6B4F34;
+      --mist: #B8C8B2; --muted: #7A7264; --muted-text: #5D544A;
+      --ink: #2A2820; --ink-2: #1E1C18;
+    }
+    body { font-family: 'Inter', sans-serif; color: var(--ink); background: var(--cream); margin: 0; font-weight: 300; }
+    h1, h2, h3, h4, blockquote { font-family: 'Source Serif 4', Georgia, serif; font-weight: 400; }
+    a { text-decoration: none; }
+    .nav-link { transition: color 0.2s; }
+    .nav-link:hover { color: var(--sage-2) !important; }
+    .cta-btn { transition: all 0.3s ease; }
+    .cta-btn:hover { background: var(--sage-2) !important; }
+    .stage { transition: transform 0.3s; }
+    .stage:hover { transform: translateY(-2px); }
+    *:focus-visible { outline: 2px solid currentColor; outline-offset: 2px; }
+    .sr-only { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; border:0; }
+    .sr-only:focus, .sr-only:focus-visible { position:absolute; top:8px; left:8px; width:auto; height:auto; padding:10px 16px; margin:0; overflow:visible; clip:auto; white-space:normal; z-index:9999; background:#ffffff; color:#000000; border-radius:6px; box-shadow:0 4px 12px rgba(0,0,0,0.2); text-decoration:none; font-weight:700; }
+    @media (max-width: 900px) {
+      .nav-links { display: none !important; }
+      .stages-grid { grid-template-columns: 1fr !important; }
+      .who-grid { grid-template-columns: 1fr !important; }
+    }
+  </style>
+  <script src="/template-topheader.js" defer></script>
+</head>
+<body>
+
+<a href="#main" class="sr-only">Skip to content</a>
+
+<!-- NAV -->
+<header style="background:var(--cream); border-bottom:1px solid var(--cream-2); position:sticky; top:0; z-index:100;">
+  <div style="max-width:1280px; margin:0 auto; padding:0 56px; height:76px; display:flex; align-items:center; justify-content:space-between;">
+    <a href="/v5-holistic-wellness" style="text-decoration:none;">
+      <div style="font-family:'Source Serif 4',serif; font-size:20px; color:var(--ink); letter-spacing:0.02em;">{practice.name}</div>
+      <div style="font-size:10px; letter-spacing:0.28em; text-transform:uppercase; color:var(--sage-text); margin-top:2px; font-weight:500;">Portland, Oregon · Est. {practice.founded}</div>
+    </a>
+    <nav class="nav-links" style="display:flex; gap:32px; align-items:center;">
+      <a href="/v5-holistic-wellness#services" class="nav-link" style="font-size:13px; letter-spacing:0.07em; color:var(--muted-text); font-weight:500;">Services</a>
+      <a href="/v5-holistic-wellness#principles" class="nav-link" style="font-size:13px; letter-spacing:0.07em; color:var(--muted-text); font-weight:500;">Our Way</a>
+      <a href="/v5-holistic-wellness/mercury-removal" class="nav-link" style="font-size:13px; letter-spacing:0.07em; color:var(--sage-text); font-weight:600;">SMART Protocol</a>
+      <a href="/v5-holistic-wellness#contact" class="nav-link" style="font-size:13px; letter-spacing:0.07em; color:var(--muted-text); font-weight:500;">Visit</a>
+      <a href="/v5-holistic-wellness#appointment" class="cta-btn" style="background:var(--sage-3); color:white; font-size:11px; letter-spacing:0.14em; text-transform:uppercase; padding:12px 26px; font-weight:500;">
+        Begin Journey
+      </a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- HERO -->
+<section style="padding:96px 56px 72px; background:linear-gradient(180deg, var(--cream) 0%, var(--cream-2) 100%);">
+  <div style="max-width:1080px; margin:0 auto;">
+    <div style="display:flex; align-items:center; gap:14px; margin-bottom:28px;">
+      <div style="width:36px; height:1px; background:var(--sage);"></div>
+      <span style="font-size:11px; letter-spacing:0.28em; text-transform:uppercase; color:var(--sage-text); font-weight:600;">The SMART Protocol</span>
+    </div>
+    <h1 style="font-family:'Source Serif 4',serif; font-size:clamp(42px,6vw,76px); line-height:1.1; color:var(--ink); margin:0 0 28px; font-weight:400;">
+      Safe Mercury Amalgam Removal,<br/><em style="font-style:italic; color:var(--sage-2);">done as if it mattered</em>.
+    </h1>
+    <p style="font-size:18px; line-height:1.8; color:var(--muted-text); max-width:720px; margin:0;">
+      Mercury amalgam fillings — the silver-gray ones placed routinely from the 1850s into the early 2000s — are 50% elemental mercury by weight. Drilling them out the way most dentists were taught creates a fine mist of mercury vapor that you, the dentist, the assistant, and the room all breathe. There is a better way. We follow the Safe Mercury Amalgam Removal Technique (SMART), as published by the International Academy of Oral Medicine and Toxicology. Every step. Every time. Without exception.
+    </p>
+  </div>
+</section>
+
+<!-- WHY IT MATTERS -->
+<section style="padding:80px 56px; background:var(--cream); border-top:1px solid var(--cream-2); border-bottom:1px solid var(--cream-2);">
+  <div style="max-width:960px; margin:0 auto;">
+    <div style="display:flex; align-items:center; gap:14px; margin-bottom:22px;">
+      <div style="width:24px; height:1px; background:var(--earth);"></div>
+      <span style="font-size:11px; letter-spacing:0.28em; text-transform:uppercase; color:var(--earth-text); font-weight:600;">Why the protocol matters</span>
+    </div>
+    <h2 style="font-family:'Source Serif 4',serif; font-size:clamp(28px,3.8vw,44px); line-height:1.25; color:var(--ink); margin:0 0 28px; font-weight:400;">A removal done poorly can be worse than leaving it alone.</h2>
+    <p style="font-size:16.5px; line-height:1.85; color:var(--muted-text); margin:0 0 18px;">
+      The settled science is that intact amalgam fillings release very small amounts of mercury vapor during chewing and grinding. The unsettled territory — where the SMART protocol begins — is what happens during removal. Studies measuring chairside air during conventional amalgam removal have recorded mercury vapor concentrations 50 to 100 times above the EPA reference exposure level, lasting for several minutes after the drill stops. That vapor is bioavailable. It crosses the blood-brain barrier and the placenta.
+    </p>
+    <p style="font-size:16.5px; line-height:1.85; color:var(--muted-text); margin:0;">
+      The good news: nearly all of that exposure is preventable with the right equipment, the right water, the right respiratory protection, and the right sequencing. The protocol below adds about twenty minutes to a typical filling appointment. It is — without overstating it — the difference between a precautionary procedure and a damaging one.
+    </p>
+  </div>
+</section>
+
+<!-- THE STAGES -->
+<section style="padding:96px 56px; background:var(--cream-2);">
+  <div style="max-width:1180px; margin:0 auto;">
+    <div style="text-align:center; margin-bottom:72px;">
+      <div style="display:inline-flex; align-items:center; gap:12px; margin-bottom:18px;">
+        <div style="width:24px; height:1px; background:var(--sage);"></div>
+        <span style="font-size:11px; letter-spacing:0.28em; text-transform:uppercase; color:var(--sage-text); font-weight:600;">Nine stages, in order</span>
+        <div style="width:24px; height:1px; background:var(--sage);"></div>
+      </div>
+      <h2 style="font-family:'Source Serif 4',serif; font-size:clamp(32px,4.5vw,56px); color:var(--ink); margin:0; font-weight:400;">
+        What happens in the chair.
+      </h2>
+    </div>
+
+    <div class="stages-grid" style="display:grid; grid-template-columns:1fr 1fr; gap:24px;">
+      {[
+        ['01', 'Pre-treatment preparation', 'We screen your medical history for active kidney, neurological, or autoimmune concerns. If you are pregnant, breastfeeding, or actively trying to conceive, removal is deferred. Optional pre-treatment supplementation with glutathione and selenium is discussed at consultation — we coordinate with your naturopath or integrative MD if you work with one.'],
+        ['02', 'External room ventilation', 'Two HEPA + activated-carbon air filtration units are positioned in the operatory and run for fifteen minutes before treatment begins, exchanging the room air completely. Mercury vapor does not stay still; we move it out continuously, not just during the drilling.'],
+        ['03', 'Protective draping & barriers', 'You are draped from the neck down in an impermeable surgical barrier. A surgical head wrap protects hair. Skin barriers are applied to the face. The chair, light, and surrounding surfaces are covered in disposable barriers that are bagged as hazardous waste after the appointment — never just rinsed off.'],
+        ['04', 'Nasal oxygen for the patient', 'You breathe filtered medical-grade oxygen through a nasal cannula for the entire procedure. This achieves two things: it gives you a clean air source, and it keeps your mouth slightly negative-pressure relative to the room.'],
+        ['05', 'Dental dam & saliva ejection', 'A nitrile dental dam isolates the tooth, sealing the working area completely from the rest of your mouth. A high-volume evacuator (4x the suction of standard dental suction) is positioned within 1 cm of the tooth at all times.'],
+        ['06', 'Clean Up® Mercury Aerosol Vacuum', 'A purpose-built clinical-grade aerosol capture device — the Clean Up — is positioned over the tooth on top of the dental dam during all drilling. It captures mercury aerosol at the moment of generation, before it can disperse into the room or your airway.'],
+        ['07', 'Chunk removal, not pulverization', 'Dr. Reeves uses a specialized large-diameter, slow-speed bur (not a high-speed turbine) to section the amalgam into large chunks rather than grinding it to powder. Each chunk is suctioned away the moment it releases. This single technique cuts vapor generation by 60–90% versus conventional removal.'],
+        ['08', 'Cold-water copious irrigation', 'Continuous cold-water spray throughout drilling keeps the amalgam below the vaporization threshold and washes particulate away in real time. We use distilled water through a closed-loop dental water system.'],
+        ['09', 'Post-removal cleanup & detox support', 'The dental dam is rinsed thoroughly under suction before removal, you rinse with activated charcoal water, and the operatory air filtration continues running for thirty minutes after you leave. We send you home with a take-home detox protocol — binders, hydration guidance, and supplementation tailored to your case.'],
+      ].map(([num, title, body]) => (
+        <div class="stage" style="background:var(--cream); border-left:3px solid var(--sage); border-radius:0 14px 14px 0; padding:32px 32px;">
+          <div style="display:flex; align-items:baseline; gap:14px; margin-bottom:12px;">
+            <div style="font-family:'Source Serif 4',serif; font-size:32px; color:var(--sage-2); font-weight:400;">{num}</div>
+            <h3 style="font-family:'Source Serif 4',serif; font-size:22px; color:var(--ink); margin:0; font-weight:400;">{title}</h3>
+          </div>
+          <p style="font-size:15px; color:var(--muted-text); line-height:1.8; margin:0;">{body}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- ENVIRONMENTAL -->
+<section style="padding:80px 56px; background:var(--cream);">
+  <div style="max-width:980px; margin:0 auto;">
+    <div style="display:flex; align-items:center; gap:14px; margin-bottom:22px;">
+      <div style="width:24px; height:1px; background:var(--earth);"></div>
+      <span style="font-size:11px; letter-spacing:0.28em; text-transform:uppercase; color:var(--earth-text); font-weight:600;">Beyond the chair</span>
+    </div>
+    <h2 style="font-family:'Source Serif 4',serif; font-size:clamp(28px,3.8vw,44px); line-height:1.25; color:var(--ink); margin:0 0 24px; font-weight:400;">The mercury does not disappear when it leaves your mouth.</h2>
+    <p style="font-size:16.5px; line-height:1.85; color:var(--muted-text); margin:0 0 18px;">
+      Roughly half of the mercury removed in a conventional dental practice ends up in municipal wastewater, where it is poorly captured and ultimately deposited in waterways and bioaccumulates up the food chain. The EPA estimates dental practices were historically the single largest source of mercury entering U.S. wastewater.
+    </p>
+    <p style="font-size:16.5px; line-height:1.85; color:var(--muted-text); margin:0 0 18px;">
+      Our amalgam separator captures more than 99% of removed mercury before it enters the drain. The captured material is collected by a licensed hazardous waste handler — never disposed of in standard medical waste — and recycled through a closed-loop EPA-permitted facility. We publish the chain-of-custody documentation annually.
+    </p>
+    <p style="font-size:16.5px; line-height:1.85; color:var(--muted-text); margin:0;">
+      This is the part of biological dentistry that nobody photographs, and the part we feel most strongly about.
+    </p>
+  </div>
+</section>
+
+<!-- WHO SHOULDN'T -->
+<section style="padding:80px 56px; background:var(--cream-2);">
+  <div style="max-width:1080px; margin:0 auto;">
+    <div style="text-align:center; margin-bottom:48px;">
+      <span style="font-size:11px; letter-spacing:0.28em; text-transform:uppercase; color:var(--earth-text); font-weight:600;">Who this is — and isn't — for</span>
+      <h2 style="font-family:'Source Serif 4',serif; font-size:clamp(28px,3.8vw,40px); color:var(--ink); margin:14px 0 0; font-weight:400;">Honest guidance on whether to remove.</h2>
+    </div>
+    <div class="who-grid" style="display:grid; grid-template-columns:1fr 1fr; gap:36px;">
+      <div style="background:var(--cream); padding:36px 36px; border-top:3px solid var(--sage);">
+        <h3 style="font-family:'Source Serif 4',serif; font-size:22px; color:var(--sage-3); margin:0 0 16px;">Good candidates for removal</h3>
+        <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:14px;">
+          <li style="font-size:15px; line-height:1.7; color:var(--muted-text); padding-left:24px; position:relative;"><span style="position:absolute; left:0; color:var(--sage-2);">✦</span> Amalgams that are cracked, leaking, or showing recurrent decay underneath</li>
+          <li style="font-size:15px; line-height:1.7; color:var(--muted-text); padding-left:24px; position:relative;"><span style="position:absolute; left:0; color:var(--sage-2);">✦</span> Patients with documented mercury sensitivity (lab-confirmed)</li>
+          <li style="font-size:15px; line-height:1.7; color:var(--muted-text); padding-left:24px; position:relative;"><span style="position:absolute; left:0; color:var(--sage-2);">✦</span> Couples planning conception within 12 months (we recommend completing removal at least 6 months prior)</li>
+          <li style="font-size:15px; line-height:1.7; color:var(--muted-text); padding-left:24px; position:relative;"><span style="position:absolute; left:0; color:var(--sage-2);">✦</span> Patients with chronic autoimmune or neurological conditions, in coordination with their primary medical provider</li>
+          <li style="font-size:15px; line-height:1.7; color:var(--muted-text); padding-left:24px; position:relative;"><span style="position:absolute; left:0; color:var(--sage-2);">✦</span> Anyone who has been informed and wishes to proceed</li>
+        </ul>
+      </div>
+      <div style="background:var(--cream); padding:36px 36px; border-top:3px solid var(--earth);">
+        <h3 style="font-family:'Source Serif 4',serif; font-size:22px; color:var(--earth-text); margin:0 0 16px;">When we recommend waiting or declining</h3>
+        <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:14px;">
+          <li style="font-size:15px; line-height:1.7; color:var(--muted-text); padding-left:24px; position:relative;"><span style="position:absolute; left:0; color:var(--earth);">○</span> Active pregnancy or breastfeeding (we defer until weaning)</li>
+          <li style="font-size:15px; line-height:1.7; color:var(--muted-text); padding-left:24px; position:relative;"><span style="position:absolute; left:0; color:var(--earth);">○</span> Stable, sound, asymptomatic amalgams in patients with no health drivers — leaving intact is often the lower-exposure choice</li>
+          <li style="font-size:15px; line-height:1.7; color:var(--muted-text); padding-left:24px; position:relative;"><span style="position:absolute; left:0; color:var(--earth);">○</span> Active acute kidney disease (reduced excretion capacity)</li>
+          <li style="font-size:15px; line-height:1.7; color:var(--muted-text); padding-left:24px; position:relative;"><span style="position:absolute; left:0; color:var(--earth);">○</span> Removal driven by social-media advice rather than informed decision-making</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section style="padding:104px 56px; background:var(--sage-3); color:white; text-align:center;">
+  <h2 style="font-family:'Source Serif 4',serif; font-size:clamp(32px,4.5vw,52px); margin:0 0 22px; font-weight:400;">
+    A 75-minute consultation, before any removal.
+  </h2>
+  <p style="font-size:17px; line-height:1.7; color:rgba(255,255,255,0.85); max-width:620px; margin:0 auto 36px;">
+    Dr. Reeves sees every SMART-protocol patient in consultation before any treatment. We walk through your medical history, your fillings, your concerns, and the realistic options. There is no obligation to proceed.
+  </p>
+  <a href="/v5-holistic-wellness#appointment" style="display:inline-block; background:var(--cream); color:var(--sage-3); font-size:11px; letter-spacing:0.22em; text-transform:uppercase; padding:18px 44px; font-weight:600;">
+    Schedule a Consultation
+  </a>
+</section>
+
+</main>
+
+<footer style="background:var(--ink-2); padding:40px 56px;">
+  <div style="max-width:1280px; margin:0 auto; display:flex; justify-content:space-between; flex-wrap:wrap; gap:14px; font-size:13px;">
+    <div style="color:rgba(247,243,236,0.55);">© {new Date().getFullYear()} {practice.name} · IAOMT Accredited</div>
+    <a href="/v5-holistic-wellness" style="color:var(--mist); text-decoration:underline;">← Return home</a>
+  </div>
+</footer>
+
+</body>
+</html>

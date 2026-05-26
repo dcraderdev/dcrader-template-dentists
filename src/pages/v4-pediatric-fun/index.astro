@@ -100,10 +100,10 @@ const heroBase = practice.hero.image.replace(/\.webp$/i, '');
       </div>
     </a>
     <nav style="display:flex; gap:22px; align-items:center;">
-      {['#services','#team','#reviews','#contact'].map((href, i) => (
+      {[['#services','Services'],['#team','Team'],['/v4-pediatric-fun/first-mission','First Visit'],['#contact','Contact']].map(([href, label]) => (
         <a href={href} style={`font-size:14px; font-weight:900; color:var(--dark); transition:color 0.15s;`}
            onmouseover="this.style.color='var(--red-text)'" onmouseout="this.style.color='var(--dark)'">
-          {['Services','Team','Reviews','Contact'][i]}
+          {label}
         </a>
       ))}
       <a href="#appointment" class="star-btn" style="background:var(--red-strong); color:white; font-weight:900; font-size:14px; padding:10px 22px; border-radius:9999px; box-shadow:0 4px 16px rgba(198,27,15,0.35);">

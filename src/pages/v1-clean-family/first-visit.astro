@@ -1,0 +1,217 @@
+---
+import { practice } from '../../data/v1';
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Your First Visit | {practice.name} — Family Dentist in San Diego</title>
+  <meta name="description" content={`What to expect at your first visit to ${practice.name} — paperwork, exam, X-rays, cleaning, and insurance walk-through. A friendly, step-by-step guide for new patients in Mission Valley.`} />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,600&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    :root {
+      --sky: #E0F0FF; --sky-2: #C5E3FF; --blue: #1A73E8; --blue-dark: #1557B0; --blue-mid: #2D89F0;
+      --navy: #0F2D52; --warm: #FFF8EE; --amber: #F59E0B; --amber-text: #B45309; --amber-light: #FEF3C7;
+      --text: #1C2B3A; --muted: #5A6E82; --border: #DCE8F5;
+    }
+    body { font-family: 'Inter', sans-serif; color: var(--text); background: white; margin: 0; }
+    h1, h2, h3 { font-family: 'Source Serif 4', Georgia, serif; font-weight: 600; }
+    a { text-decoration: none; }
+    .pill-btn { transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease; }
+    .pill-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(26,115,232,0.35) !important; }
+    .nav-link { transition: color 0.15s ease; }
+    .nav-link:hover { color: var(--blue) !important; }
+    .step-card { transition: transform 0.22s ease, box-shadow 0.22s ease; }
+    .step-card:hover { transform: translateY(-4px); box-shadow: 0 16px 36px rgba(26,115,232,0.12); }
+    *:focus-visible { outline: 2px solid currentColor; outline-offset: 2px; }
+    .sr-only { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; border:0; }
+    .sr-only:focus, .sr-only:focus-visible { position:absolute; top:8px; left:8px; width:auto; height:auto; padding:10px 16px; margin:0; overflow:visible; clip:auto; white-space:normal; z-index:9999; background:#ffffff; color:#000000; border-radius:6px; box-shadow:0 4px 12px rgba(0,0,0,0.2); text-decoration:none; font-weight:700; }
+    @media (max-width: 900px) {
+      .steps-grid { grid-template-columns: 1fr !important; }
+      .two-col { grid-template-columns: 1fr !important; }
+      .nav-links { display: none !important; }
+    }
+  </style>
+  <script src="/template-topheader.js" defer></script>
+</head>
+<body>
+
+<a href="#main" class="sr-only">Skip to content</a>
+
+<!-- NAV -->
+<header style="background:white; border-bottom:1px solid var(--border); position:sticky; top:0; z-index:100; box-shadow:0 1px 8px rgba(15,45,82,0.06);">
+  <div style="max-width:1240px; margin:0 auto; padding:0 28px; height:70px; display:flex; align-items:center; justify-content:space-between;">
+    <a href="/v1-clean-family" style="display:flex; align-items:center; gap:12px;">
+      <svg width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect width="34" height="34" rx="10" fill="#1A73E8"/>
+        <path d="M10,16 Q8,10 13,7 Q17,5 17,8 Q17,5 21,7 Q26,10 24,16 L23,26 Q22,29 20,29 Q18,29 17,26 Q16,29 14,29 Q12,29 11,26 Z" fill="white"/>
+      </svg>
+      <div>
+        <div style="font-family:'Source Serif 4',serif; font-size:17px; font-weight:700; color:var(--navy); line-height:1.1;">{practice.name}</div>
+        <div style="font-size:10px; color:var(--muted); font-weight:500; letter-spacing:0.06em; text-transform:uppercase;">San Diego, CA</div>
+      </div>
+    </a>
+    <nav class="nav-links" style="display:flex; align-items:center; gap:28px;">
+      <a href="/v1-clean-family#services" class="nav-link" style="font-size:14px; font-weight:500; color:var(--muted);">Services</a>
+      <a href="/v1-clean-family#our-team" class="nav-link" style="font-size:14px; font-weight:500; color:var(--muted);">Our Team</a>
+      <a href="/v1-clean-family/first-visit" class="nav-link" style="font-size:14px; font-weight:600; color:var(--blue);">First Visit</a>
+      <a href="/v1-clean-family#contact" class="nav-link" style="font-size:14px; font-weight:500; color:var(--muted);">Contact</a>
+      <a href="/v1-clean-family#appointment" class="pill-btn" style="background:var(--blue); color:white; font-weight:700; font-size:14px; padding:10px 22px; border-radius:9999px; box-shadow:0 4px 14px rgba(26,115,232,0.28);">
+        Book Appointment
+      </a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- HERO -->
+<section style="background:linear-gradient(180deg, var(--sky) 0%, white 100%); padding:80px 28px 64px;">
+  <div style="max-width:920px; margin:0 auto; text-align:center;">
+    <div style="display:inline-block; background:white; color:var(--blue-dark); font-size:12px; font-weight:700; padding:6px 18px; border-radius:9999px; letter-spacing:0.06em; text-transform:uppercase; margin-bottom:24px; border:1px solid var(--border);">For our new patients</div>
+    <h1 style="font-size:clamp(36px,5vw,60px); color:var(--navy); margin:0 0 24px; line-height:1.1;">Your First Visit,<br/>Step by Step</h1>
+    <p style="font-size:18px; color:var(--muted); max-width:640px; margin:0 auto; line-height:1.7;">New to {practice.name}? You'll spend about 75 minutes with us on your first appointment — and we'll have you smiling on the way out. Here's exactly what happens, in the order it happens, so nothing is a surprise.</p>
+  </div>
+</section>
+
+<!-- BEFORE YOU ARRIVE -->
+<section style="background:white; padding:80px 28px; border-bottom:1px solid var(--border);">
+  <div style="max-width:1080px; margin:0 auto;">
+    <div style="text-align:center; margin-bottom:48px;">
+      <div style="display:inline-block; background:var(--sky); color:var(--blue-dark); font-size:12px; font-weight:700; padding:5px 16px; border-radius:9999px; letter-spacing:0.06em; text-transform:uppercase; margin-bottom:14px;">Before you arrive</div>
+      <h2 style="font-size:clamp(28px,3.5vw,40px); color:var(--navy); margin:0 0 12px;">Three small things that save us all 15 minutes</h2>
+    </div>
+    <div class="steps-grid" style="display:grid; grid-template-columns:repeat(3, 1fr); gap:24px;">
+      <div class="step-card" style="background:var(--warm); border:1px solid var(--border); border-radius:18px; padding:30px 26px;">
+        <div style="font-family:'Source Serif 4',serif; font-size:14px; font-weight:700; color:var(--amber-text); margin-bottom:8px; letter-spacing:0.06em; text-transform:uppercase;">Step 1</div>
+        <h3 style="font-family:'Source Serif 4',serif; font-size:20px; color:var(--navy); margin:0 0 12px;">Fill out the patient forms</h3>
+        <p style="font-size:14.5px; color:var(--muted); line-height:1.7; margin:0;">We'll email you a single-page health history and consent form the day you book. Five minutes on your phone, and you walk in to a clipboard you don't need to touch.</p>
+      </div>
+      <div class="step-card" style="background:var(--warm); border:1px solid var(--border); border-radius:18px; padding:30px 26px;">
+        <div style="font-family:'Source Serif 4',serif; font-size:14px; font-weight:700; color:var(--amber-text); margin-bottom:8px; letter-spacing:0.06em; text-transform:uppercase;">Step 2</div>
+        <h3 style="font-family:'Source Serif 4',serif; font-size:20px; color:var(--navy); margin:0 0 12px;">Send us your insurance card</h3>
+        <p style="font-size:14.5px; color:var(--muted); line-height:1.7; margin:0;">A photo of the front and back, texted or emailed. Our team verifies your benefits before you arrive, so we can answer the "is this covered?" question before you ask it.</p>
+      </div>
+      <div class="step-card" style="background:var(--warm); border:1px solid var(--border); border-radius:18px; padding:30px 26px;">
+        <div style="font-family:'Source Serif 4',serif; font-size:14px; font-weight:700; color:var(--amber-text); margin-bottom:8px; letter-spacing:0.06em; text-transform:uppercase;">Step 3</div>
+        <h3 style="font-family:'Source Serif 4',serif; font-size:20px; color:var(--navy); margin:0 0 12px;">Bring your most recent X-rays</h3>
+        <p style="font-size:14.5px; color:var(--muted); line-height:1.7; margin:0;">If you've had X-rays in the last 18 months at another practice, we'll happily use them rather than retaking — saves you radiation, saves us time. Most offices will send them on a quick request.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- THE VISIT TIMELINE -->
+<section style="background:var(--sky); padding:96px 28px;">
+  <div style="max-width:1080px; margin:0 auto;">
+    <div style="text-align:center; margin-bottom:64px;">
+      <div style="display:inline-block; background:white; color:var(--blue-dark); font-size:12px; font-weight:700; padding:5px 16px; border-radius:9999px; letter-spacing:0.06em; text-transform:uppercase; margin-bottom:14px;">At the appointment</div>
+      <h2 style="font-size:clamp(28px,3.5vw,40px); color:var(--navy); margin:0 0 12px;">75 minutes, from hello to high-fives</h2>
+    </div>
+
+    <div style="display:flex; flex-direction:column; gap:20px;">
+      {[
+        ['0–5 min', 'Warm welcome at the front desk', "We greet you by name (we already know what you look like — Jessica at the front saw your photo on the form). You'll be offered coffee, sparkling water, or hot chocolate for the kids. We confirm your address and phone, and that's all the paperwork. Promise."],
+        ['5–20 min', 'Comprehensive new-patient exam', "Dr. Chen or Dr. Webb sits down — not stands over — and walks through your medical history with you. We do a full intra-oral exam, an oral cancer screening, and a periodontal evaluation. If you flagged any concerns on the form (sensitive tooth, jaw clicking, a chipped molar from a popcorn kernel last spring), we focus there first."],
+        ['20–35 min', 'Digital X-rays and intra-oral photos', "We take a low-dose digital X-ray series and a panoramic if it's been more than three years. Then our intra-oral camera takes color photos of every tooth so we can show you what we're seeing on a screen, not describe it in dentist jargon. No more 'just trust me.'"],
+        ['35–65 min', 'Gentle cleaning with Jessica', "Our lead hygienist, Jessica Park, takes over for the cleaning. She uses both an ultrasonic scaler (the gentle one, not the loud one) and hand instruments for the corners. Polish flavors: mint, bubblegum, cinnamon, or unflavored. A fluoride treatment is offered but optional."],
+        ['65–75 min', 'Treatment plan walk-through', "Back with the dentist for a few minutes. If everything looks great, we tell you the next cleaning date and you're done. If we found something — say, a small filling needed or a crown to plan for — we walk you through the photos, show you the option (including doing nothing), and Mariana at checkout breaks down the cost with your insurance applied. No upsell. No pressure. We'll never recommend anything we wouldn't do for our own families."],
+      ].map(([time, title, body]) => (
+        <div style="background:white; border-radius:18px; padding:28px 32px; display:grid; grid-template-columns:140px 1fr; gap:32px; align-items:start; box-shadow:0 4px 16px rgba(15,45,82,0.06);">
+          <div style="font-family:'Source Serif 4',serif; font-size:22px; color:var(--blue); font-weight:600;">{time}</div>
+          <div>
+            <h3 style="font-family:'Source Serif 4',serif; font-size:22px; color:var(--navy); margin:0 0 8px;">{title}</h3>
+            <p style="font-size:15px; color:var(--muted); line-height:1.75; margin:0;">{body}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- INSURANCE / PAYMENT -->
+<section id="insurance" style="background:white; padding:96px 28px;">
+  <div class="two-col" style="max-width:1080px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:start;">
+    <div>
+      <div style="display:inline-block; background:var(--amber-light); color:var(--amber-text); font-size:12px; font-weight:700; padding:5px 16px; border-radius:9999px; letter-spacing:0.06em; text-transform:uppercase; margin-bottom:14px;">Insurance & payment</div>
+      <h2 style="font-size:clamp(28px,3.5vw,40px); color:var(--navy); margin:0 0 20px; line-height:1.2;">No surprise bills.<br/>Ever.</h2>
+      <p style="font-size:16px; color:var(--muted); line-height:1.8; margin:0 0 16px;">We're in-network with every major PPO insurance plan you're likely to carry, and we file claims for you directly — you'll never need to chase a reimbursement.</p>
+      <p style="font-size:16px; color:var(--muted); line-height:1.8; margin:0 0 16px;">Before any procedure beyond a routine cleaning, we provide a written estimate with your insurance applied. If your plan only covers 60% of a crown, we'll tell you that — in dollars, not percentages — before we touch a drill. And we offer interest-free in-house payment plans for treatments over $500.</p>
+      <p style="font-size:16px; color:var(--muted); line-height:1.8; margin:0;">If you're uninsured, our in-house savings membership is $349/year and covers two cleanings, two exams, all routine X-rays, and a 20% discount on everything else.</p>
+    </div>
+    <div>
+      <div style="background:var(--sky); border-radius:20px; padding:32px 28px;">
+        <div style="font-size:14px; font-weight:700; color:var(--blue-dark); margin-bottom:16px; letter-spacing:0.06em; text-transform:uppercase;">We're in-network with</div>
+        <div style="display:flex; flex-wrap:wrap; gap:8px;">
+          {practice.insurance.map(ins => (
+            <span style="background:white; color:var(--navy); font-size:13px; font-weight:600; padding:7px 14px; border-radius:9999px; border:1px solid var(--border);">✓ {ins}</span>
+          ))}
+        </div>
+        <div style="margin-top:24px; padding-top:20px; border-top:1px solid rgba(26,115,232,0.15);">
+          <div style="font-size:14px; font-weight:700; color:var(--blue-dark); margin-bottom:8px; letter-spacing:0.06em; text-transform:uppercase;">We also accept</div>
+          <div style="font-size:14.5px; color:var(--text); line-height:1.7;">CareCredit · HSA / FSA cards · All major credit cards · Cash · Personal check (yes, still)</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BRINGING KIDS -->
+<section style="background:var(--warm); padding:80px 28px;">
+  <div style="max-width:920px; margin:0 auto;">
+    <div style="text-align:center; margin-bottom:40px;">
+      <div style="display:inline-block; background:white; color:var(--amber-text); font-size:12px; font-weight:700; padding:5px 16px; border-radius:9999px; letter-spacing:0.06em; text-transform:uppercase; margin-bottom:14px;">Bringing the kids?</div>
+      <h2 style="font-size:clamp(28px,3.5vw,40px); color:var(--navy); margin:0;">Tips from a practice that's seen 6,200 of them</h2>
+    </div>
+    <div style="display:grid; grid-template-columns:repeat(2, 1fr); gap:24px;" class="steps-grid">
+      <div style="background:white; border-radius:14px; padding:22px 26px;">
+        <h3 style="font-family:'Source Serif 4',serif; font-size:18px; color:var(--navy); margin:0 0 8px;">Book the morning</h3>
+        <p style="font-size:14.5px; color:var(--muted); line-height:1.7; margin:0;">Little kids are at their best between 8 and 11 a.m. After lunch, even the bravest patient gets squirmy. We hold these slots specifically for under-7s.</p>
+      </div>
+      <div style="background:white; border-radius:14px; padding:22px 26px;">
+        <h3 style="font-family:'Source Serif 4',serif; font-size:18px; color:var(--navy); margin:0 0 8px;">Skip the practice run</h3>
+        <p style="font-size:14.5px; color:var(--muted); line-height:1.7; margin:0;">Don't rehearse "be brave at the dentist" the night before. It tells anxious kids there's something to be brave about. Just go.</p>
+      </div>
+      <div style="background:white; border-radius:14px; padding:22px 26px;">
+        <h3 style="font-family:'Source Serif 4',serif; font-size:18px; color:var(--navy); margin:0 0 8px;">Bring the comfort object</h3>
+        <p style="font-size:14.5px; color:var(--muted); line-height:1.7; margin:0;">The stuffed bunny, the favorite blanket, the iPad with headphones. Whatever helps. Our chairs are big enough that mom or dad can sit alongside for the first few visits.</p>
+      </div>
+      <div style="background:white; border-radius:14px; padding:22px 26px;">
+        <h3 style="font-family:'Source Serif 4',serif; font-size:18px; color:var(--navy); margin:0 0 8px;">Leave the snacks at home</h3>
+        <p style="font-size:14.5px; color:var(--muted); line-height:1.7; margin:0;">Goldfish crackers + a fresh fluoride treatment = a sad afternoon. We hand out stickers and a sugar-free lollipop after — that's the deal.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section style="background:var(--navy); padding:80px 28px; text-align:center;">
+  <div style="max-width:720px; margin:0 auto;">
+    <h2 style="font-family:'Source Serif 4',serif; font-size:clamp(30px,4vw,44px); color:white; margin:0 0 16px;">Ready to come see us?</h2>
+    <p style="font-size:17px; color:rgba(255,255,255,0.7); line-height:1.7; margin:0 0 32px;">We have first-visit openings most weeks within seven days. Saturday morning slots are the first to fill — so book ahead if school nights matter.</p>
+    <a href="/v1-clean-family#appointment" class="pill-btn" style="display:inline-block; background:var(--blue); color:white; font-weight:700; font-size:16px; padding:16px 36px; border-radius:9999px; box-shadow:0 6px 24px rgba(26,115,232,0.4);">
+      Book Your First Visit →
+    </a>
+  </div>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+<footer style="background:#0A1F38; padding:40px 28px; text-align:center;">
+  <div style="max-width:1240px; margin:0 auto; display:flex; flex-direction:column; gap:14px;">
+    <div style="font-size:13px; color:rgba(255,255,255,0.55);">© {new Date().getFullYear()} {practice.name} · {practice.address}</div>
+    <div style="display:flex; gap:18px; justify-content:center; font-size:13px;">
+      <a href="/v1-clean-family" style="color:rgba(255,255,255,0.7); text-decoration:underline;">Back to home</a>
+      <a href="/accessibility" style="color:rgba(255,255,255,0.7); text-decoration:underline;">Accessibility</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

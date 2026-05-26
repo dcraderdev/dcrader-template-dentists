@@ -1,0 +1,250 @@
+---
+import { practice } from '../../data/v2';
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Smile Makeover Journey | {practice.name}, Beverly Hills</title>
+  <meta name="description" content={`Inside the bespoke smile makeover process at ${practice.name} — digital smile design, wax mockups, trial smile, and final reveal. Beverly Hills cosmetic dentistry by Dr. Isabelle Fontaine.`} />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    :root {
+      --cream: #FAF7F2; --cream-2: #F2EBE0; --cream-3: #E8DDD0;
+      --gold: #B8945A; --gold-text: #7A5D22; --gold-2: #D4AF78; --gold-3: #F0D9A8;
+      --ink: #1A1208; --ink-2: #2E2218; --muted: #8A7A68; --muted-text: #685544; --muted-2: #B0A090;
+    }
+    body { font-family: 'Plus Jakarta Sans', sans-serif; color: var(--ink); background: var(--cream); margin: 0; font-weight: 300; }
+    h1, h2, h3, h4 { font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 400; }
+    a { text-decoration: none; }
+    .nav-link { transition: color 0.2s; }
+    .nav-link:hover { color: var(--gold) !important; }
+    .cta-btn { transition: all 0.3s ease; }
+    .cta-btn:hover { background: var(--gold) !important; }
+    *:focus-visible { outline: 2px solid currentColor; outline-offset: 2px; }
+    .sr-only { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; border:0; }
+    .sr-only:focus, .sr-only:focus-visible { position:absolute; top:8px; left:8px; width:auto; height:auto; padding:10px 16px; margin:0; overflow:visible; clip:auto; white-space:normal; z-index:9999; background:#ffffff; color:#000000; border-radius:6px; box-shadow:0 4px 12px rgba(0,0,0,0.2); text-decoration:none; font-weight:700; }
+    .phase { transition: transform 0.4s ease; }
+    .phase:hover { transform: translateX(6px); }
+    @media (max-width: 900px) {
+      .nav-links { display: none !important; }
+      .phase-grid { grid-template-columns: 1fr !important; gap: 28px !important; }
+      .two-col { grid-template-columns: 1fr !important; }
+    }
+  </style>
+  <script src="/template-topheader.js" defer></script>
+</head>
+<body>
+
+<a href="#main" class="sr-only">Skip to content</a>
+
+<!-- NAV -->
+<nav style="position:fixed; top:0; left:0; right:0; z-index:200; padding:0 56px; height:76px; display:flex; align-items:center; justify-content:space-between; background:rgba(250,247,242,0.94); backdrop-filter:blur(16px); border-bottom:1px solid rgba(184,148,90,0.15);">
+  <a href="/v2-luxury-cosmetic" style="text-decoration:none;">
+    <div style="font-family:'Cormorant Garamond',serif; font-size:21px; letter-spacing:0.1em; text-transform:uppercase; color:var(--ink); line-height:1.1;">{practice.name}</div>
+    <div style="font-size:9px; letter-spacing:0.3em; text-transform:uppercase; color:var(--gold-text); margin-top:2px; font-weight:500;">Beverly Hills · Est. {practice.founded}</div>
+  </a>
+  <div class="nav-links" style="display:flex; gap:36px; align-items:center;">
+    <a href="/v2-luxury-cosmetic#services" class="nav-link" style="font-size:11px; letter-spacing:0.18em; text-transform:uppercase; color:var(--muted-text); font-weight:500;">Services</a>
+    <a href="/v2-luxury-cosmetic#team" class="nav-link" style="font-size:11px; letter-spacing:0.18em; text-transform:uppercase; color:var(--muted-text); font-weight:500;">Team</a>
+    <a href="/v2-luxury-cosmetic/smile-makeover-journey" class="nav-link" style="font-size:11px; letter-spacing:0.18em; text-transform:uppercase; color:var(--gold-text); font-weight:600;">The Journey</a>
+    <a href="/v2-luxury-cosmetic#contact" class="nav-link" style="font-size:11px; letter-spacing:0.18em; text-transform:uppercase; color:var(--muted-text); font-weight:500;">Contact</a>
+    <a href="/v2-luxury-cosmetic#appointment" class="cta-btn" style="background:var(--gold-text); color:white; font-size:10px; letter-spacing:0.18em; text-transform:uppercase; padding:13px 28px; font-weight:500;">
+      Consultation
+    </a>
+  </div>
+</nav>
+
+<main id="main">
+
+<!-- HERO -->
+<section style="padding:160px 56px 96px; background:linear-gradient(180deg, var(--cream) 0%, var(--cream-2) 100%);">
+  <div style="max-width:1080px; margin:0 auto;">
+    <div style="font-size:11px; letter-spacing:0.3em; text-transform:uppercase; color:var(--gold-text); margin-bottom:32px;">— The Atelier Journal · No. 07 —</div>
+    <h1 style="font-family:'Cormorant Garamond',serif; font-size:clamp(48px,7vw,96px); line-height:1.05; color:var(--ink); margin:0 0 32px; font-weight:300;">
+      The Smile Makeover<br/><em style="font-style:italic; color:var(--gold-text);">Journey</em>.
+    </h1>
+    <div style="width:60px; height:1px; background:var(--gold); margin-bottom:32px;"></div>
+    <p style="font-family:'Cormorant Garamond',serif; font-size:22px; line-height:1.6; color:var(--muted-text); max-width:680px; font-style:italic; font-weight:300;">
+      Six visits. Twelve weeks. One result that took a decade of training to make look effortless. This is how a bespoke smile is built at Elara, from the first conversation in our consultation suite to the moment the mirror is finally turned around.
+    </p>
+  </div>
+</section>
+
+<!-- PHILOSOPHY -->
+<section style="padding:96px 56px; background:var(--cream); border-top:1px solid var(--cream-3); border-bottom:1px solid var(--cream-3);">
+  <div style="max-width:880px; margin:0 auto;">
+    <div style="font-size:11px; letter-spacing:0.3em; text-transform:uppercase; color:var(--gold-text); margin-bottom:24px;">First, the philosophy</div>
+    <h2 style="font-family:'Cormorant Garamond',serif; font-size:clamp(32px,4.5vw,52px); line-height:1.2; color:var(--ink); margin:0 0 28px; font-weight:300;">
+      A smile is a face. Never a tooth.
+    </h2>
+    <p style="font-size:17px; line-height:1.85; color:var(--muted-text); margin:0 0 18px; font-weight:300;">
+      The hallmark of inexpert cosmetic dentistry is the smile that does not belong to the face beneath it — too white, too straight, too uniformly shaped, indifferent to lip line, jaw, eye colour, and the architecture of the face that has worn it for forty years. Dr. Fontaine refuses to participate in this aesthetic. Every smile she designs begins not with the teeth but with the facial photography session that opens the consultation.
+    </p>
+    <p style="font-size:17px; line-height:1.85; color:var(--muted-text); margin:0; font-weight:300;">
+      You are not, in our process, choosing a shade card. You are commissioning a portrait.
+    </p>
+  </div>
+</section>
+
+<!-- PHASES -->
+<section style="padding:120px 56px; background:var(--cream);">
+  <div style="max-width:1080px; margin:0 auto;">
+    <div style="text-align:center; margin-bottom:80px;">
+      <div style="font-size:11px; letter-spacing:0.3em; text-transform:uppercase; color:var(--gold-text); margin-bottom:16px;">The six phases</div>
+      <h2 style="font-family:'Cormorant Garamond',serif; font-size:clamp(36px,5vw,64px); color:var(--ink); margin:0; font-weight:300;">From consultation to <em style="font-style:italic; color:var(--gold-text);">reveal</em>.</h2>
+    </div>
+
+    <div style="display:flex; flex-direction:column; gap:56px;">
+
+      <article class="phase" style="display:grid; grid-template-columns:120px 1fr; gap:48px; align-items:start; padding-bottom:48px; border-bottom:1px solid var(--cream-3);">
+        <div>
+          <div style="font-family:'Cormorant Garamond',serif; font-size:72px; line-height:1; color:var(--gold); font-weight:300;">I</div>
+          <div style="font-size:11px; letter-spacing:0.2em; text-transform:uppercase; color:var(--muted); margin-top:8px;">Week 1 · 90 min</div>
+        </div>
+        <div>
+          <h3 style="font-family:'Cormorant Garamond',serif; font-size:36px; line-height:1.2; color:var(--ink); margin:0 0 16px; font-weight:300;">The Consultation</h3>
+          <p style="font-size:16.5px; line-height:1.85; color:var(--muted-text); margin:0 0 14px; font-weight:300;">
+            Two hours, by appointment only, in our consultation suite — no operatory, no scrub-room sounds, no clinical lighting. We begin with a conversation. What do you not love about your smile when you see yourself in a photograph? What have you avoided saying yes to because of it?
+          </p>
+          <p style="font-size:16.5px; line-height:1.85; color:var(--muted-text); margin:0; font-weight:300;">
+            Then we move to the facial photography session: twenty-six images shot under standardized lighting, including in repose, in conversational smile, in full smile, and in profile. These become the canvas the design is built upon.
+          </p>
+        </div>
+      </article>
+
+      <article class="phase" style="display:grid; grid-template-columns:120px 1fr; gap:48px; align-items:start; padding-bottom:48px; border-bottom:1px solid var(--cream-3);">
+        <div>
+          <div style="font-family:'Cormorant Garamond',serif; font-size:72px; line-height:1; color:var(--gold); font-weight:300;">II</div>
+          <div style="font-size:11px; letter-spacing:0.2em; text-transform:uppercase; color:var(--muted); margin-top:8px;">Week 2 · digital</div>
+        </div>
+        <div>
+          <h3 style="font-family:'Cormorant Garamond',serif; font-size:36px; line-height:1.2; color:var(--ink); margin:0 0 16px; font-weight:300;">Digital Smile Design</h3>
+          <p style="font-size:16.5px; line-height:1.85; color:var(--muted-text); margin:0 0 14px; font-weight:300;">
+            Camille, our Digital Smile Design specialist, takes a high-resolution 3D intra-oral scan and overlays it onto your photography in DSD Pro software. We then begin a sculptural design process — adjusting tooth length, gold-ratio proportion, central-incisor dominance, gingival display, and the subtle asymmetries that read as natural rather than printed.
+          </p>
+          <p style="font-size:16.5px; line-height:1.85; color:var(--muted-text); margin:0; font-weight:300;">
+            You return one week later for the design reveal. We sit together at a large monitor, and we make adjustments in real time. Most patients ask, at this stage, why nobody has shown them this before.
+          </p>
+        </div>
+      </article>
+
+      <article class="phase" style="display:grid; grid-template-columns:120px 1fr; gap:48px; align-items:start; padding-bottom:48px; border-bottom:1px solid var(--cream-3);">
+        <div>
+          <div style="font-family:'Cormorant Garamond',serif; font-size:72px; line-height:1; color:var(--gold); font-weight:300;">III</div>
+          <div style="font-size:11px; letter-spacing:0.2em; text-transform:uppercase; color:var(--muted); margin-top:8px;">Week 4 · 75 min</div>
+        </div>
+        <div>
+          <h3 style="font-family:'Cormorant Garamond',serif; font-size:36px; line-height:1.2; color:var(--ink); margin:0 0 16px; font-weight:300;">The Wax Mockup</h3>
+          <p style="font-size:16.5px; line-height:1.85; color:var(--muted-text); margin:0; font-weight:300;">
+            The approved digital design is milled in wax onto a stone model of your dentition by our master ceramist in Pasadena. Dr. Fontaine reviews every aspect — the slight rotation of the lateral incisors, the depth of the embrasures, the warm translucence reserved for the incisal third — and refines by hand. Three to five iterations per case is standard. We do not mill anything in porcelain until the wax is perfect.
+          </p>
+        </div>
+      </article>
+
+      <article class="phase" style="display:grid; grid-template-columns:120px 1fr; gap:48px; align-items:start; padding-bottom:48px; border-bottom:1px solid var(--cream-3);">
+        <div>
+          <div style="font-family:'Cormorant Garamond',serif; font-size:72px; line-height:1; color:var(--gold); font-weight:300;">IV</div>
+          <div style="font-size:11px; letter-spacing:0.2em; text-transform:uppercase; color:var(--muted); margin-top:8px;">Week 6 · 2 hours</div>
+        </div>
+        <div>
+          <h3 style="font-family:'Cormorant Garamond',serif; font-size:36px; line-height:1.2; color:var(--ink); margin:0 0 16px; font-weight:300;">The Trial Smile</h3>
+          <p style="font-size:16.5px; line-height:1.85; color:var(--muted-text); margin:0 0 14px; font-weight:300;">
+            One of the most extraordinary appointments in cosmetic dentistry, and one most practices skip. The final wax design is transferred onto your teeth in temporary composite — without preparation, without anaesthetic, without commitment. You walk out wearing the smile.
+          </p>
+          <p style="font-size:16.5px; line-height:1.85; color:var(--muted-text); margin:0; font-weight:300;">
+            You take it to dinner. You photograph it in your kitchen light, your office light, beside your husband, beside your mother. We schedule the next appointment 72 hours later. By the time we reconvene, you know — viscerally, not theoretically — whether the design is yours.
+          </p>
+        </div>
+      </article>
+
+      <article class="phase" style="display:grid; grid-template-columns:120px 1fr; gap:48px; align-items:start; padding-bottom:48px; border-bottom:1px solid var(--cream-3);">
+        <div>
+          <div style="font-family:'Cormorant Garamond',serif; font-size:72px; line-height:1; color:var(--gold); font-weight:300;">V</div>
+          <div style="font-size:11px; letter-spacing:0.2em; text-transform:uppercase; color:var(--muted); margin-top:8px;">Weeks 8–10</div>
+        </div>
+        <div>
+          <h3 style="font-family:'Cormorant Garamond',serif; font-size:36px; line-height:1.2; color:var(--ink); margin:0 0 16px; font-weight:300;">Preparation & Provisionals</h3>
+          <p style="font-size:16.5px; line-height:1.85; color:var(--muted-text); margin:0; font-weight:300;">
+            Under microscope magnification, Dr. Fontaine performs the minimally invasive preparation — typically 0.3–0.5mm of enamel reduction, the thickness of a fingernail — and bonds the laboratory-fabricated provisional restorations directly on your approved design. You will live with the provisionals for two to three weeks while the final porcelain is layered by hand at our master ceramist's atelier. The provisionals are themselves beautiful. Many patients keep them photographed alongside the finals.
+          </p>
+        </div>
+      </article>
+
+      <article class="phase" style="display:grid; grid-template-columns:120px 1fr; gap:48px; align-items:start;">
+        <div>
+          <div style="font-family:'Cormorant Garamond',serif; font-size:72px; line-height:1; color:var(--gold); font-weight:300;">VI</div>
+          <div style="font-size:11px; letter-spacing:0.2em; text-transform:uppercase; color:var(--muted); margin-top:8px;">Week 12 · the reveal</div>
+        </div>
+        <div>
+          <h3 style="font-family:'Cormorant Garamond',serif; font-size:36px; line-height:1.2; color:var(--ink); margin:0 0 16px; font-weight:300;">The Bonded Final</h3>
+          <p style="font-size:16.5px; line-height:1.85; color:var(--muted-text); margin:0 0 14px; font-weight:300;">
+            The final restorations — porcelain veneers, full-coverage crowns, or some bespoke combination — are bonded in a single morning appointment. Dr. Fontaine reviews margins, occlusion, and the harmony of the smile in dynamic motion. We photograph the result under our standardized lighting for your before-and-after record.
+          </p>
+          <p style="font-size:16.5px; line-height:1.85; color:var(--muted-text); margin:0; font-weight:300; font-style:italic;">
+            Then we turn the mirror.
+          </p>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- INVESTMENT -->
+<section style="padding:96px 56px; background:var(--ink); color:var(--cream);">
+  <div style="max-width:980px; margin:0 auto;">
+    <div style="font-size:11px; letter-spacing:0.3em; text-transform:uppercase; color:var(--gold-2); margin-bottom:24px;">Investment</div>
+    <h2 style="font-family:'Cormorant Garamond',serif; font-size:clamp(32px,4vw,52px); margin:0 0 32px; font-weight:300; color:var(--cream);">
+      Bespoke work, bespoke pricing.
+    </h2>
+    <div class="two-col" style="display:grid; grid-template-columns:1fr 1fr; gap:48px;">
+      <div>
+        <p style="font-size:16px; line-height:1.85; color:rgba(250,247,242,0.75); margin:0 0 16px; font-weight:300;">
+          Smile makeovers at Elara range from $24,000 for a four-veneer anterior aesthetic refinement to $68,000 for a full ten-unit smile design with porcelain veneers, alignment correction via Invisalign Platinum, and complimentary in-office whitening.
+        </p>
+        <p style="font-size:16px; line-height:1.85; color:rgba(250,247,242,0.75); margin:0; font-weight:300;">
+          A bound estimate is provided after the consultation and is honoured for one full year. We do not run promotions. We do not discount. We do not work from a fee guide.
+        </p>
+      </div>
+      <div>
+        <p style="font-size:16px; line-height:1.85; color:rgba(250,247,242,0.75); margin:0 0 16px; font-weight:300;">
+          Financing is arranged discreetly through our two patient lending partners, with 0% interest options available for qualifying applicants over 12, 24, and 36 months. HSA and FSA accounts are accepted for the medically necessary portion of any treatment plan.
+        </p>
+        <p style="font-size:16px; line-height:1.85; color:rgba(250,247,242,0.75); margin:0; font-weight:300;">
+          All work carries a five-year aesthetic warranty.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section style="padding:120px 56px; background:var(--cream); text-align:center;">
+  <h2 style="font-family:'Cormorant Garamond',serif; font-size:clamp(36px,5vw,64px); color:var(--ink); margin:0 0 24px; font-weight:300;">
+    Begin <em style="font-style:italic; color:var(--gold-text);">your</em> journey.
+  </h2>
+  <p style="font-size:17px; line-height:1.7; color:var(--muted-text); max-width:580px; margin:0 auto 40px; font-weight:300;">
+    Consultations are by referral or written inquiry only. Dr. Fontaine sees a maximum of four new smile-design patients per month.
+  </p>
+  <a href="/v2-luxury-cosmetic#appointment" class="cta-btn" style="display:inline-block; background:var(--gold-text); color:white; font-size:11px; letter-spacing:0.22em; text-transform:uppercase; padding:18px 44px; font-weight:500;">
+    Request a Consultation
+  </a>
+</section>
+
+</main>
+
+<footer style="background:var(--ink-2); padding:40px 56px; text-align:center;">
+  <div style="font-size:12px; letter-spacing:0.18em; text-transform:uppercase; color:var(--muted-2);">© {new Date().getFullYear()} {practice.name}</div>
+  <div style="margin-top:12px; font-size:12px;">
+    <a href="/v2-luxury-cosmetic" style="color:var(--gold-2); text-decoration:underline;">Return to the studio</a>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,235 @@
+---
+import { practice } from '../../data/v3';
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Our Technology Stack | {practice.name} — Digital Dentistry Seattle</title>
+  <meta name="description" content={`A full breakdown of the digital dental technology stack at ${practice.name} — 3D cone beam imaging, CEREC same-day milling, AI diagnostics, Solea laser, and iTero scanners. Seattle.`} />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    :root {
+      --navy: #040D18; --navy-2: #071426; --navy-3: #0D1F38; --navy-4: #122844;
+      --teal: #00DFD0; --teal-dim: rgba(0,223,208,0.12); --teal-glow: rgba(0,223,208,0.35); --teal-border: rgba(0,223,208,0.22);
+      --white: #E8F4FF; --muted: #6B92B8; --muted-2: #7090B0;
+    }
+    body { font-family: 'Sora', sans-serif; color: var(--white); background: var(--navy); margin: 0; min-height: 100vh; }
+    .mono { font-family: 'JetBrains Mono', monospace; }
+    a { text-decoration: none; }
+    @keyframes glow-pulse { 0%, 100% { box-shadow: 0 0 0 0 var(--teal-glow); } 50% { box-shadow: 0 0 0 10px transparent; } }
+    @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+    .dot-pulse { animation: glow-pulse 2.5s ease infinite; }
+    .cursor::after { content: '▮'; color: var(--teal); animation: blink 1s infinite; margin-left: 2px; }
+    .grid-bg {
+      background-image:
+        linear-gradient(rgba(0,223,208,0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,223,208,0.05) 1px, transparent 1px);
+      background-size: 44px 44px;
+    }
+    .tech-card { transition: all 0.28s ease; border: 1px solid var(--teal-border); background: var(--navy-2); }
+    .tech-card:hover { border-color: var(--teal); transform: translateY(-3px); box-shadow: 0 12px 40px rgba(0,223,208,0.12); }
+    .spec-row { border-bottom: 1px solid var(--teal-border); }
+    .spec-row:last-child { border-bottom: none; }
+    .book-cta { transition: all 0.2s ease; animation: glow-pulse 3s ease infinite; }
+    .book-cta:hover { opacity: 0.88; transform: translateY(-2px); }
+    *:focus-visible { outline: 2px solid currentColor; outline-offset: 2px; }
+    .sr-only { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; border:0; }
+    .sr-only:focus, .sr-only:focus-visible { position:absolute; top:8px; left:8px; width:auto; height:auto; padding:10px 16px; margin:0; overflow:visible; clip:auto; white-space:normal; z-index:9999; background:#ffffff; color:#000000; border-radius:6px; box-shadow:0 4px 12px rgba(0,0,0,0.2); text-decoration:none; font-weight:700; }
+    @media (max-width: 900px) {
+      .nav-links { display: none !important; }
+      .stack-grid { grid-template-columns: 1fr !important; }
+      .stat-grid { grid-template-columns: 1fr 1fr !important; }
+    }
+  </style>
+  <script src="/template-topheader.js" defer></script>
+</head>
+<body>
+
+<a href="#main" class="sr-only">Skip to content</a>
+
+<!-- NAV -->
+<nav style="position:fixed; top:0; left:0; right:0; z-index:200; background:rgba(4,13,24,0.94); backdrop-filter:blur(20px); border-bottom:1px solid var(--teal-border); height:66px; display:flex; align-items:center; justify-content:space-between; padding:0 44px;">
+  <a href="/v3-modern-tech" style="display:flex; align-items:center; gap:14px;">
+    <div class="dot-pulse" style="width:9px; height:9px; background:var(--teal); border-radius:50%;"></div>
+    <span class="mono" style="font-size:16px; font-weight:600; color:white; letter-spacing:0.02em;">{practice.name}</span>
+    <span class="mono" style="font-size:11px; color:var(--muted); background:var(--navy-3); border:1px solid var(--teal-border); padding:2px 8px; border-radius:4px;">/tech</span>
+  </a>
+  <div class="nav-links" style="display:flex; gap:32px; align-items:center;">
+    <a href="/v3-modern-tech#services" class="mono" style="font-size:12px; color:var(--muted); letter-spacing:0.04em;">Services</a>
+    <a href="/v3-modern-tech/technology" class="mono" style="font-size:12px; color:var(--teal); letter-spacing:0.04em;">Tech Stack</a>
+    <a href="/v3-modern-tech#team" class="mono" style="font-size:12px; color:var(--muted); letter-spacing:0.04em;">Team</a>
+    <a href="/v3-modern-tech#contact" class="mono" style="font-size:12px; color:var(--muted); letter-spacing:0.04em;">Contact</a>
+    <a href="/v3-modern-tech#appointment" class="book-cta" style="background:var(--teal); color:var(--navy); font-size:13px; font-weight:700; padding:10px 22px; border-radius:4px; letter-spacing:0.03em;">
+      Book a Scan →
+    </a>
+  </div>
+</nav>
+
+<main id="main">
+
+<!-- HERO -->
+<section class="grid-bg" style="padding:144px 44px 96px; border-bottom:1px solid var(--teal-border);">
+  <div style="max-width:1180px; margin:0 auto;">
+    <div class="mono" style="font-size:12px; color:var(--teal); letter-spacing:0.18em; margin-bottom:24px;">
+      $ ls -la /apex/technology<span class="cursor"></span>
+    </div>
+    <h1 style="font-size:clamp(40px,6vw,80px); line-height:1.05; margin:0 0 24px; font-weight:700; letter-spacing:-0.02em;">
+      The full <span style="color:var(--teal);">tech stack</span>.<br/>Itemized.
+    </h1>
+    <p style="font-size:18px; line-height:1.75; color:var(--muted); max-width:680px; margin:0 0 32px;">
+      We get asked, regularly, whether the technology angle is just marketing. It is not. Below is every diagnostic, imaging, and treatment system in our operatories — make, model, what it does for you, and why we chose it over alternatives. If you want the longer answer, ask any of the doctors during your scan.
+    </p>
+    <div class="stat-grid" style="display:grid; grid-template-columns:repeat(4, 1fr); gap:16px; max-width:880px;">
+      {[
+        ['11', 'systems in production', 'across operatories'],
+        ['$1.4M', 'capex invested', 'since 2017'],
+        ['0.018mSv', 'avg radiation per visit', '~10x lower than analog'],
+        ['2hr', 'avg time saved', 'per same-day crown'],
+      ].map(([val, label, sub]) => (
+        <div class="tech-card" style="padding:20px 22px; border-radius:8px;">
+          <div class="mono" style="font-size:24px; color:var(--teal); font-weight:700; margin-bottom:4px;">{val}</div>
+          <div style="font-size:13px; color:white; font-weight:500; margin-bottom:2px;">{label}</div>
+          <div class="mono" style="font-size:11px; color:var(--muted);">{sub}</div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- IMAGING -->
+<section style="padding:96px 44px; border-bottom:1px solid var(--teal-border);">
+  <div style="max-width:1180px; margin:0 auto;">
+    <div class="mono" style="font-size:12px; color:var(--teal); letter-spacing:0.18em; margin-bottom:16px;">// 01 — IMAGING</div>
+    <h2 style="font-size:clamp(28px,4vw,44px); margin:0 0 56px; font-weight:600;">See what we see.</h2>
+
+    <div class="stack-grid" style="display:grid; grid-template-columns:1fr 1fr; gap:24px;">
+
+      <div class="tech-card" style="padding:32px; border-radius:8px;">
+        <div class="mono" style="font-size:11px; color:var(--teal); letter-spacing:0.14em; margin-bottom:8px;">3D / CONE BEAM CT</div>
+        <h3 style="font-family:'Sora',sans-serif; font-size:22px; font-weight:600; margin:0 0 6px; color:white;">Carestream CS 9600</h3>
+        <div class="mono" style="font-size:12px; color:var(--muted-2); margin-bottom:18px;">Installed Q3 2022 · 75µm voxel</div>
+        <p style="font-size:14.5px; color:var(--muted); line-height:1.75; margin:0 0 18px;">A high-resolution 3D scanner that gives us a true volumetric picture of your jaw, teeth, sinuses, and airway. The Carestream uses dynamic dose modulation, which means it delivers up to 60% less radiation than the cone beam systems that were standard five years ago — about the equivalent of a one-hour airplane flight.</p>
+        <div class="spec-row" style="display:flex; justify-content:space-between; padding:10px 0;"><span class="mono" style="font-size:12px; color:var(--muted);">use case</span><span style="font-size:13px; color:var(--white);">implants · TMJ · endo</span></div>
+        <div class="spec-row" style="display:flex; justify-content:space-between; padding:10px 0;"><span class="mono" style="font-size:12px; color:var(--muted);">scan time</span><span style="font-size:13px; color:var(--white);">14 seconds</span></div>
+        <div class="spec-row" style="display:flex; justify-content:space-between; padding:10px 0;"><span class="mono" style="font-size:12px; color:var(--muted);">why this one</span><span style="font-size:13px; color:var(--white);">lowest dose, sharpest resolution in class</span></div>
+      </div>
+
+      <div class="tech-card" style="padding:32px; border-radius:8px;">
+        <div class="mono" style="font-size:11px; color:var(--teal); letter-spacing:0.14em; margin-bottom:8px;">INTRA-ORAL SCANNER</div>
+        <h3 style="font-family:'Sora',sans-serif; font-size:22px; font-weight:600; margin:0 0 6px; color:white;">iTero Lumina</h3>
+        <div class="mono" style="font-size:12px; color:var(--muted-2); margin-bottom:18px;">Installed Q1 2024 · multi-direct</div>
+        <p style="font-size:14.5px; color:var(--muted); line-height:1.75; margin:0 0 18px;">Replaces the goopy impression tray. A small handheld wand captures 6,000 frames per second of your dentition in full color and stitches them into a 3D model accurate to 0.05mm. We use this scanner for all restorative work, Invisalign treatment, and same-day crowns. Most patients are done in under three minutes.</p>
+        <div class="spec-row" style="display:flex; justify-content:space-between; padding:10px 0;"><span class="mono" style="font-size:12px; color:var(--muted);">accuracy</span><span style="font-size:13px; color:var(--white);">±50 microns</span></div>
+        <div class="spec-row" style="display:flex; justify-content:space-between; padding:10px 0;"><span class="mono" style="font-size:12px; color:var(--muted);">scan time</span><span style="font-size:13px; color:var(--white);">~3 min full arch</span></div>
+        <div class="spec-row" style="display:flex; justify-content:space-between; padding:10px 0;"><span class="mono" style="font-size:12px; color:var(--muted);">extras</span><span style="font-size:13px; color:var(--white);">caries detection via NIRI light</span></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- TREATMENT -->
+<section style="padding:96px 44px; border-bottom:1px solid var(--teal-border); background:var(--navy-2);">
+  <div style="max-width:1180px; margin:0 auto;">
+    <div class="mono" style="font-size:12px; color:var(--teal); letter-spacing:0.18em; margin-bottom:16px;">// 02 — TREATMENT</div>
+    <h2 style="font-size:clamp(28px,4vw,44px); margin:0 0 56px; font-weight:600;">Faster. Quieter. More precise.</h2>
+
+    <div class="stack-grid" style="display:grid; grid-template-columns:1fr 1fr; gap:24px;">
+
+      <div class="tech-card" style="padding:32px; border-radius:8px; background:var(--navy);">
+        <div class="mono" style="font-size:11px; color:var(--teal); letter-spacing:0.14em; margin-bottom:8px;">SAME-DAY CROWN MILLING</div>
+        <h3 style="font-family:'Sora',sans-serif; font-size:22px; font-weight:600; margin:0 0 6px; color:white;">CEREC Primemill + Primeprint</h3>
+        <div class="mono" style="font-size:12px; color:var(--muted-2); margin-bottom:18px;">In-office lab · CEREC SpeedFire kiln</div>
+        <p style="font-size:14.5px; color:var(--muted); line-height:1.75; margin:0 0 18px;">The reason you no longer need to come back for a second appointment to fit a permanent crown. We design the restoration in CEREC software from your scan, mill it in lithium disilicate or zirconia in our in-house lab, glaze and crystalize it in the SpeedFire kiln, and bond it the same morning. Total chair time: about two hours.</p>
+        <div class="spec-row" style="display:flex; justify-content:space-between; padding:10px 0;"><span class="mono" style="font-size:12px; color:var(--muted);">visits saved</span><span style="font-size:13px; color:var(--white);">1 of 2 eliminated</span></div>
+        <div class="spec-row" style="display:flex; justify-content:space-between; padding:10px 0;"><span class="mono" style="font-size:12px; color:var(--muted);">material</span><span style="font-size:13px; color:var(--white);">e.max · zirconia · zirconia ultra</span></div>
+      </div>
+
+      <div class="tech-card" style="padding:32px; border-radius:8px; background:var(--navy);">
+        <div class="mono" style="font-size:11px; color:var(--teal); letter-spacing:0.14em; margin-bottom:8px;">SOFT-TISSUE LASER</div>
+        <h3 style="font-family:'Sora',sans-serif; font-size:22px; font-weight:600; margin:0 0 6px; color:white;">Solea CO₂ Laser</h3>
+        <div class="mono" style="font-size:12px; color:var(--muted-2); margin-bottom:18px;">9.3µm wavelength · all-tissue</div>
+        <p style="font-size:14.5px; color:var(--muted); line-height:1.75; margin:0 0 18px;">No scalpel. No sutures. Faster healing, less swelling, and — in about 90% of cases — no anaesthetic needed. We use Solea for gingivectomies, frenectomies, lip-tie revisions, biopsies, and cosmetic gingival sculpting before veneers. Pediatric tongue-tie revisions in particular have transformed.</p>
+        <div class="spec-row" style="display:flex; justify-content:space-between; padding:10px 0;"><span class="mono" style="font-size:12px; color:var(--muted);">anaesthetic</span><span style="font-size:13px; color:var(--white);">unnecessary in ~90% of cases</span></div>
+        <div class="spec-row" style="display:flex; justify-content:space-between; padding:10px 0;"><span class="mono" style="font-size:12px; color:var(--muted);">downtime</span><span style="font-size:13px; color:var(--white);">eat normally same day</span></div>
+      </div>
+
+      <div class="tech-card" style="padding:32px; border-radius:8px; background:var(--navy);">
+        <div class="mono" style="font-size:11px; color:var(--teal); letter-spacing:0.14em; margin-bottom:8px;">IMPLANT NAVIGATION</div>
+        <h3 style="font-family:'Sora',sans-serif; font-size:22px; font-weight:600; margin:0 0 6px; color:white;">X-Guide Dynamic Navigation</h3>
+        <div class="mono" style="font-size:12px; color:var(--muted-2); margin-bottom:18px;">GPS-style live tracking</div>
+        <p style="font-size:14.5px; color:var(--muted); line-height:1.75; margin:0 0 18px;">A surgical navigation system that watches Dr. Tanaka's drill in real time and overlays its position onto the 3D scan we took of your jaw. It is the same class of technology that guides neurosurgery. Average placement accuracy: 0.3mm. The clinical effect is fewer complications, faster healing, and a substantially smaller incision than guided-stent placement.</p>
+        <div class="spec-row" style="display:flex; justify-content:space-between; padding:10px 0;"><span class="mono" style="font-size:12px; color:var(--muted);">accuracy</span><span style="font-size:13px; color:var(--white);">0.3mm at the apex</span></div>
+        <div class="spec-row" style="display:flex; justify-content:space-between; padding:10px 0;"><span class="mono" style="font-size:12px; color:var(--muted);">approach</span><span style="font-size:13px; color:var(--white);">flapless · single-stage in most cases</span></div>
+      </div>
+
+      <div class="tech-card" style="padding:32px; border-radius:8px; background:var(--navy);">
+        <div class="mono" style="font-size:11px; color:var(--teal); letter-spacing:0.14em; margin-bottom:8px;">AI DIAGNOSTICS</div>
+        <h3 style="font-family:'Sora',sans-serif; font-size:22px; font-weight:600; margin:0 0 6px; color:white;">Pearl Second Opinion™</h3>
+        <div class="mono" style="font-size:12px; color:var(--muted-2); margin-bottom:18px;">FDA-cleared, integrated into every X-ray</div>
+        <p style="font-size:14.5px; color:var(--muted); line-height:1.75; margin:0 0 18px;">Every bitewing, every panoramic, every periapical we take is automatically reviewed by Pearl's FDA-cleared diagnostic AI within four seconds of capture. The model has been trained on more than fifty million dental X-rays and is statistically more sensitive than the human eye to small lesions, hairline cracks, and early bone loss. The output is shown to your dentist as a second opinion — never as an autonomous diagnosis.</p>
+        <div class="spec-row" style="display:flex; justify-content:space-between; padding:10px 0;"><span class="mono" style="font-size:12px; color:var(--muted);">FDA clearance</span><span style="font-size:13px; color:var(--white);">510(k) De Novo</span></div>
+        <div class="spec-row" style="display:flex; justify-content:space-between; padding:10px 0;"><span class="mono" style="font-size:12px; color:var(--muted);">your data</span><span style="font-size:13px; color:var(--white);">de-identified, never sold</span></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- INFRASTRUCTURE -->
+<section style="padding:96px 44px;">
+  <div style="max-width:1180px; margin:0 auto;">
+    <div class="mono" style="font-size:12px; color:var(--teal); letter-spacing:0.18em; margin-bottom:16px;">// 03 — INFRASTRUCTURE</div>
+    <h2 style="font-size:clamp(28px,4vw,44px); margin:0 0 24px; font-weight:600;">The unsexy systems that make the rest work.</h2>
+    <p style="font-size:16px; line-height:1.75; color:var(--muted); max-width:680px; margin:0 0 56px;">
+      A clinic running this much imaging and digital workflow has to be wired like a small data center. None of it is what you'll see — but it is the reason your records load instantly, your prescriptions are sent before you've left the chair, and your data does not live on a thumb drive somewhere.
+    </p>
+    <div style="display:flex; flex-direction:column; gap:2px; background:var(--teal-border);">
+      {[
+        ['Practice Management', 'Curve Dental', 'Cloud-native, browser-based EHR. HIPAA-audited annually. Your chart is accessible to your dentist from any operatory, instantly.'],
+        ['DICOM Imaging Archive', 'Romexis Cloud', 'Enterprise-grade DICOM storage. All 3D imaging is encrypted at rest and in transit. Backups span three Pacific Northwest data centers.'],
+        ['Patient Communications', 'Weave + Modento', 'Two-way SMS, secure file transfer, video visits, and online check-in. We do not use fax machines. We will not start.'],
+        ['Sterilization Tracking', 'SciCan HYDRIM + Statim 5000', 'Every instrument tray is barcode-tracked from operatory to autoclave to storage. Sterilization logs are immutable and surface in your chart.'],
+        ['Water Quality', 'DentaPure independent cartridges', 'Quarterly third-party water testing on every operatory. CDC dental water guidelines are the floor, not the ceiling.'],
+      ].map(([label, name, body]) => (
+        <div style="background:var(--navy); padding:24px 28px; display:grid; grid-template-columns:200px 220px 1fr; gap:32px; align-items:center;">
+          <div class="mono" style="font-size:11px; color:var(--teal); letter-spacing:0.14em; text-transform:uppercase;">{label}</div>
+          <div style="font-size:15px; color:white; font-weight:600;">{name}</div>
+          <div style="font-size:14px; color:var(--muted); line-height:1.7;">{body}</div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="grid-bg" style="padding:120px 44px; text-align:center; border-top:1px solid var(--teal-border);">
+  <div class="mono" style="font-size:12px; color:var(--teal); letter-spacing:0.18em; margin-bottom:20px;">$ ./schedule_scan.sh</div>
+  <h2 style="font-size:clamp(32px,5vw,56px); margin:0 0 24px; font-weight:700;">
+    See it all in <span style="color:var(--teal);">2 hours</span>.
+  </h2>
+  <p style="font-size:17px; line-height:1.7; color:var(--muted); max-width:560px; margin:0 auto 36px;">
+    New-patient comprehensive exam, full 3D imaging, AI diagnostic review, and intra-oral scan — completed in a single appointment.
+  </p>
+  <a href="/v3-modern-tech#appointment" class="book-cta" style="display:inline-block; background:var(--teal); color:var(--navy); font-size:14px; font-weight:700; padding:18px 40px; border-radius:6px; letter-spacing:0.04em;">
+    Book a Scan →
+  </a>
+</section>
+
+</main>
+
+<footer style="background:var(--navy-2); padding:36px 44px; border-top:1px solid var(--teal-border);">
+  <div style="max-width:1180px; margin:0 auto; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:14px;">
+    <div class="mono" style="font-size:12px; color:var(--muted); letter-spacing:0.06em;">© {new Date().getFullYear()} {practice.name} · v3.0.0</div>
+    <a href="/v3-modern-tech" class="mono" style="font-size:12px; color:var(--teal); letter-spacing:0.06em;">← cd ..</a>
+  </div>
+</footer>
+
+</body>
+</html>
