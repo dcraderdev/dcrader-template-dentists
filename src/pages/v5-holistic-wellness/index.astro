@@ -24,12 +24,15 @@ const heroBase = practice.hero.image.replace(/\.webp$/i, '');
       --cream-2: #EEE8DC;
       --cream-3: #E4DDD0;
       --sage: #6A9470;
+      --sage-text: #3F6444;
       --sage-2: #4E7653;
       --sage-3: #2F5234;
       --earth: #8B6B4A;
+      --earth-text: #6A4F30;
       --earth-2: #6B4F34;
       --mist: #B8C8B2;
       --muted: #7A7264;
+      --muted-text: #5D544A;
       --ink: #2A2820;
       --ink-2: #1E1C18;
     }
@@ -100,11 +103,11 @@ const heroBase = practice.hero.image.replace(/\.webp$/i, '');
   <div style="max-width:1280px; margin:0 auto; padding:0 56px; height:76px; display:flex; align-items:center; justify-content:space-between;">
     <div>
       <div style="font-family:'Source Serif 4',serif; font-size:20px; color:var(--ink); letter-spacing:0.02em;">{practice.name}</div>
-      <div style="font-size:10px; letter-spacing:0.28em; text-transform:uppercase; color:var(--sage); margin-top:2px; font-weight:500;">Portland, Oregon · Est. {practice.founded}</div>
+      <div style="font-size:10px; letter-spacing:0.28em; text-transform:uppercase; color:var(--sage-text); margin-top:2px; font-weight:500;">Portland, Oregon · Est. {practice.founded}</div>
     </div>
     <nav style="display:flex; gap:32px; align-items:center;">
       {[['#services','Services'],['#principles','Our Way'],['#team','Team'],['#contact','Visit']].map(([href,label]) => (
-        <a href={href} class="nav-link" style="font-size:13px; letter-spacing:0.07em; color:var(--muted); font-weight:500;">{label}</a>
+        <a href={href} class="nav-link" style="font-size:13px; letter-spacing:0.07em; color:var(--muted-text); font-weight:500;">{label}</a>
       ))}
       <a href="#appointment" class="cta-btn" style="background:var(--sage-3); color:white; font-size:11px; letter-spacing:0.14em; text-transform:uppercase; padding:12px 26px; font-weight:500;">
         Begin Journey
@@ -130,10 +133,10 @@ const heroBase = practice.hero.image.replace(/\.webp$/i, '');
   <div style="max-width:1280px; margin:0 auto; display:grid; grid-template-columns:280px 1fr; gap:80px; align-items:start;">
     <!-- Sticky sidebar -->
     <div style="position:sticky; top:96px;">
-      <div style="font-size:9px; letter-spacing:0.3em; text-transform:uppercase; color:var(--sage); margin-bottom:18px; font-weight:500;">How We Heal</div>
+      <div style="font-size:9px; letter-spacing:0.3em; text-transform:uppercase; color:var(--sage-text); margin-bottom:18px; font-weight:500;">How We Heal</div>
       <h2 style="font-size:clamp(36px,3.5vw,52px); color:var(--ink); margin:0 0 22px; line-height:1.12; font-style:italic;">Our Services</h2>
       <div style="width:36px; height:2px; background:var(--sage); margin-bottom:22px;"></div>
-      <p style="font-size:15px; color:var(--muted); line-height:1.88; font-weight:300;">Each service is chosen not for profitability, but for its alignment with biological principles and whole-body wellness.</p>
+      <p style="font-size:15px; color:var(--muted-text); line-height:1.88; font-weight:300;">Each service is chosen not for profitability, but for its alignment with biological principles and whole-body wellness.</p>
       <!-- Inline plant SVG -->
       <div style="margin-top:32px; opacity:0.6;" class="leaf-sway">
         <svg width="70" height="100" viewBox="0 0 70 100" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -153,10 +156,10 @@ const heroBase = practice.hero.image.replace(/\.webp$/i, '');
     <div style="display:flex; flex-direction:column;">
       {practice.services.map(s => (
         <div class="svc-row" style="padding:30px 22px; border-bottom:1px solid var(--cream-3); display:grid; grid-template-columns:36px 1fr; gap:18px; align-items:start;">
-          <div style="font-size:24px; color:var(--sage); margin-top:4px; line-height:1;">{s.icon}</div>
+          <div style="font-size:24px; color:var(--sage-text); margin-top:4px; line-height:1;">{s.icon}</div>
           <div>
             <h3 style="font-family:'Source Serif 4',serif; font-size:21px; color:var(--ink); margin:0 0 8px; font-weight:400;">{s.name}</h3>
-            <p style="font-size:14px; color:var(--muted); line-height:1.85; margin:0; font-weight:300;">{s.desc}</p>
+            <p style="font-size:14px; color:var(--muted-text); line-height:1.85; margin:0; font-weight:300;">{s.desc}</p>
           </div>
         </div>
       ))}
@@ -226,9 +229,9 @@ const heroBase = practice.hero.image.replace(/\.webp$/i, '');
   </div>
   <div style="max-width:1100px; margin:0 auto; position:relative;">
     <div style="text-align:center; margin-bottom:64px;">
-      <div style="font-size:9px; letter-spacing:0.3em; text-transform:uppercase; color:var(--sage); margin-bottom:18px; font-weight:500;">A Ledger of Refusals</div>
+      <div style="font-size:9px; letter-spacing:0.3em; text-transform:uppercase; color:var(--sage-text); margin-bottom:18px; font-weight:500;">A Ledger of Refusals</div>
       <h2 style="font-size:clamp(34px,3.8vw,52px); color:var(--ink); margin:0 0 16px; font-style:italic;">What we don't do</h2>
-      <p style="font-size:15px; color:var(--muted); max-width:540px; margin:0 auto; line-height:1.85; font-weight:300;">A holistic practice is measured as much by what it refuses to use as by what it offers. These are ours.</p>
+      <p style="font-size:15px; color:var(--muted-text); max-width:540px; margin:0 auto; line-height:1.85; font-weight:300;">A holistic practice is measured as much by what it refuses to use as by what it offers. These are ours.</p>
     </div>
     <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--cream-3);">
       {[
@@ -243,8 +246,8 @@ const heroBase = practice.hero.image.replace(/\.webp$/i, '');
             <line x1="7" y1="18" x2="7" y2="2" stroke="var(--sage-2)" stroke-width="1" opacity="0.5"/>
           </svg>
           <div style="font-family:'Source Serif 4',serif; font-size:42px; line-height:1; color:var(--sage-3); font-weight:400; font-style:italic;">{value}</div>
-          <div style="font-size:11px; letter-spacing:0.18em; text-transform:uppercase; color:var(--sage); font-weight:500;">{label}</div>
-          <div style="font-size:13px; color:var(--muted); line-height:1.65; font-weight:300; font-style:italic;">{sub}</div>
+          <div style="font-size:11px; letter-spacing:0.18em; text-transform:uppercase; color:var(--sage-text); font-weight:500;">{label}</div>
+          <div style="font-size:13px; color:var(--muted-text); line-height:1.65; font-weight:300; font-style:italic;">{sub}</div>
         </div>
       ))}
     </div>
@@ -256,24 +259,24 @@ const heroBase = practice.hero.image.replace(/\.webp$/i, '');
   <div style="max-width:1100px; margin:0 auto;">
     <div style="display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:start;">
       <div>
-        <div style="font-size:9px; letter-spacing:0.3em; text-transform:uppercase; color:var(--sage); margin-bottom:18px; font-weight:500;">Certifications</div>
+        <div style="font-size:9px; letter-spacing:0.3em; text-transform:uppercase; color:var(--sage-text); margin-bottom:18px; font-weight:500;">Certifications</div>
         <h2 style="font-size:clamp(28px,3vw,40px); color:var(--ink); margin:0 0 28px; line-height:1.2; font-style:italic;">Recognized Standards</h2>
         <div style="display:flex; flex-direction:column; gap:16px;">
           {[['IAOMT','International Academy of Oral Medicine & Toxicology'],['SMART','Safe Mercury Amalgam Removal Technique'],['DAMS','Dental Amalgam Mercury Solutions partner'],['IABDM','International Academy of Biological Dentistry & Medicine']].map(([code,name]) => (
             <div style="display:flex; gap:16px; align-items:center; padding:14px 18px; background:var(--cream-2); border-left:3px solid var(--sage);">
-              <div style="font-family:'Source Serif 4',serif; font-size:18px; color:var(--sage-2); font-weight:600; min-width:60px;">{code}</div>
-              <div style="font-size:13px; color:var(--muted); font-weight:300; line-height:1.5;">{name}</div>
+              <div style="font-family:'Source Serif 4',serif; font-size:18px; color:var(--sage-text); font-weight:600; min-width:60px;">{code}</div>
+              <div style="font-size:13px; color:var(--muted-text); font-weight:300; line-height:1.5;">{name}</div>
             </div>
           ))}
         </div>
       </div>
       <div>
-        <div style="font-size:9px; letter-spacing:0.3em; text-transform:uppercase; color:var(--sage); margin-bottom:18px; font-weight:500;">Financial Accessibility</div>
+        <div style="font-size:9px; letter-spacing:0.3em; text-transform:uppercase; color:var(--sage-text); margin-bottom:18px; font-weight:500;">Financial Accessibility</div>
         <h2 style="font-size:clamp(28px,3vw,40px); color:var(--ink); margin:0 0 22px; line-height:1.2; font-style:italic;">Insurance & Payment</h2>
-        <p style="font-size:15px; color:var(--muted); line-height:1.82; margin:0 0 28px; font-weight:300;">We believe access to biological dentistry should not depend on your insurance plan. We provide detailed superbills for all out-of-network benefits.</p>
+        <p style="font-size:15px; color:var(--muted-text); line-height:1.82; margin:0 0 28px; font-weight:300;">We believe access to biological dentistry should not depend on your insurance plan. We provide detailed superbills for all out-of-network benefits.</p>
         <div style="display:flex; flex-wrap:wrap; gap:10px;">
           {practice.insurance.map(ins => (
-            <span style="background:var(--cream-2); border:1px solid var(--cream-3); color:var(--muted); font-size:13px; padding:8px 18px; font-weight:400; letter-spacing:0.03em;">{ins}</span>
+            <span style="background:var(--cream-2); border:1px solid var(--cream-3); color:var(--muted-text); font-size:13px; padding:8px 18px; font-weight:400; letter-spacing:0.03em;">{ins}</span>
           ))}
         </div>
       </div>
@@ -285,7 +288,7 @@ const heroBase = practice.hero.image.replace(/\.webp$/i, '');
 <section id="team" style="background:var(--cream-2); padding:100px 80px;">
   <div style="max-width:1280px; margin:0 auto;">
     <div style="text-align:center; margin-bottom:72px;">
-      <div style="font-size:9px; letter-spacing:0.3em; text-transform:uppercase; color:var(--sage); margin-bottom:18px; font-weight:500;">The Practitioners</div>
+      <div style="font-size:9px; letter-spacing:0.3em; text-transform:uppercase; color:var(--sage-text); margin-bottom:18px; font-weight:500;">The Practitioners</div>
       <h2 style="font-size:clamp(40px,4vw,60px); color:var(--ink); margin:0; font-style:italic;">Our Healers</h2>
     </div>
     <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:32px;">
@@ -295,9 +298,9 @@ const heroBase = practice.hero.image.replace(/\.webp$/i, '');
             <ResponsiveImage src={m.image} alt={m.name} widths={[320,640]} sizes="(min-width:1024px) 25vw, 50vw" width={480} height={480} imgStyle="width:100%; height:100%; object-fit:cover; display:block;" />
           </div>
           <div style="padding-left:2px;">
-            <div style="font-size:9px; letter-spacing:0.22em; text-transform:uppercase; color:var(--sage); margin-bottom:8px; font-weight:500;">{m.role}</div>
+            <div style="font-size:9px; letter-spacing:0.22em; text-transform:uppercase; color:var(--sage-text); margin-bottom:8px; font-weight:500;">{m.role}</div>
             <h3 style="font-size:20px; color:var(--ink); margin:0 0 10px; font-weight:400; font-style:italic;">{m.name}</h3>
-            <p style="font-size:13px; color:var(--muted); line-height:1.82; margin:0; font-weight:300;">{m.bio}</p>
+            <p style="font-size:13px; color:var(--muted-text); line-height:1.82; margin:0; font-weight:300;">{m.bio}</p>
           </div>
         </div>
       ))}
@@ -309,7 +312,7 @@ const heroBase = practice.hero.image.replace(/\.webp$/i, '');
 <section style="background:var(--cream); padding:100px 80px;">
   <div style="max-width:1100px; margin:0 auto;">
     <div style="text-align:center; margin-bottom:64px;">
-      <div style="font-size:9px; letter-spacing:0.3em; text-transform:uppercase; color:var(--sage); margin-bottom:18px; font-weight:500;">Visible Change</div>
+      <div style="font-size:9px; letter-spacing:0.3em; text-transform:uppercase; color:var(--sage-text); margin-bottom:18px; font-weight:500;">Visible Change</div>
       <h2 style="font-size:clamp(36px,4vw,56px); color:var(--ink); margin:0; font-style:italic;">Treatment Results</h2>
     </div>
     <div style="display:grid; grid-template-columns:1fr 1fr; gap:48px;">
@@ -318,7 +321,7 @@ const heroBase = practice.hero.image.replace(/\.webp$/i, '');
           <div style="font-family:'Source Serif 4',serif; font-size:20px; color:var(--ink); margin-bottom:18px; text-align:center; font-style:italic;">{ba.label}</div>
           <div style="display:grid; grid-template-columns:1fr 1fr; gap:4px;">
             <div>
-              <div style="background:var(--earth); color:white; font-size:9px; font-weight:500; letter-spacing:0.2em; padding:7px 12px; text-align:center; text-transform:uppercase;">Before</div>
+              <div style="background:var(--earth-2); color:white; font-size:9px; font-weight:500; letter-spacing:0.2em; padding:7px 12px; text-align:center; text-transform:uppercase;">Before</div>
               <ResponsiveImage src={ba.before} alt="Before" widths={[320,640,1024]} sizes="(min-width:1024px) 50vw, 100vw" width={800} height={600} imgStyle="width:100%; aspect-ratio:4/3; object-fit:cover; display:block; filter:sepia(10%);" />
             </div>
             <div>
@@ -336,14 +339,14 @@ const heroBase = practice.hero.image.replace(/\.webp$/i, '');
 <section style="background:var(--cream-2); padding:100px 80px;">
   <div style="max-width:1280px; margin:0 auto;">
     <div style="text-align:center; margin-bottom:64px;">
-      <div style="font-size:9px; letter-spacing:0.3em; text-transform:uppercase; color:var(--sage); margin-bottom:18px; font-weight:500;">Voices</div>
+      <div style="font-size:9px; letter-spacing:0.3em; text-transform:uppercase; color:var(--sage-text); margin-bottom:18px; font-weight:500;">Voices</div>
       <h2 style="font-size:clamp(36px,4vw,56px); color:var(--ink); margin:0; font-style:italic;">Patient Reflections</h2>
     </div>
     <div style="display:grid; grid-template-columns:repeat(2,1fr); gap:32px;">
       {practice.reviews.map(r => (
         <div style="background:var(--cream); padding:44px; border-left:3px solid var(--sage); position:relative; overflow:hidden;">
           <!-- Large botanical quote mark -->
-          <div style="position:absolute; top:-8px; right:28px; font-family:'Source Serif 4',serif; font-size:140px; color:var(--sage); opacity:0.08; line-height:1; pointer-events:none; user-select:none;">"</div>
+          <div style="position:absolute; top:-8px; right:28px; font-family:'Source Serif 4',serif; font-size:140px; color:var(--sage-text); opacity:0.08; line-height:1; pointer-events:none; user-select:none;">"</div>
           <!-- Leaf icon for stars -->
           <div style="display:flex; gap:4px; margin-bottom:20px;">
             {Array.from({length: r.stars}).map(() => (
@@ -354,8 +357,8 @@ const heroBase = practice.hero.image.replace(/\.webp$/i, '');
           </div>
           <p style="font-family:'Source Serif 4',serif; font-size:19px; line-height:1.72; color:var(--ink); margin:0 0 28px; font-style:italic; font-weight:400; position:relative;">"{r.text}"</p>
           <div style="display:flex; justify-content:space-between; align-items:center; padding-top:22px; border-top:1px solid var(--cream-3);">
-            <span style="font-size:12px; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted); font-weight:500;">{r.name}</span>
-            <span style="font-size:12px; color:var(--muted);">{r.date}</span>
+            <span style="font-size:12px; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted-text); font-weight:500;">{r.name}</span>
+            <span style="font-size:12px; color:var(--muted-text);">{r.date}</span>
           </div>
         </div>
       ))}
@@ -367,7 +370,7 @@ const heroBase = practice.hero.image.replace(/\.webp$/i, '');
 <section style="background:var(--cream);">
   <div style="padding:0 80px 64px;">
     <div style="text-align:center; padding:80px 0 48px;">
-      <div style="font-size:9px; letter-spacing:0.3em; text-transform:uppercase; color:var(--sage); margin-bottom:18px; font-weight:500;">The Space</div>
+      <div style="font-size:9px; letter-spacing:0.3em; text-transform:uppercase; color:var(--sage-text); margin-bottom:18px; font-weight:500;">The Space</div>
       <h2 style="font-size:clamp(32px,3.5vw,52px); color:var(--ink); margin:0; font-style:italic;">Our Sanctuary</h2>
     </div>
   </div>
@@ -433,7 +436,7 @@ const heroBase = practice.hero.image.replace(/\.webp$/i, '');
           <path d="M20,22 Q30,14 34,2 Q26,10 22,22 Z" fill="var(--mist)" opacity="0.6"/>
         </svg>
       </div>
-      <div style="font-size:9px; letter-spacing:0.3em; text-transform:uppercase; color:var(--sage); margin-bottom:18px; font-weight:500;">Begin</div>
+      <div style="font-size:9px; letter-spacing:0.3em; text-transform:uppercase; color:var(--sage-text); margin-bottom:18px; font-weight:500;">Begin</div>
       <h2 style="font-size:clamp(36px,4vw,56px); color:var(--ink); margin:0 0 20px; font-style:italic;">Begin Your Journey</h2>
       <div style="width:36px; height:2px; background:var(--sage); margin:0 auto;"></div>
     </div>
@@ -441,33 +444,33 @@ const heroBase = practice.hero.image.replace(/\.webp$/i, '');
     <form style="display:flex; flex-direction:column; gap:28px;">
       <div style="display:grid; grid-template-columns:1fr 1fr; gap:28px;">
         <div>
-          <label style="display:block; font-size:9px; letter-spacing:0.26em; text-transform:uppercase; color:var(--sage); margin-bottom:12px; font-weight:500;">First Name</label>
+          <label style="display:block; font-size:9px; letter-spacing:0.26em; text-transform:uppercase; color:var(--sage-text); margin-bottom:12px; font-weight:500;">First Name</label>
           <input type="text" placeholder="Elaine" style="width:100%; padding:14px 0; background:transparent; border:none; border-bottom:1px solid var(--cream-3); color:var(--ink); font-size:15px; font-family:'Inter',sans-serif; font-weight:300; transition:border-color 0.2s;" />
         </div>
         <div>
-          <label style="display:block; font-size:9px; letter-spacing:0.26em; text-transform:uppercase; color:var(--sage); margin-bottom:12px; font-weight:500;">Last Name</label>
+          <label style="display:block; font-size:9px; letter-spacing:0.26em; text-transform:uppercase; color:var(--sage-text); margin-bottom:12px; font-weight:500;">Last Name</label>
           <input type="text" placeholder="Morris" style="width:100%; padding:14px 0; background:transparent; border:none; border-bottom:1px solid var(--cream-3); color:var(--ink); font-size:15px; font-family:'Inter',sans-serif; font-weight:300; transition:border-color 0.2s;" />
         </div>
       </div>
       <div style="display:grid; grid-template-columns:1fr 1fr; gap:28px;">
         <div>
-          <label style="display:block; font-size:9px; letter-spacing:0.26em; text-transform:uppercase; color:var(--sage); margin-bottom:12px; font-weight:500;">Phone</label>
+          <label style="display:block; font-size:9px; letter-spacing:0.26em; text-transform:uppercase; color:var(--sage-text); margin-bottom:12px; font-weight:500;">Phone</label>
           <input type="tel" placeholder="(503) 555-0000" style="width:100%; padding:14px 0; background:transparent; border:none; border-bottom:1px solid var(--cream-3); color:var(--ink); font-size:15px; font-family:'Inter',sans-serif; font-weight:300; transition:border-color 0.2s;" />
         </div>
         <div>
-          <label style="display:block; font-size:9px; letter-spacing:0.26em; text-transform:uppercase; color:var(--sage); margin-bottom:12px; font-weight:500;">Email</label>
+          <label style="display:block; font-size:9px; letter-spacing:0.26em; text-transform:uppercase; color:var(--sage-text); margin-bottom:12px; font-weight:500;">Email</label>
           <input type="email" placeholder="elaine@email.com" style="width:100%; padding:14px 0; background:transparent; border:none; border-bottom:1px solid var(--cream-3); color:var(--ink); font-size:15px; font-family:'Inter',sans-serif; font-weight:300; transition:border-color 0.2s;" />
         </div>
       </div>
       <div>
-        <label style="display:block; font-size:9px; letter-spacing:0.26em; text-transform:uppercase; color:var(--sage); margin-bottom:12px; font-weight:500;">Primary Interest</label>
+        <label style="display:block; font-size:9px; letter-spacing:0.26em; text-transform:uppercase; color:var(--sage-text); margin-bottom:12px; font-weight:500;">Primary Interest</label>
         <select style="width:100%; padding:14px 0; background:transparent; border:none; border-bottom:1px solid var(--cream-3); color:var(--ink); font-size:15px; font-family:'Inter',sans-serif; font-weight:300; cursor:pointer; -webkit-appearance:none;">
           <option value="">Select a service</option>
           {practice.services.map(s => <option value={s.name}>{s.name}</option>)}
         </select>
       </div>
       <div>
-        <label style="display:block; font-size:9px; letter-spacing:0.26em; text-transform:uppercase; color:var(--sage); margin-bottom:12px; font-weight:500;">Your Health Story (optional)</label>
+        <label style="display:block; font-size:9px; letter-spacing:0.26em; text-transform:uppercase; color:var(--sage-text); margin-bottom:12px; font-weight:500;">Your Health Story (optional)</label>
         <textarea rows={4} placeholder="Share any health history, concerns, or what drew you to biological dentistry. We read every word." style="width:100%; padding:14px 0; background:transparent; border:none; border-bottom:1px solid var(--cream-3); color:var(--ink); font-size:15px; font-family:'Inter',sans-serif; font-weight:300; resize:none; transition:border-color 0.2s;"></textarea>
       </div>
       <div style="display:flex; justify-content:center; margin-top:8px;">
@@ -475,7 +478,7 @@ const heroBase = practice.hero.image.replace(/\.webp$/i, '');
           Send My Request
         </button>
       </div>
-      <p style="text-align:center; font-size:12px; color:var(--muted); margin:0; font-weight:300;">We respond within one business day. Your information is never shared.</p>
+      <p style="text-align:center; font-size:12px; color:var(--muted-text); margin:0; font-weight:300;">We respond within one business day. Your information is never shared.</p>
     </form>
   </div>
 </section>

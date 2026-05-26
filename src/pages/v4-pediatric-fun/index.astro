@@ -21,9 +21,12 @@ const heroBase = practice.hero.image.replace(/\.webp$/i, '');
     html { scroll-behavior: smooth; }
     :root {
       --red: #E8281A;
+      --red-text: #C92315;
       --red-light: #FFF0EF;
       --red-2: #FF4D3D;
+      --red-strong: #C61B0F;
       --yellow: #FFD000;
+      --yellow-text: #7A6300;
       --yellow-light: #FFFADD;
       --blue: #1565C0;
       --blue-2: #1E88E5;
@@ -92,18 +95,18 @@ const heroBase = practice.hero.image.replace(/\.webp$/i, '');
     <a href="/" style="display:flex; align-items:center; gap:12px;">
       <span class="wiggle" style="display:inline-block; font-size:30px;">🦷</span>
       <div>
-        <div class="display" style="font-size:20px; color:var(--red); line-height:1;">{practice.name}</div>
+        <div class="display" style="font-size:20px; color:var(--red-text); line-height:1;">{practice.name}</div>
         <div style="font-size:10px; font-weight:900; color:var(--blue); letter-spacing:0.08em; text-transform:uppercase;">{practice.ageRange}</div>
       </div>
     </a>
     <nav style="display:flex; gap:22px; align-items:center;">
       {['#services','#team','#reviews','#contact'].map((href, i) => (
         <a href={href} style={`font-size:14px; font-weight:900; color:var(--dark); transition:color 0.15s;`}
-           onmouseover="this.style.color='var(--red)'" onmouseout="this.style.color='var(--dark)'">
+           onmouseover="this.style.color='var(--red-text)'" onmouseout="this.style.color='var(--dark)'">
           {['Services','Team','Reviews','Contact'][i]}
         </a>
       ))}
-      <a href="#appointment" class="star-btn" style="background:var(--red); color:white; font-weight:900; font-size:14px; padding:10px 22px; border-radius:9999px; box-shadow:0 4px 16px rgba(232,40,26,0.35);">
+      <a href="#appointment" class="star-btn" style="background:var(--red-strong); color:white; font-weight:900; font-size:14px; padding:10px 22px; border-radius:9999px; box-shadow:0 4px 16px rgba(198,27,15,0.35);">
         Book Now! 🎉
       </a>
     </nav>
@@ -125,20 +128,20 @@ const heroBase = practice.hero.image.replace(/\.webp$/i, '');
     <div style="display:grid; grid-template-columns:repeat(4, 1fr); gap:16px;">
       {practice.services.map((s, i) => {
         const palettes = [
-          { bg:'#FFF0EF', border:'var(--red)', shadow:'#F0C0BC' },
-          { bg:'#FFFADD', border:'var(--yellow)', shadow:'#F0E080' },
-          { bg:'var(--blue-light)', border:'var(--blue)', shadow:'#90CAF9' },
-          { bg:'#F3E5F5', border:'#9C27B0', shadow:'#CE93D8' },
-          { bg:'#E8F5E9', border:'#2E7D32', shadow:'#A5D6A7' },
-          { bg:'#FFF0EF', border:'var(--red)', shadow:'#F0C0BC' },
-          { bg:'#E8F0FE', border:'var(--blue)', shadow:'#90CAF9' },
-          { bg:'#FFFADD', border:'var(--yellow)', shadow:'#F0E080' },
+          { bg:'#FFF0EF', border:'var(--red)',    title:'var(--red-text)',    shadow:'#F0C0BC' },
+          { bg:'#FFFADD', border:'var(--yellow)', title:'var(--yellow-text)', shadow:'#F0E080' },
+          { bg:'var(--blue-light)', border:'var(--blue)', title:'var(--blue)', shadow:'#90CAF9' },
+          { bg:'#F3E5F5', border:'#9C27B0',       title:'#6A1B9A',            shadow:'#CE93D8' },
+          { bg:'#E8F5E9', border:'#2E7D32',       title:'#1B5E20',            shadow:'#A5D6A7' },
+          { bg:'#FFF0EF', border:'var(--red)',    title:'var(--red-text)',    shadow:'#F0C0BC' },
+          { bg:'#E8F0FE', border:'var(--blue)',   title:'var(--blue)',        shadow:'#90CAF9' },
+          { bg:'#FFFADD', border:'var(--yellow)', title:'var(--yellow-text)', shadow:'#F0E080' },
         ];
         const p = palettes[i % palettes.length];
         return (
           <div class="svc-card" style={`background:${p.bg}; border-radius:18px; padding:24px 20px; border:2px solid ${p.border}; box-shadow:4px 4px 0 ${p.shadow};`}>
             <div style="font-size:36px; margin-bottom:10px;">{s.icon}</div>
-            <h3 class="display" style={`font-size:17px; color:${p.border}; margin:0 0 7px;`}>{s.name}</h3>
+            <h3 class="display" style={`font-size:17px; color:${p.title}; margin:0 0 7px;`}>{s.name}</h3>
             <p style="font-size:13px; color:#555; line-height:1.65; margin:0; font-weight:600;">{s.desc}</p>
           </div>
         );
@@ -155,7 +158,7 @@ const heroBase = practice.hero.image.replace(/\.webp$/i, '');
     <p style="font-size:17px; color:rgba(255,255,255,0.65); max-width:480px; margin:0 auto 48px; font-weight:700;">Earn coins for every visit — then cash in for EPIC prizes!</p>
     <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:20px;">
       {practice.rewards.map((r, i) => {
-        const colors = ['var(--blue-2)','var(--red-2)','var(--yellow)'];
+        const colors = ['var(--blue)','var(--red-strong)','var(--yellow)'];
         const textCol = i === 2 ? 'var(--dark)' : 'white';
         return (
           <div style={`background:${colors[i]}; border-radius:20px; padding:32px 24px; border:3px solid rgba(255,255,255,0.2); position:relative; overflow:hidden;`}>
@@ -183,19 +186,19 @@ const heroBase = practice.hero.image.replace(/\.webp$/i, '');
     </div>
     <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:18px;">
       {[
-        { value: '4,217', label: 'Kid visits', emoji: '🦷', bg: '#FFF0EF', border: 'var(--red)', shadow: '#F0C0BC' },
-        { value: '892', label: 'Capes earned', emoji: '🦸', bg: 'var(--blue-light)', border: 'var(--blue)', shadow: '#90CAF9' },
-        { value: '1,148', label: 'Cavity-free club', emoji: '⭐', bg: '#FFFADD', border: 'var(--yellow)', shadow: '#F0E080' },
-        { value: '0', label: 'Boring waiting rooms', emoji: '🎮', bg: '#F3E5F5', border: '#9C27B0', shadow: '#CE93D8' },
+        { value: '4,217', label: 'Kid visits', emoji: '🦷', bg: '#FFF0EF', border: 'var(--red)', title: 'var(--red-text)', shadow: '#F0C0BC' },
+        { value: '892', label: 'Capes earned', emoji: '🦸', bg: 'var(--blue-light)', border: 'var(--blue)', title: 'var(--blue)', shadow: '#90CAF9' },
+        { value: '1,148', label: 'Cavity-free club', emoji: '⭐', bg: '#FFFADD', border: 'var(--yellow)', title: 'var(--yellow-text)', shadow: '#F0E080' },
+        { value: '0', label: 'Boring waiting rooms', emoji: '🎮', bg: '#F3E5F5', border: '#9C27B0', title: '#6A1B9A', shadow: '#CE93D8' },
       ].map(s => (
         <div style={`background:${s.bg}; border:3px solid ${s.border}; border-radius:20px; padding:24px 18px; box-shadow:5px 5px 0 ${s.shadow}; text-align:center; transform:rotate(-1deg);`}>
           <div style="font-size:32px; margin-bottom:6px;">{s.emoji}</div>
-          <div class="display" style={`font-size:38px; color:${s.border}; line-height:1; margin-bottom:8px;`}>{s.value}</div>
+          <div class="display" style={`font-size:38px; color:${s.title}; line-height:1; margin-bottom:8px;`}>{s.value}</div>
           <div style="font-size:13px; color:var(--dark); font-weight:900; text-transform:uppercase; letter-spacing:0.04em;">{s.label}</div>
         </div>
       ))}
     </div>
-    <p style="text-align:center; font-size:13px; color:#888; font-weight:700; margin:28px 0 0;">* Capes are real. The "0" is also real. We checked.</p>
+    <p style="text-align:center; font-size:13px; color:#666; font-weight:700; margin:28px 0 0;">* Capes are real. The "0" is also real. We checked.</p>
   </div>
 </section>
 
@@ -224,8 +227,9 @@ const heroBase = practice.hero.image.replace(/\.webp$/i, '');
     <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:20px;">
       {practice.team.map((m, i) => {
         const borders = ['var(--red)','var(--blue)','var(--yellow)','#9C27B0'];
+        const tagBgs = ['var(--red-strong)','var(--blue)','var(--yellow)','#6A1B9A'];
         const shadows = ['#F0C0BC','#90CAF9','#F0E080','#CE93D8'];
-        const tagBg = borders[i];
+        const tagBg = tagBgs[i];
         const tagText = i === 2 ? 'var(--dark)' : 'white';
         return (
           <div class="team-card" style={`background:white; border-radius:22px; overflow:hidden; border:3px solid ${borders[i]}; box-shadow:6px 6px 0 ${shadows[i]};`}>
@@ -253,14 +257,14 @@ const heroBase = practice.hero.image.replace(/\.webp$/i, '');
     <div style="display:grid; grid-template-columns:repeat(2,1fr); gap:36px;">
       {practice.beforeAfter.map(ba => (
         <div>
-          <div class="display" style="font-size:20px; color:var(--red); margin:0 0 14px; text-align:center;">{ba.label}</div>
+          <div class="display" style="font-size:20px; color:var(--red-text); margin:0 0 14px; text-align:center;">{ba.label}</div>
           <div style="display:grid; grid-template-columns:1fr 1fr; gap:6px;">
             <div>
               <div style="background:var(--dark); color:white; font-size:11px; font-weight:900; padding:8px 12px; border-radius:10px 10px 0 0; text-align:center; text-transform:uppercase; letter-spacing:0.06em;">Before 😬</div>
               <ResponsiveImage src={ba.before} alt="Before" widths={[320,640,1024]} sizes="(min-width:1024px) 50vw, 100vw" width={800} height={600} imgStyle="width:100%; aspect-ratio:4/3; object-fit:cover; border-radius:0 0 10px 10px; display:block;" />
             </div>
             <div>
-              <div style="background:var(--red); color:white; font-size:11px; font-weight:900; padding:8px 12px; border-radius:10px 10px 0 0; text-align:center; text-transform:uppercase; letter-spacing:0.06em;">After 😁</div>
+              <div style="background:var(--red-strong); color:white; font-size:11px; font-weight:900; padding:8px 12px; border-radius:10px 10px 0 0; text-align:center; text-transform:uppercase; letter-spacing:0.06em;">After 😁</div>
               <ResponsiveImage src={ba.after} alt="After" widths={[320,640,1024]} sizes="(min-width:1024px) 50vw, 100vw" width={800} height={600} imgStyle="width:100%; aspect-ratio:4/3; object-fit:cover; border-radius:0 0 10px 10px; display:block;" />
             </div>
           </div>
@@ -298,12 +302,12 @@ const heroBase = practice.hero.image.replace(/\.webp$/i, '');
             </div>
             <!-- Attribution below bubble -->
             <div style={`display:flex; align-items:center; gap:10px; margin-top:30px; ${tailSide === 'right' ? 'justify-content:flex-end; flex-direction:row-reverse;' : ''}`}>
-              <div style={`width:44px; height:44px; border-radius:9999px; background:${['var(--red)','var(--yellow)','var(--blue)','#9C27B0'][i]}; display:flex; align-items:center; justify-content:center; color:${i === 1 ? 'var(--dark)' : 'white'}; font-size:18px; font-weight:900; border:3px solid var(--dark); box-shadow:2px 2px 0 var(--dark); flex-shrink:0;`}>
+              <div style={`width:44px; height:44px; border-radius:9999px; background:${['var(--red-strong)','var(--yellow)','var(--blue)','#6A1B9A'][i]}; display:flex; align-items:center; justify-content:center; color:${i === 1 ? 'var(--dark)' : 'white'}; font-size:18px; font-weight:900; border:3px solid var(--dark); box-shadow:2px 2px 0 var(--dark); flex-shrink:0;`}>
                 {r.name[0]}
               </div>
               <div>
                 <div style="font-size:14px; font-weight:900; color:var(--dark);">{r.name}</div>
-                <div style="font-size:11px; color:#888; font-weight:700;">{r.date}</div>
+                <div style="font-size:11px; color:#666; font-weight:700;">{r.date}</div>
               </div>
             </div>
           </div>
@@ -356,7 +360,7 @@ const heroBase = practice.hero.image.replace(/\.webp$/i, '');
         {practice.hours.map(h => (
           <div style="background:rgba(255,255,255,0.15); border-radius:12px; padding:13px 18px; display:flex; justify-content:space-between; border:1px solid rgba(255,255,255,0.2);">
             <span style="color:rgba(255,255,255,0.85); font-weight:800; font-size:14px;">{h.day}</span>
-            <span style="color:var(--yellow); font-weight:900; font-size:14px;">{h.time}</span>
+            <span style="color:white; font-weight:900; font-size:14px;">{h.time}</span>
           </div>
         ))}
       </div>
@@ -410,7 +414,7 @@ const heroBase = practice.hero.image.replace(/\.webp$/i, '');
         <label style="display:block; font-weight:900; font-size:12px; color:var(--dark); margin-bottom:7px; text-transform:uppercase; letter-spacing:0.06em;">Anything Else? (optional)</label>
         <textarea rows={3} placeholder="Any worries, allergies, or questions — we love to hear from you!" style="width:100%; padding:13px 15px; border:2px solid var(--border); border-radius:12px; font-size:15px; font-family:'Nunito',sans-serif; font-weight:700; resize:vertical;"></textarea>
       </div>
-      <button type="submit" class="star-btn" style="background:var(--red); color:white; font-weight:900; font-size:18px; padding:18px 28px; border:none; border-radius:9999px; cursor:pointer; font-family:'Nunito',sans-serif; box-shadow:0 6px 20px rgba(232,40,26,0.35), 0 3px 0 #A81D11;">
+      <button type="submit" class="star-btn" style="background:var(--red-strong); color:white; font-weight:900; font-size:18px; padding:18px 28px; border:none; border-radius:9999px; cursor:pointer; font-family:'Nunito',sans-serif; box-shadow:0 6px 20px rgba(198,27,15,0.35), 0 3px 0 #9E1109;">
         Let's Book It! 🎉
       </button>
       <p style="text-align:center; font-size:12px; color:#595959; margin:0; font-weight:800;">We'll confirm within one business day. Zero spam, ever!</p>
